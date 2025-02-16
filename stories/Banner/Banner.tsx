@@ -1,11 +1,11 @@
 import React from "react";
 import {StarVector} from "@/stories/Vectors";
 
-export interface TitleColProps {
+export interface BannerProps {
     withStar?: boolean;
 }
 
-export const Banner = (props: TitleColProps) => {
+export const Banner = (props: BannerProps) => {
     const {withStar} = props;
 
     return (

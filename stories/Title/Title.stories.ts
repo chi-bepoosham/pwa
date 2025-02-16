@@ -9,7 +9,8 @@ export default {
 
 export const Default = {
     args: {
-
+        text: "Lorem Ipsum",
+        withStar: true
     },
     parameters: {
         nextjs: {
