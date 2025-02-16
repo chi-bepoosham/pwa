@@ -1,18 +1,16 @@
 import React from "react";
 
 export interface LogoProps {
-    withTitle?: boolean;
+    withLogoType?: boolean;
 }
 
 export const Logo = (props: LogoProps) => {
-    const {withTitle} = props;
+    const {withLogoType} = props;
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen bg-primary w-full">
-            <i className="items-center">
-            <Logo1 size={128}/>
-            </i>
-            {withTitle && <span className=""><LogoType size={200}/></span>}
+        <div className="flex flex-col gap-4 items-center justify-center w-full h-screen">
+            <Logo1 size={80}/>
+            {withLogoType && <i><LogoType size={200}/></i>}
         </div>
     );
 };
@@ -23,7 +21,7 @@ const LogoType = ({size = 36}: { size: number }) => {
         <svg
             width={size}
             height={size}
-            viewBox="0 0 216 31"
+            viewBox="0 0 216 225"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
