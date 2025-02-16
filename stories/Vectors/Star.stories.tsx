@@ -33,8 +33,7 @@ export const Vector = () => {
                     />
                     <stop
                         offset="0.609524"
-                        stopColor="#4141F9"
-                    />
+                        stopColor="#4141F9"/>
                 </linearGradient>
             </defs>
         </svg>

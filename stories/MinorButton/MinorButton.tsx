@@ -24,7 +24,7 @@ export const MinorButton = (props: MinorButtonProps) => {
             size={size}
             variant={variant}
             radius={radius}
-            color="secondary"
+            color="primary"
             onPress={handleClick}
         >
             {isLoading ? (
