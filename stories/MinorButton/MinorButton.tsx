@@ -1,31 +1,68 @@
-import React from "react";
-import {Button} from "@heroui/react";
-
+"use client";
+import React, { useState } from "react";
+import { Button } from "@heroui/react";
+import { motion } from "framer-motion";
 
 export interface MinorButtonProps {
     size?: "sm" | "md" | "lg";
     variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "ghost";
     buttonTitle?: string;
-    radius?:"none" | "sm" | "md" | "lg" | "full";
+    radius?: "none" | "sm" | "md" | "lg" | "full";
+    isLoading?: boolean;
 }
 
 export const MinorButton = (props: MinorButtonProps) => {
+    const { size, buttonTitle, variant, radius, isLoading } = props;
+    const [, setClicked] = useState(false);
 
-    const {size, buttonTitle, variant,radius} = props;
+    const handleClick = () => {
+        setClicked(true);
+    };
+
     return (
         <Button
             size={size}
             variant={variant}
             radius={radius}
+            color="secondary"
+            onPress={handleClick}
         >
-            {buttonTitle}
+            {isLoading ? (
+                <div className="flex justify-center gap-3">
+                    <motion.div
+                        className="w-3 h-3 bg-white rounded-full"
+                        animate={{ opacity: [1, 0.2, 1] }}
+                        transition={{
+                            duration: 2.5,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            delay: 1.6,
+                        }}
+                    />
+                    <motion.div
+                        className="w-3 h-3 bg-white rounded-full"
+                        animate={{ opacity: [1, 0.2, 1] }}
+                        transition={{
+                            duration: 2.5,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            delay: 1.2,
+                        }}
+                    />
+                    <motion.div
+                        className="w-3 h-3 bg-white rounded-full"
+                        animate={{ opacity: [1, 0.2, 1] }}
+                        transition={{
+                            duration: 2.5,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            delay: 0.8,
+                        }}
+                    />
+                </div>
+            ) : (
+                buttonTitle
+            )}
         </Button>
     );
 };
-
-
-
-
-
-
-
