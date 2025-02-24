@@ -1,6 +1,5 @@
 import axios from "axios";
 import {toast} from "react-toastify";
-import {getSession} from "next-auth/react";
 
 
 const config = {
@@ -39,8 +38,6 @@ const axiosCore = () => {
 const axiosCoreWithAuth = () => {
     const a = axios.create(config)
     a.interceptors.request.use(async (config) => {
-        const session = await getSession()
-        if(session?.accessToken) config.headers.Authorization = `Bearer ${session.accessToken}`
         return config
     })
     a.interceptors.response.use(
