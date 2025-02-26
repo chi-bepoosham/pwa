@@ -9,7 +9,7 @@ export default {
 
 export const Default = {
     args: {
-
+        title: "تصویر نمایه",
     },
     parameters: {
         nextjs: {
