@@ -8,7 +8,7 @@ import {Resend} from "@/stories/LoginByPhoneOtpForm/Resend";
 
 
 export interface PhoneNumberInputProps {
-    control: Control<LoginByPhoneOtpFormType, any>;
+    control: Control<LoginByPhoneOtpFormType>;
 
     done: () => void;
 }
@@ -20,7 +20,7 @@ export const TokenInput = (props: PhoneNumberInputProps) => {
         done,
     } = props
 
-    const hasTokenSent = useWatch({control, name: "hasTokenSent"})
+    const hasTokenSent = useWatch({control, name: "hasTokenSent" as keyof LoginByPhoneOtpFormType});
 
     if (!hasTokenSent) {
         return (
@@ -36,11 +36,11 @@ export const TokenInput = (props: PhoneNumberInputProps) => {
             render={({field, fieldState, formState}) => (
                 <div className="flex gap-1 justify-between">
                     <InputOtp
-                        length={4}
+                        length={5}
                         fullWidth
                         size="lg"
                         radius="lg"
-                        color="default"
+                        color="secondary"
                         variant="flat"
                         classNames={{segmentWrapper: "flex-row-reverse justify-center"}}
 

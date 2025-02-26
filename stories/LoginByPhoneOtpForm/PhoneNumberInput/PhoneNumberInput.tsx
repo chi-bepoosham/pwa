@@ -1,14 +1,16 @@
 "use client"
 
 import React from 'react';
-import {Button, Input} from "@heroui/react";
+import {Divider, Input} from "@heroui/react";
 import {PatternFormat} from "react-number-format";
 import {Control, Controller, useController,} from "react-hook-form";
 import {LoginByPhoneOtpFormType} from "@/types/LoginByPhoneOtpForm.type";
+import {InfoIcon} from "@/stories/Icons";
+import Link from "next/link";
 
 
 export interface PhoneNumberInputProps {
-    control: Control<LoginByPhoneOtpFormType, any>;
+    control: Control<LoginByPhoneOtpFormType>;
     changeNumber: () => void;
 }
 
@@ -16,14 +18,11 @@ export const PhoneNumberInput = (props: PhoneNumberInputProps) => {
 
     const {
         control,
-        changeNumber,
     } = props
 
 
-    const hasTokenSentField = useController({control, name: "hasTokenSent"})
+    const hasTokenSentField = useController({control, name: "hasTokenSent" as keyof LoginByPhoneOtpFormType});
     const hasTokenSent = hasTokenSentField.field.value
-
-
 
 
     return (
@@ -35,35 +34,38 @@ export const PhoneNumberInput = (props: PhoneNumberInputProps) => {
                     fullWidth
                     size="lg"
                     radius="sm"
-                    color="default"
-                    variant="flat"
-                    placeholder="09127077707"
+                    color="secondary"
+                    variant="bordered"
+                    placeholder="127077707"
                     labelPlacement="outside"
-                    description="شماره خود را به صورت 09212728307 وارد کنید"
+                    description={(
+                        <div className="flex flex-row gap-2">
+                            <InfoIcon size={25}/>
+                            <p className="text-secondary">
+                                 استفاده از چی بپوشم به معنی پذیرش
+                                <Link className="text-primary px-1" href="/">
+                                    قوانین و مقررات
+                                </Link>
+                                این سرویس می باشد.
+                            </p>
+                        </div>
+                    )}
+
+
                     type="tel"
 
-                    startContent={(
-                        hasTokenSent
-                            ?
-                            (
-                                <Button
-                                    size="sm"
-                                    color="secondary"
-                                    variant="light"
-                                    onPress={changeNumber}
-                                >
-                                    تغییر شماره
-                                </Button>
-                            )
-                            :
-                            null
+                    endContent={(
+                        <div dir="ltr" className="flex flex-row items-center justify-start">
+                            +98
+                            <Divider orientation="vertical" className="h-4 mx-2" />
+                        </div>
                     )}
 
                     customInput={Input}
                     getInputRef={field.ref}
                     name={field.name}
 
-                    format="#### ### ####"
+                    format="### ### ####"
                     allowEmptyFormatting
                     mask=" "
 

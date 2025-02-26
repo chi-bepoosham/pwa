@@ -34,7 +34,7 @@ export const Vector = () => {
                     />
                     <stop
                         offset="0.577886"
-                        stopColor="#4141F9"
+                        stopColor="currentColor"
                     />
                 </linearGradient>
             </defs>

@@ -10,7 +10,7 @@ import {axiosCore} from "@/lib/axios";
 
 
 export interface ResendOtpProps {
-    control: Control<LoginByPhoneOtpFormType, any>;
+    control: Control<LoginByPhoneOtpFormType>;
 
     isDisabled?: boolean;
 }
@@ -23,9 +23,9 @@ export const Resend = (props: ResendOtpProps) => {
 
     const formState = useFormState({control})
 
-    const phone = useWatch({control, name: "phone"})
+    const phone = useWatch({control, name: "phone" as keyof LoginByPhoneOtpFormType})
 
-    const tokenField = useController({control, name: "token"})
+    const tokenField = useController({control, name: "token" as keyof LoginByPhoneOtpFormType})
 
 
 
@@ -44,7 +44,7 @@ export const Resend = (props: ResendOtpProps) => {
             toast.success("کد یکبار مصرف ارسال شد")
             setLoading(false)
             return
-        } catch (e: any) {
+        } catch  {
             toast.error("کمی صبر کنید و مجدد تلاش کنید!")
             setLoading(false)
             throw ""

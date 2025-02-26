@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import { Button } from "@heroui/react";
-import { motion } from "framer-motion";
+import React, {useState} from "react";
+import {Button} from "@heroui/react";
+import {motion} from "framer-motion";
 
 export interface MinorButtonProps {
     size?: "sm" | "md" | "lg";
@@ -12,7 +12,7 @@ export interface MinorButtonProps {
 }
 
 export const MinorButton = (props: MinorButtonProps) => {
-    const { size, buttonTitle, variant, radius, isLoading } = props;
+    const {size, buttonTitle, variant, radius, isLoading} = props;
     const [, setClicked] = useState(false);
 
     const handleClick = () => {
@@ -24,14 +24,14 @@ export const MinorButton = (props: MinorButtonProps) => {
             size={size}
             variant={variant}
             radius={radius}
-            color="primary"
+            color="secondary"
             onPress={handleClick}
         >
             {isLoading ? (
                 <div className="flex justify-center gap-3">
                     <motion.div
                         className="w-3 h-3 bg-white rounded-full"
-                        animate={{ opacity: [1, 0.2, 1] }}
+                        animate={{opacity: [1, 0.2, 1]}}
                         transition={{
                             duration: 2.5,
                             repeat: Infinity,
@@ -41,7 +41,7 @@ export const MinorButton = (props: MinorButtonProps) => {
                     />
                     <motion.div
                         className="w-3 h-3 bg-white rounded-full"
-                        animate={{ opacity: [1, 0.2, 1] }}
+                        animate={{opacity: [1, 0.2, 1]}}
                         transition={{
                             duration: 2.5,
                             repeat: Infinity,
@@ -51,7 +51,7 @@ export const MinorButton = (props: MinorButtonProps) => {
                     />
                     <motion.div
                         className="w-3 h-3 bg-white rounded-full"
-                        animate={{ opacity: [1, 0.2, 1] }}
+                        animate={{opacity: [1, 0.2, 1]}}
                         transition={{
                             duration: 2.5,
                             repeat: Infinity,

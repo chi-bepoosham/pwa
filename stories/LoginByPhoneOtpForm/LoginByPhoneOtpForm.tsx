@@ -55,23 +55,23 @@ export const LoginByPhoneOtpForm = (props: LoginByPhoneOtpFormProps) => {
     } = props
 
 
-    const defaultValues = async () => {
-        return data ? data : initialData
-    }
+    // const defaultValues = async () => {
+    //     return data ? data : initialData
+    // }
 
     const {
         handleSubmit,
         control,
         setError,
         setValue,
-        watch,
-        reset,
+        // watch,
+        // reset,
         resetField,
-        setFocus,
+        // setFocus,
     } = useForm<LoginByPhoneOtpFormType>(
         {
             resolver: zodResolver(schema),
-            defaultValues,
+            // defaultValues,
         }
     );
 

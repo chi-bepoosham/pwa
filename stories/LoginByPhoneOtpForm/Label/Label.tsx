@@ -6,16 +6,16 @@ import {LoginByPhoneOtpFormType} from "@/types/LoginByPhoneOtpForm.type";
 
 
 export interface PhoneOtpLabelProps {
-    control: Control<LoginByPhoneOtpFormType, any>;
+    control: Control<LoginByPhoneOtpFormType>;
 }
 
-export const Label = <T, >(props: PhoneOtpLabelProps) => {
+export const Label = (props: PhoneOtpLabelProps) => {
 
     const {
         control,
     } = props
 
-    const hasTokenSent = useWatch({control, name: "hasTokenSent"})
+    const hasTokenSent = useWatch({control, name: "hasTokenSent" as keyof LoginByPhoneOtpFormType})
 
     if (hasTokenSent) {
         return (
@@ -27,9 +27,9 @@ export const Label = <T, >(props: PhoneOtpLabelProps) => {
         )
     }
     return (
-        <div className="py-2">
+        <div className="py-2 text-nowrap">
             <label>
-                شماره موبایل خود را وارد کنید
+                لطفا شماره تلفن خود را در کادر زیر وارد کنید.
             </label>
         </div>
     )

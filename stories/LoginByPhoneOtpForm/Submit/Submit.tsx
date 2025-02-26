@@ -1,24 +1,24 @@
 "use client"
 
 import React from 'react';
-import {Control, useController, useWatch, useFormState} from "react-hook-form";
+import {Control, useWatch, useFormState} from "react-hook-form";
 import {LoginByPhoneOtpFormType} from "@/types/LoginByPhoneOtpForm.type";
 import {Button} from "@heroui/react";
 import {KeyboardArrowLeft} from "@mui/icons-material";
 
 
 export interface PhoneOtpLabelProps {
-    control: Control<LoginByPhoneOtpFormType, any>;
+    control: Control<LoginByPhoneOtpFormType>;
 }
 
-export const Submit = <T, >(props: PhoneOtpLabelProps) => {
+export const Submit = (props: PhoneOtpLabelProps) => {
 
     const {
         control,
     } = props
 
     const formState = useFormState({control})
-    const hasTokenSent = useWatch({control, name: "hasTokenSent"})
+    const hasTokenSent = useWatch({control, name: "hasTokenSent" as keyof LoginByPhoneOtpFormType});
 
     if (hasTokenSent) {
         return (
@@ -38,14 +38,14 @@ export const Submit = <T, >(props: PhoneOtpLabelProps) => {
     return (
         <Button
             type="submit"
-            color="primary"
-            variant="shadow"
+            color="secondary"
+            variant="solid"
+            radius="lg"
             size="lg"
             isDisabled={formState.disabled}
             isLoading={formState.isLoading || formState.isValidating || formState.isSubmitting}
-            endContent={<KeyboardArrowLeft/>}
         >
-            ادامه
+            تایید و دریافت کد تایید
         </Button>
     )
 
