@@ -12,7 +12,7 @@ export const DashboardItems = (props: SocialProps) => {
         <div className="flex flex-row-reverse gap-6 justify-center">
             <Button
                 variant="bordered"
-                className="w-40 h-40 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-white active:transition active:duration-500"
+                className="w-40 h-40 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text active:transition active:duration-500"
             >
                 <i className="mb-2">
                     <BookmarkIcon size={36}/>
@@ -20,12 +20,14 @@ export const DashboardItems = (props: SocialProps) => {
                 <span className="text-lg font-bold">
                     نشان ‌شده‌ها
                 </span>
-                <StarIcon size={20}/>
+                <i className="text-[#68BAA6]">
+                    <StarIcon size={20}/>
+                </i>
             </Button>
 
             <Button
                 variant="bordered"
-                className="w-40 h-40 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-white active:transition active:duration-500"
+                className="w-40 h-40 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-secondary active:transition active:duration-500"
             >
                 <i className="mb-2">
                     <ShapeIcon size={36}/>
@@ -33,7 +35,9 @@ export const DashboardItems = (props: SocialProps) => {
                 <span className="text-lg font-bold">
                     تصویر فرم بدن
                 </span>
-                <StarIcon size={20}/>
+                <i className="text-[#68BAA6]">
+                    <StarIcon size={20}/>
+                </i>
             </Button>
 
             <Button
@@ -46,7 +50,9 @@ export const DashboardItems = (props: SocialProps) => {
                 <span className="text-lg font-bold">
                     سـفارشــات
                 </span>
-                <StarIcon size={20}/>
+                <i className="text-[#68BAA6]">
+                    <StarIcon size={20}/>
+                </i>
             </Button>
         </div>
     );
