@@ -24,7 +24,7 @@ export const MinorButton = (props: MinorButtonProps) => {
             size={size}
             variant={variant}
             radius={radius}
-            color="secondary"
+            color="primary"
             onPress={handleClick}
         >
             {isLoading ? (
@@ -36,7 +36,7 @@ export const MinorButton = (props: MinorButtonProps) => {
                             duration: 2.5,
                             repeat: Infinity,
                             repeatType: "loop",
-                            delay: 1.6,
+                            delay: 1.4,
                         }}
                     />
                     <motion.div
@@ -46,7 +46,7 @@ export const MinorButton = (props: MinorButtonProps) => {
                             duration: 2.5,
                             repeat: Infinity,
                             repeatType: "loop",
-                            delay: 1.2,
+                            delay: 1,
                         }}
                     />
                     <motion.div
@@ -56,7 +56,7 @@ export const MinorButton = (props: MinorButtonProps) => {
                             duration: 2.5,
                             repeat: Infinity,
                             repeatType: "loop",
-                            delay: 0.8,
+                            delay: 0.6,
                         }}
                     />
                 </div>

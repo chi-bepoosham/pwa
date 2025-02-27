@@ -18,3 +18,10 @@ export {Icon as AddIcon} from "./Add.stories"
 
 //Edit
 export {Icon as EditIcon} from "./Edit.stories"
+
+
+
+//Social
+export {Icon as TelegramIcon} from "./Telegram.stories"
+export {Icon as InstagramIcon} from "./Instagram.stories"
+export {Icon as EmailIcon} from "./Email.stories"

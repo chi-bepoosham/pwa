@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import { Sacramento } from "next/font/google";
 
 
 
@@ -230,4 +231,11 @@ export const YekanBakh = localFont({
       style: "normal",
     },
   ],
+});
+
+
+
+export const sacramento = Sacramento({
+  weight: "400",
+  subsets: ["latin"],
 });

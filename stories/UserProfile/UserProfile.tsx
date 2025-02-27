@@ -48,7 +48,7 @@ export const UserProfile = ({title, iconType = "add", onImageUpload}: UserProfil
                 onChange={handleFileChange}
             />
             <div
-                className="relative w-[6.5rem] h-[6.5rem] border border-secondary rounded-[28px] flex justify-center items-center z-10 px-2.5 py-10 bg-white after:bg-primary-50 after:w-full after:h-4 after:absolute after:rounded-[2px]">
+                className="relative w-[6.5rem] h-[6.5rem] border border-secondary rounded-[28px] flex justify-center items-center z-10 px-2.5 py-10 bg-white after:bg-primary-100 after:w-full after:h-4 after:absolute after:rounded-[2px]">
                 {image ? (
                     <Image
                         width="32"
@@ -58,7 +58,7 @@ export const UserProfile = ({title, iconType = "add", onImageUpload}: UserProfil
                         className="w-full h-full absolute object-cover rounded-[28px]"
                     />
                 ) : (
-                    <h3 className="text-secondary truncate">{title}</h3>
+                    <h3 className="text-secondary truncate select-none">{title}</h3>
                 )}
             </div>
             <div className="absolute inset-0 flex items-center justify-center scale-125">
