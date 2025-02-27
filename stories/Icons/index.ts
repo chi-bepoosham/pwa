@@ -36,3 +36,7 @@ export {Icon as OrdersIcon} from "./Orders.stories"
 
 //Star
 export {Icon as StarIcon} from "./Star.stories"
+
+
+//Setting
+export {Icon as NotificationIcon} from "./Notification.stories"
