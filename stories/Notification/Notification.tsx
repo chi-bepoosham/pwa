@@ -1,5 +1,6 @@
 import React from "react";
 import {NotificationIcon} from "@/stories/Icons";
+import {Switch} from "@heroui/react";
 
 
 export interface NotificationProps {
@@ -10,17 +11,17 @@ export interface NotificationProps {
 export const Notification = (props: NotificationProps) => {
     const {} = props;
     return (
-        <div className="flex justify-between">
-            <div className="flex flex-row-reverse gap-2">
-                <span className="text-secondary font-semibold">
+        <div className="flex justify-between w-full mx-2">
+            <div className="flex flex-row-reverse gap-2 items-center">
+                <span className="text-secondary font-semibold select-none">
                     اعـلان‌هـای اپـلیکیشـن
                 </span>
                 <i className="text-secondary">
-                    <NotificationIcon size={25}/>
+                    <NotificationIcon size={24}/>
                 </i>
             </div>
             <div>
-
+                <Switch color="secondary"/>
             </div>
         </div>
     )
