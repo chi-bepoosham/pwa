@@ -21,7 +21,7 @@ export const Notification = (props: NotificationProps) => {
                 </i>
             </div>
             <div>
-                <Switch color="secondary"/>
+                <Switch color="secondary" size="md"/>
             </div>
         </div>
     )
