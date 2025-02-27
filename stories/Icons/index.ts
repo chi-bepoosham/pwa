@@ -25,3 +25,14 @@ export {Icon as EditIcon} from "./Edit.stories"
 export {Icon as TelegramIcon} from "./Telegram.stories"
 export {Icon as InstagramIcon} from "./Instagram.stories"
 export {Icon as EmailIcon} from "./Email.stories"
+
+
+//Dashboard
+export {Icon as BookmarkIcon} from "./Bookmark.stories"
+export {Icon as ShapeIcon} from "./Shape.stories"
+export {Icon as OrdersIcon} from "./Orders.stories"
+
+
+
+//Star
+export {Icon as StarIcon} from "./Star.stories"
