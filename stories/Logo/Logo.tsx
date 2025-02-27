@@ -10,7 +10,7 @@ export const Logo = (props: LogoProps) => {
     return (
         <div className="flex flex-col gap-4 items-center justify-center w-full h-screen">
             <Logo1 size={80}/>
-            {withLogoType && <i><LogoType size={200}/></i>}
+            {withLogoType && <i><LogoType size={170}/></i>}
         </div>
     );
 };

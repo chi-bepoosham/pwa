@@ -31,7 +31,7 @@ export const GenderSelection = (props: GenderSelectionProps) => {
                     <div
                         key={index}
                         onClick={() => setSelected(option.key)}
-                        className={`flex w-32 items-center justify-center p-3 border rounded-lg cursor-pointer transition duration-500 ${
+                        className={`flex w-32 items-center justify-center p-3 border rounded-lg cursor-pointer transition duration-500 select-none ${
                             selected === option.key
                                 ? "bg-secondary border-secondary text-white"
                                 : "border-[#68BAA6]"

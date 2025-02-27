@@ -10,6 +10,7 @@ export default {
 export const Default = {
     args: {
         title: "تصویر نمایه",
+        iconType: "add"
     },
     parameters: {
         nextjs: {
