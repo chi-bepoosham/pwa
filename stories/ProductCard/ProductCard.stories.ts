@@ -1,10 +1,10 @@
-import { SettingItems } from './SettingItems';
+import { ProductCard } from './ProductCard';
 
 
 
 export default {
-    title: "Setting/SettingItems",
-    component: SettingItems,
+    title: "ProductCard",
+    component: ProductCard,
 };
 
 export const Default = {
