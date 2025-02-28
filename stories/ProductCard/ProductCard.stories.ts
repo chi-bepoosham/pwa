@@ -1,5 +1,4 @@
-import { ProductCard } from './ProductCard';
-
+import {ProductCard} from './ProductCard';
 
 
 export default {
@@ -9,10 +8,21 @@ export default {
 
 export const Default = {
     args: {
-        image: "img.png",
-        productId: "کلاه پشم گاو",
-        color: "primary",
-        price: 189000
+        price: "859.000",
+        description: "XL. 2X. 3X",
+        title: "کلاه پشم‌گاو",
+        imageUrl: "img.png",
+        variant: "bordered",
+
+        colors:
+            [
+                '#FF5733',
+                '#33FF57',
+                '#3357FF',
+                '#F5A623'
+            ],
+
+        withArrow: false
     },
     parameters: {
         nextjs: {
