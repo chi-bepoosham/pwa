@@ -1,7 +1,7 @@
 import React from "react";
 import {Button} from "@heroui/react";
 import {EmailIcon, InstagramIcon, TelegramIcon} from "@/stories/Icons";
-// import {sacramento} from "@/lib/font";
+import {sacramento} from "@/lib/font";
 
 
 export interface SocialProps {
@@ -18,9 +18,9 @@ export const Social = (props: SocialProps) => {
                 <i className="mb-2">
                     <TelegramIcon size={36}/>
                 </i>
-                {/*<span className={`text-xl ${sacramento.className}`}>*/}
-                {/*    Telegram*/}
-                {/*</span>*/}
+                <span className={`text-xl ${sacramento.className}`}>
+                    Telegram
+                </span>
             </Button>
 
             <Button
@@ -30,9 +30,9 @@ export const Social = (props: SocialProps) => {
                 <i className="mb-2">
                     <EmailIcon size={36}/>
                 </i>
-                {/*<span className={`text-xl ${sacramento.className}`}>*/}
-                {/*    Email*/}
-                {/*</span>*/}
+                <span className={`text-xl ${sacramento.className}`}>
+                    Email
+                </span>
             </Button>
 
             <Button
@@ -42,9 +42,9 @@ export const Social = (props: SocialProps) => {
                 <i className="mb-2">
                     <InstagramIcon size={36}/>
                 </i>
-                {/*<span className={`text-xl ${sacramento.className}`}>*/}
-                {/*    Instagram*/}
-                {/*</span>*/}
+                <span className={`text-xl ${sacramento.className}`}>
+                    Instagram
+                </span>
             </Button>
         </div>
     );
