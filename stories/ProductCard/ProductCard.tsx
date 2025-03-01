@@ -2,7 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import clsx from 'clsx';
 import Link from "next/link";
-import { ArrowRightIcon } from "@/stories/Icons";
+import {ArrowRightIcon} from "@/stories/Icons";
 
 interface ProductCardProps {
     imageUrl: string;
@@ -15,7 +15,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard = (props: ProductCardProps) => {
-    const { imageUrl, title, price, description, variant, colors, withArrow } = props;
+    const {imageUrl, title, price, description, variant, colors, withArrow} = props;
 
     return (
         <Link href="/">
@@ -31,14 +31,14 @@ export const ProductCard = (props: ProductCardProps) => {
                 )}>
                     {withArrow ? (
                         <i className="rotate-45">
-                        <ArrowRightIcon size={24}/>
+                            <ArrowRightIcon size={24}/>
                         </i>
                     ) : (
                         colors.slice(0, 4).map((color, index) => (
                             <span
                                 key={index}
                                 className="w-4 h-4 rounded-full"
-                                style={{ backgroundColor: color }}
+                                style={{backgroundColor: color}}
                             />
                         ))
                     )}

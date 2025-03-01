@@ -1,7 +1,7 @@
 "use client";
 import React, {useEffect, useRef, useState} from "react";
 import {Listbox, ListboxItem, Switch} from "@heroui/react";
-import {BookmarkIcon, InfoIcon, NotificationIcon, ShareIcon, UserIcon} from "@/stories/Icons";
+import {BookmarkIcon, InfoIcon, NotificationIcon, PaymentIcon, ShareIcon, UserIcon} from "@/stories/Icons";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -50,7 +50,7 @@ export const SettingItems = (props: SettingItemProps) => {
         <div>
             <Listbox
                 aria-label="User Menu"
-                className="p-0 gap-0 max-w-[300px] overflow-visible"
+                className="p-0 gap-0 w-full overflow-visible"
                 itemClasses={{
                     base: "px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-secondary-50",
                 }}
@@ -65,7 +65,7 @@ export const SettingItems = (props: SettingItemProps) => {
                 <ListboxItem
                     key="orders payment"
                     endContent={<ChevronRightIcon/>}
-                    startContent={<BookmarkIcon size={24}/>}
+                    startContent={<PaymentIcon size={24}/>}
                 >
                     سفارشات و تراکنش‌ها
                 </ListboxItem>
