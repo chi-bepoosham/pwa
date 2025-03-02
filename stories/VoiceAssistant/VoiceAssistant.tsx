@@ -1,17 +1,22 @@
 import React from "react";
+import {ShieldVector} from "@/stories/Vectors";
+import {MicIcon} from "@/stories/Icons";
 
-
-export interface VoiceAssistantProps {
-
-}
-
-
-export const VoiceAssistant = (props: VoiceAssistantProps) => {
-    const {} = props;
+export const VoiceAssistant = () => {
     return (
-        <div className="relative w-full bg-secondary rounded-t-2xl h-36">
-            <div className="absolute translate-x-0 translate-y-0">
+        <div
+            className="relative w-full h-36 bg-secondary rounded-t-2xl flex justify-center items-center">
+            <div className="absolute -top-40 translate-y-0 translate-x-0">
+                <ShieldVector/>
             </div>
+                <div className="absolute -top-10 bg-white rounded-full flex items-center justify-center z-10">
+                    <i className="text-primary">
+                        <MicIcon size={80}/>
+                    </i>
+                </div>
+            <p className="text-white text-lg font-medium">
+                سلام! من اینجا بهت کمک می‌کنم تا بتونی ...
+            </p>
         </div>
-    )
-}
+    );
+};

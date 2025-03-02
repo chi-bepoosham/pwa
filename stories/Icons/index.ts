@@ -43,3 +43,8 @@ export {Icon as NotificationIcon} from "./Notification.stories"
 export {Icon as ShareIcon} from "./Share.stories"
 export {Icon as PaymentIcon} from "./Payment.stories"
 export {Icon as UserIcon} from "./User.stories"
+
+
+
+//VoiceAssistant
+export {Icon as MicIcon} from "./Mic.stories"

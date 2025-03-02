@@ -14,4 +14,4 @@ export {Vector as SquareVector} from "./Square.stories"
 
 
 // VoiceAssistant
-export {Vector as shieldVector} from "./Shield.stories"
+export {Vector as ShieldVector} from "./Shield.stories"
