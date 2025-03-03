@@ -13,7 +13,7 @@ export interface BodyTypeProps {
 
 
 export const BodyType = (props: BodyTypeProps) => {
-    const {title ,strength ,weaknessPoints} = props
+    const {title, strength, weaknessPoints} = props
     return (
         <div className="w-[600px] grid grid-cols-4 border-2 border-secondary pr-2 rounded-lg h-96">
             <div className="col-span-1 bg-primary-50 rounded-lg my-2">
@@ -28,21 +28,29 @@ export const BodyType = (props: BodyTypeProps) => {
                     <Number number={1}/>
                     {title}
                 </CardHeader>
-                <div className="mr-3">
-                    <Divider/>
-                </div>
+                <Divider/>
                 <CardBody
                     className="flex flex-col gap-10 text-right">
                     <div>
-                        <h1>نقاط قوت</h1>
-                        <p>
+                        <h1 className="text-secondary font-bold">
+                            نقاط
+                            <span className="text-[#07A537]">
+                                قوت
+                            </span>
+                        </h1>
+                        <p className="text-secondary-300">
                             {strength}
                         </p>
 
                     </div>
                     <div>
-                        <h1>نقاط ضعف</h1>
-                        <p>
+                        <h1 className="text-secondary font-bold">
+                            نقاط
+                            <span className="text-[#E93B55]">
+                                ضعف
+                            </span>
+                        </h1>
+                        <p className="text-secondary-300">
                             {weaknessPoints}
                         </p>
                     </div>
