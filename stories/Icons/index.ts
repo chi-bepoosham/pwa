@@ -48,3 +48,10 @@ export {Icon as UserIcon} from "./User.stories"
 
 //VoiceAssistant
 export {Icon as MicIcon} from "./Mic.stories"
+
+
+
+
+
+//BT
+export {Icon as NumbersIcon} from "./Numbers.stories"
