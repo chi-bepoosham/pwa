@@ -7,12 +7,13 @@ export const Icon = ({size = 60}: { size?: number }) => {
         <svg
             width={size}
             height={size}
-            viewBox="0 0 17 16"
+            viewBox="0 0 17 17"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
             <rect
                 x={0.0424805}
+                y={0.0673828}
                 width={16}
                 height={16}
                 rx={7}
@@ -26,7 +27,7 @@ export const Icon = ({size = 60}: { size?: number }) => {
 }
 
 export default {
-    title: "Icons/Notification",
+    title: "Icons/Numbers",
     component: Icon,
 }
 

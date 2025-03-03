@@ -10,10 +10,14 @@ export interface NumberProps {
 export const Number = (props: NumberProps) => {
     const {number} = props;
     return (
-        <div className="relative z-10">
-            <i className="absolute">
-                <NumbersIcon size={20}/>
-            </i>
+        <div className="relative">
+            <div
+                className="absolute -top-3 -left-3 flex justify-center items-center text-secondary font-bold text-3xl border-3 border-secondary rounded-3xl w-14 aspect-square"
+            >
+                {number}
+            </div>
+                <NumbersIcon size={60}/>
+
         </div>
     )
 }
