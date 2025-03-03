@@ -10,21 +10,33 @@ export const Default = {
     args: {
         slides:[
             {
-                imageUrl: "https://via.placeholder.com/150",
-                name: "استایلی راحت و مدرن"
+                imageUrl: "/img_1.png",
+                name: "ascot tie"
             },
             {
-                imageUrl: "https://via.placeholder.com/150",
-                name: "استایل رسمی و شیک"
+                imageUrl: "/img_3.png",
+                name: "ascot tie"
             },
             {
-                imageUrl: "https://via.placeholder.com/150",
-                name: "استایل شبانه"
+                imageUrl: "/img_3.png",
+                name: "ascot tie"
             },
             {
-                imageUrl: "https://via.placeholder.com/150",
-                name: "استایل روزمره"
-            }
+                imageUrl: "/img_3.png",
+                name: "ascot tie"
+            },
+            {
+                imageUrl: "/img_3.png",
+                name: "ascot tie"
+            },
+            {
+                imageUrl: "/img_3.png",
+                name: "ascot tie"
+            },
+            {
+                imageUrl: "/img_3.png",
+                name: "ascot tie"
+            },
         ],
     },
     parameters: {

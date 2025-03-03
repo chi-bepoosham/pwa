@@ -55,3 +55,7 @@ export {Icon as MicIcon} from "./Mic.stories"
 
 //BT
 export {Icon as NumbersIcon} from "./Numbers.stories"
+
+
+
+export {Icon as ChevronIcon} from "./Chevron.stories"
