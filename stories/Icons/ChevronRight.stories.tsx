@@ -25,7 +25,7 @@ export const Icon = ({size = 60}: { size?: number }) => {
 }
 
 export default {
-    title: "Icons/Chevron",
+    title: "Icons/ChevronRight",
     component: Icon,
 }
 

@@ -10,7 +10,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa">
-      <body>
+      <body dir="rtl">
         {children}
       </body>
     </html>

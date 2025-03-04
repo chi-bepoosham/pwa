@@ -58,4 +58,5 @@ export {Icon as NumbersIcon} from "./Numbers.stories"
 
 
 
-export {Icon as ChevronIcon} from "./Chevron.stories"
+export {Icon as ChevronRightIcon} from "./ChevronRight.stories"
+export {Icon as ChevronLeftIcon} from "./ChevronLeft.stories"
