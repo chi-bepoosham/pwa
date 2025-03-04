@@ -40,6 +40,7 @@ export const SuggestionSlider = ({ slides }: SuggestionSliderProps) => {
 
                 <Swiper
                     modules={[Navigation]}
+                    navigation={false}
                     slidesPerView={3}
                     centeredSlides
                     spaceBetween={16}

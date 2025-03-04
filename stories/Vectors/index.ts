@@ -15,3 +15,7 @@ export {Vector as SquareVector} from "./Square.stories"
 
 // VoiceAssistant
 export {Vector as ShieldVector} from "./Shield.stories"
+
+
+
+export {Vector as DottedLineVector} from "./DottedLine.stories"
