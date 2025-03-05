@@ -7,7 +7,9 @@ export default {
 };
 
 export const Default = {
-    args: {},
+    args: {
+        number: 1
+    },
     parameters: {
         nextjs: {
             appDirectory: true,

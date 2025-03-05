@@ -17,7 +17,7 @@ export const CelebrityCard = (props: CelebrityCardProps) => {
         <Card
             shadow="none"
             radius="lg"
-            className="border-2 border-secondary w-80 flex items-center"
+            className="border-2 border-secondary w-60 flex items-center"
         >
 
             <div className="relative w-full h-full">
@@ -26,7 +26,7 @@ export const CelebrityCard = (props: CelebrityCardProps) => {
                     alt="Celebrity Card"
                     width={128}
                     height={128}
-                    className="w-full h-full object-fill"
+                    className="w-full h-full"
                 />
             </div>
             <div className="absolute bottom-8 w-full h-1/5  backdrop-blur bg-secondary/70">
