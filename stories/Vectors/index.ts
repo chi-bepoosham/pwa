@@ -17,5 +17,9 @@ export {Vector as SquareVector} from "./Square.stories"
 export {Vector as ShieldVector} from "./Shield.stories"
 
 
-
 export {Vector as DottedLineVector} from "./DottedLine.stories"
+
+
+//BodyForm
+export {Vector as ShapeVector} from "./Shape.stories"
+export {Vector as BorderVector} from "./Border.stories"
