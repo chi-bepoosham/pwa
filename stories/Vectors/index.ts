@@ -23,3 +23,4 @@ export {Vector as DottedLineVector} from "./DottedLine.stories"
 //BodyForm
 export {Vector as ShapeVector} from "./Shape.stories"
 export {Vector as BorderVector} from "./Border.stories"
+export {Vector as BFormVector} from "./BForm.stories"

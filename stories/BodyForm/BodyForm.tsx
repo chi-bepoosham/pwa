@@ -1,6 +1,5 @@
 import React from "react";
-import {BorderVector, ShapeVector} from "@/stories/Vectors";
-
+import {BFormVector, BorderVector, ShapeVector} from "@/stories/Vectors";
 
 export interface BodyFormProps {
 }
@@ -8,11 +7,16 @@ export interface BodyFormProps {
 export const BodyForm = (props: BodyFormProps) => {
     const {} = props;
     return (
-        <div>
-            <div className="relative flex items-center justify-center">
-                <BorderVector/>
+        <div className="">
+            <BorderVector/>
+            <div className="relative flex justify-center items-center">
+                <ShapeVector/>
+                <div className="absolute">
+                    <BFormVector/>
+                </div>
             </div>
-            <ShapeVector/>
+
+
         </div>
     );
 };
