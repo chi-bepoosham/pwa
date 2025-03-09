@@ -60,3 +60,8 @@ export {Icon as NumbersIcon} from "./Numbers.stories"
 
 export {Icon as ChevronRightIcon} from "./ChevronRight.stories"
 export {Icon as ChevronLeftIcon} from "./ChevronLeft.stories"
+
+
+
+//Uploader
+export {Icon as ImageIcon} from "./Image.stories"

@@ -3,7 +3,8 @@ import React, {useState} from "react";
 import {Button} from "@heroui/react";
 import {motion} from "framer-motion";
 
-export interface MinorButtonProps {
+
+ export interface MinorButtonProps {
     size?: "sm" | "md" | "lg";
     variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "ghost";
     buttonTitle?: string;

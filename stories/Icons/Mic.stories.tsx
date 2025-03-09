@@ -11,18 +11,36 @@ export const Icon = ({size = 60}: { size?: number }) => {
         >
             <style>
                 {`
-               @keyframes rtghrthwave {
+               @keyframes upside {
                   0%, 100% {
                     transform: translateY(0);
                   }
                   50% {
-                    transform: translateY(-5px);
+                    transform: translateY(-3px);
                   }
                 }
-                .animated-line {
-                  animation: rtghrthwave 1s infinite ease-in-out;
+                .animated-line1 {
+                  animation: upside 1s infinite ease-in-out;
                 }
                `}
+            </style>
+            <style>
+                {`
+                @keyframes downside {
+                  0%, 100% {
+                    transform: translateY(0);
+                  }
+                  50% {
+                    transform: translateY(3px);
+                  }
+                }
+                .animated-line2 {
+                  animation: downside 1s infinite ease-in-out;
+                }
+                
+                
+                
+                `}
             </style>
 
 
@@ -36,63 +54,63 @@ export const Icon = ({size = 60}: { size?: number }) => {
                 fill="#4141F9"
             />
             <path
-                className="animated-line"
+                className="animated-line1"
                 d="M38.2996 28.3589L38.2996 38.1151"
                 stroke="white"
                 strokeWidth={2.5}
                 strokeLinecap="round"
             />
             <path
-                className="animated-line"
+                className="animated-line2"
                 d="M32.9988 32.2437L32.9988 34.2297"
                 stroke="white"
                 strokeWidth={2.5}
                 strokeLinecap="round"
             />
             <path
-                className="animated-line"
+                className="animated-line1"
                 d="M54.2019 30.4155L54.2019 36.0571"
                 stroke="white"
                 strokeWidth={2.5}
                 strokeLinecap="round"
             />
             <path
-                className="animated-line"
+                className="animated-line2"
                 d="M11.7974 32.2437L11.7974 34.2297"
                 stroke="white"
                 strokeWidth={2.5}
                 strokeLinecap="round"
             />
             <path
-                className="animated-line"
+                className="animated-line1"
                 d="M22.3992 23.6001L22.3992 42.8726"
                 stroke="white"
                 strokeWidth={2.5}
                 strokeLinecap="round"
             />
             <path
-                className="animated-line"
+                className="animated-line2"
                 d="M48.9031 26.9468L48.9031 39.5254"
                 stroke="white"
                 strokeWidth={2.5}
                 strokeLinecap="round"
             />
             <path
-                // className="animated-line"
+                className="animated-line1"
                 d="M27.7 26.1147L27.7 40.3589"
                 stroke="white"
                 strokeWidth={2.5}
                 strokeLinecap="round"
             />
             <path
-                className="animated-line"
+                className="animated-line2"
                 d="M17.0981 28.5884L17.0981 37.8844"
                 stroke="white"
                 strokeWidth={2.5}
                 strokeLinecap="round"
             />
             <path
-                // className="animated-line"
+                className="animated-line1"
                 d="M43.6003 23.6001L43.6042 42.8726"
                 stroke="white"
                 strokeWidth={2.5}
