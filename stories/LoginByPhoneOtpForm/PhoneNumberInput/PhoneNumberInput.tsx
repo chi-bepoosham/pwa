@@ -22,7 +22,7 @@ export const PhoneNumberInput = (props: PhoneNumberInputProps) => {
 
 
     const hasTokenSentField = useController({control, name: "hasTokenSent" as keyof LoginByPhoneOtpFormType});
-    const hasTokenSent = hasTokenSentField.field.value
+    const hasTokenSent = hasTokenSentField.field.value as boolean
 
 
     return (

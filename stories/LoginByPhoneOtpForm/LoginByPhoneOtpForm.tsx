@@ -13,10 +13,7 @@ import {axiosCore} from "@/lib/axios";
 import {toast} from "react-toastify";
 
 
-
-
 type T = LoginByPhoneOtpFormType
-
 
 
 export interface LoginByPhoneOtpFormProps {
@@ -32,7 +29,7 @@ export interface LoginByPhoneOtpFormProps {
 
 const schema = z.object({
     phone: z.string({message: "شماره وارد شده معتبر نیست"})
-        .regex(/^09\d{9}|^09\d{2} \d{3} \d{4}$/, "شماره وارد شده معتبر نیست")
+        .regex(/^9\d{9}|^9\d{2} \d{3} \d{4}$/, "شماره وارد شده معتبر نیست")
         .transform((val) => (val.replaceAll(" ", ""))),
     token: z.union([
         z.string({message: "کد تایید نادرست است"}).regex(/[0-9]{4}/, "کد تایید نادرست است"),
@@ -55,9 +52,9 @@ export const LoginByPhoneOtpForm = (props: LoginByPhoneOtpFormProps) => {
     } = props
 
 
-    // const defaultValues = async () => {
-    //     return data ? data : initialData
-    // }
+    const defaultValues = async () => {
+        return data ? data : initialData
+    }
 
     const {
         handleSubmit,
@@ -71,7 +68,7 @@ export const LoginByPhoneOtpForm = (props: LoginByPhoneOtpFormProps) => {
     } = useForm<LoginByPhoneOtpFormType>(
         {
             resolver: zodResolver(schema),
-            // defaultValues,
+            defaultValues,
         }
     );
 

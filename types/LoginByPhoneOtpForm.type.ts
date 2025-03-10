@@ -1,9 +1,6 @@
-export type LoginByPhoneOtpForm = {
+export type LoginByPhoneOtpFormType = {
     phone: string,
     hasTokenSent?: boolean,
     token: string,
-    name: string,
 }
 
-export class LoginByPhoneOtpFormType {
-}
