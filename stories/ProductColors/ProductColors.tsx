@@ -23,33 +23,33 @@ export const ProductColors: React.FC<ProductColorsProps> = (props: ProductColors
 
 
     return (
-        <ScrollShadow
-            size={5}
-            hideScrollBar
-            visibility="auto"
-            orientation="horizontal"
-            className="w-full"
-        >
-            <div
-                ref={scrollContainerRef}
-                onWheel={handleWheelScroll}
-                className="flex justify-center gap-4 overflow-x-auto scroll-smooth scrollbar-hide"
+            <ScrollShadow
+                size={5}
+                hideScrollBar
+                visibility="auto"
+                orientation="horizontal"
+                className="w-full"
             >
-                {colors.map((color) => (
-                    <div
-                        key={color}
-                        className="w-10 h-10 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all shrink-0"
-
-
-                        onClick={() => onSelect(color)}
-                    >
+                <div
+                    ref={scrollContainerRef}
+                    onWheel={handleWheelScroll}
+                    className="flex  gap-4 overflow-x-auto scroll-smooth scrollbar-hide"
+                >
+                    {colors.map((color) => (
                         <div
-                            className="w-8 h-8 rounded-full"
-                            style={{backgroundColor: color}}
-                        />
-                    </div>
-                ))}
-            </div>
-        </ScrollShadow>
+                            key={color}
+                            className="w-10 h-10 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all shrink-0"
+
+
+                            onClick={() => onSelect(color)}
+                        >
+                            <div
+                                className="w-8 h-8 rounded-full"
+                                style={{backgroundColor: color}}
+                            />
+                        </div>
+                    ))}
+                </div>
+            </ScrollShadow>
     );
 };
