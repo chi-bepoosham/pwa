@@ -56,6 +56,7 @@ export const OrdersCard = (props: OrdersCardProps) => {
                           value={price}
                           displayType="text"
                           type="text"
+                          decimalSeparator="."
                           thousandSeparator=","
                           allowNegative={false}
                           className="text-primary font-semibold"
@@ -96,15 +97,12 @@ export const OrdersCard = (props: OrdersCardProps) => {
                             status === "continued" ? "text-primary" : "text-secondary"
                         )}>
                             {situation}
-                            {status === "continued" && (
+                            {(status === "delivered" || status === "canceled") && (
                                 <i className="bg-secondary-50 p-2 rounded-2xl">
                                     <ArrowRightIcon size={20}/>
                                 </i>
                             )}
-
-
-
-                    </span>
+                        </span>
                     </span>
                 </div>
             </CardBody>
