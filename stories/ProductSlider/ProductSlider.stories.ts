@@ -7,7 +7,9 @@ export default {
 };
 
 export const Default = {
-    args: {},
+    args: {
+        images: ["/img.png", "/img2.png", "/img.png"]
+    },
     parameters: {
         nextjs: {
             appDirectory: true,

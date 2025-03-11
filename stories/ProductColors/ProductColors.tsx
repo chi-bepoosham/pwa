@@ -28,12 +28,12 @@ export const ProductColors: React.FC<ProductColorsProps> = (props: ProductColors
                 hideScrollBar
                 visibility="auto"
                 orientation="horizontal"
-                className="w-full"
+                className="w-full flex justify-center"
             >
                 <div
                     ref={scrollContainerRef}
                     onWheel={handleWheelScroll}
-                    className="flex  gap-4 overflow-x-auto scroll-smooth scrollbar-hide"
+                    className="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide"
                 >
                     {colors.map((color) => (
                         <div
