@@ -1,9 +1,9 @@
-import {PeruLoading} from './PeruLoading';
+import {OrdersCard} from './OrdersCard';
 
 
 export default {
-    title: "PeruLoading",
-    component: PeruLoading,
+    title: "OrdersCard",
+    component: OrdersCard,
 };
 
 export const Default = {

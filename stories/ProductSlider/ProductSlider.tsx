@@ -1,21 +1,21 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Controller, Thumbs } from "swiper/modules";
+import React, {useRef} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination, Controller, Thumbs} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
-import { Image } from "@heroui/react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@/stories/Icons";
-import { Swiper as SwiperType } from "swiper";
+import {Image} from "@heroui/react";
+import {ChevronLeftIcon, ChevronRightIcon} from "@/stories/Icons";
+import {Swiper as SwiperType} from "swiper";
 
 export interface ProductSliderProps {
     images: string[];
 }
 
-export const ProductSlider: React.FC<ProductSliderProps> = ({ images }) => {
+export const ProductSlider: React.FC<ProductSliderProps> = ({images}) => {
     const swiperRef = useRef<SwiperType | null>(null);
     // const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
@@ -24,9 +24,9 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ images }) => {
             <div className="flex items-center">
                 <button
                     onClick={() => swiperRef.current?.slidePrev()}
-                    className="h-fit flex justify-center items-center border-2 border-secondary rounded-2xl bg-white text-secondary hover:bg-secondary hover:text-white transition duration-500"
+                    className="h-fit flex justify-center items-center border-3 border-secondary rounded-2xl bg-white text-secondary hover:bg-secondary hover:text-white transition duration-500"
                 >
-                    <ChevronRightIcon size={36} />
+                    <ChevronRightIcon size={36}/>
                 </button>
 
                 <Swiper
@@ -54,9 +54,9 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ images }) => {
 
                 <button
                     onClick={() => swiperRef.current?.slideNext()}
-                    className="h-fit flex justify-center items-center border-2 border-secondary rounded-2xl bg-white text-secondary hover:bg-secondary hover:text-white transition duration-500"
+                    className="h-fit flex justify-center items-center border-3 border-secondary rounded-2xl bg-white text-secondary hover:bg-secondary hover:text-white transition duration-500"
                 >
-                    <ChevronLeftIcon size={36} />
+                    <ChevronLeftIcon size={36}/>
                 </button>
             </div>
 
