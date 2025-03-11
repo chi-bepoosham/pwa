@@ -8,12 +8,13 @@ export default {
 
 export const Default = {
     args: {
-        date: "چهارشنبه",
+        date: "1403/12/08\nچهارشنبه",
         productAmount: "کالا  2عدد",
         shop: "فروشگاه (جین‌وست - چرم مشهد)",
         status: "continued",
-        progressPercent: 6,
-        situation: "جاری"
+        progressPercent: 50,
+        situation: "جاری",
+        price: 3280000,
     },
     parameters: {
         nextjs: {

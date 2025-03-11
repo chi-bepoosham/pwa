@@ -1,10 +1,17 @@
 import React from "react";
 import {Card, CardHeader, CardBody, Divider, Progress} from "@heroui/react";
 import clsx from "clsx";
+import {NumericFormat} from "react-number-format";
+import {ArrowRightIcon} from "@/stories/Icons";
 
 
 type statusType = "delivered" | "canceled" | "continued";
 
+
+type Time = {
+    hours: number;
+    minutes: number;
+}
 
 export interface OrdersCardProps {
     date: string;
@@ -14,6 +21,7 @@ export interface OrdersCardProps {
     progressPercent: number;
     situation: string;
     price: number;
+    time: Time;
 }
 
 
@@ -25,12 +33,13 @@ export const OrdersCard = (props: OrdersCardProps) => {
         status,
         progressPercent,
         situation,
-        price
+        price,
+        time = {hours: 12, minutes: 15}
     } = props;
     return (
         <Card
             shadow="none"
-            className={clsx("max-w-[550px]",
+            className={clsx("w-[500px]",
                 status === "delivered" ? "border-3 border-secondary rounded-[18px] bg-white" : "",
                 status === "canceled" ? "bg-secondary-50" : "",
                 status === "continued" ? "border-3 border-primary rounded-b-lg rounded-t-2xl" : "",
@@ -41,16 +50,23 @@ export const OrdersCard = (props: OrdersCardProps) => {
             >
 
                 <div className="flex flex-row justify-between w-full">
-                    <p className="text-secondary">{date}</p>
+                    <p className="text-secondary" dir="ltr">{date}</p>
                     <span className="flex flex-row gap-2">
-                        <p className="text-primary font-semibold">
-                        {price}
-                        </p>
-                        <p className="text-secondary font-bold">
-                          تومان
-                        </p>
-
+                      <NumericFormat
+                          value={price}
+                          displayType="text"
+                          type="text"
+                          thousandSeparator=","
+                          allowNegative={false}
+                          className="text-primary font-semibold"
+                          dir="ltr"
+                      >
+                      </NumericFormat>
+                      <p className="text-secondary font-bold">
+                        تومان
+                      </p>
                     </span>
+
                 </div>
             </CardHeader>
             <Divider
@@ -76,11 +92,19 @@ export const OrdersCard = (props: OrdersCardProps) => {
                             )}>
                            وضعیت:
                         </p>
-                        <p className={clsx(
+                        <span className={clsx("flex flex-col gap-2",
                             status === "continued" ? "text-primary" : "text-secondary"
                         )}>
-                        {situation}
-                    </p>
+                            {situation}
+                            {status === "continued" && (
+                                <i className="bg-secondary-50 p-2 rounded-2xl">
+                                    <ArrowRightIcon size={20}/>
+                                </i>
+                            )}
+
+
+
+                    </span>
                     </span>
                 </div>
             </CardBody>
@@ -97,17 +121,30 @@ export const OrdersCard = (props: OrdersCardProps) => {
                         dir="rtl"
                     >
                         <Progress
-                            // isIndeterminate={true}
                             aria-label="Loading..."
-                            className="max-w-md"
+                            className=""
                             value={progressPercent}
                         />
-                        <span>
-                            فروشگاه (جین‌وست - چرم مشهد)
+                        <span className="flex flex-row">
+                        <p
+                            className={clsx(
+                                status === "continued" ? "text-secondary-300" : ""
+                            )}>
+                           تحویل:
+                        </p>
+                        <span className={clsx("flex flex-row gap-6",
+                            status === "continued" ? "text-secondary" : "",
+                        )}>
+                            <p dir="ltr">
+                               {date}
+                            </p>
+
+                            {time.hours}:{time.minutes.toString().padStart(2, "0")}
                         </span>
+                    </span>
                     </div>
                     <div
-                        className="flex items-center bg-primary-50 text-primary px-3.5 py-2 w-fit rounded-2xl"
+                        className="flex items-center bg-primary-50 text-primary px-5 py-0.5 w-fit rounded-3xl"
                     >
                         {progressPercent}%
                     </div>
