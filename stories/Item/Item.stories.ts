@@ -11,10 +11,11 @@ export const Default = {
         image: "img.png",
         title: "چرم مشهد",
         material: "پلیور آستین بلند دوخت درشت",
-        price: 1.65,
+        price: 1650000,
         size: "XL",
-        color: "primary",
-        count: 1
+        count: 1,
+        colorName: "green",
+        colorCode: "green"
     },
     parameters: {
         nextjs: {

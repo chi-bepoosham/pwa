@@ -27,9 +27,9 @@ export const Item = (props: ItemProps) => {
         colorCode
     } = props;
     return (
-        <div className="flex items-center gap-4 p-4 rounded-2xl">
+        <div className="flex items-center gap-4 p-4 rounded-2xl group/pitem">
             <div
-                className="relative w-24 h-24 rounded-xl overflow-hidden even:bg-[#68BAA6] odd:bg-primary flex justify-center items-center">
+                className="relative w-24 h-24 rounded-xl overflow-hidden flex justify-center items-center group-odd/pitem:bg-primary group-even/pitem:bg-[#68BAA6]">
                 <Image
                     width={128}
                     height={128}
@@ -48,7 +48,7 @@ export const Item = (props: ItemProps) => {
                 <span className="text-lg text-secondary-300">{title}</span>
                 <span className="text-secondary">{material}</span>
 
-                <div className="flex items-center gap-2 text-sm mt-2">
+                <div className="flex items-center gap-4 text-sm mt-2">
                     <NumericFormat
                         value={price}
                         displayType="text"

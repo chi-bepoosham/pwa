@@ -23,11 +23,31 @@ export const Items = (props: ItemsProps) => {
                 colorName="green"
             />
             <Item
-                image="/img.png"
+                image="/img2.png"
                 title="پلیور آستین بلند دوخت درشت"
                 material="چرم مشهد"
                 count={1}
-                price={11650000}
+                price={1650000}
+                size="XL"
+                colorCode="red"
+                colorName="red"
+            />
+            <Item
+                image="/img2.png"
+                title="پلیور آستین بلند دوخت درشت"
+                material="چرم مشهد"
+                count={1}
+                price={1650000}
+                size="XL"
+                colorCode="red"
+                colorName="red"
+            />
+            <Item
+                image="/img2.png"
+                title="پلیور آستین بلند دوخت درشت"
+                material="چرم مشهد"
+                count={1}
+                price={1650000}
                 size="XL"
                 colorCode="red"
                 colorName="red"
