@@ -6,6 +6,7 @@ import {AddIcon, EditIcon} from "@/stories/Icons";
 import Image from "next/image";
 import clsx from "clsx";
 
+
 type sizeType = "medium" | "large" | "x-large";
 
 export interface UploaderProps {
@@ -57,6 +58,7 @@ export const Uploader = (props: UploaderProps) => {
 
     return (
         <div className="relative flex flex-col items-center">
+
             <Button
                 onPress={open}
                 className={clsx(
