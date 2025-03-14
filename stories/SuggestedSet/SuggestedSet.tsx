@@ -53,7 +53,7 @@ export const SuggestedSet = (props: SuggestedSetProps) => {
 
             </div>
             <div
-                className="absolute z-10 top-5 -right-32 bg-secondary-50 backdrop-blur rounded-t-lg rounded-b-2xl w-fit h-fit flex flex-row justify-center items-center p-2 gap-2"
+                className="cursor-pointer absolute z-10 top-5 -right-32 bg-secondary-50 backdrop-blur rounded-t-lg rounded-b-2xl w-fit h-fit flex flex-row justify-center items-center p-2 gap-2"
             >
                 <div className="flex flex-col">
                 <span className="text-secondary font-bold">
