@@ -72,3 +72,7 @@ export {Icon as ImageIcon} from "./Image.stories"
 export {Icon as RecycleIcon} from "./Recycle.stories"
 export {Icon as PlusIcon} from "./Plus.stories"
 export {Icon as MinusIcon} from "./Minus.stories"
+
+
+//Set
+export {Icon as ArrangeIcon} from "./Arrange.stories"

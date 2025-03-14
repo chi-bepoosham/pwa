@@ -13,7 +13,8 @@ export const Default = {
             "/shalvar.png",
         ],
 
-        mainImage: "kapshan.png"
+        mainImage: "kapshan.png",
+        matchPercent: 25
     },
     parameters: {
         nextjs: {

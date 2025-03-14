@@ -1,15 +1,17 @@
 import React from "react";
 import Image from "next/image";
-
+import {Button} from "@heroui/react";
+import {ArrangeIcon} from "@/stories/Icons";
 
 export interface SuggestedSetProps {
     mainImage: string;
     subImages: string[];
+    matchPercent: number;
 }
 
 
 export const SuggestedSet = (props: SuggestedSetProps) => {
-    const {subImages, mainImage} = props;
+    const {subImages, mainImage, matchPercent} = props;
     return (
         <div
             className="flex items-center justify-center relative
@@ -48,6 +50,25 @@ export const SuggestedSet = (props: SuggestedSetProps) => {
                     loading="lazy"
                 />
 
+
+            </div>
+            <div
+                className="absolute z-10 top-5 -right-32 bg-secondary-50 backdrop-blur rounded-t-lg rounded-b-2xl w-fit h-fit flex flex-row justify-center items-center p-2 gap-2"
+            >
+                <div className="flex flex-col">
+                <span className="text-secondary font-bold">
+                    {matchPercent}%
+                </span>
+                    <span className="text-secondary font-bold">
+                    ست با استایل شما
+                </span>
+                </div>
+                <div className="flex">
+                    <Button
+                        className="!p-1 !min-w-0 rounded-2xl bg-secondary text-white"
+                        startContent={<ArrangeIcon size={36}/>}
+                    />
+                </div>
 
             </div>
 

@@ -7,7 +7,7 @@ import {motion} from "framer-motion";
  export interface MinorButtonProps {
     size?: "sm" | "md" | "lg";
     variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "ghost";
-    buttonTitle?: string;
+    buttonTitle?: string | React.ReactNode;
     radius?: "none" | "sm" | "md" | "lg" | "full";
     isLoading?: boolean;
 }
@@ -22,6 +22,7 @@ export const MinorButton = (props: MinorButtonProps) => {
 
     return (
         <Button
+            className="!min-w-0"
             size={size}
             variant={variant}
             radius={radius}
