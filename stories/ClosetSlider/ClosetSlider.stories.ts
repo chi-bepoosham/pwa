@@ -7,7 +7,10 @@ export default {
 };
 
 export const Default = {
-    args: {},
+    args: {
+        imageUrl: "img.png",
+        matchPercent: 85
+    },
     parameters: {
         nextjs: {
             appDirectory: true,
