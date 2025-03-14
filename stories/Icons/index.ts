@@ -65,3 +65,10 @@ export {Icon as ChevronLeftIcon} from "./ChevronLeft.stories"
 
 //Uploader
 export {Icon as ImageIcon} from "./Image.stories"
+
+
+
+//Payment
+export {Icon as RecycleIcon} from "./Recycle.stories"
+export {Icon as PlusIcon} from "./Plus.stories"
+export {Icon as MinusIcon} from "./Minus.stories"

@@ -7,7 +7,15 @@ export default {
 };
 
 export const Default = {
-    args: {},
+    args: {
+        material: "پلیور آستین بلند دوخت درشت",
+        shop: "جـــین‌وســـت",
+        size: "XL",
+        colorCode: "black",
+        colorName: "black",
+        image: "img.png",
+        price: 1
+    },
     parameters: {
         nextjs: {
             appDirectory: true,
