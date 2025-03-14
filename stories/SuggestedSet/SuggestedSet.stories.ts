@@ -7,7 +7,14 @@ export default {
 };
 
 export const Default = {
-    args: {},
+    args: {
+        subImages: [
+            "/kolah.png",
+            "/shalvar.png",
+        ],
+
+        mainImage: "kapshan.png"
+    },
     parameters: {
         nextjs: {
             appDirectory: true,
