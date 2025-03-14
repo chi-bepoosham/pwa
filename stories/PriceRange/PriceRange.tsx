@@ -2,6 +2,7 @@
 import React from "react";
 import {Slider} from "@heroui/react";
 
+
 export interface PriceRangeProps {
 }
 
@@ -16,17 +17,21 @@ export const PriceRange = (props: PriceRangeProps) => {
                 className="relative w-full"
                 classNames={{
                     base: "w-full",
-                    filler: "bg-blue-500",
+                    filler: [
+                        "bg-primary",
+                        "h-[5px]"
+                    ],
                     labelWrapper: "mb-6",
                     label: "font-semibold text-secondary text-xl",
                     value: "hidden",
                     thumb: [
+                        "",
                         "relative w-6 h-6 bg-primary rounded-full flex items-center justify-center z-20",
                         "after:content-[''] after:w-3 after:h-3 after:bg-white after:rounded-full",
                     ],
                     track: [
                         "bg-secondary",
-                        "h-[2px]"
+                        "h-[2.5px]"
                     ],
                     trackWrapper: [
                         "relative",
@@ -65,8 +70,8 @@ export const PriceRange = (props: PriceRangeProps) => {
                         arrow: ["hidden"],
                     },
                 }}
-            >
-            </Slider>
+            />
+
         </div>
     );
 };
