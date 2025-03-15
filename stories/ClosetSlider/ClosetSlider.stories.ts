@@ -8,8 +8,10 @@ export default {
 
 export const Default = {
     args: {
-        imageUrl: "img.png",
-        matchPercent: 85
+        imageUrls: ["/kolah.png", "/shalvar.png", "/img.png"],
+        matchPercent: 85,
+        isSubImage: false,
+        imageUrl: "img.png"
     },
     parameters: {
         nextjs: {
