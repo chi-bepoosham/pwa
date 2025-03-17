@@ -11,7 +11,8 @@ export const Default = {
         imageUrls: ["/kolah.png", "/shalvar.png", "/img.png"],
         matchPercent: 85,
         isSubImage: false,
-        imageUrl: "img.png"
+        imageUrl: "kolah.png",
+        subMatchPercent: 78
     },
     parameters: {
         nextjs: {
