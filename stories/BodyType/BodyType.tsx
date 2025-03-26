@@ -17,7 +17,11 @@ export const BodyType = (props: BodyTypeProps) => {
     return (
         <div className="w-[600px] grid grid-cols-4 border-2 border-secondary pr-2 rounded-lg h-96">
             <div className="col-span-1 bg-primary-50 rounded-lg my-2">
-                <Types/>
+                <Types
+
+
+
+                />
             </div>
             <Card
                 shadow="none"
@@ -32,7 +36,7 @@ export const BodyType = (props: BodyTypeProps) => {
                 <CardBody
                     className="flex flex-col gap-10 text-right">
                     <div>
-                        <h1 className="text-secondary font-bold">
+                        <h1 className="text-secondary font-bold flex flex-row items-center">
                             نقاط
                             <span className="text-[#07A537]">
                                 قوت
@@ -44,8 +48,9 @@ export const BodyType = (props: BodyTypeProps) => {
 
                     </div>
                     <div>
-                        <h1 className="text-secondary font-bold">
+                        <h1 className="text-secondary font-bold flex flex-row items-center">
                             نقاط
+
                             <span className="text-[#E93B55]">
                                 ضعف
                             </span>

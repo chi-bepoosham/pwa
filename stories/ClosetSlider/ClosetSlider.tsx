@@ -4,26 +4,32 @@ import Image from "next/image";
 import clsx from "clsx";
 
 export interface ClosetSliderProps {
-    imageUrl: string;
+    imageUrls: string[];
     matchPercent: number;
     isSubImage: boolean;
     subMatchPercent: number;
+    subImageUrl: string;
 }
 
 export const ClosetSlider = (props: ClosetSliderProps) => {
-    const {imageUrl, matchPercent, isSubImage, subMatchPercent} = props;
+    const {imageUrls, matchPercent, isSubImage, subMatchPercent, subImageUrl} = props;
+
 
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-    const images = [imageUrl];
 
     const handleNextImage = () => {
-        setSelectedImageIndex((prev) => (prev + 1) % images.length);
-    };
+        const ii = selectedImageIndex + 1
+        if (ii >= imageUrls.length || ii < 0) return
+        setSelectedImageIndex(ii);
+    }
+
 
     const handlePrevImage = () => {
-        setSelectedImageIndex((prev) => (prev - 1 + images.length) % images.length);
-    };
+        const ii = selectedImageIndex - 1
+        if (ii >= imageUrls.length || ii < 0) return
+        setSelectedImageIndex(ii);
+    }
 
     return (
         <div className="flex flex-col gap-12 justify-center items-center select-none">
@@ -49,8 +55,9 @@ export const ClosetSlider = (props: ClosetSliderProps) => {
                 )}
 
                 <div className="flex flex-col justify-center items-center">
+
                     <Image
-                        src={images[selectedImageIndex]}
+                        src={isSubImage ? subImageUrl : imageUrls[selectedImageIndex]}
                         alt="image"
                         width={128}
                         height={128}

@@ -8,6 +8,11 @@ export interface FittingProps {
 
 export const Fitting = (props: FittingProps) => {
     const {} = props;
+
+
+
+
+
     return (
         <Card
             isPressable

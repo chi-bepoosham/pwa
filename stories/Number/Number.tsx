@@ -1,23 +1,27 @@
 import React from "react";
-import {NumbersIcon} from "@/stories/Icons";
 
 
 export interface NumberProps {
-    number: number;
+    number: React.ReactNode;
 }
 
 
 export const Number = (props: NumberProps) => {
     const {number} = props;
     return (
-        <div className="relative">
+        <div className="relative inline-block h-8">
             <div
-                className="absolute -top-3 -left-3 flex justify-center items-center text-secondary font-bold text-3xl border-3 border-secondary rounded-3xl w-14 aspect-square"
+                className=
+                    "absolute -inset-2 h-full rounded-xl right-3.5 aspect-square -top-2 border-2 border-secondary flex items-center justify-center"
             >
-                {number}
+                <div className="text-secondary text-2xl font-semibold">{number}</div>
             </div>
-                <NumbersIcon size={60}/>
 
+            <div
+                className=
+                    "relative bg-secondary-100 rounded-xl h-full aspect-square"
+            >
+            </div>
         </div>
     )
 }

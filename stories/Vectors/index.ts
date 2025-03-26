@@ -24,3 +24,11 @@ export {Vector as DottedLineVector} from "./DottedLine.stories"
 export {Vector as ShapeVector} from "./Shape.stories"
 export {Vector as BorderVector} from "./Border.stories"
 export {Vector as BFormVector} from "./BForm.stories"
+
+
+//BD Types
+export {Vector as HourGlassVector} from "./HourGlass.stories"
+export {Vector as TriangleVector} from "./Triangle.stories"
+export {Vector as CircleVector} from "./Circle.stories"
+export {Vector as RectangleVector} from "./Rectangle.stories"
+export {Vector as ReverseTriangleVector} from "./ReverseTriangle.stories"
