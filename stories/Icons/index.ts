@@ -71,3 +71,4 @@ export {Icon as ArrangeIcon} from "./Arrange.stories"
 
 //Search
 export {Icon as SearchIcon} from "./Search.stories"
+export {Icon as FilterIcon} from "./Filter.stories"

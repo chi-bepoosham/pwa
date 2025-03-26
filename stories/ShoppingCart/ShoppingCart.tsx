@@ -1,7 +1,10 @@
 import React from "react";
+import {useState} from "react";
 import Image from "next/image";
 import {Divider} from "@heroui/react";
 import {sacramento} from "@/lib/font";
+import {MinusIcon, PlusIcon, RecycleIcon} from "@/stories/Icons";
+import {NumericFormat} from "react-number-format";
 
 
 export interface ShoppingCartProps {
@@ -20,12 +23,35 @@ export const ShoppingCart = (props: ShoppingCartProps) => {
     const {
         image,
         material,
-         price,
+        price,
         size,
         colorCode,
         colorName,
         shop,
     } = props;
+
+
+    const [count, setCount] = useState(1);
+
+    const increaseCount = () => {
+        const r = count + 1
+        if (r > 10000) setCount(10000);
+        else setCount(r)
+    }
+
+    const decreaseCount = () => {
+        const r = count - 1
+        if (r <= 1) setCount(1);
+        else setCount(r)
+    }
+
+    const emptyCart = () => {
+        const r = count - 1
+        if (r === 1) setCount(0);
+        else setCount(r)
+    }
+
+
     return (
         <div className="flex items-center gap-4 p-4 rounded-2xl group/pitem">
             <div
@@ -65,11 +91,51 @@ export const ShoppingCart = (props: ShoppingCartProps) => {
                 </div>
             </div>
             <div className="flex flex-row justify-between">
-                <div className="flex flex-row justify-between">
+                <div className="flex items-center gap-4 border rounded-xl p-2 px-4 w-fit shadow-sm">
+                    <button
+                        onClick={() => increaseCount()}
+                        className="flex items-center justify-center text-primary w-8 h-8 rounded-lg  transition-colors"
+                    >
+                        <PlusIcon size={28}/>
+                    </button>
+                    {count > 0 && (
+                        <span className="text-xl font-medium text-primary w-6 text-center">
+                                {count}
+                            </span>
+                    )}
+                    {count > 0 && (
+                        <div
+                            className="flex items-center justify-center w-8 h-8 rounded-lg  transition-colors">
+                            {count === 1 ? (
+                                <button onClick={() => emptyCart()}>
+                                    <RecycleIcon size={28}/>
+                                </button>
+                            ) : (
+                                <button onClick={() => decreaseCount()}>
+                                    <MinusIcon size={28}/>
+                                </button>
+                            )}
+                        </div>
+                    )}
+
 
                 </div>
 
+                <NumericFormat
+                    value={price}
+                    displayType="text"
+                    type="text"
+                    decimalSeparator="."
+                    thousandSeparator=","
+                    allowNegative={false}
+                    className="text-primary text-xl font-bold"
+                />
+                <span className="text-primary-500">
+                    تومان
+                </span>
+
             </div>
+
         </div>
 
     )
