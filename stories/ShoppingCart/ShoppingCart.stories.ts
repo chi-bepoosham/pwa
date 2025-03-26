@@ -14,7 +14,7 @@ export const Default = {
         colorCode: "black",
         colorName: "black",
         image: "img.png",
-        price: 1
+        price: 1600000
     },
     parameters: {
         nextjs: {
