@@ -20,7 +20,6 @@ export {Icon as AddIcon} from "./Add.stories"
 export {Icon as EditIcon} from "./Edit.stories"
 
 
-
 //Social
 export {Icon as TelegramIcon} from "./Telegram.stories"
 export {Icon as InstagramIcon} from "./Instagram.stories"
@@ -31,7 +30,6 @@ export {Icon as EmailIcon} from "./Email.stories"
 export {Icon as BookmarkIcon} from "./Bookmark.stories"
 export {Icon as ShapeIcon} from "./Shape.stories"
 export {Icon as OrdersIcon} from "./Orders.stories"
-
 
 
 //Star
@@ -45,27 +43,20 @@ export {Icon as PaymentIcon} from "./Payment.stories"
 export {Icon as UserIcon} from "./User.stories"
 
 
-
 //VoiceAssistant
 export {Icon as MicIcon} from "./Mic.stories"
-
-
-
 
 
 //BT
 export {Icon as NumbersIcon} from "./Numbers.stories"
 
 
-
 export {Icon as ChevronRightIcon} from "./ChevronRight.stories"
 export {Icon as ChevronLeftIcon} from "./ChevronLeft.stories"
 
 
-
 //Uploader
 export {Icon as ImageIcon} from "./Image.stories"
-
 
 
 //Payment
@@ -76,3 +67,7 @@ export {Icon as MinusIcon} from "./Minus.stories"
 
 //Set
 export {Icon as ArrangeIcon} from "./Arrange.stories"
+
+
+//Search
+export {Icon as SearchIcon} from "./Search.stories"
