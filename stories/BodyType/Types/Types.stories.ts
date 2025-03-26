@@ -8,14 +8,7 @@ export default {
 
 export const Default = {
     args: {
-        images: [{
-            rectangle: "path/to/rectangle.jpg",
-            leftTriangle: "path/to/left_triangle.jpg",
-            circle: "path/to/circle.jpg",
-            hourglass: "path/to/hourglass.jpg",
-            triangle: "path/to/triangle.jpg"
-        }]
-
+        selectedType: "rectangle"
     },
     parameters: {
         nextjs: {
