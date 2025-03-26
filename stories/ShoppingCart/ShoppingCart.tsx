@@ -91,35 +91,41 @@ export const ShoppingCart = (props: ShoppingCartProps) => {
                 </div>
             </div>
             <div className="flex flex-row justify-between">
-                <div className="flex items-center gap-4 border rounded-xl p-2 px-4 w-fit shadow-sm">
-                    <button
-                        onClick={() => increaseCount()}
-                        className="flex items-center justify-center text-primary w-8 h-8 rounded-lg  transition-colors"
-                    >
-                        <PlusIcon size={28}/>
-                    </button>
-                    {count > 0 && (
-                        <span className="text-xl font-medium text-primary w-6 text-center">
+                <div className="flex items-center gap-4 rounded-xl py-2 px-4 w-fit">
+                    {count === 0 ? (
+                        <button
+                            onClick={() => increaseCount()}
+                            className="flex items-center gap-2 text-primary font-medium text-lg px-4 py-2 rounded-lg border border-primary transition-colors hover:bg-primary hover:text-white hover:transition duration-500"
+                        >
+                            <PlusIcon size={24}/>
+                            افزودن به سبد خرید
+                        </button>
+                    ) : (
+                        <>
+                            <button
+                                onClick={() => increaseCount()}
+                                className="flex items-center justify-center text-primary w-8 h-8 rounded-lg transition-colors"
+                            >
+                                <PlusIcon size={28}/>
+                            </button>
+                            <span className="text-xl font-medium text-primary w-6 text-center">
                                 {count}
                             </span>
+                            <div className="flex items-center justify-center w-8 h-8 rounded-lg transition-colors">
+                                {count === 1 ? (
+                                    <button onClick={() => emptyCart()}>
+                                        <RecycleIcon size={28}/>
+                                    </button>
+                                ) : (
+                                    <button onClick={() => decreaseCount()}>
+                                        <MinusIcon size={28}/>
+                                    </button>
+                                )}
+                            </div>
+                        </>
                     )}
-                    {count > 0 && (
-                        <div
-                            className="flex items-center justify-center w-8 h-8 rounded-lg  transition-colors">
-                            {count === 1 ? (
-                                <button onClick={() => emptyCart()}>
-                                    <RecycleIcon size={28}/>
-                                </button>
-                            ) : (
-                                <button onClick={() => decreaseCount()}>
-                                    <MinusIcon size={28}/>
-                                </button>
-                            )}
-                        </div>
-                    )}
-
-
                 </div>
+
 
                 <NumericFormat
                     value={price}
