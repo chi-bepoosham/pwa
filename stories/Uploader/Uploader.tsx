@@ -103,7 +103,8 @@ export const Uploader = (props: UploaderProps) => {
                     "absolute inset-0 flex items-center justify-center bg-secondary-50 w-full h-full rounded-[35px]",
                     size === "medium" ? "rotate-45" : "-rotate-[7deg]"
                 )}
-            ></div>
+            >
+            </div>
         </div>
     );
 };

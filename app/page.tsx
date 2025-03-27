@@ -1,40 +1,16 @@
-import {SuggestionSlider} from "@/stories/SuggestionSlider";
+import {Logo} from "@/stories/Logo";
+import {Banner} from "@/stories/Banner";
 
 export default function Home() {
     return (
-        <div className="mt-96">
-<SuggestionSlider slides={
-    [
-        {
-            imageUrl: "/img.png",
-            name: "ascot tie"
-        },
-        {
-            imageUrl: "/img2.png",
-            name: "ascot tie"
-        },
-        {
-            imageUrl: "/img.png",
-            name: "ascot tie"
-        },
-        {
-            imageUrl: "/img2.png",
-            name: "ascot tie"
-        },
-        {
-            imageUrl: "/img.png",
-            name: "ascot tie"
-        },
-        {
-            imageUrl: "/img2.png",
-            name: "ascot tie"
-        },
-        {
-            imageUrl: "/img.png",
-            name: "ascot tie"
-        },
-    ]
-}/>
+        <div className="flex flex-col justify-center items-center h-full gap-6">
+            <Logo
+                withLogoType={true}
+            />
+            <Banner
+                withStar={true}
+            />
         </div>
+
     );
 }

@@ -9,8 +9,8 @@ export const Banner = (props: BannerProps) => {
     const {withStar} = props;
 
     return (
-        <div className="flex flex-col gap-3 justify-center items-center w-full h-screen">
-            <i className="text-white/50">
+        <div className="flex flex-col gap-3 justify-center items-center w-full">
+            <i className="text-white">
                 <Text/>
             </i>
             {withStar && <StarVector/>}

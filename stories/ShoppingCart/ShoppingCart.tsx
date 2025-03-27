@@ -53,7 +53,7 @@ export const ShoppingCart = (props: ShoppingCartProps) => {
 
 
     return (
-        <div className="flex flex-col gap-10 w-full items-center p-4 rounded-2xl group/pitem">
+        <div className="flex flex-col gap-10 w-full max-w-sm items-start rounded-2xl group/pitem">
             <div className="flex flex-row justify-between items-center w-full">
                 <div
                     className="relative w-24 h-24 rounded-xl overflow-hidden flex justify-center items-center group-odd/pitem:bg-[#68BAA6] group-even/pitem:bg-primary">

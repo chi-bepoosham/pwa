@@ -1,7 +1,7 @@
 "use client"
 
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from "react";
-import NeshanMap, {NeshanMapRef} from "@neshan-maps-platform/react-openlayers";
+// import NeshanMap, {NeshanMapRef} from "@neshan-maps-platform/react-openlayers";
 import {Map} from "@neshan-maps-platform/ol"
 import {Button} from "@heroui/react";
 import {FmdGood, MyLocation} from "@mui/icons-material";
@@ -96,18 +96,18 @@ export const MapContainer = (props: MapProps) => {
         <div className="relative overflow-hidden rounded-xl flex justify-center items-center">
             {props.isReadOnly && <div className="absolute h-full w-full z-10" aria-label="readonly"/>}
             {props.isDisabled && <div className="absolute h-full w-full z-10 bg-black/20" aria-label="disabled"/>}
-            <NeshanMap
-                ref={mapRef}
-                mapKey="web.0cd8558bb31843c3a919ea52fcd093ce"
-                defaultType="neshan"
-                traffic={false}
-                poi={false}
-                style={{height: "40vh", width: "100%"}}
-                onInit={onInit}
+            {/*<NeshanMap*/}
+            {/*    ref={mapRef}*/}
+            {/*    mapKey="web.0cd8558bb31843c3a919ea52fcd093ce"*/}
+            {/*    defaultType="neshan"*/}
+            {/*    traffic={false}*/}
+            {/*    poi={false}*/}
+            {/*    style={{height: "40vh", width: "100%"}}*/}
+            {/*    onInit={onInit}*/}
 
-                center={position}
-                zoom={zoom}
-            />
+            {/*    center={position}*/}
+            {/*    zoom={zoom}*/}
+            {/*/>*/}
             <CurrentLocationTool
                 ref={currentLocationRef}
                 goTo={goTo}
