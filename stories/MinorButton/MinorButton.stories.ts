@@ -9,6 +9,7 @@ export default {
 
 export const Default = {
     args: {
+        buttonTitle: "ورود بـــــا حســــاب گــــــوگل",
 
     },
     parameters: {

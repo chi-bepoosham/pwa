@@ -16,7 +16,7 @@ const config = {
 }
 
 
-// Core without auth
+// Core without (auth)
 const axiosCore = () => {
     const a = axios.create(config)
     a.interceptors.request.use((config) => {
@@ -34,7 +34,7 @@ const axiosCore = () => {
 }
 
 
-// Core with auth
+// Core with (auth)
 const axiosCoreWithAuth = () => {
     const a = axios.create(config)
     a.interceptors.request.use(async (config) => {
