@@ -7,7 +7,7 @@ import {Banner} from "@/stories/Banner";
 
 export default function Page() {
     return (
-        <div className="bg-white w-full h-full flex flex-col justify-between items-center">
+        <div className="bg-white w-full h-screen flex flex-col justify-between items-center overflow-hidden">
             <div className="w-full h-full">
                 <MinorButton
                     size="sm"
@@ -20,13 +20,13 @@ export default function Page() {
             </div>
             <div className="flex flex-col justify-center items-center w-full h-full">
                 <div className="flex flex-row justify-center items-center gap-4">
-                    <i className="text-secondary">
+                    <i className="text-secondary-300">
                         <CometStarVector/>
                     </i>
                     <h2 className="text-secondary font-semibold">
                         کــد تـــایید را وارد کــنید
                     </h2>
-                    <i className="text-secondary rotate-180">
+                    <i className="text-secondary-300 rotate-180">
                         <CometStarVector/>
                     </i>
 
@@ -55,6 +55,7 @@ export default function Page() {
                 <Banner
                     withStar={true}
                     textColor="text-primary"
+                    starColor="text-primary"
                 />
             </div>
 

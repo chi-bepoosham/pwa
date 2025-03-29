@@ -12,30 +12,29 @@ export default function Page() {
             <div className="flex flex-col justify-center items-center gap-10">
 
 
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center p-4">
                     <div className="flex flex-row justify-center items-center gap-4">
-                        <i className="text-secondary">
+                        <i className="text-secondary-300">
                             <CometStarVector/>
                         </i>
                         <h2 className="text-secondary font-semibold">
                             ثــــبت‌نــــام
                         </h2>
-                        <i className="text-secondary rotate-180">
+                        <i className="text-secondary-300 rotate-180">
                             <CometStarVector/>
                         </i>
                     </div>
-                    <h3 className="text-secondary-200">
+                    <h3 className="text-secondary-300">
                         مـرحـلۀ اول
                     </h3>
                 </div>
 
 
-                <div className="">
+                <div>
                     <Uploader
                         size="medium"
                         title="تصویر نمایه"
                     />
-
                 </div>
             </div>
 

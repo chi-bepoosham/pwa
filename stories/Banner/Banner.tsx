@@ -4,12 +4,14 @@ import {StarVector} from "@/stories/Vectors";
 export interface BannerProps {
     withStar?: boolean;
     textColor?: string;
+    starColor?: string;
 }
 
 export const Banner = (props: BannerProps) => {
     const {
         withStar,
         textColor = "white",
+        starColor = "white"
     }
         = props;
 
@@ -18,7 +20,7 @@ export const Banner = (props: BannerProps) => {
             <i className={`${textColor}`}>
                 <Text/>
             </i>
-            {withStar && <StarVector/>}
+            {withStar && <i className={`${starColor}`}><StarVector/></i>}
         </div>
     );
 };

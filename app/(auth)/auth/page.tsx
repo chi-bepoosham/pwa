@@ -14,11 +14,11 @@ export default function Page() {
                     withLogoType={true}
                 />
                 <div className="flex flex-row justify-center items-center w-full gap-4">
-                    <i className="text-white">
+                    <i className="">
                         <CometStarVector/>
                     </i>
                     <h2 className="text-nowrap">ورود و ثــبت‌نـــام</h2>
-                    <i className="text-white rotate-180">
+                    <i className=" rotate-180">
                         <CometStarVector/>
                     </i>
                 </div>
@@ -26,20 +26,20 @@ export default function Page() {
 
 
             <div
-                className="flex flex-col items-center justify-between w-full h-full rounded-t-3xl p-4">
+                className="flex flex-col items-center justify-between w-full h-full rounded-t-3xl p-4 bg-white">
                 <div className="w-full h-full">
                     {/*<LoginByPhoneOtpForm*/}
                     {/*    reset={() => "reset"}*/}
                     {/*/>*/}
                 </div>
-                <div className="flex flex-row items-center justify-center w-full h-full">
-                    <i className="text-white">
+                <div className="flex flex-row items-center justify-center w-full h-full gap-4">
+                    <i className="text-secondary-300">
                         <CometStarVector/>
                     </i>
-                    <h4 className="text-secondary-100">
+                    <h4 className="text-secondary">
                         یــا
                     </h4>
-                    <i className="text-white rotate-180">
+                    <i className="text-secondary-300 rotate-180">
                         <CometStarVector/>
                     </i>
                 </div>
