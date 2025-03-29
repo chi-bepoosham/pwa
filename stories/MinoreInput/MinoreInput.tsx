@@ -36,7 +36,7 @@ export const MinoreInput = (props: MinoreInputProps) => {
             placeholder={placeholder || (type === "email" ? "ایمیل خود را وارد کنید" : "نام و نام‌خانوادگی")}
             value={value}
             onChange={handleChange}
-            className="w-96 border border-secondary-50 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
+            className="w-full max-w-72 border border-secondary-50 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
         />
     );
 };

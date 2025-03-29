@@ -3,14 +3,19 @@ import {StarVector} from "@/stories/Vectors";
 
 export interface BannerProps {
     withStar?: boolean;
+    textColor?: string;
 }
 
 export const Banner = (props: BannerProps) => {
-    const {withStar} = props;
+    const {
+        withStar,
+        textColor = "white",
+    }
+        = props;
 
     return (
         <div className="flex flex-col gap-3 justify-center items-center w-full">
-            <i className="text-white">
+            <i className={`${textColor}`}>
                 <Text/>
             </i>
             {withStar && <StarVector/>}

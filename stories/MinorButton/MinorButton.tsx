@@ -18,11 +18,11 @@ export interface MinorButtonProps {
 const getCustomColorClass = (color?: string) => {
     switch (color) {
         case "primary":
-            return "bg-primary";
+            return "text-primary";
         case "secondary":
-            return "bg-secondary";
+            return "bg-secondary text-white";
         case "success":
-            return "bg-white";
+            return "bg-white text-secondary border border-secondary";
         case "warning":
             return "bg-yellow-500";
         case "danger":
