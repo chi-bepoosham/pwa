@@ -10,6 +10,7 @@ export default function Home() {
             <Banner
                 withStar={true}
                 textColor="text-white/50"
+                starColor="text-white"
             />
         </div>
 

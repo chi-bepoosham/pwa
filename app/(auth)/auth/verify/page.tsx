@@ -1,11 +1,30 @@
+"use client";
 import {MinorButton} from "@/stories/MinorButton";
 import React from "react";
 import {CometStarVector} from "@/stories/Vectors";
 import {ArrowRightIcon} from "@/stories/Icons";
-import {LoginByPhoneOtpForm} from "@/stories/LoginByPhoneOtpForm";
 import {Banner} from "@/stories/Banner";
+import {TokenInput} from "@/stories/LoginByPhoneOtpForm/TokenInput";
+import {useForm} from "react-hook-form";
+import {LoginByPhoneOtpFormType} from "@/types/LoginByPhoneOtpForm.type";
 
 export default function Page() {
+    const {
+        control,
+        handleSubmit
+    } = useForm<LoginByPhoneOtpFormType>
+    ({
+        defaultValues: {
+            phone: "",
+            hasTokenSent: true,
+            token: "",
+        },
+    });
+
+    const onSubmit = (data: LoginByPhoneOtpFormType) => {
+        console.log("Submitted Data:", data);
+    };
+
     return (
         <div className="bg-white w-full h-screen flex flex-col justify-between items-center overflow-hidden">
             <div className="w-full h-full">
@@ -29,14 +48,13 @@ export default function Page() {
                     <i className="text-secondary-300 rotate-180">
                         <CometStarVector/>
                     </i>
-
                 </div>
                 <h3>
                     کد 5 رقمی به شمارۀ 09388505929 ارسال شد.
                 </h3>
             </div>
-            <div className="bg-secondary w-full h-full">
-                {/*<LoginByPhoneOtpForm reset={}/>*/}
+            <div className="h-full">
+                <TokenInput control={control} done={handleSubmit(onSubmit)}/>
             </div>
             <div className="w-full h-full flex flex-col justify-center items-center gap-3">
                 <MinorButton
@@ -58,8 +76,6 @@ export default function Page() {
                     starColor="text-primary"
                 />
             </div>
-
-
         </div>
-    )
+    );
 }

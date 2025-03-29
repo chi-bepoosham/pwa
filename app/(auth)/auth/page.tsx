@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {Logo} from "@/stories/Logo";
 import {CometStarVector} from "@/stories/Vectors";
@@ -6,6 +7,12 @@ import {MinorButton} from "@/stories/MinorButton";
 import {GoogleIcon} from "@/stories/Icons";
 
 export default function Page() {
+
+    const handleReset = () => {
+        console.log("فرم ریست شد");
+    };
+
+
     return (
         <div className="flex flex-col justify-center items-center h-screen"
         >
@@ -27,10 +34,9 @@ export default function Page() {
 
             <div
                 className="flex flex-col items-center justify-between w-full h-full rounded-t-3xl p-4 bg-white">
-                <div className="w-full h-full">
-                    {/*<LoginByPhoneOtpForm*/}
-                    {/*    reset={() => "reset"}*/}
-                    {/*/>*/}
+                <div className="h-full">
+                    <LoginByPhoneOtpForm reset={handleReset}/>
+
                 </div>
                 <div className="flex flex-row items-center justify-center w-full h-full gap-4">
                     <i className="text-secondary-300">
