@@ -14,7 +14,7 @@ export default function Page() {
 
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen"
+        <div className="flex flex-col justify-center items-center w-full h-screen overflow-hidden"
         >
             <div className="flex flex-col items-center justify-center h-full w-full gap-5">
                 <Logo

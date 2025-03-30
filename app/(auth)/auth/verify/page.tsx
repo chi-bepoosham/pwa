@@ -42,7 +42,7 @@ export default function Page() {
                     <i className="text-secondary-300">
                         <CometStarVector/>
                     </i>
-                    <h2 className="text-secondary font-semibold">
+                    <h2 className="text-secondary font-semibold text-nowrap">
                         کــد تـــایید را وارد کــنید
                     </h2>
                     <i className="text-secondary-300 rotate-180">
