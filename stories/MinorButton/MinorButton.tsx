@@ -5,7 +5,7 @@ import {motion} from "framer-motion";
 
 
 export interface MinorButtonProps {
-    size?: "sm" | "md" | "lg";
+    size?: "sm" | "md" | "lg" | "xl";
     variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "ghost";
     buttonTitle?: string | React.ReactNode;
     radius?: "none" | "sm" | "md" | "lg" | "full";
@@ -18,11 +18,11 @@ export interface MinorButtonProps {
 const getCustomColorClass = (color?: string) => {
     switch (color) {
         case "primary":
-            return "text-primary";
+            return "bg-primary";
         case "secondary":
-            return "bg-secondary text-white";
+            return "bg-secondary";
         case "success":
-            return "bg-white text-secondary border border-secondary";
+            return "bg-white";
         case "warning":
             return "bg-yellow-500";
         case "danger":
@@ -32,9 +32,28 @@ const getCustomColorClass = (color?: string) => {
     }
 };
 
+
+const getCustomSizeClass = (size?: string) => {
+    const maxWidth = "max-w-96";
+
+    switch (size) {
+        case "sm":
+            return `w-9 ${maxWidth} text-sm`;
+        case "md":
+            return `w-32 ${maxWidth} text-base`;
+        case "lg":
+            return `w-48 ${maxWidth} text-lg`;
+        case "xl":
+            return `w-56 ${maxWidth} text-xl`;
+        default:
+            return `w-32 ${maxWidth} text-base`;
+    }
+};
+
+
 export const MinorButton = (props: MinorButtonProps) => {
     const {
-        size,
+        size = "sm",
         buttonTitle,
         variant,
         radius,
@@ -50,8 +69,7 @@ export const MinorButton = (props: MinorButtonProps) => {
 
     return (
         <Button
-            className={`!min-w-0 ${getCustomColorClass(color)}`}
-            size={size}
+            className={`!min-w-0 ${getCustomColorClass(color)} ${getCustomSizeClass(size)}`}
             variant={variant}
             radius={radius}
             color={color}

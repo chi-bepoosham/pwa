@@ -93,7 +93,7 @@ export const MapContainer = (props: MapProps) => {
 
 
     return (
-        <div className="relative overflow-hidden rounded-xl flex justify-center items-center">
+        <div className="relative overflow-hidden rounded-xl flex justify-center items-center bg-red-700 w-96 h-96">
             {props.isReadOnly && <div className="absolute h-full w-full z-10" aria-label="readonly"/>}
             {props.isDisabled && <div className="absolute h-full w-full z-10 bg-black/20" aria-label="disabled"/>}
             {/*<NeshanMap*/}
@@ -119,7 +119,7 @@ export const MapContainer = (props: MapProps) => {
             {/*    />*/}
             {/*)}*/}
             <div className="absolute">
-                <div className="flex justify-center items-center text-blue-600">
+                <div className="flex justify-center items-center text-secondary bg-green-400">
                     <FmdGood fontSize="large"/>
                 </div>
             </div>
