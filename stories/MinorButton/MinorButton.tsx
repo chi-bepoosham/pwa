@@ -18,15 +18,15 @@ export interface MinorButtonProps {
 const getCustomColorClass = (color?: string) => {
     switch (color) {
         case "primary":
-            return "bg-primary";
+            return "text-white";
         case "secondary":
-            return "bg-secondary";
+            return "text-white";
         case "success":
-            return "bg-white";
+            return "text-secondary";
         case "warning":
-            return "bg-yellow-500";
+            return "text-white";
         case "danger":
-            return "bg-red-500";
+            return "text-white";
         default:
             return "bg-primary";
     }
@@ -69,7 +69,7 @@ export const MinorButton = (props: MinorButtonProps) => {
 
     return (
         <Button
-            className={`!min-w-0 ${getCustomColorClass(color)} ${getCustomSizeClass(size)}`}
+            className={`!min-w-0 !px-1.5 ${getCustomColorClass(color)} ${getCustomSizeClass(size)}`}
             variant={variant}
             radius={radius}
             color={color}
