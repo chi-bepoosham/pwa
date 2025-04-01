@@ -37,7 +37,7 @@ export const SuggestionSlider = ({ slides }: SuggestionSliderProps) => {
 
       <div className="w-full relative flex justify-between mt-8">
         <button
-          onClick={() => swiperRef.current?.slideNext()}
+          onClick={() => swiperRef.current?.slidePrev()}
           className="flex justify-center items-center rounded-l-xl bg-primary-100 text-secondary hover:bg-primary hover:text-white transition duration-500"
         >
           <ChevronRightIcon size={36} />
@@ -75,7 +75,7 @@ export const SuggestionSlider = ({ slides }: SuggestionSliderProps) => {
         </Swiper>
 
         <button
-          onClick={() => swiperRef.current?.slidePrev()}
+          onClick={() => swiperRef.current?.slideNext()}
           className="flex justify-center items-center rounded-r-xl bg-primary-100 text-secondary hover:bg-primary hover:text-white transition duration-500"
         >
           <ChevronLeftIcon size={36} />
