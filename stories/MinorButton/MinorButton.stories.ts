@@ -10,7 +10,11 @@ export default {
 export const Default = {
     args: {
         buttonTitle: "ورود بـــــا حســــاب گــــــوگل",
-
+        size: "xl",
+        variant: "solid",
+        radius: "full",
+        isLoading: false,
+        color: "success"
     },
     parameters: {
         nextjs: {
