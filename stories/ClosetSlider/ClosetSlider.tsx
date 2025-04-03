@@ -8,13 +8,15 @@ import { sacramento } from '@/lib/font';
 
 export interface ClosetSliderProps {
   imageUrls: string[];
-  matchPercent: number;
+  matchPercent: number[];
   isSubImage: boolean;
   subMatchPercent: number;
   subImageUrl: string;
   onDeleteImage: (index: number) => void;
   titleEn: string[];
   titleFa: string[];
+  // ToDo: when backend get connect make connection between description and matchPercent
+  // description: 'bad' | 'ok' | 'good' | 'nice';
 }
 
 export const ClosetSlider = (props: ClosetSliderProps) => {
@@ -117,10 +119,10 @@ export const ClosetSlider = (props: ClosetSliderProps) => {
               className="flex flex-row justify-between bg-primary rounded-t-xl rounded-b-2xl w-full p-1.5">
               <div className="flex flex-col truncate">
                 <span className="text-white font-bold flex flex-row items-center gap-2 text-large">
-                  {matchPercent}%
+                  {matchPercent[selectedImageIndex]}%
                   <h4 className="text-secondary font-semibold">درصد</h4>
                 </span>
-                <span className="text-white text-large">مناسب با فرم بدن شما!</span>
+                <span className="text-white">مناسب با فرم بدن شما!</span>
               </div>
               <i className="bg-secondary rounded-3xl text-white flex shrink-0 w-fit h-fit p-1 -rotate-45">
                 <ArrowRightIcon size={24} />
