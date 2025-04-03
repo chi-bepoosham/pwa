@@ -52,12 +52,12 @@ export default function Page() {
                 <div className="w-full h-full flex justify-center items-center">
                     <MinorButton
                         size="lg"
-                        variant="bordered"
+                        variant="ghost"
                         buttonTitle="ورود بـــــا حســــاب گــــــوگل"
                         radius="md"
                         isLoading={false}
                         icon={<GoogleIcon size={28}/>}
-                        color="success"
+                        color="secondary"
                     />
                 </div>
 
