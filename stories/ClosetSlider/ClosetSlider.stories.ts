@@ -13,8 +13,18 @@ export const Default = {
         isSubImage: false,
         subMatchPercent: 78,
         subImageUrl: "img.png",
-        titleEn: "Attractive",
-        titleFa: "کـــاپشـن ضـــدآب کتــان مـــدل زارا"
+        titleEn: [
+          "Attractive",
+          "Attractive",
+          "Attractive",
+          "Attractive",
+        ],
+        titleFa: [
+          "کـــاپشـن ضـــدآب کتــان مـــدل زارا",
+          "کلاه پشم‌گاو",
+          "کاپشن بادی کتان",
+          "پلیور بافتنی مدل کلوش...",
+        ]
     },
     parameters: {
         nextjs: {

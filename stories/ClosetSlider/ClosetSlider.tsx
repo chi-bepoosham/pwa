@@ -13,8 +13,8 @@ export interface ClosetSliderProps {
   subMatchPercent: number;
   subImageUrl: string;
   onDeleteImage: (index: number) => void;
-  titleEn: string;
-  titleFa: string;
+  titleEn: string[];
+  titleFa: string[];
 }
 
 export const ClosetSlider = (props: ClosetSliderProps) => {
@@ -67,10 +67,10 @@ export const ClosetSlider = (props: ClosetSliderProps) => {
     <div className="flex flex-col gap-12 justify-center items-center select-none w-full h-full">
       <div className="flex flex-col justify-center items-center gap-2">
         <span className={`text-4xl text-secondary-300 ${sacramento.className}`}>
-          {titleEn}
+          {titleEn[selectedImageIndex]}
         </span>
         <span className="text-secondary text-xl">
-          {titleFa}
+          {titleFa[selectedImageIndex]}
         </span>
 
       </div>
