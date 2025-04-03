@@ -1,117 +1,117 @@
-"use client";
-import React, {useState} from "react";
-import {Button} from "@heroui/react";
-import {motion} from "framer-motion";
+'use client';
+import React, { useState } from 'react';
+import { Button } from '@heroui/react';
+import { motion } from 'framer-motion';
 
 
 export interface MinorButtonProps {
-    size?: "sm" | "md" | "lg" | "xl";
-    variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "ghost";
-    buttonTitle?: string | React.ReactNode;
-    radius?: "none" | "sm" | "md" | "lg" | "full";
-    isLoading?: boolean;
-    icon?: React.ReactNode;
-    color?: "primary" | "secondary" | "success" | "warning" | "danger";
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | 'ghost';
+  buttonTitle?: string | React.ReactNode;
+  radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+  isLoading?: boolean;
+  icon?: React.ReactNode;
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
 }
 
 
 const getCustomColorClass = (color?: string) => {
-    switch (color) {
-        case "primary":
-            return "bg-primary";
-        case "secondary":
-            return "bg-secondary";
-        case "success":
-            return "bg-white";
-        case "warning":
-            return "bg-yellow-500";
-        case "danger":
-            return "bg-red-500";
-        default:
-            return "bg-primary";
-    }
+  switch (color) {
+    case 'primary':
+      return 'text-white';
+    case 'secondary':
+      return '';
+    case 'success':
+      return 'text-secondary';
+    case 'warning':
+      return 'text-white';
+    case 'danger':
+      return 'text-white';
+    default:
+      return 'bg-primary';
+  }
 };
 
 
 const getCustomSizeClass = (size?: string) => {
-    const maxWidth = "max-w-96";
+  const maxWidth = 'w-full ';
 
-    switch (size) {
-        case "sm":
-            return `w-9 ${maxWidth} text-sm`;
-        case "md":
-            return `w-32 ${maxWidth} text-base`;
-        case "lg":
-            return `w-48 ${maxWidth} text-lg`;
-        case "xl":
-            return `w-56 ${maxWidth} text-xl`;
-        default:
-            return `w-32 ${maxWidth} text-base`;
-    }
+  switch (size) {
+    case 'sm':
+      return `!w-8 !h-8 ${maxWidth} text-base`;
+    case 'md':
+      return `px-3 max-w-64 ${maxWidth} text-base`;
+    case 'lg':
+      return `px-3 max-w-80 ${maxWidth} text-lg`;
+    case 'xl':
+      return `px-3 max-w-96 ${maxWidth} text-xl`;
+    default:
+      return `px-3 ${maxWidth} text-base`;
+  }
 };
 
 
 export const MinorButton = (props: MinorButtonProps) => {
-    const {
-        size = "sm",
-        buttonTitle,
-        variant,
-        radius,
-        isLoading,
-        icon,
-        color = "primary",
-    } = props;
-    const [, setClicked] = useState(false);
+  const {
+    size = 'sm',
+    buttonTitle,
+    variant,
+    radius,
+    isLoading,
+    icon,
+    color = 'primary',
+  } = props;
+  const [, setClicked] = useState(false);
 
-    const handleClick = () => {
-        setClicked(true);
-    };
+  const handleClick = () => {
+    setClicked(true);
+  };
 
-    return (
-        <Button
-            className={`!min-w-0 ${getCustomColorClass(color)} ${getCustomSizeClass(size)}`}
-            variant={variant}
-            radius={radius}
-            color={color}
-            onPress={handleClick}
-            startContent={icon}
-        >
-            {isLoading ? (
-                <div className="flex justify-center gap-3">
-                    <motion.div
-                        className="w-3 h-3 bg-white rounded-full"
-                        animate={{opacity: [1, 0.2, 1]}}
-                        transition={{
-                            duration: 2.5,
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            delay: 1.4,
-                        }}
-                    />
-                    <motion.div
-                        className="w-3 h-3 bg-white rounded-full"
-                        animate={{opacity: [1, 0.2, 1]}}
-                        transition={{
-                            duration: 2.5,
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            delay: 1,
-                        }}
-                    />
-                    <motion.div
-                        className="w-3 h-3 bg-white rounded-full"
-                        animate={{opacity: [1, 0.2, 1]}}
-                        transition={{
-                            duration: 2.5,
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            delay: 0.6,
-                        }}
-                    />
-                </div>
-            ) : (
-                buttonTitle
-            )}
-        </Button>
-    );
+  return (
+    <Button
+      className={`!min-w-0 ${getCustomColorClass(color)} ${getCustomSizeClass(size)}`}
+      variant={variant}
+      radius={radius}
+      color={color}
+      onPress={handleClick}
+      startContent={icon}
+    >
+      {isLoading ? (
+        <div className="flex justify-center gap-3">
+          <motion.div
+            className="w-3 h-3 bg-white rounded-full"
+            animate={{ opacity: [1, 0.2, 1] }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              repeatType: 'loop',
+              delay: 1.4,
+            }}
+          />
+          <motion.div
+            className="w-3 h-3 bg-white rounded-full"
+            animate={{ opacity: [1, 0.2, 1] }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              repeatType: 'loop',
+              delay: 1,
+            }}
+          />
+          <motion.div
+            className="w-3 h-3 bg-white rounded-full"
+            animate={{ opacity: [1, 0.2, 1] }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              repeatType: 'loop',
+              delay: 0.6,
+            }}
+          />
+        </div>
+      ) : (
+        buttonTitle
+      )}
+    </Button>
+  );
 };
