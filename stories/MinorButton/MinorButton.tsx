@@ -38,7 +38,7 @@ const getCustomSizeClass = (size?: string) => {
 
   switch (size) {
     case 'sm':
-      return `!w-8 !h-8 ${maxWidth} text-base`;
+      return `!w-10 !h-10  ${maxWidth} text-base`;
     case 'md':
       return `px-3 max-w-64 ${maxWidth} text-base`;
     case 'lg':

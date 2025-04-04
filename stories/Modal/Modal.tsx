@@ -2,12 +2,17 @@ import React from 'react';
 import {
   Drawer,
   DrawerContent,
-  DrawerHeader,
   DrawerBody,
-  DrawerFooter,
   Button,
   useDisclosure,
 } from '@heroui/react';
+import { MinorButton } from '@/stories/MinorButton';
+import {
+  CameraIcon,
+  GalleryIcon,
+  RecycleIcon,
+  FilesIcon,
+} from '@/stories/Icons';
 
 export interface ModalProps {
 
@@ -18,48 +23,74 @@ export const Modal = (props: ModalProps) => {
   const {} = props;
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [placement, setPlacement] = React.useState('left');
 
   const handleOpen = () => {
-    setPlacement(placement);
     onOpen();
   };
   return (
     <>
       <div className="flex flex-wrap gap-3">
-        {['left', 'right', 'top', 'bottom'].map((placement) => (
-          <Button key={placement} className="capitalize" onPress={() => handleOpen()}>
-            Open {placement}
-          </Button>
-        ))}
+        <Button className="capitalize" onPress={() => handleOpen()}>
+          Open
+        </Button>
       </div>
-      <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Drawer
+        className="p-8"
+        hideCloseButton
+        placement="bottom"
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
         <DrawerContent>
-          {(onClose) => (
-            <>
-              <DrawerHeader className="flex flex-col gap-1">Drawer Title</DrawerHeader>
-              <DrawerBody>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
-                  risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
-                  quam.
-                </p>
-                <p>
-                  Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor
-                  adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit
-                  officia eiusmod Lorem aliqua enim laboris do dolor eiusmod.
-                </p>
-              </DrawerBody>
-              <DrawerFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Action
-                </Button>
-              </DrawerFooter>
-            </>
-          )}
+          <>
+            <DrawerBody
+              className="flex flex-row gap-20 justify-center items-center"
+            >
+              <div className="flex flex-row gap-4">
+                <div className="flex flex-col gap-3 justify-center items-center">
+                  <MinorButton
+                    variant="solid"
+                    color="primary"
+                    size="sm"
+                    icon={
+                      <i className="text-white">
+                        <CameraIcon size={24} />
+                      </i>
+                    }
+                  />
+                  دوربــین
+                </div>
+                <div className="flex flex-col gap-3 justify-center items-center">
+                  <MinorButton
+                    variant="solid"
+                    color="primary"
+                    size="sm"
+                    icon={
+                      <i className="text-white">
+                        <GalleryIcon size={24} />
+                      </i>
+                    }
+                  />
+                  گــــالــری
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 justify-center items-center">
+                <MinorButton
+                  variant="bordered"
+                  color="secondary"
+                  size="sm"
+                  icon={
+                    <i className="text-secondary">
+                      <RecycleIcon size={24} />
+                    </i>
+                  }
+                />
+                حذف عکس
+              </div>
+
+            </DrawerBody>
+          </>
         </DrawerContent>
       </Drawer>
     </>
