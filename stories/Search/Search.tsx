@@ -1,64 +1,64 @@
-import React from "react";
-import {Divider, Input} from "@heroui/react";
-import {FilterIcon, SearchIcon} from "@/stories/Icons";
-import clsx from "clsx";
+import React from 'react';
+import { Divider, Input } from '@heroui/react';
+import { FilterIcon, SearchIcon } from '@/stories/Icons';
+import clsx from 'clsx';
 
 export interface SearchProps {
-    isShop: boolean;
+  withFilter: boolean;
 }
 
 export const Search = (props: SearchProps) => {
-    const {isShop} = props;
+  const { withFilter } = props;
 
-    return (
-        <div className="w-full max-w-lg rounded-xl flex justify-center items-center">
+  return (
+    <div className="w-full max-w-lg rounded-xl flex justify-center items-center">
 
-            <Input
-                isClearable={false}
-                classNames={{
-                    label: "text-black/50 dark:text-white/90",
-                    input: clsx(
-                        "text-black/100 dark:text-white/90",
-                        isShop ? "placeholder:text-secondary-300" : "placeholder:text-secondary",
-                    ),
-                    innerWrapper: clsx(
-                        "bg-white",
-                        isShop && "bg-white"
-                    ),
-                    inputWrapper: clsx(
-                        "border-2 bg-white dark:bg-default/60 dark:hover:bg-default/70",
-                        "group-data-[hover=true]:bg-white",
-                        "group-data-[focus=true]:bg-white dark:group-data-[focus=true]:bg-default/60",
-                        "!cursor-text",
-                        isShop ? "border-secondary-100" : "border-secondary"
-                    ),
-                }}
-                placeholder={isShop ? "جستجوی لباس یا فروشگاه" : ""}
-                radius="lg"
-                startContent={
-                    <i
-                        className={clsx("",
-                            isShop ? "text-secondary-300" : "text-secondary",
-                        )}
-                    >
-                        <SearchIcon size={28}/>
-                    </i>
-                }
-                endContent={
-                    isShop && (
-                        <div className="flex flex-row items-center justify-center gap-7">
-                            <i className="text-secondary-400 h-7">
-                                <Divider orientation="vertical"/>
-                            </i>
-                            <button>
-                                <FilterIcon size={28}/>
-                            </button>
-                        </div>
-                    )
-                }
+      <Input
+        isClearable={false}
+        classNames={{
+          label: 'text-black/50 dark:text-white/90',
+          input: clsx(
+            'text-black/100 dark:text-white/90',
+            withFilter ? 'placeholder:text-secondary-300' : 'placeholder:text-secondary',
+          ),
+          innerWrapper: clsx(
+            'bg-white',
+            withFilter && 'bg-white',
+          ),
+          inputWrapper: clsx(
+            'border-2 bg-white dark:bg-default/60 dark:hover:bg-default/70',
+            'group-data-[hover=true]:bg-white',
+            'group-data-[focus=true]:bg-white dark:group-data-[focus=true]:bg-default/60',
+            '!cursor-text',
+            withFilter ? 'border-secondary-100' : 'border-secondary',
+          ),
+        }}
+        placeholder={withFilter ? 'جستجوی لباس یا فروشگاه' : ''}
+        radius="lg"
+        startContent={
+          <i
+            className={clsx('',
+              withFilter ? 'text-secondary-300' : 'text-secondary',
+            )}
+          >
+            <SearchIcon size={28} />
+          </i>
+        }
+        endContent={
+          withFilter && (
+            <div className="flex flex-row items-center justify-center gap-7">
+              <i className="text-secondary-400 h-7">
+                <Divider orientation="vertical" />
+              </i>
+              <button>
+                <FilterIcon size={28} />
+              </button>
+            </div>
+          )
+        }
 
-            />
-        </div>
+      />
+    </div>
 
-    );
+  );
 };
