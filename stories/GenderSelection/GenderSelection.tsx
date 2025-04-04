@@ -15,8 +15,8 @@ export const GenderSelection = (props: GenderSelectionProps) => {
       <RadioGroup
         label={
           <span className="text-secondary font-semibold text-large">
-انتخاب جنسیت
-        </span>
+              انتخاب جنسیت
+          </span>
         }
         orientation="horizontal"
         className="select-none"
