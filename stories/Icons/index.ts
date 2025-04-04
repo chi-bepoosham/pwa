@@ -82,3 +82,9 @@ export { Icon as GoogleIcon } from './Google.stories';
 export { Icon as CameraIcon } from './Camera.stories';
 export { Icon as GalleryIcon } from './Gallery.stories';
 export { Icon as FilesIcon } from './Files.stories';
+
+
+//BottomNav
+export { Icon as HomeIcon } from './Home.stories';
+export { Icon as ChestIcon } from './Chest.stories';
+export { Icon as MyDrawerIcon } from './MyDrawer.stories';
