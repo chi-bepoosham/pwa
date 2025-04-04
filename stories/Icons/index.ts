@@ -86,5 +86,12 @@ export { Icon as FilesIcon } from './Files.stories';
 
 //BottomNav
 export { Icon as HomeIcon } from './Home.stories';
+export { Icon as OutlineHomeIcon } from './OutlineHome.stories';
+
+
 export { Icon as ChestIcon } from './Chest.stories';
+export { Icon as OutlineChestIcon } from './OutlineChest.stories';
+
+
 export { Icon as MyDrawerIcon } from './MyDrawer.stories';
+export { Icon as OutlineMyDrawerIcon } from './OutlineMyDrawer.stories';

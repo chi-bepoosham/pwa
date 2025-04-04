@@ -5,39 +5,23 @@ export const Icon = ({ size = 60 }: { size?: number }) => {
   return (
 
     <svg
-      width={29}
-      height={29}
-      viewBox="0 0 29 29"
-      fill="none"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
-      stroke="currentColor"
     >
       <path
-        d="M10.8633 26.0857H17.8633C23.6966 26.0857 26.0299 23.7523 26.0299 17.919V10.919C26.0299 5.08565 23.6966 2.75232 17.8633 2.75232H10.8633C5.02995 2.75232 2.69661 5.08565 2.69661 10.919V17.919C2.69661 23.7523 5.02995 26.0857 10.8633 26.0857Z"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M16.19 2H12.75V8V8.75V13.75H22V8.75V8V7.81C22 4.17 19.83 2 16.19 2Z"
       />
-      <g opacity={0.4}>
-        <path
-          d="M14.3633 2.75232V26.0857"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M2.69661 11.5023H14.3633"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M14.3633 17.3357H26.0299"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </g>
+      <path
+        d="M2 10.25V15.25V15.75V16.19C2 19.83 4.17 22 7.81 22H11.25V15.75V15.25V10.25H2Z"
+      />
+      <path d="M11.25 2V8.75H2V7.81C2 4.17 4.17 2 7.81 2H11.25Z"
+      />
+      <path
+        d="M22 15.25V16.19C22 19.83 19.83 22 16.19 22H12.75V15.25H22Z"
+      />
     </svg>
 
   );
