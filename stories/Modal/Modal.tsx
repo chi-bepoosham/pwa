@@ -13,14 +13,15 @@ import {
   RecycleIcon,
   FilesIcon,
 } from '@/stories/Icons';
+import clsx from 'clsx';
 
 export interface ModalProps {
-
+  removable: boolean;
 }
 
 
 export const Modal = (props: ModalProps) => {
-  const {} = props;
+  const { removable } = props;
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -44,7 +45,10 @@ export const Modal = (props: ModalProps) => {
         <DrawerContent>
           <>
             <DrawerBody
-              className="flex flex-row gap-20 justify-center items-center"
+              className={clsx(
+                'flex flex-row justify-center items-center',
+                removable ? 'gap-20' : 'gap-4',
+              )}
             >
               <div className="flex flex-row gap-4">
                 <div className="flex flex-col gap-3 justify-center items-center">
@@ -58,7 +62,10 @@ export const Modal = (props: ModalProps) => {
                       </i>
                     }
                   />
-                  دوربــین
+                  <span>
+                    دوربــین
+                  </span>
+
                 </div>
                 <div className="flex flex-col gap-3 justify-center items-center">
                   <MinorButton
@@ -71,24 +78,51 @@ export const Modal = (props: ModalProps) => {
                       </i>
                     }
                   />
-                  گــــالــری
+                  <span>
+                    گــــالــری
+                  </span>
+
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 justify-center items-center">
-                <MinorButton
-                  variant="bordered"
-                  color="secondary"
-                  size="sm"
-                  icon={
-                    <i className="text-secondary">
-                      <RecycleIcon size={24} />
-                    </i>
-                  }
-                />
-                حذف عکس
-              </div>
-
+              {
+                removable ?
+                  (
+                    <div className="flex flex-col gap-3 justify-center items-center">
+                      <MinorButton
+                        variant="bordered"
+                        color="secondary"
+                        size="sm"
+                        icon={
+                          <i className="text-secondary">
+                            <RecycleIcon size={24} />
+                          </i>
+                        }
+                      />
+                      <span>
+                        حذف عکس
+                      </span>
+                    </div>
+                  )
+                  :
+                  (
+                    <div className="flex flex-col gap-3 justify-center items-center">
+                      <MinorButton
+                        variant="solid"
+                        color="primary"
+                        size="sm"
+                        icon={
+                          <i className="text-white">
+                            <FilesIcon size={24} />
+                          </i>
+                        }
+                      />
+                      <span>
+                      فـــایل‌ها
+                    </span>
+                    </div>
+                  )
+              }
             </DrawerBody>
           </>
         </DrawerContent>
@@ -96,3 +130,5 @@ export const Modal = (props: ModalProps) => {
     </>
   );
 };
+
+
