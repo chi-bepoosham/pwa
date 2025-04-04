@@ -1,50 +1,90 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { RadioGroup, useRadio, VisuallyHidden, cn } from '@heroui/react';
 import { WomenGenderIcon, MenGenderIcon } from '@/stories/Icons';
+import { UseRadioProps } from '@/node_modules/@heroui/radio/dist/use-radio';
 
 export interface GenderSelectionProps {
 }
 
 export const GenderSelection = (props: GenderSelectionProps) => {
   const {} = props;
-  const [selected, setSelected] = useState<string | null>(null);
-  const options = [
-    {
-      label: 'آقا', icon: <MenGenderIcon size={20} />, key: 'men',
-
-    },
-    {
-      label: 'خانم', icon: <WomenGenderIcon size={20} />, key: 'women',
-    }
-    ,
-    // {
-    //     label: "دیگر", icon: <OtherGenderIcon size={20}/>, key: "other"
-    // }
-  ];
   return (
-    <div className="flex flex-row gap-4">
+    <>
+      <RadioGroup
+        label={
+          <span className="text-secondary font-semibold text-large">
+انتخاب جنسیت
+        </span>
+        }
+        orientation="horizontal"
+        className="select-none"
+      >
+        <CustomRadio
+          value="woman"
+          icon={<WomenGenderIcon size={20} />}
+        >
+          خانم
+        </CustomRadio>
+        <CustomRadio
+          value="man"
+          icon={<MenGenderIcon size={20} />}
+        >
+          آقـــــا
+        </CustomRadio>
+      </RadioGroup>
+    </>
+  );
+};
 
 
-      <div className="flex gap-5">
-        {options.map((option, index) => (
-          <div
-            key={index}
-            onClick={() => setSelected(option.key)}
-            className={`flex w-32 max-w-screen-us items-center justify-center p-3 border rounded-lg cursor-pointer transition duration-500 select-none ${
-              selected === option.key
-                ? 'bg-secondary border-secondary text-white'
-                : 'border-[#68BAA6]'
-            }`}
+type CustomRadioProps = UseRadioProps & {
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}
+
+
+export const CustomRadio = (props: CustomRadioProps) => {
+
+  const {
+    Component,
+    children,
+    getBaseProps,
+    getInputProps,
+    getLabelProps,
+    getLabelWrapperProps,
+  } = useRadio(props);
+
+
+  return (
+    <Component
+      {...getBaseProps()}
+      className={cn(
+        'group inline-flex items-center active:opacity-50 justify-between flex-row-reverse tap-highlight-transparent',
+        'max-w-[300px] cursor-pointer border-2 border-[#68BAA6]/40 rounded-xl gap-4 p-3',
+        'data-[selected=true]:border-secondary',
+        'data-[selected=true]:bg-secondary',
+      )}
+    >
+      <VisuallyHidden>
+        <input {...getInputProps()} />
+      </VisuallyHidden>
+      <span
+        className="bg-[#68BAA6]/15 p-1.5 rounded-lg"
+      >
+        {props.icon}
+      </span>
+      <div {...getLabelWrapperProps()}>
+        {children && (
+          <span
+            {...getLabelProps()}
+            className="text-large group-data-[selected=true]:text-white"
           >
-            <div className="flex flex-row gap-8">
-              <span className="text-xl">{option.label}</span>
-              <div
-                className="mr-2 bg-[#68BAA6]/40 w-7 h-7 rounded-lg flex justify-center items-center p-1.5">{option.icon}</div>
-            </div>
-          </div>
-        ))}
+            {children}
+          </span>
+        )}
       </div>
-    </div>
+    </Component>
   );
 };
