@@ -46,8 +46,8 @@ export const Modal = (props: ModalProps) => {
           <>
             <DrawerBody
               className={clsx(
-                'flex flex-row justify-center items-center',
-                removable ? 'gap-20' : 'gap-4',
+                'flex justify-center items-center',
+                removable ? 'gap-20 flex-row' : 'gap-5 flex-row-reverse',
               )}
             >
               <div className="flex flex-row gap-4">
