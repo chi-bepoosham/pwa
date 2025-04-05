@@ -8,11 +8,18 @@ export interface SearchProps {
 }
 
 export const Search = (props: SearchProps) => {
-  const { withFilter } = props;
+  const {
+    withFilter,
+  } = props;
+
+
+  const handleSearch = () => {
+
+  };
+
 
   return (
     <div className="w-full max-w-lg rounded-xl flex justify-center items-center">
-
       <Input
         isClearable={false}
         classNames={{
@@ -36,13 +43,14 @@ export const Search = (props: SearchProps) => {
         placeholder={withFilter ? 'جستجوی لباس یا فروشگاه' : ''}
         radius="lg"
         startContent={
-          <i
+          <button
+            onClick={handleSearch}
             className={clsx('',
               withFilter ? 'text-secondary-300' : 'text-secondary',
             )}
           >
             <SearchIcon size={28} />
-          </i>
+          </button>
         }
         endContent={
           withFilter && (
@@ -56,9 +64,7 @@ export const Search = (props: SearchProps) => {
             </div>
           )
         }
-
       />
     </div>
-
   );
 };
