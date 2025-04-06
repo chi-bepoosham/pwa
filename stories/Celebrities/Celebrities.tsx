@@ -2,7 +2,7 @@ import React from 'react';
 import { Avatar, Tooltip } from '@heroui/react';
 
 
-interface Customer {
+interface Celebrities {
   fullName: string;
   avatar: string;
   id: number;
@@ -12,25 +12,29 @@ interface Customer {
 export interface CelebrityProps {
   description: string;
   number: number;
-  customers: Customer[];
+  celebrities: Celebrities[];
 }
 
 
 export const Celebrities = (props: CelebrityProps) => {
-  const { number, description, customers = [] } = props;
+  const { number, description, celebrities = [] } = props;
   return (
-    <div className="grid grid-cols-2 gap-3 justify-between bg-[#68BAA6]/50 border-2 border-[#68BAA6] rounded-2xl p-5">
+    <div
+      className="w-full max-w-screen-md grid grid-cols-2 gap-5 bg-[#68BAA6]/50 border-2 border-[#68BAA6] rounded-2xl p-4">
       <div className="col-span-1 flex flex-row-reverse pe-4">
-        {customers.map((customer) => (
+        {celebrities.map((celebrities) => (
           <Tooltip
-            key={customer.id}
+            key={celebrities.id}
             color="secondary"
             placement="top"
             showArrow={false}
+            content={celebrities.fullName}
+            delay={100}
+            closeDelay={10}
           >
             <div className="w-10">
               <Avatar
-                src={customer.avatar}
+                src={celebrities.avatar}
                 size="lg"
               />
             </div>
