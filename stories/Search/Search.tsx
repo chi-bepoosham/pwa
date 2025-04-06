@@ -11,7 +11,7 @@ export const Search = (props: SearchProps) => {
     const {isShop} = props;
 
     return (
-        <div className="w-full max-w-lg rounded-xl flex justify-center items-center">
+        <div className="w-full rounded-xl flex justify-center items-center">
 
             <Input
                 isClearable={false}

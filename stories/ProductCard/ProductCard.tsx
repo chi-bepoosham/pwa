@@ -21,14 +21,14 @@ export const ProductCard = (props: ProductCardProps) => {
     return (
         <Link href="/">
             <div className={clsx(
-                "w-60 h-[350px] rounded-xl overflow-hidden relative",
+                "w-full min:w-60 rounded-[18px] overflow-hidden relative",
                 variant === "bordered"
                     ? "border-2 border-secondary bg-white"
                     : "bg-secondary-50 border-none"
             )}>
                 <div className={clsx(
                     "absolute top-1.5 left-1.5 p-1.5 rounded-2xl",
-                    withArrow ? "flex justify-center items-center bg-secondary-100" : "grid grid-cols-2 gap-0.5 bg-secondary-100"
+                    withArrow ? "flex justify-center items-center bg-[#0C0D111A]" : "grid grid-cols-2 gap-0.5 bg-[#0C0D111A]"
                 )}>
                     {withArrow ? (
                         <i className="rotate-45">
@@ -38,7 +38,7 @@ export const ProductCard = (props: ProductCardProps) => {
                         colors.slice(0, 4).map((color, index) => (
                             <span
                                 key={index}
-                                className="w-4 h-4 rounded-full"
+                                className="w-2 h-2 rounded-full"
                                 style={{backgroundColor: color}}
                             />
                         ))
@@ -49,22 +49,22 @@ export const ProductCard = (props: ProductCardProps) => {
                         width="128"
                         height="128"
                         className="w-full object-cover"
-                        src={imageUrl}
+                        src={`/${imageUrl}`}
                         alt={title}
                     />
-                    <div className={clsx("px-3 gap-1 flex flex-col items-start",
+                    <div className={clsx("px-3 py-2 gap-1 flex flex-col items-start",
                         variant === "bordered"
-                            ? "bg-secondary-50 rounded-lg m-2"
+                            ? "bg-secondary-50/5 rounded-lg m-2"
                             : "bg-white rounded-lg m-2"
                     )}>
-                        <div className="p-4 flex items-center gap-1">
-                            <span className="text-lg text-primary font-bold">{price}</span>
-                            <span className="text-primary-900 text-sm">تومان</span>
+                        <div className="flex items-center gap-1">
+                            <span className="text-xs md:text-lg text-primary font-bold">{price}</span>
+                            <span className="text-primary-900 text-xs md:text-sm">تومان</span>
                         </div>
 
                         <div className="flex flex-row items-start justify-between w-full">
-                            <h2 className="text-xl truncate font-semibold ">{title}</h2>
-                            <p className="text-secondary truncate font-bold">{description}</p>
+                            <h2 className="text-sm md:text-xl truncate font-semibold ">{title}</h2>
+                            <p className="text-sm md:text-base text-secondary truncate font-bold">{description}</p>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+import TextBackground from '@/components/common/text-background';
 import { MinorButton } from '@/stories/MinorButton';
 import { Uploader } from '@/stories/Uploader';
 import { VoiceAssistant } from '@/stories/VoiceAssistant';
@@ -10,9 +11,9 @@ const PersonalImage = () => {
         <Uploader size="x-large" title="تصویر نمایه" />
         <div className="text-center flex gap-2 flex-col text-xs relative">
           <p>علی عزیز یا کاربر عزیز</p>
-          <p className="z-0 relative after:content-[''] after:absolute after:inset-0 after:right-2 after:w-[94%] after:bg-[#4141F9] after:-z-10 after:rounded-sm after:opacity-10">
+          <TextBackground bgColor="#4141F9">
             عکس تمام قد خودت رو با نور مناسب اینجا اضافه کن!
-          </p>
+          </TextBackground>
         </div>
       </div>
 
