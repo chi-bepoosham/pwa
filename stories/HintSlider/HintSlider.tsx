@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { CorrectIcon, FalseIcon } from '@/stories/Icons';
 import clsx from 'clsx';
@@ -11,14 +11,13 @@ export interface HintSliderProps {
 
 export const HintSlider = (props: HintSliderProps) => {
   const { slides } = props;
-  const [currentMatchRate, setCurrentMatchRate] = useState(slides[0].matchRate);
 
   return (
     <div className="relative w-full max-w-[800px]">
       <Swiper
         spaceBetween={10}
         slidesPerView={2}
-        onSlideChange={(swiper) => setCurrentMatchRate(slides[swiper.activeIndex].matchRate)}
+        slidesPerGroup={2}
         className="w-full"
       >
         {slides.map((slide, index) => (
@@ -26,7 +25,7 @@ export const HintSlider = (props: HintSliderProps) => {
             <div className="relative w-full h-64 border-2 border-secondary rounded-2xl">
               <div
                 className="text-white flex justify-center items-center absolute top-2 left-2 bg-white/10 backdrop-blur rounded-full z-10 w-10 h-10">
-                {currentMatchRate}%
+                {slide.matchRate}%
               </div>
 
               <Image
