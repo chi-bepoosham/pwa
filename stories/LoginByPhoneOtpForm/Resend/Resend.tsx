@@ -11,7 +11,6 @@ import {axiosCore} from "@/lib/axios";
 
 export interface ResendOtpProps {
     control: Control<LoginByPhoneOtpFormType>;
-
     isDisabled?: boolean;
 }
 
