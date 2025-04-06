@@ -48,10 +48,9 @@ export const BodyType = (props: BodyTypeProps) => {
           <div>
             <h1 className="text-secondary font-bold flex flex-row items-center">
               نقاط
-
               <span className="text-[#E93B55]">
-                                ضعف
-                            </span>
+                ضعف
+              </span>
             </h1>
             <p className="text-secondary-300">
               {weaknessPoints}
