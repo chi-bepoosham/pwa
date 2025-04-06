@@ -95,3 +95,8 @@ export { Icon as OutlineChestIcon } from './OutlineChest.stories';
 
 export { Icon as MyDrawerIcon } from './MyDrawer.stories';
 export { Icon as OutlineMyDrawerIcon } from './OutlineMyDrawer.stories';
+
+
+// Correct & False
+export { Icon as CorrectIcon } from './Correct.stories';
+export { Icon as FalseIcon } from './False.stories';
