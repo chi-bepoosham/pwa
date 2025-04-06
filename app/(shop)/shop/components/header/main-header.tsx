@@ -19,7 +19,7 @@ const MainHeader = () => {
         </div>
       </div>
       <div className='w-full mt-4'>
-        <Search isShop={true} />
+        <Search withFilter={true} />
       </div>
     </div>
   );

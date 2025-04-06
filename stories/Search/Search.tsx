@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import { Divider, Input } from '@heroui/react';
 import { FilterIcon, SearchIcon } from '@/stories/Icons';
