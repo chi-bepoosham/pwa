@@ -1,51 +1,55 @@
-import React from "react";
-import {Avatar, Tooltip} from "@heroui/react";
+import React from 'react';
+import { Avatar, Tooltip } from '@heroui/react';
 
 
-interface Customer {
-    fullName: string;
-    avatar: string;
-    id: number;
+interface Celebrities {
+  fullName: string;
+  avatar: string;
+  id: number;
 }
 
 
 export interface CelebrityProps {
-    description: string;
-    number: number;
-    customers: Customer[];
+  description: string;
+  number: number;
+  celebrities: Celebrities[];
 }
 
 
 export const Celebrities = (props: CelebrityProps) => {
-    const {number, description, customers = []} = props;
-    return (
-        <div className="grid grid-cols-2 gap-3 justify-between bg-primary-50 border-2 border-primary  rounded-2xl p-5">
-            <div className="col-span-1 flex flex-row-reverse pe-4">
-                {customers.map((customer) => (
-                    <Tooltip
-                        key={customer.id}
-                        color="secondary"
-                        placement="top"
-                        showArrow={false}
-                    >
-                        <div className="w-10 border">
-                            <Avatar
-                                src={customer.avatar}
-                                size="lg"
-                            />
-                        </div>
-                    </Tooltip>
-                ))}
+  const { number, description, celebrities = [] } = props;
+  return (
+    <div
+      className="w-full max-w-screen-md grid grid-cols-2 gap-5 bg-[#68BAA6]/50 border-2 border-[#68BAA6] rounded-2xl p-4">
+      <div className="col-span-1 flex flex-row-reverse pe-4">
+        {celebrities.map((celebrities) => (
+          <Tooltip
+            key={celebrities.id}
+            color="secondary"
+            placement="top"
+            showArrow={false}
+            content={celebrities.fullName}
+            delay={100}
+            closeDelay={10}
+          >
+            <div className="w-10">
+              <Avatar
+                src={celebrities.avatar}
+                size="lg"
+              />
             </div>
-            <div className="col-span-1 flex flex-col justify-center text-secondary">
-                <span className="text-xl font-semibold text-nowrap">
-                    {number}
-                    +
-                </span>
-                <span className="text-nowrap">
-                    {description}
-                </span>
-            </div>
-        </div>
-    )
-}
+          </Tooltip>
+        ))}
+      </div>
+      <div className="col-span-1 flex flex-col justify-center text-secondary">
+        <span className="text-xl font-semibold text-nowrap">
+          {number}
+          +
+        </span>
+        <span className="text-nowrap">
+          {description}
+        </span>
+      </div>
+    </div>
+  );
+};
