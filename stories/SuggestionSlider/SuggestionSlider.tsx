@@ -35,7 +35,7 @@ export const SuggestionSlider = ({ slides }: SuggestionSliderProps) => {
         </div>
       </div>
 
-      <div className="w-full relative flex justify-between mt-8">
+      <div className="w-full relative flex justify-between">
         <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="flex justify-center items-center rounded-l-xl bg-primary-100 text-secondary hover:bg-primary hover:text-white transition duration-500"
@@ -87,7 +87,7 @@ export const SuggestionSlider = ({ slides }: SuggestionSliderProps) => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`mt-4 text-4xl font-semibold text-secondary ${sacramento.className}`}
+        className={`text-4xl text-secondary ${sacramento.className}`}
       >
         {slides[activeIndex].name}
       </motion.div>
