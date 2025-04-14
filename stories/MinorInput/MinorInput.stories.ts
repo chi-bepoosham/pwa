@@ -1,19 +1,29 @@
 import { MinorInput } from './MinorInput';
 
 
-
 export default {
-    title: "MinorInput",
-    component: MinorInput,
+  title: 'MinorInput',
+  component: MinorInput,
 };
 
 export const Default = {
-    args: {
+  args: {
+    options: [
+      { label: 'تهران', value: 'tehran' },
+      { label: 'اصفهان', value: 'isfahan' },
+      { label: 'شیراز', value: 'shiraz' },
+      { label: 'مشهد', value: 'mashhad' },
+    ],
 
-    },
-    parameters: {
-        nextjs: {
-            appDirectory: true,
-        }
-    },
-};
+    type: "fullName",
+    placeholder: "",
+    label: ""
+  },
+parameters: {
+  nextjs: {
+    appDirectory: true,
+  }
+}
+,
+}
+;
