@@ -1,10 +1,10 @@
-import { MinoreInput } from './MinoreInput';
+import { MinorInput } from './MinorInput';
 
 
 
 export default {
-    title: "MinoreInput",
-    component: MinoreInput,
+    title: "MinorInput",
+    component: MinorInput,
 };
 
 export const Default = {
