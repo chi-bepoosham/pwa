@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { CorrectIcon, FalseIcon } from '@/stories/Icons';
 import clsx from 'clsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
 
 
 export interface HintSliderProps {
