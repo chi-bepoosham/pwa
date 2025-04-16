@@ -12,6 +12,7 @@ export interface MinorButtonProps {
   isLoading?: boolean;
   icon?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+  onClick?: () => void;
 }
 
 
@@ -44,13 +45,17 @@ export const MinorButton = (props: MinorButtonProps) => {
     isLoading,
     icon,
     color = 'primary',
+    onClick
   } = props;
+
   const [, setClicked] = useState(false);
 
   const handleClick = () => {
     setClicked(true);
+    if (onClick) {
+      onClick();
+    }
   };
-
   return (
     <Button
       className={`!min-w-0 ${className} ${getCustomColorClass(color)}`}

@@ -8,9 +8,7 @@ export default {
 
 export const Default = {
   args: {
-    withStar: true,
-    textColor: 'white',
-    starColor: 'white',
+    isSize: false,
   },
   parameters: {
     nextjs: {
