@@ -7,7 +7,10 @@ export default {
 };
 
 export const Default = {
-  args: {},
+  args: {
+    status: "delivered",
+    deliveryTime: "12:35"
+  },
   parameters: {
     nextjs: {
       appDirectory: true,

@@ -100,3 +100,4 @@ export { Icon as OutlineMyDrawerIcon } from './OutlineMyDrawer.stories';
 // Correct & False
 export { Icon as CorrectIcon } from './Correct.stories';
 export { Icon as FalseIcon } from './False.stories';
+export {Icon as TruckIcon} from './Truck.stories';
