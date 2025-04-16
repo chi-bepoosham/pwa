@@ -8,7 +8,7 @@ export default {
 
 export const Default = {
   args: {
-    status: "delivered",
+    status: "continued",
     deliveryTime: "12:35"
   },
   parameters: {
