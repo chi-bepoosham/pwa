@@ -6,6 +6,7 @@ export default {
   component: MinorInput,
 };
 
+
 export const Default = {
   args: {
     options: [
