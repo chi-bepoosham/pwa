@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { CorrectIcon, FalseIcon } from '@/stories/Icons';
 import clsx from 'clsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import 'swiper/css/pagination';
+
 
 export interface HintSliderProps {
   slides: { picture: string; matchRate: number; isCorrect: boolean }[];
@@ -13,7 +14,8 @@ export const HintSlider = (props: HintSliderProps) => {
   const { slides } = props;
 
   return (
-    <div className="relative w-full max-w-[800px]">
+
+    <div className="relative w-full max-w-[800px] select-none flex flex-col gap-8">
       <Swiper
         spaceBetween={10}
         slidesPerView={2}
@@ -64,6 +66,8 @@ export const HintSlider = (props: HintSliderProps) => {
           </SwiperSlide>
         ))}
       </Swiper>
+      {/*ToDo:make a pagination for slider*/}
     </div>
+
   );
 };

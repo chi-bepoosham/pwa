@@ -9,11 +9,9 @@ export default {
 export const Default = {
   args: {
     buttonTitle: '',
-    size: "sm",
     variant: 'solid',
     radius: "md",
     isLoading: false,
-    color: 'success',
   },
   parameters: {
     nextjs: {

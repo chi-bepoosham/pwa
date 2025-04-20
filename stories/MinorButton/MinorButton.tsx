@@ -6,73 +6,72 @@ import clsx from 'clsx';
 
 
 export interface MinorButtonProps {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  className?: string;
   variant?: 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | 'ghost';
   buttonTitle?: string | React.ReactNode;
   radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
   isLoading?: boolean;
   icon?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+<<<<<<< HEAD
   className?: string
+=======
+  onClick?: () => void;
+>>>>>>> bug_fixed
 }
 
 
 const getCustomColorClass = (color?: string) => {
   switch (color) {
     case 'primary':
-      return 'text-white';
+      return '';
     case 'secondary':
       return '';
     case 'success':
-      return 'text-secondary';
+      return '';
     case 'warning':
-      return 'text-white';
+      return '';
     case 'danger':
-      return 'text-white';
+      return '';
     default:
       return 'bg-primary';
   }
 };
 
 
-const getCustomSizeClass = (size?: string) => {
-  const maxWidth = 'w-full ';
-
-  switch (size) {
-    case 'sm':
-      return `!w-10 !h-10  ${maxWidth} text-base`;
-    case 'md':
-      return `px-3 max-w-64 ${maxWidth} text-base`;
-    case 'lg':
-      return `px-3 max-w-80 ${maxWidth} text-lg`;
-    case 'xl':
-      return `px-3 max-w-96 ${maxWidth} text-xl`;
-    default:
-      return `px-3 ${maxWidth} text-base`;
-  }
-};
 
 
 export const MinorButton = (props: MinorButtonProps) => {
   const {
-    size = 'sm',
+    className = '',
     buttonTitle,
     variant,
     radius,
     isLoading,
     icon,
     color = 'primary',
+<<<<<<< HEAD
     className
+=======
+    onClick
+>>>>>>> bug_fixed
   } = props;
+
   const [, setClicked] = useState(false);
 
   const handleClick = () => {
     setClicked(true);
+    if (onClick) {
+      onClick();
+    }
   };
-
   return (
     <Button
+<<<<<<< HEAD
       className={clsx(`!min-w-0 ${getCustomColorClass(color)} ${getCustomSizeClass(size)}` , className)}
+=======
+      className={`!min-w-0 ${className} ${getCustomColorClass(color)}`}
+>>>>>>> bug_fixed
       variant={variant}
       radius={radius}
       color={color}
