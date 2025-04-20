@@ -27,7 +27,7 @@ export const Label = (props: PhoneOtpLabelProps) => {
         )
     }
     return (
-        <div className="py-2 text-nowrap">
+        <div className="py-2 text-nowrap text-secondary-500">
             <label>
                 لطفا شماره تلفن خود را در کادر زیر وارد کنید.
             </label>

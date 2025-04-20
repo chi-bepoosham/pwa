@@ -11,7 +11,7 @@ export interface GenderSelectionProps {
 export const GenderSelection = (props: GenderSelectionProps) => {
   const {} = props;
   return (
-    <>
+    <div className="w-full flex justify-center items-start">
       <RadioGroup
         label={
           <span className="text-secondary font-semibold text-large">
@@ -34,7 +34,7 @@ export const GenderSelection = (props: GenderSelectionProps) => {
           آقـــــا
         </CustomRadio>
       </RadioGroup>
-    </>
+    </div>
   );
 };
 

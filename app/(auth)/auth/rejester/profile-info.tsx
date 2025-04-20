@@ -1,6 +1,6 @@
 import { GenderSelection } from '@/stories/GenderSelection';
 import { MinorButton } from '@/stories/MinorButton';
-import { MinoreInput } from '@/stories/MinoreInput';
+import { MinorInput } from '@/stories/MinorInput';
 import { Uploader } from '@/stories/Uploader';
 import { VoiceAssistant } from '@/stories/VoiceAssistant';
 import { Button } from '@heroui/react';
@@ -12,14 +12,14 @@ const ProfileInfo = () => {
         <Uploader size="medium" title="تصویر نمایه" />
         <div className="flex flex-col gap-2 w-full">
           <h2 className="text-secondary font-semibold">مشخصات شما</h2>
-          <MinoreInput type="fullName" />
+          <MinorInput type="fullName" />
         </div>
         <GenderSelection />
       </div>
 
       <div className="flex flex-col items-center gap-4 w-full">
         <MinorButton
-          size="md"
+          className="w-full max-w-64 text-large"
           variant="flat"
           buttonTitle="مـــرحلۀ بــــعدی"
           radius="md"

@@ -16,7 +16,7 @@ export const VoiceAssistant = () => {
         <div className="absolute -top-40 translate-y-0 translate-x-0">
           <ShieldVector />
         </div>
-        <p className="text-white text-lg font-medium select-none">
+        <p className="text-white text-lg font-medium select-none text-nowrap">
           سلام! من اینجا بهت کمک می‌کنم تا بتونی ...
         </p>
       </div>

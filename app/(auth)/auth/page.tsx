@@ -14,18 +14,18 @@ export default function Page() {
 
 
     return (
-        <div className="flex flex-col justify-center items-center w-full h-screen overflow-hidden"
+        <div className="flex flex-col justify-center items-center w-full h-full overflow-hidden bg-primary"
         >
             <div className="flex flex-col items-center justify-center h-full w-full gap-5">
                 <Logo
                     withLogoType={true}
                 />
                 <div className="flex flex-row justify-center items-center w-full gap-4">
-                    <i className="">
+                    <i className="rotate-180">
                         <CometStarVector/>
                     </i>
-                    <h2 className="text-nowrap">ورود و ثــبت‌نـــام</h2>
-                    <i className=" rotate-180">
+                    <h2 className="text-nowrap text-white">ورود و ثــبت‌نـــام</h2>
+                    <i className="">
                         <CometStarVector/>
                     </i>
                 </div>
@@ -36,22 +36,20 @@ export default function Page() {
                 className="flex flex-col items-center justify-between w-full h-full rounded-t-3xl p-4 bg-white">
                 <div className="h-full">
                     <LoginByPhoneOtpForm reset={handleReset}/>
-
                 </div>
                 <div className="flex flex-row items-center justify-center w-full h-full gap-4">
-                    <i className="text-secondary-300">
+                    <i className="rotate-180">
                         <CometStarVector/>
                     </i>
                     <h4 className="text-secondary">
                         یــا
                     </h4>
-                    <i className="text-secondary-300 rotate-180">
+                    <i>
                         <CometStarVector/>
                     </i>
                 </div>
                 <div className="w-full h-full flex justify-center items-center">
                     <MinorButton
-                        size="lg"
                         variant="ghost"
                         buttonTitle="ورود بـــــا حســــاب گــــــوگل"
                         radius="md"

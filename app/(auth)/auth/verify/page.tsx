@@ -26,56 +26,69 @@ export default function Page() {
   };
 
   return (
-    <div className="bg-white w-full h-screen flex flex-col justify-between items-center overflow-hidden">
-      <div className="w-full h-full">
+    <div className="relative flex flex-col justify-between h-full overflow-hidden">
+
+      <div className="p-2">
         <MinorButton
-          size="sm"
+          className="px-1 py-4"
           variant="bordered"
-          radius="md"
+          radius="lg"
           isLoading={false}
           icon={<i className="text-secondary"><ArrowRightIcon size={28} /></i>}
           color="secondary"
         />
       </div>
-      <div className="flex flex-col justify-center items-center w-full h-full">
-        <div className="flex flex-row justify-center items-center gap-4">
-          <i className="text-secondary-300">
-            <CometStarVector />
-          </i>
-          <h2 className="text-secondary font-semibold text-nowrap">
-            کــد تـــایید را وارد کــنید
-          </h2>
-          <i className="text-secondary-300 rotate-180">
-            <CometStarVector />
-          </i>
+
+      <div className="flex flex-col justify-center items-center gap-14 w-full h-full">
+
+        <div className="flex flex-col justify-center items-center gap-5">
+
+          <div className="flex flex-row justify-center items-center gap-1.5">
+            <i className="rotate-180">
+              <CometStarVector />
+            </i>
+            <h2 className="text-nowrap">
+              کــد تـــایید را وارد کــنید
+            </h2>
+            <i>
+              <CometStarVector />
+            </i>
+          </div>
+          <p>
+            کد 5 رقمی به شمارۀ 09388505929 ارسال شد.
+          </p>
         </div>
-        <h3>
-          کد 5 رقمی به شمارۀ 09388505929 ارسال شد.
-        </h3>
-      </div>
-      <div className="h-full">
+
+
         <TokenInput control={control} done={handleSubmit(onSubmit)} />
+
+        <div className="flex flex-col justify-center items-center gap-5 w-full">
+          <MinorButton
+            className="w-full max-w-64"
+            variant="flat"
+            buttonTitle="تایید و ادامه"
+            radius="md"
+            isLoading={false}
+            color="secondary"
+          />
+          <button className="text-primary">
+            اصلاح شماره موبایل
+          </button>
+        </div>
+
+
       </div>
-      <div className="w-full h-full flex flex-col justify-center items-center gap-3">
-        <MinorButton
-          size="lg"
-          variant="flat"
-          buttonTitle="تایید و ادامه"
-          radius="md"
-          isLoading={false}
-          color="secondary"
-        />
-        <h4 className="text-primary">
-          اصلاح شماره موبایل
-        </h4>
-      </div>
-      <div className="w-full h-full text-primary">
+
+
+      <div className="absolute -bottom-24 w-full">
         <Banner
           withStar={true}
           textColor="text-primary"
           starColor="text-primary"
         />
       </div>
+
+
     </div>
   );
 }

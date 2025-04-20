@@ -13,11 +13,7 @@ export interface MinorButtonProps {
   isLoading?: boolean;
   icon?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
-<<<<<<< HEAD
-  className?: string
-=======
   onClick?: () => void;
->>>>>>> bug_fixed
 }
 
 
@@ -39,8 +35,6 @@ const getCustomColorClass = (color?: string) => {
 };
 
 
-
-
 export const MinorButton = (props: MinorButtonProps) => {
   const {
     className = '',
@@ -50,11 +44,7 @@ export const MinorButton = (props: MinorButtonProps) => {
     isLoading,
     icon,
     color = 'primary',
-<<<<<<< HEAD
-    className
-=======
-    onClick
->>>>>>> bug_fixed
+    onClick,
   } = props;
 
   const [, setClicked] = useState(false);
@@ -67,11 +57,8 @@ export const MinorButton = (props: MinorButtonProps) => {
   };
   return (
     <Button
-<<<<<<< HEAD
-      className={clsx(`!min-w-0 ${getCustomColorClass(color)} ${getCustomSizeClass(size)}` , className)}
-=======
-      className={`!min-w-0 ${className} ${getCustomColorClass(color)}`}
->>>>>>> bug_fixed
+
+      className={clsx(`!min-w-0 ${getCustomColorClass(color)} `, className)}
       variant={variant}
       radius={radius}
       color={color}

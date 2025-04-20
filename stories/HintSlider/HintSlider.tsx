@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { CorrectIcon, FalseIcon } from '@/stories/Icons';
 import clsx from 'clsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import 'swiper/css/pagination';
-
 
 export interface HintSliderProps {
   slides: { picture: string; matchRate: number; isCorrect: boolean }[];
@@ -14,19 +14,29 @@ export const HintSlider = (props: HintSliderProps) => {
   const { slides } = props;
 
   return (
-
     <div className="relative w-full max-w-[800px] select-none flex flex-col gap-8">
       <Swiper
         spaceBetween={10}
-        slidesPerView={2}
-        slidesPerGroup={2}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+          },
+          640: {
+            slidesPerView: 1.5,
+            slidesPerGroup: 1,
+          },
+          768: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+          },
+        }}
         className="w-full"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="relative w-full h-64 border-2 border-secondary rounded-2xl">
-              <div
-                className="text-white flex justify-center items-center absolute top-2 left-2 bg-white/10 backdrop-blur rounded-full z-10 w-10 h-10">
+              <div className="text-white flex justify-center items-center absolute top-2 left-2 bg-white/10 backdrop-blur rounded-full z-10 w-10 h-10">
                 {slide.matchRate}%
               </div>
 
@@ -41,7 +51,7 @@ export const HintSlider = (props: HintSliderProps) => {
               <div
                 className={clsx(
                   'absolute z-10 h-12 flex justify-center items-center bottom-2 left-2 bg-secondary/60 backdrop-blur rounded-xl px-3',
-                  slide.isCorrect ? 'border-2 border-[#07A537]' : 'border-2 border-[#E93B55]',
+                  slide.isCorrect ? 'border-2 border-[#07A537]' : 'border-2 border-[#E93B55]'
                 )}
               >
                 {slide.isCorrect ? (
@@ -66,8 +76,8 @@ export const HintSlider = (props: HintSliderProps) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {/*ToDo:make a pagination for slider*/}
-    </div>
 
+      {/* ToDo:make a pagination for slider */}
+    </div>
   );
 };

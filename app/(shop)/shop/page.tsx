@@ -1,6 +1,6 @@
 import React from 'react';
 import MainHeader from '../components/header/main-header';
-import { ProductCard } from '@/stories/ProductCard';
+// import {ProductCard} from '@/stories/ProductCard';
 import ShopProductList from '../components/shop-product-list';
 const objectt = [
   {

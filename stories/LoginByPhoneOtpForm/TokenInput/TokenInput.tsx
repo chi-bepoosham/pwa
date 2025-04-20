@@ -34,14 +34,14 @@ export const TokenInput = (props: PhoneNumberInputProps) => {
             name="token"
             control={control}
             render={({field, fieldState, formState}) => (
-                <div className="flex gap-1 justify-between">
+                <div className="flex gap-1.5 justify-between">
                     <InputOtp
                         length={5}
                         fullWidth
                         size="lg"
                         radius="lg"
                         color="secondary"
-                        variant="flat"
+                        variant="bordered"
                         classNames={{segmentWrapper: "flex-row-reverse justify-center"}}
 
                         value={field.value}
@@ -54,9 +54,9 @@ export const TokenInput = (props: PhoneNumberInputProps) => {
 
                         onComplete={done}
                     />
-                    <Resend
-                        control={control}
-                    />
+                    {/*<Resend*/}
+                    {/*    control={control}*/}
+                    {/*/>*/}
                 </div>
             )}
         />
