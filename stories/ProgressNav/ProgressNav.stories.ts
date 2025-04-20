@@ -9,7 +9,8 @@ export default {
 export const Default = {
   args: {
     status: "continued",
-    deliveryTime: "12:35"
+    deliveryTime: "12:35",
+    percent: 70
   },
   parameters: {
     nextjs: {

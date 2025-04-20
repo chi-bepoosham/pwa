@@ -16,9 +16,10 @@ export const Default = {
       { label: 'مشهد', value: 'mashhad' },
     ],
 
-    type: "fullName",
+    type: "email",
     placeholder: "",
-    label: ""
+    label: "",
+    value: ""
   },
 parameters: {
   nextjs: {

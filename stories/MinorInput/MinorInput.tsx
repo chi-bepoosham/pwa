@@ -42,7 +42,7 @@ export const MinorInput = ({
         <select
           value={value}
           onChange={onChange}
-          className="w-full border-2 border-secondary-100 rounded-xl text-secondary bg-white p-3 focus:outline-none focus:border-secondary"
+          className="w-full border-2 border-secondary-100 rounded-xl text-secondary p-3 focus:outline-none focus:border-secondary"
         >
           <option value="">{getPlaceholder()}</option>
           {options?.map(opt => (
@@ -59,8 +59,16 @@ export const MinorInput = ({
           onChange={onChange}
           className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
           classNames={{
-            innerWrapper: ['bg-white'],
-            inputWrapper: ['bg-white'],
+           innerWrapper: [
+             'bg-white',
+           ],
+            inputWrapper: [
+              'bg-white',
+              // data-[hover=true]:bg-red-700
+              'data-[hover=true]:bg-white',
+              //group-data-[focus=true]:bg-blue-700
+              'group-data-[focus=true]:bg-white'
+            ],
           }}
         />
       )}

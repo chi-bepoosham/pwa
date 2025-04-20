@@ -8,7 +8,7 @@ export default {
 
 export const Default = {
     args: {
-        withFilter: false
+        withFilter: true
     },
     parameters: {
         nextjs: {
