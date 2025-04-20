@@ -24,7 +24,7 @@ export const ProductCard = (props: ProductCardProps) => {
                 "w-full min:w-60 rounded-[18px] overflow-hidden relative",
                 variant === "bordered"
                     ? "border-2 border-secondary bg-white"
-                    : "bg-secondary-50 border-none"
+                    : "bg-secondary-50/5 border-none"
             )}>
                 <div className={clsx(
                     "absolute top-1.5 left-1.5 p-1.5 rounded-2xl",
@@ -52,10 +52,10 @@ export const ProductCard = (props: ProductCardProps) => {
                         src={`/${imageUrl}`}
                         alt={title}
                     />
-                    <div className={clsx("px-3 py-2 gap-1 flex flex-col items-start",
+                    <div className={clsx("px-2 py-3 gap-3 flex flex-col items-start",
                         variant === "bordered"
-                            ? "bg-secondary-50/5 rounded-lg m-2"
-                            : "bg-white rounded-lg m-2"
+                            ? "bg-secondary-50/5 rounded-t-lg rounded-b-xl m-2"
+                            : "bg-white rounded-t-lg rounded-b-xl m-2"
                     )}>
                         <div className="flex items-center gap-1">
                             <span className="text-xs md:text-lg text-primary font-bold">{price}</span>

@@ -1,42 +1,42 @@
 import React from 'react';
-import MainHeader from './components/header/main-header';
+import MainHeader from '../components/header/main-header';
 import { ProductCard } from '@/stories/ProductCard';
-import ShopProductList from './components/shop-product-list';
+import ShopProductList from '../components/shop-product-list';
 const objectt = [
   {
     price: '859.000',
     description: 'XL. 2X. 3X',
     title: 'کلاه پشم‌گاو',
-    imageUrl: 'img.png',
-    variant: 'bordered',
-    colors: ['#FF5733', '#33FF57', '#3357FF', '#F5A623'],
+    imageUrl: 'img.svg',
+    variant: 'solid',
+    colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
   },
   {
     price: '859.000',
     description: 'XL. 2X. 3X',
     title: 'کلاه پشم‌گاو',
-    imageUrl: 'img.png',
+    imageUrl: 'img.svg',
     variant: 'bordered',
-    colors: ['#FF5733', '#33FF57', '#3357FF', '#F5A623'],
+    colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
   },
   {
     price: '859.000',
     description: 'XL. 2X. 3X',
     title: 'کلاه پشم‌گاو',
-    imageUrl: 'img.png',
+    imageUrl: 'img.svg',
     variant: 'bordered',
-    colors: ['#FF5733', '#33FF57', '#3357FF', '#F5A623'],
+    colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
   },
   {
     price: '859.000',
     description: 'XL. 2X. 3X',
     title: 'کلاه پشم‌گاو',
-    imageUrl: 'img.png',
-    variant: 'bordered',
-    colors: ['#FF5733', '#33FF57', '#3357FF', '#F5A623'],
+    imageUrl: 'img.svg',
+    variant: 'solid',
+    colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
   },
 ];

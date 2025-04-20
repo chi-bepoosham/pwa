@@ -11,10 +11,10 @@ export interface BrandProps {
 export const Brand = (props: BrandProps) => {
     const {titleEn, titleFa} = props;
     return (
-        <div className="flex flex-col items-start text-center">
+        <div>
             <span
-                className={`text-secondary-100 font-semibold text-4xl text-nowrap ${sacramento.className}`}>{titleEn}</span>
-            {titleFa && <p className="text-2xl text-secondary font-semibold">{titleFa}</p>}
+                className={`leading-3 text-secondary-100 font-normal text-2xl md:text-4xl text-nowrap ${sacramento.className}`}>{titleEn}</span>
+            {titleFa && <p className="leading-3 text-sm text-secondary font-semibold">{titleFa}</p>}
         </div>
     )
 }

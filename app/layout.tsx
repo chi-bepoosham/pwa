@@ -9,8 +9,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa">
-      <body dir="rtl" className={clsx('w-screen min:h-screen bg-primary-100', IRANSansX.className)}>
-        <main className="max-w-screen-md mx-auto bg-white h-full">{children}</main>
+      <body dir="rtl" className={clsx('w-screen h-screen bg-primary-100', IRANSansX.className)}>
+        <main className="max-w-screen-md mx-auto min-h-screen bg-white h-full">{children}</main>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@heroui/react';
 import { motion } from 'framer-motion';
+import clsx from 'clsx';
 
 
 export interface MinorButtonProps {
@@ -12,6 +13,7 @@ export interface MinorButtonProps {
   isLoading?: boolean;
   icon?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+  className?: string
 }
 
 
@@ -60,6 +62,7 @@ export const MinorButton = (props: MinorButtonProps) => {
     isLoading,
     icon,
     color = 'primary',
+    className
   } = props;
   const [, setClicked] = useState(false);
 
@@ -69,7 +72,7 @@ export const MinorButton = (props: MinorButtonProps) => {
 
   return (
     <Button
-      className={`!min-w-0 ${getCustomColorClass(color)} ${getCustomSizeClass(size)}`}
+      className={clsx(`!min-w-0 ${getCustomColorClass(color)} ${getCustomSizeClass(size)}` , className)}
       variant={variant}
       radius={radius}
       color={color}
