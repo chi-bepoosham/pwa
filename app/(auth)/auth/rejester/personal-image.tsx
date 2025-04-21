@@ -9,7 +9,7 @@ import { HintSlider } from '@/stories/HintSlider';
 const PersonalImage = () => {
   return (
     <>
-      <div className="flex flex-col items-center gap-10 w-full px-7">
+      <div className="flex flex-col items-center gap-4 w-full px-7">
         <Uploader size="x-large" title="تصویر نمایه" />
         <div className="text-center flex gap-2 flex-col text-sm text-nowrap relative">
           <div>

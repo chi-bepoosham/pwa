@@ -21,7 +21,7 @@ const ShopItemHeader = () => {
         />
       </div>
       <div className='mt-5'>
-        <Search withFilter/>
+        <Search withFilter={true} />
       </div>
     </div>
   );

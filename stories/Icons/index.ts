@@ -101,3 +101,8 @@ export { Icon as OutlineMyDrawerIcon } from './OutlineMyDrawer.stories';
 export { Icon as CorrectIcon } from './Correct.stories';
 export { Icon as FalseIcon } from './False.stories';
 export {Icon as TruckIcon} from './Truck.stories';
+
+
+
+// SopingBag
+export {Icon as ShopingBagIcon} from "./ShopingBag.stories"
