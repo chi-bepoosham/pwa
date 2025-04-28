@@ -1,8 +1,14 @@
- import MyClosetHeader from "../components/layout/my-closet-header"
+import React from 'react';
 
-const Layout = () => {
-    return(
-        <MyClosetHeader />
-    )
+
+export default function Layout({
+                                     children,
+                                   }: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <>
+      {children}
+    </>
+  );
 }
-export default Layout

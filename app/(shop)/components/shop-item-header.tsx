@@ -1,23 +1,26 @@
 import { Brand } from '@/stories/Brand';
 import { MinorButton } from '@/stories/MinorButton';
 import { Search } from '@/stories/Search';
-import { ArrowRight } from '@mui/icons-material';
+import { ArrowRightIcon , ShoppingBagIcon } from '@/stories/Icons';
 
 const ShopItemHeader = () => {
   return (
-    <div className="p-7 rounded-b-3xl relative bg-[#4141F9]">
+    <div className="p-7 rounded-b-3xl relative bg-primary">
       <div className='flex justify-between'>
         <MinorButton
           variant="bordered"
-          className={'border-white rounded-2xl'}
-          icon={<ArrowRight />}
+          className='border-white rounded-2xl px-2 py-5'
+          icon={<i className="text-white"><ArrowRightIcon size={28} /></i>}
         />
-        <Brand titleEn={"jeanwest"} titleFa={"جـــین‌وســـت"} />
+        <Brand 
+        titleEnColor='text-white/30'
+        titleFaColor='text-white'
+        titleEn={"jeanwest"} titleFa={"جـــین‌وســـت"} />
         <MinorButton
           variant="flat"
           color='secondary'
-          // className={'border-white rounded-2xl'}
-          icon={<ArrowRight />}
+          className='px-2 py-4'
+          icon={<i className="text-white"><ShoppingBagIcon size={28} /></i>}
         />
       </div>
       <div className='mt-5'>

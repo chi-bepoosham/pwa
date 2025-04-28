@@ -7,6 +7,7 @@ import {
   OutlineChestIcon,
   OutlineMyDrawerIcon,
 } from '@/stories/Icons';
+import Link from 'next/link';
 
 export interface BottomNavigationProps {
 }
@@ -18,25 +19,29 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
       actionIcon: <HomeIcon size={28} />,
       icon: <OutlineHomeIcon size={28} />,
       label: 'صفحه اصلی',
+      href: '/',
     },
     {
       actionIcon: <ChestIcon size={28} />,
       icon: <OutlineChestIcon size={28} />,
       label: 'فـروشگـاه',
+      href: '/shop',
     },
     {
       actionIcon: <MyDrawerIcon size={28} />,
       icon: <OutlineMyDrawerIcon size={28} />,
       label: 'کمد لباسم',
+      href: '/my-closet',
     },
   ];
 
   return (
     <div className="w-full flex flex-row justify-center items-center">
       {navItems.map((item, index) => (
-        <div
+        <Link
+          href={item.href}
           key={index}
-          className="flex flex-col gap-2.5 justify-center items-center group cursor-pointer w-28 relative"
+          className="flex flex-col gap-2.5 justify-center items-center group cursor-pointer w-28 relative max-h-fit"
         >
           <i className="text-secondary group-hover:hidden">{item.icon}</i>
           <i className="text-primary hidden group-hover:block">{item.actionIcon}</i>
@@ -44,8 +49,10 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
             {item.label}
           </span>
           <span
-            className="absolute -bottom-4 w-0 h-0.5 bg-primary rounded-2xl transition-all duration-300 group-hover:w-8 group-hover:h-1"></span>
-        </div>
+            className="absolute -bottom-2 w-0 h-0.5 bg-primary rounded-2xl transition-all duration-300 group-hover:w-8 group-hover:h-1">
+
+          </span>
+        </Link>
       ))}
     </div>
   );

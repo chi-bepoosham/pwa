@@ -2,6 +2,7 @@ import React from 'react';
 import MainHeader from '../components/header/main-header';
 // import {ProductCard} from '@/stories/ProductCard';
 import ShopProductList from '../components/shop-product-list';
+import { BottomNavigation } from '@/stories/BottomNavigation';
 const objectt = [
   {
     price: '859.000',
@@ -48,15 +49,16 @@ export default function Page() {
   }));
 
   return (
-    <>
+    <main className="h-full">
       <MainHeader />
-      <div className="px-8">
+      <div className="px-8 bg-green-800 h-screen">
         <ShopProductList 
           secondTitle='مـناسب هـوای بـرفی...' 
           title='Winter' 
           listItems={typedObjectt} 
         />
       </div>
-    </>
+      {/* <BottomNavigation/> */}
+    </main>
   );
 }

@@ -104,5 +104,5 @@ export {Icon as TruckIcon} from './Truck.stories';
 
 
 
-// SopingBag
-export {Icon as ShopingBagIcon} from "./ShopingBag.stories"
+// ShoppingBag
+export {Icon as ShoppingBagIcon} from "./ShoppingBag.stories"

@@ -28,7 +28,7 @@ export const Icon = ({size = 60}: { size?: number }) => {
 }
 
 export default {
-  title: "Icons/ShopingBag",
+  title: "Icons/ShoppingBag",
   component: Icon,
 }
 

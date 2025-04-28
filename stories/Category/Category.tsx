@@ -5,6 +5,7 @@ import { MinorButton } from '@/stories/MinorButton';
 export interface CategoryProps {
   isSize?: boolean;
   onChange?: (selectedValue: string) => void;
+  theme: 'light' | 'dark';
 }
 
 const categoryOptions = [
@@ -24,9 +25,8 @@ const sizeOptions = [
   { title: '3XL' },
 ];
 
-export const Category = ({ isSize, onChange }: CategoryProps) => {
+export const Category = ({ isSize, onChange, theme }: CategoryProps) => {
   const options = isSize ? sizeOptions : categoryOptions;
-
   const [selected, setSelected] = useState<string>(options[0].title);
 
   const handleClick = (title: string) => {
@@ -35,9 +35,17 @@ export const Category = ({ isSize, onChange }: CategoryProps) => {
   };
 
   return (
-    <div className="flex flex-row gap-3 w-full justify-center items-center">
+    <div className="w-full overflow-x-auto whitespace-nowrap flex gap-3 justify-center items-center">
       {options.map((item, index) => {
         const isActive = selected === item.title;
+
+        const bgClass = theme === 'light' ? 'bg-primary' : 'bg-secondary';
+        const borderClass = theme === 'light' ? 'border-primary' : 'border-secondary';
+        const textClass = isActive
+          ? 'text-white'
+          : theme === 'light'
+            ? 'text-primary'
+            : 'text-gray-400';
 
         return (
           <MinorButton
@@ -46,10 +54,8 @@ export const Category = ({ isSize, onChange }: CategoryProps) => {
             onClick={() => handleClick(item.title)}
             variant={isActive ? 'solid' : 'bordered'}
             radius="md"
-            className={`px-5 py-2.5 border-1.5 transition-all duration-200 ${
-              isActive
-                ? 'bg-secondary text-white'
-                : 'text-gray-400 border-black hover:text-black'
+            className={`p-4 border-1.5 transition-all duration-200 w-fit ${textClass} ${borderClass} ${
+              isActive ? bgClass : ''
             }`}
           />
         );

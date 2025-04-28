@@ -1,7 +1,7 @@
 import MagicTextBackground from '@/components/common/magic-text-background';
-import { MinorButton } from '@/stories/MinorButton';
 import { Search } from '@/stories/Search';
-import { BadgeOutlined } from '@mui/icons-material';
+import { NotificationIcon, ShoppingBagIcon } from '@/stories/Icons';
+import { MinorButton } from '@/stories/MinorButton';
 
 const MainHeader = () => {
   return (
@@ -9,8 +9,17 @@ const MainHeader = () => {
       <div className="flex justify-between items-center ">
         <MagicTextBackground title={"اسـتایل خـودتو بـساز!"}/>
         <div className="flex gap-2">
-          <MinorButton color="primary" buttonTitle={<BadgeOutlined width={14} />} />
-          <MinorButton color="primary" variant='flat' buttonTitle={<BadgeOutlined width={14} />} />
+          <MinorButton 
+          color="primary" 
+          buttonTitle={<ShoppingBagIcon size={28} />}
+          className="px-2 py-4"
+          />
+          <MinorButton 
+          color="primary"
+           variant='flat'
+            buttonTitle={<NotificationIcon size={28} />} 
+            className="px-2 py-4"
+            />
         </div>
       </div>
       <div className='w-full mt-4'>

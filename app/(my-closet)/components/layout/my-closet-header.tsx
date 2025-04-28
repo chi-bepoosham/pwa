@@ -1,12 +1,12 @@
 import MagicTextBackground from '@/components/common/magic-text-background';
 import { MinorButton } from '@/stories/MinorButton';
-import { PlusIcon, ShopingBagIcon } from '@/stories/Icons';
+import { PlusIcon, ShoppingBagIcon } from '@/stories/Icons';
 import { Search } from '@/stories/Search';
 
 const MyClosetHeader = () => {
   return (
-    <header className="flex flex-col">
-      <div className="flex justify-between p-7 relative">
+    <header className="flex flex-col gap-1">
+      <div className="flex justify-between px-7 py-5 relative">
         <MagicTextBackground title={'کــمد لبــاس مــن!'} />
         <div className="flex flex-row gap-2">
           <MinorButton
@@ -17,7 +17,7 @@ const MyClosetHeader = () => {
             className="px-2 py-4"
           />
           <MinorButton
-            buttonTitle={<i className="text-text-white"><ShopingBagIcon size={25} /> </i>}
+            buttonTitle={<i className="text-text-white"><ShoppingBagIcon size={25} /> </i>}
             variant="solid"
             radius="lg"
             color="primary"
@@ -31,6 +31,7 @@ const MyClosetHeader = () => {
         <Search withFilter={true} />
       </div>
     </header>
+
 
 
   );
