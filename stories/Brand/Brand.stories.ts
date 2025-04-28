@@ -1,4 +1,5 @@
 import { Brand } from './Brand';
+import { ShopIcon } from '@/stories/Icons';
 
 
 
@@ -9,7 +10,10 @@ export default {
 
 export const Default = {
     args: {
-
+        titleEn: "jeanwest",
+        titleFa: "جـــین‌وســـت",
+        titleEnColor: "black",
+        titleFaColor: "blue",
     },
     parameters: {
         nextjs: {

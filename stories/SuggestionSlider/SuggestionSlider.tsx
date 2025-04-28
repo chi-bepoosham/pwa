@@ -94,3 +94,22 @@ export const SuggestionSlider = ({ slides }: SuggestionSliderProps) => {
     </div>
   );
 };
+
+// نحوه استفاده از کامپوننت SuggestionSlider:
+
+// import { SuggestionSlider } from './path/to/SuggestionSlider';
+
+// function YourComponent() {
+//   const slidesData = [
+//     { imageUrl: "/path/to/image1.jpg", name: "استایل 1" },
+//     { imageUrl: "/path/to/image2.jpg", name: "استایل 2" },
+//     { imageUrl: "/path/to/image3.jpg", name: "استایل 3" },
+//     // ... دیگر اسلایدها
+//   ];
+
+//   return (
+//     <SuggestionSlider slides={slidesData} />
+//   );
+// }
+
+// export default YourComponent;

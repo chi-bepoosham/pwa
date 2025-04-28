@@ -53,3 +53,25 @@ export const Celebrities = (props: CelebrityProps) => {
     </div>
   );
 };
+
+// نحوه استفاده از کامپوننت Celebrities:
+
+// import { Celebrities } from './path/to/Celebrities';
+
+// function YourComponent() {
+//   const celebritiesData = [
+//     { fullName: "صالح", avatar: "/124.jpeg", id: 1 },
+//     { fullName: "ایلیا", avatar: "https://i.pravatar.cc", id: 2 },
+//     // ... دیگر سلبریتی‌ها
+//   ];
+
+//   return (
+//     <Celebrities
+//       description="سلبریتی دیگر"
+//       number={4}
+//       celebrities={celebritiesData}
+//     />
+//   );
+// }
+
+// export default YourComponent;

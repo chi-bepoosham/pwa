@@ -1,7 +1,7 @@
 import { Brand } from '@/stories/Brand';
 import { MinorButton } from '@/stories/MinorButton';
 import { Search } from '@/stories/Search';
-import { ArrowRightIcon , ShoppingBagIcon } from '@/stories/Icons';
+import { ArrowRightIcon , ShoppingBagIcon , ShopIcon } from '@/stories/Icons';
 
 const ShopItemHeader = () => {
   return (
@@ -13,9 +13,13 @@ const ShopItemHeader = () => {
           icon={<i className="text-white"><ArrowRightIcon size={28} /></i>}
         />
         <Brand 
+        className=''
         titleEnColor='text-white/30'
         titleFaColor='text-white'
-        titleEn={"jeanwest"} titleFa={"جـــین‌وســـت"} />
+        titleEn={"jeanwest"}
+        titleFa={"جـــین‌وســـت"}
+        titleFaIcon={<ShopIcon size={20} />}
+          />
         <MinorButton
           variant="flat"
           color='secondary'
