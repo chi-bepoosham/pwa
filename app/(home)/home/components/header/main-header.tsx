@@ -1,6 +1,7 @@
 import { InfoIcon, UserIcon } from '@/stories/Icons';
 import { MinorButton } from '@/stories/MinorButton';
 import { StarIcon } from '@/stories/Icons';
+import Link from "next/link"
 
 const MainHeader = () => {
   return (
@@ -26,12 +27,16 @@ const MainHeader = () => {
           ســــاعت شنــی
           </h2>
         </div>
-        <MinorButton
+        <Link
+        href="/home/body-form">
+<MinorButton
         variant='flat'
         color='secondary'
         className='px-2 py-4'
         buttonTitle={<i className='text-white'><InfoIcon size={28} /></i>}
         />
+        </Link>
+        
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ export const BodyType = (props: BodyTypeProps) => {
   const { title, strength, weaknessPoints, selectedType, number } = props;
 
   return (
-    <div className="w-[600px] grid grid-cols-4 border-2 border-secondary pr-2 rounded-lg h-96">
+    <div className="w-full grid grid-cols-4 border-2 border-secondary pr-2 rounded-lg">
       <div className="col-span-1 bg-primary-50 rounded-lg my-2 flex justify-center items-center">
         <Types selectedType={selectedType} />
       </div>

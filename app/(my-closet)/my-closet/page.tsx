@@ -6,13 +6,14 @@ import { ProductCard } from '@/stories/ProductCard/ProductCard';
 
 const MyCloset = () => {
   return (
-    <>
-      <div className="flex flex-col justify-center w-full h-full overflow-x-hidden">
-        <MyClosetHeader />
-
+    <div className="flex flex-col w-full h-screen overflow-y-auto overflow-x-hidden">
+      <div className="flex-grow">
+        <div className="sticky top-0 z-10 bg-white pb-5">
+          <MyClosetHeader />
+        </div>
 
         {/*main part*/}
-        <main className="w-full h-full flex flex-col gap-7 p-1.5">
+        <main className="flex flex-col gap-7 p-3">
           <div className="w-full">
             <Category theme="light" />
           </div>
@@ -23,7 +24,35 @@ const MyCloset = () => {
             />
           </div>
           {/*Cloth Part*/}
-          <div className="grid grid-cols-2 gap-4 w-full h-full">
+          <div className="grid grid-cols-2 gap-4 w-full">
+            <ProductCard
+              price="859.000"
+              description="XL. 2X. 3X"
+              title="کلاه پشم‌گاو"
+              imageUrl="img.png"
+              variant="bordered"
+              colors={[
+                '#FF5733',
+                '#33FF57',
+                '#3357FF',
+                '#F5A623'
+              ]}
+              withArrow={false}
+            />
+            <ProductCard
+              price="859.000"
+              description="XL. 2X. 3X"
+              title="کلاه پشم‌گاو"
+              imageUrl="img.png"
+              variant="bordered"
+              colors={[
+                '#FF5733',
+                '#33FF57',
+                '#3357FF',
+                '#F5A623'
+              ]}
+              withArrow={false}
+            />
             <ProductCard
               price="859.000"
               description="XL. 2X. 3X"
@@ -54,14 +83,15 @@ const MyCloset = () => {
             />
           </div>
         </main>
-
-        <div className="w-full py-2.5">
-            <BottomNavigation />
-        </div>
       </div>
 
-
-    </>
+      <div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">
+        <BottomNavigation />
+      </div>
+    </div>
   );
 };
+
 export default MyCloset;
+
+

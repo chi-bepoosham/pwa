@@ -49,16 +49,22 @@ export default function Page() {
   }));
 
   return (
-    <main className="h-full">
+    <main className="flex flex-col w-full h-screen overflow-y-auto overflow-x-hidden">
+      <div className="sticky top-0 z-10 bg-blue-500 pb-5">
       <MainHeader />
-      <div className="px-8 bg-green-800 h-screen">
+      </div>
+      
+      <div className="px-8 py-6 bg-green-500">
+        
         <ShopProductList 
           secondTitle='مـناسب هـوای بـرفی...' 
           title='Winter' 
           listItems={typedObjectt} 
         />
       </div>
-      {/* <BottomNavigation/> */}
+      <div className="sticky z-10 bottom-0 w-full py-2.5 bg-red-500">
+        <BottomNavigation />
+      </div>
     </main>
   );
 }
