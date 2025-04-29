@@ -3,7 +3,6 @@ import MainHeader from "./components/header/main-header"
 import { Celebrities } from "@/stories/Celebrities"
 import { SuggestionSlider } from "@/stories/SuggestionSlider"
 import { BottomNavigation } from "@/stories/BottomNavigation"
-import Link from "next/link"
 
 export default function Home() {
   const celebritiesData = [
@@ -25,29 +24,29 @@ export default function Home() {
       <div className="w-full">
         <MainHeader />
       </div>
-      <div className="w-full flex-grow flex flex-col gap-4 pb-16">
+      <div className="w-full flex flex-col gap-4 pb-16 bg-red-700">
       
-<div className="w-full flex justify-center items-center">
+{/* <div className="w-full flex justify-center items-center">
           <BodyForm />
-        </div>
+        </div> */}
         
         
-        <div className="w-full flex justify-center items-center px-8">
+        {/* <div className="w-full flex justify-center items-center px-8">
           <Celebrities
             description="سلبریتی دیگر"
             number={4}
             celebrities={celebritiesData}
           />
-        </div>
-        <div className="w-full flex justify-center items-center px-8">
+        </div> */}
+        {/* <div className="w-full flex justify-center items-center px-8 bg-green-700">
           <SuggestionSlider
             slides={suggestionSliderData}
           />
-        </div>
+        </div> */}
       </div>
-      <div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">
+      {/* <div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">
       <BottomNavigation />
-    </div>
+    </div> */}
     </main>
   )
 }

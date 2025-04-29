@@ -50,11 +50,11 @@ export default function Page() {
 
   return (
     <main className="flex flex-col w-full h-screen overflow-y-auto overflow-x-hidden">
-      <div className="sticky top-0 z-10 bg-blue-500 pb-5">
+      <div className="sticky top-0 z-10 pb-5">
       <MainHeader />
       </div>
       
-      <div className="px-8 py-6 bg-green-500">
+      <div className="px-8 py-6">
         
         <ShopProductList 
           secondTitle='مـناسب هـوای بـرفی...' 
@@ -62,7 +62,7 @@ export default function Page() {
           listItems={typedObjectt} 
         />
       </div>
-      <div className="sticky z-10 bottom-0 w-full py-2.5 bg-red-500">
+      <div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">
         <BottomNavigation />
       </div>
     </main>

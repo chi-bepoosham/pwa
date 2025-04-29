@@ -26,7 +26,7 @@ export const SuggestionSlider = ({ slides }: SuggestionSliderProps) => {
     <div className="w-full max-w-md mx-auto bg-primary-50 rounded-3xl flex flex-col items-center select-none">
       <div
         className="w-full flex flex-row-reverse justify-center items-center text-center bg-white rounded-t-2xl rounded-b-lg p-8 m-6">
-                <span className="text-md text-secondary font-semibold select-none text-nowrap">
+                <span className="text-secondary font-semibold select-none text-nowrap">
                     پیشنهاداتی جذاب‌تر برای رسیدن به استایلی جذاب‌تر...
                 </span>
         <div className="flex flex-row items-start text-primary">

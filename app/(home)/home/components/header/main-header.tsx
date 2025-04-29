@@ -12,8 +12,9 @@ const MainHeader = () => {
         className='px-2 py-4'
         buttonTitle={<i className='text-white'><UserIcon size={28} /></i>}
         />
+      
         <div className="flex flex-col gap-2 items-center">
-          <h1 className="flex flex-row gap-2">
+          <h1 className="flex flex-row gap-2 text-nowrap">
             <i className='text-secondary'>
               <StarIcon size={20} />
             </i>
@@ -29,12 +30,13 @@ const MainHeader = () => {
         </div>
         <Link
         href="/home/body-form">
-<MinorButton
+          <MinorButton
         variant='flat'
         color='secondary'
         className='px-2 py-4'
         buttonTitle={<i className='text-white'><InfoIcon size={28} /></i>}
-        />
+        />  
+          
         </Link>
         
       </div>

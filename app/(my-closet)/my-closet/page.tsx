@@ -26,6 +26,7 @@ const MyCloset = () => {
           {/*Cloth Part*/}
           <div className="grid grid-cols-2 gap-4 w-full">
             <ProductCard
+            isCloset={true}
               price="859.000"
               description="XL. 2X. 3X"
               title="کلاه پشم‌گاو"
