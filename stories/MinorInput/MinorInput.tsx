@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import { Input } from '@heroui/react';
+import { Input, Textarea } from '@heroui/react';
 
-export type InputType = 'email' | 'fullName' | 'phone' | 'select' | 'unit' | 'plate' | 'discount';
+export type InputType = 'email' | 'fullName' | 'phone' | 'select' | 'unit' | 'plate' | 'discount' | 'description';
 
 export interface MinorInputProps {
   type?: InputType;
@@ -10,7 +10,7 @@ export interface MinorInputProps {
   label?: string;
   value?: string;
   options?: { label: string; value: string }[];
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
 }
 
 export const MinorInput = ({
@@ -31,6 +31,7 @@ export const MinorInput = ({
       case 'unit': return 'شماره واحد';
       case 'plate': return 'شماره پلاک';
       case 'discount': return 'کد تخفیف را وارد کنید';
+      case 'description': return 'توضیحات خود را وارد کنید';
       default: return '';
     }
   };
@@ -51,6 +52,23 @@ export const MinorInput = ({
             </option>
           ))}
         </select>
+      ) : type === 'description' ? (
+        <Textarea
+          placeholder={getPlaceholder()}
+          value={value}
+          onChange={onChange}
+          className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
+          classNames={{
+            innerWrapper: [
+              'bg-white',
+            ],
+            inputWrapper: [
+              'bg-white',
+              'data-[hover=true]:bg-white',
+              'group-data-[focus=true]:bg-white'
+            ],
+          }}
+        />
       ) : (
         <Input
           type={(type === 'phone' || type === 'unit' || type === 'plate') ? 'tel' : 'text'}
@@ -59,14 +77,12 @@ export const MinorInput = ({
           onChange={onChange}
           className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
           classNames={{
-           innerWrapper: [
-             'bg-white',
-           ],
+            innerWrapper: [
+              'bg-white',
+            ],
             inputWrapper: [
               'bg-white',
-              // data-[hover=true]:bg-red-700
               'data-[hover=true]:bg-white',
-              //group-data-[focus=true]:bg-blue-700
               'group-data-[focus=true]:bg-white'
             ],
           }}
