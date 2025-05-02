@@ -4,6 +4,8 @@ import PersonalHeader from "./components/personal-header/personal-header"
 import { InfoIcon } from "@/stories/Icons"
 import { MinorButton } from "@/stories/MinorButton"
 import { useRouter } from 'next/navigation';
+import { AddAddress } from "@/stories/AddressBox/AddAddress";
+import { Divider } from "@heroui/react";
 
 
 export default function Page() {
@@ -67,16 +69,26 @@ export default function Page() {
 
 
 
-<div className="w-full h-full bg-blue-500">
+<div className="w-full px-4">
+  <AddAddress/>
 
 </div>
 
-<div className="w-full">
+<div className="w-full px-10">
 <MinorInput
             label="توضیحات شما"
             placeholder="توضیحات"
             type="description"
             />
+</div>
+
+<Divider
+className="w-full my-5"
+orientation="horizontal"
+/>
+
+<div className="w-full h-full bg-pink-600">
+  {/* Final Price */}
 </div>
 
       </div>

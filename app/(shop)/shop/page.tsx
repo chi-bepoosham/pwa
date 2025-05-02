@@ -50,7 +50,7 @@ export default function Page() {
 
   return (
     <main className="flex flex-col w-full h-screen overflow-y-auto overflow-x-hidden">
-      <div className="sticky top-0 z-10 pb-5">
+      <div className="sticky top-0 z-10 bg-white">
       <MainHeader />
       </div>
       

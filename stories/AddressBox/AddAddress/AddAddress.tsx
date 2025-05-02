@@ -66,19 +66,20 @@ export const AddAddress = (props: AddAddressProps) => {
              onClose={handleCloseDrawer} 
              placement="bottom" 
              size="full" 
+             className="w-full flex justify-center items-center px-4"
              hideCloseButton
              >
                 <DrawerContent>
                     <DrawerHeader
                      className="flex flex-row gap-4 justify-center items-center sticky top-0 z-10 pb-5"
                      >
-                        <i className='text-secondary-200'>
+                        <i className='text-secondary-200 rotate-180'>
                             <CometStarVector/>
                         </i>
-                        <span>
+                        <span className='truncate'>
                         آدرس و کــد پستـــی
                         </span>
-                        <i className='text-secondary-200 rotate-180'>
+                        <i className='text-secondary-200'>
                             <CometStarVector/>
                         </i>
                     </DrawerHeader>

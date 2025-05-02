@@ -19,7 +19,7 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
       actionIcon: <HomeIcon size={28} />,
       icon: <OutlineHomeIcon size={28} />,
       label: 'صفحه اصلی',
-      href: '/',
+      href: '/home',
     },
     {
       actionIcon: <ChestIcon size={28} />,

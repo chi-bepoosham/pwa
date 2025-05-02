@@ -6,6 +6,8 @@ import { MinorInput } from "@/stories/MinorInput";
 import { InfoIcon } from "@/stories/Icons";
 import { MinorButton } from "@/stories/MinorButton";
 import { useRouter } from 'next/navigation';
+import { AddressItem } from "@/stories/AddressBox/AddressItem";
+import { FinalPrice } from "@/stories/FinalPrice";
 
 export default function Page() {
 
@@ -13,7 +15,7 @@ export default function Page() {
 
 
   const handleGoForward = () => {
-    router.push("/cart/personal-info");
+    router.push("/");
   }
 
 
@@ -54,8 +56,9 @@ className="w-full my-5"
 orientation="horizontal"
 />
 
-<div className="w-full h-full bg-green-600">
+<div className="w-full">
   {/*Address*/}
+  <AddressItem/>
 </div>
 
 <Divider
@@ -63,8 +66,13 @@ className="w-full my-5"
 orientation="horizontal"
 />
 
+<div className="w-full h-full flex justify-center items-center">
+  {/* Final Price */}
+  <FinalPrice/>
+</div>
 
-<div className="sticky bottom-0 z-10 bg-white p-5">
+
+<div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">
         <div className="flex flex-row justify-between items-center w-full max-w-md mx-auto gap-1">
           <MinorButton
             variant="solid"
