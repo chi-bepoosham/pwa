@@ -22,6 +22,7 @@ const CartHeader = () => {
                 <ArrowRightIcon size={24}/>
             </i>
         }
+        isIconOnly={true}
         />
         
         <div className='flex justify-center items-center'>

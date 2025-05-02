@@ -11,8 +11,9 @@ export const Payments = (props: PaymentsProps) => {
     return (
         <RadioGroup
             label="روش‌های پرداخت"
-            className="flex flex-col items-start justify-center gap-8"
+            className="flex flex-col items-start justify-center gap-7"
         >
+            <div className="flex flex-col gap-10">
             <Radio
                 color="primary"
                 description="پرداخت آنلاین با تمامی کارت‌های اعتباری"
@@ -29,6 +30,8 @@ export const Payments = (props: PaymentsProps) => {
             >
                 پرداخت با کارت اعتباری
             </Radio>
-        </RadioGroup>
+
+            </div>
+                    </RadioGroup>
     )
 }

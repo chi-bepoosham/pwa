@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {useState} from "react";
 import Image from "next/image";
@@ -15,7 +16,6 @@ export interface ShoppingCartProps {
     colorName: string;
     image: string;
     price: number;
-
 }
 
 
@@ -53,55 +53,53 @@ export const ShoppingCart = (props: ShoppingCartProps) => {
 
 
     return (
-        <div className="flex flex-col gap-10 w-full max-w-sm items-start rounded-2xl group/pitem">
+        <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 w-full items-start rounded-2xl group/pitem">
             <div className="flex flex-row justify-between items-center w-full">
                 <div
-                    className="relative w-24 h-24 rounded-xl overflow-hidden flex justify-center items-center group-odd/pitem:bg-[#68BAA6] group-even/pitem:bg-primary">
+                    className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex justify-center items-center group-odd/pitem:bg-[#68BAA6] group-even/pitem:bg-primary">
                     <Image
                         width={128}
                         height={128}
                         src={image}
                         alt=""
-                        className="w-20 h-20 object-cover"
+                        className="w-full h-16 sm:h-20 object-cover shrink-0"
                     />
                 </div>
 
 
-                <div className="flex flex-col">
-                    <span className="text-secondary">{material}</span>
+                <div className="flex flex-col flex-grow ms-4">
+                    <span className="text-secondary text-sm sm:text-base">{material}</span>
 
-                    <div className="flex items-center gap-4 text-sm mt-2">
-                    <span className="text-secondary-300">
-                        {shop}
-                    </span>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm mt-2">
+                        <span className="text-secondary-300">
+                            {shop}
+                        </span>
 
                         <Divider
                             orientation="vertical"
-                            className="h-5 text-secondary"
+                            className="h-4 sm:h-5 text-secondary hidden sm:block"
                         />
 
                         <span className="font-semibold text-secondary-300">{size}</span>
                         <Divider
                             orientation="vertical"
-                            className="h-5"
+                            className="h-4 sm:h-5 hidden sm:block"
                         />
                         <div className="flex items-center gap-1">
-                            <span className={`text-2xl text-secondary-300 ${sacramento.className}`}>{colorName}</span>
-                            <span className="w-4 h-4 rounded-full" style={{backgroundColor: colorCode}}></span>
+                            <span className={`text-xl sm:text-2xl text-secondary-300 ${sacramento.className}`}>{colorName}</span>
+                            <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{backgroundColor: colorCode}}></span>
                         </div>
-
-
                     </div>
                 </div>
             </div>
 
 
-            <div className="flex flex-row justify-between items-center w-full">
-                <div className="flex items-center gap-4 rounded-xl py-2 px-4 w-fit">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full gap-4 sm:gap-0">
+                <div className="flex items-center gap-2 sm:gap-4 rounded-xl py-1 sm:py-2 px-2 sm:px-4 w-fit">
                     {count === 0 ? (
                         <button
                             onClick={() => increaseCount()}
-                            className="flex items-center gap-2 text-primary font-medium text-lg px-4 py-2 rounded-lg border border-primary transition-colors hover:bg-primary hover:text-white hover:transition duration-500 "
+                            className="flex items-center gap-1 text-primary font-medium text-base sm:text-lg px-3 sm:px-4 py-1 sm:py-2 rounded-lg border border-primary transition-colors hover:bg-primary hover:text-white hover:transition duration-500 text-nowrap"
                         >
                             <PlusIcon size={24}/>
                             افزودن به سبد خرید
@@ -110,14 +108,14 @@ export const ShoppingCart = (props: ShoppingCartProps) => {
                         <>
                             <button
                                 onClick={() => increaseCount()}
-                                className="flex items-center justify-center text-primary w-8 h-8 rounded-lg transition-colors"
+                                className="flex items-center justify-center text-primary w-7 h-7 sm:w-8 sm:h-8 rounded-lg transition-colors"
                             >
                                 <PlusIcon size={28}/>
                             </button>
-                            <span className="text-xl font-medium text-primary w-6 text-center">
+                            <span className="text-lg sm:text-xl font-medium text-primary w-5 sm:w-6 text-center">
                                 {count}
                             </span>
-                            <div className="flex items-center justify-center w-8 h-8 rounded-lg transition-colors">
+                            <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg transition-colors">
                                 {count === 1 ? (
                                     <button onClick={() => emptyCart()}>
                                         <RecycleIcon size={28}/>
@@ -131,7 +129,7 @@ export const ShoppingCart = (props: ShoppingCartProps) => {
                         </>
                     )}
                 </div>
-                <div className="flex flex-row justify-center items-center gap-2">
+                <div className="flex flex-row justify-center items-center gap-1 sm:gap-2">
                     <NumericFormat
                         value={price}
                         displayType="text"
@@ -139,17 +137,13 @@ export const ShoppingCart = (props: ShoppingCartProps) => {
                         decimalSeparator="."
                         thousandSeparator=","
                         allowNegative={false}
-                        className="text-primary text-xl font-bold"
+                        className="text-primary text-lg sm:text-xl font-bold"
                     />
-                    <span className="text-primary-500">
+                    <span className="text-primary-500 text-sm sm:text-base">
                     تومان
-                </span>
+                    </span>
                 </div>
-
-
             </div>
-
         </div>
-
     )
 }

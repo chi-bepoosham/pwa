@@ -11,8 +11,9 @@ export interface MinorButtonProps {
   buttonTitle?: string | React.ReactNode;
   radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
   isLoading?: boolean;
+  isIconOnly?: boolean;
   icon?: React.ReactNode;
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'default';
   onClick?: () => void;
 }
 
@@ -30,7 +31,7 @@ const getCustomColorClass = (color?: string) => {
     case 'danger':
       return '';
     default:
-      return 'bg-primary';
+      return 'bg-white';
   }
 };
 
@@ -45,6 +46,8 @@ export const MinorButton = (props: MinorButtonProps) => {
     icon,
     color = 'primary',
     onClick,
+    isIconOnly = false,
+
   } = props;
 
   const [, setClicked] = useState(false);
@@ -64,6 +67,7 @@ export const MinorButton = (props: MinorButtonProps) => {
       color={color}
       onPress={handleClick}
       startContent={icon}
+      isIconOnly={isIconOnly}
     >
       {isLoading ? (
         <div className="flex justify-center gap-3">
