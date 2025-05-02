@@ -111,3 +111,10 @@ export {Icon as ShopIcon} from "./Shop.stories"
 
 // Cross
 export {Icon as CrossIcon} from "./Cross.stories"
+
+
+
+// Location
+export {Icon as LocationIcon} from "./Location.stories"
+
+
