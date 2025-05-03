@@ -22,7 +22,8 @@ export const Default = {
         '#F5A623'
       ],
 
-    withArrow: false
+    withArrow: false,
+    isCloset: true
   },
   parameters: {
     nextjs: {

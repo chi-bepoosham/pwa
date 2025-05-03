@@ -107,7 +107,7 @@ orientation="horizontal"
           />
           <div className="flex flex-col justify-center items-center gap-3 text-nowrap">
             <p>جمع سبد خرید</p>
-            <p>waiting for total price</p>
+            <p>...waiting for total price</p>
           </div>
         </div>
       </div>
