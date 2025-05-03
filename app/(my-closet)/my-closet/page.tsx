@@ -87,7 +87,7 @@ const [openDrawer, setOpenDrawer] = useState(false);
                 <TryOnClothVector
                    />
             </div>
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center gap-4">
               <span className={`${sacramento.className} text-2xl font-bold text-secondary-200`}>Your closet is empty</span>
               <span className="text-lg text-secondary">کمد لباس شما خالی هست!</span>
               <MinorButton
