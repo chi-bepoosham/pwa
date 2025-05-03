@@ -4,7 +4,7 @@ import { MicIcon } from '@/stories/Icons';
 
 export const VoiceAssistant = () => {
   return (
-    <div className='relative w-full'>
+    <div className='relative w-full !max-w-none'>
       <div className='w-full flex justify-center absolute -top-10 z-10'>
       <div className="bg-white rounded-full w-auto">
         <i className="text-primary cursor-pointer">

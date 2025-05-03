@@ -6,9 +6,10 @@ interface ShopProductList {
   title?: string;
   secondTitle: string;
   listItems: ShopProductItemType[];
+  link?: string;
 }
 
-const ShopProductList = ({ title, secondTitle, listItems }: ShopProductList) => {
+const ShopProductList = ({ title, secondTitle, listItems ,link}: ShopProductList) => {
   return (
     <section className='w-full'>
       <Brand titleEn={title || ""} titleFa={secondTitle} />
@@ -23,6 +24,7 @@ const ShopProductList = ({ title, secondTitle, listItems }: ShopProductList) => 
             variant={item.variant}
             colors={item.colors}
             withArrow={item.withArrow}
+            link={link}
           />
         );
       })}

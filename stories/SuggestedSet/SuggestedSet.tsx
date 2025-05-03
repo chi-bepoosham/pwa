@@ -65,6 +65,7 @@ export const SuggestedSet = (props: SuggestedSetProps) => {
                 </div>
                 <div className="flex">
                     <Button
+                        isIconOnly
                         className="!p-1 !min-w-0 rounded-2xl bg-secondary text-white"
                         startContent={<ArrangeIcon size={36}/>}
                     />

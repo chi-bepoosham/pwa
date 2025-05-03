@@ -13,13 +13,14 @@ interface ProductCardProps {
   colors: string[];
   withArrow?: boolean;
   isCloset?: boolean;
+  link?: string;
 }
 
 export const ProductCard = (props: ProductCardProps) => {
-  const { imageUrl, title, price, description, variant, colors, withArrow } = props;
+  const { imageUrl, title, price, description, variant, colors, withArrow, link } = props;
 
   return (
-    <Link href="/">
+    <Link href={link || "/"}>
       <div className={clsx(
         'w-full min:w-60 rounded-[18px] overflow-hidden relative',
         variant === 'bordered'
