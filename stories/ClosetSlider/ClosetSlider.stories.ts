@@ -1,16 +1,16 @@
-import { ClosetSlider } from './ClosetSlider';
+import {ClosetSlider} from './ClosetSlider';
 
 
 export default {
-  title: 'ClosetSlider',
-  component: ClosetSlider,
+    title: "ClosetSlider",
+    component: ClosetSlider,
 };
 
 export const Default = {
-  args: {},
-  parameters: {
-    nextjs: {
-      appDirectory: true,
+    args: {},
+    parameters: {
+        nextjs: {
+            appDirectory: true,
+        }
     },
-  },
 };

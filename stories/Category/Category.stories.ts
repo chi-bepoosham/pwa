@@ -8,7 +8,18 @@ export default {
 
 export const Default = {
   args: {
-    isSize: false,
+    variant: 'primary',
+    options: [
+      { title: 'Shirts' },
+      { title: 'Pants' },
+      { title: 'Shoes' },
+      { title: 'Accessories' }
+    ],
+    className: 'my-4',
+    defaultSelected: "Accessories",
+    onChange: (selectedValue: string) => {
+      console.log('Selected:', selectedValue);
+    }
   },
   parameters: {
     nextjs: {
