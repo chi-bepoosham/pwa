@@ -1,11 +1,12 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, EffectCreative } from 'swiper/modules';
+import { Navigation, EffectCreative, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-creative';
+import 'swiper/css/autoplay';
 import { ClosetCard } from "../ClosetCard/ClosetCard";
 import { Title } from "../Title";
 import { MinorButton } from "../MinorButton";
@@ -44,7 +45,8 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
         />
       </div>
       <Swiper
-        modules={[Navigation, EffectCreative]}
+        className="w-full"
+        modules={[Navigation, EffectCreative, Autoplay]}
         spaceBetween={30}
         slidesPerView={1}
         centeredSlides={true}
@@ -53,16 +55,19 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
         creativeEffect={{
           prev: {
             shadow: true,
-            translate: ["-120%", 0, -500],
+            translate: ["-150%", 0, -500],
             rotate: [0, 0, -15],
           },
           next: {
             shadow: true,
-            translate: ["120%", 0, -500],
+            translate: ["150%", 0, -500],
             rotate: [0, 0, 15],
           },
         }}
-        className="w-full"
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
         }}
@@ -88,7 +93,7 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
           {items.map((_, index) => (
             <div 
               key={index}
-              className={`w-8 h-1 rounded-full ${index === activeIndex ? 'bg-black' : 'bg-gray-300'}`}
+              className={`w-6 h-1 rounded-full ${index === activeIndex ? 'bg-black' : 'bg-gray-300'}`}
             ></div>
           ))}
         </div>
@@ -118,4 +123,3 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
     </div>
   );
 };
-
