@@ -9,7 +9,8 @@ const MainHeader = () => {
       <div className="flex justify-between items-center ">
         <MagicTextBackground title={"اسـتایل خـودتو بـساز!"}/>
         <div className="flex gap-2">
-          <MinorButton 
+          <MinorButton
+          isIconOnly={true}
           color="primary" 
           buttonTitle={<ShoppingBagIcon size={28} />}
           className="px-2 py-4"

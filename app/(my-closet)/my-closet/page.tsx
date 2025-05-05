@@ -22,42 +22,42 @@ export default function Page() {
 
   const objectt = [
     
-    {
-        price: '859.000',
-        description: 'XL. 2X. 3X',
-        title: 'کلاه پشم‌گاو',
-        imageUrl: 'img.svg',
-        variant: 'solid',
-        colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
-        withArrow: false,
-      },
-      {
-        price: '859.000',
-        description: 'XL. 2X. 3X',
-        title: 'کلاه پشم‌گاو',
-        imageUrl: 'img.svg',
-        variant: 'bordered',
-        colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
-        withArrow: false,
-      },
-      {
-        price: '859.000',
-        description: 'XL. 2X. 3X',
-        title: 'کلاه پشم‌گاو',
-        imageUrl: 'img.svg',
-        variant: 'bordered',
-        colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
-        withArrow: false,
-      },
-      {
-        price: '859.000',
-        description: 'XL. 2X. 3X',
-        title: 'کلاه پشم‌گاو',
-        imageUrl: 'img.svg',
-        variant: 'solid',
-        colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
-        withArrow: false,
-      },
+    // {
+    //     price: '859.000',
+    //     description: 'XL. 2X. 3X',
+    //     title: 'کلاه پشم‌گاو',
+    //     imageUrl: 'img.svg',
+    //     variant: 'solid',
+    //     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
+    //     withArrow: false,
+    //   },
+    //   {
+    //     price: '859.000',
+    //     description: 'XL. 2X. 3X',
+    //     title: 'کلاه پشم‌گاو',
+    //     imageUrl: 'img.svg',
+    //     variant: 'bordered',
+    //     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
+    //     withArrow: false,
+    //   },
+    //   {
+    //     price: '859.000',
+    //     description: 'XL. 2X. 3X',
+    //     title: 'کلاه پشم‌گاو',
+    //     imageUrl: 'img.svg',
+    //     variant: 'bordered',
+    //     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
+    //     withArrow: false,
+    //   },
+    //   {
+    //     price: '859.000',
+    //     description: 'XL. 2X. 3X',
+    //     title: 'کلاه پشم‌گاو',
+    //     imageUrl: 'img.svg',
+    //     variant: 'solid',
+    //     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
+    //     withArrow: false,
+    //   },
   ];
 
   const typedObjectt = objectt.map((item) => ({
@@ -74,6 +74,12 @@ export default function Page() {
     { title: 'پایین پوش' },
   ];
 
+  const modalCategoryOptions = [
+    { title: 'بالا پوش' },
+    { title: 'پایین پوش' },
+    { title: 'زیــرپــوش' },
+  ];
+
   return (
     <main className="flex flex-col gap-8 w-full h-screen overflow-y-auto overflow-x-hidden">
       <div className="sticky top-0 z-10 bg-white pb-5">
@@ -86,7 +92,7 @@ export default function Page() {
       variant="primary"
       options={categoryOptions}
       // onChange={handleCategoryChange}
-      className="my-4 flex justify-center items-center"
+      className="flex justify-center items-center"
       defaultSelected="همۀ لباس‌ها"
     />
         </div>
@@ -138,11 +144,11 @@ export default function Page() {
         <BottomNavigation />
       </div>
 
-      <Drawer 
+<Drawer 
       isOpen={openDrawer} 
       placement="bottom"
-      size="full"
-      className="w-full h-screen overflow-y-auto overflow-x-hidden flex justify-center items-center"
+      size="5xl"
+      className="w-fit max-w-full left-auto right-auto flex flex-col justify-center items-center h-[80vh]"
       onClose={() => setOpenDrawer(false)}
       >
         <DrawerContent>
@@ -158,9 +164,9 @@ export default function Page() {
                 </i>
                 </DrawerHeader>
               <DrawerBody
-              className="flex flex-col gap-10 items-center"
+              className="flex flex-col justify-between h-full  w-[640px] max-w-full items-center"
               >
-                <div className="w-full h-full flex flex-col gap-5 justify-center items-center">
+                <div className="w-full flex flex-col gap-5 justify-center items-center">
                   <span className="text-secondary-300">
                   تصویر لباس خودت رو اینجا اضافه کن!
                   </span>
@@ -179,8 +185,13 @@ export default function Page() {
                   />
                 </div>
                 
-                <div className="w-full h-full bg-blue-500">
-                  Category
+                <div className="w-full">
+                <Category
+      variant="secondary"
+      options={modalCategoryOptions}
+      // onChange={handleCategoryChange}
+      defaultSelected="بالا پوش"
+    />
                 </div>
                 
                 
@@ -196,12 +207,14 @@ export default function Page() {
                 color="primary"
                 buttonTitle="افزودن لباس به کمدم"
                 className="w-full px-4 py-2"
+                onClick={() => setOpenDrawer(false)}
                 />
               </DrawerFooter>
             </>
           )}
         </DrawerContent>
       </Drawer>
+      
     </main>
   );
 }

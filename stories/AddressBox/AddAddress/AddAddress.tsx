@@ -35,7 +35,7 @@ export const AddAddress = (props: AddAddressProps) => {
     };
 
     return (
-        <div className="w-full max-w-lg mx-auto flex flex-col gap-3">
+        <div className="w-full h-full max-w-lg mx-auto flex flex-col gap-3">
             <h2 className="text-lg font-semibold">آدرس و کد پستی گیرنده</h2>
             <Card isPressable className="w-full shadow-none border-2 border-primary-100" onClick={handleOpenDrawer}>
                 <CardBody className="flex flex-row items-center justify-between">
@@ -65,9 +65,9 @@ export const AddAddress = (props: AddAddressProps) => {
             isOpen={isDrawerOpen}
              onClose={handleCloseDrawer} 
              placement="bottom" 
-             size="full" 
-             className="w-full flex justify-center items-center px-4"
-             hideCloseButton
+             size="5xl" 
+             className="w-fit max-w-full left-auto right-auto flex flex-col justify-center items-center h-full"
+            
              >
                 <DrawerContent>
                     <DrawerHeader
@@ -83,7 +83,7 @@ export const AddAddress = (props: AddAddressProps) => {
                             <CometStarVector/>
                         </i>
                     </DrawerHeader>
-                    <DrawerBody className='flex flex-col items-start gap-20' dir='rtl'>
+                    <DrawerBody className='flex flex-col items-start gap-4  w-[640px] max-w-full' dir='rtl'>
                             <div className='flex flex-col gap-7 justify-center items-center w-full'>
                             <MinorInput
                                 label='انتخاب شهر'
