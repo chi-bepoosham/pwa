@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectCreative, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
@@ -23,18 +23,33 @@ export interface ClosetSliderProps {
 export const ClosetSlider = ({ items }: ClosetSliderProps) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [autoplayDelay, setAutoplayDelay] = useState(4000);
 
   const handleNext = () => {
     swiperRef.current?.slideNext();
+    resetAutoplayDelay();
   };
 
   const handlePrev = () => {
     swiperRef.current?.slidePrev();
+    resetAutoplayDelay();
   };
 
   const handleSlideChange = (swiper: SwiperType) => {
     setActiveIndex(swiper.realIndex);
   };
+
+  const resetAutoplayDelay = () => {
+    setAutoplayDelay(8000); // Reset to a longer delay after manual navigation
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAutoplayDelay(4000); // Reset to original delay after the longer delay
+    }, 8000);
+
+    return () => clearTimeout(timer);
+  }, [autoplayDelay]);
 
   return (
     <div className="w-full max-w-80 flex flex-col gap-5 justify-center items-center">
@@ -65,7 +80,7 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
           },
         }}
         autoplay={{
-          delay: 4000,
+          delay: autoplayDelay,
           disableOnInteraction: false,
         }}
         onBeforeInit={(swiper) => {
