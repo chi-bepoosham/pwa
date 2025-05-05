@@ -12,7 +12,6 @@ interface ProductCardProps {
   variant: 'bordered' | 'solid';
   colors: string[];
   withArrow?: boolean;
-  isCloset?: boolean;
   link?: string;
 }
 

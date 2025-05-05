@@ -164,9 +164,9 @@ export default function Page() {
                 </i>
                 </DrawerHeader>
               <DrawerBody
-              className="flex flex-col justify-between h-full  w-[640px] max-w-full items-center"
+              className="flex flex-col justify-start h-full  w-[640px] max-w-full items-center gap-20"
               >
-                <div className="w-full flex flex-col gap-5 justify-center items-center">
+                <div className="w-full flex flex-col gap-5 justify-center items-center pt-5">
                   <span className="text-secondary-300">
                   تصویر لباس خودت رو اینجا اضافه کن!
                   </span>
