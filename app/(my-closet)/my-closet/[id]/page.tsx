@@ -17,6 +17,31 @@ export default async function Page({
       { title: 'بالا پوش' },
       { title: 'پایین پوش' },
     ];
+
+
+
+    const sampleItems = [
+      {
+        variant: 'primary' as const,
+        imageUrl: '/path/to/image1.jpg',
+        matchPercentage: '80% مناسب با فرم بدن',
+      },
+      {
+        variant: 'secondary' as const,
+        imageUrl: '/path/to/image2.jpg',
+        matchPercentage: '75% مناسب با فرم بدن',
+      },
+      {
+        variant: 'primary' as const,
+        imageUrl: '/path/to/image3.jpg',
+        matchPercentage: '90% مناسب با فرم بدن',
+      },
+      {
+        variant: 'secondary' as const,
+        imageUrl: '/path/to/image2.jpg',
+        matchPercentage: '75% مناسب با فرم بدن',
+      },
+    ];
   
     // const handleCategoryChange = (selectedCategory: string) => {
     //   console.log('Selected category:', selectedCategory);
@@ -36,9 +61,10 @@ export default async function Page({
       defaultSelected="همۀ لباس‌ها"
     />
       </div>
-      <div className="px-8 py-6 flex justify-center w-full h-full bg-green-600">
-        {/* <ClosetSlider
-       /> */}
+      <div className="px-8 py-6 flex justify-center w-full">
+      <div className="p-4">
+      <ClosetSlider items={sampleItems} />
+    </div>
       </div>
 
       <div className="w-full h-full flex flex-col gap-10 justify-center items-center">

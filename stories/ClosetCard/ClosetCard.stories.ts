@@ -8,7 +8,12 @@ export default {
 };
 
 export const Default = {
-    args: {},
+    args: {
+        variant: "primary",
+        imageUrl: "image.png",
+        matchPercentage: "60% مناسب با فرم بدن",
+        isSliderActive: false
+    },
     parameters: {
         nextjs: {
             appDirectory: true,

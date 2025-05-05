@@ -12,6 +12,7 @@ const objectt = [
     variant: 'solid',
     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
+    matchPercentage: '80% مناسب با فرم بدن',
   },
   {
     price: '859.000',
@@ -21,6 +22,7 @@ const objectt = [
     variant: 'bordered',
     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
+    matchPercentage: '80% مناسب با فرم بدن',
   },
   {
     price: '859.000',
@@ -30,6 +32,7 @@ const objectt = [
     variant: 'bordered',
     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
+    matchPercentage: '80% مناسب با فرم بدن',
   },
   {
     price: '859.000',
@@ -39,6 +42,17 @@ const objectt = [
     variant: 'solid',
     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
+    matchPercentage: '80% مناسب با فرم بدن',
+  },
+  {
+    price: '859.000',
+    description: 'XL. 2X. 3X',
+    title: 'کلاه پشم‌گاو',
+    imageUrl: 'img.svg',
+    variant: 'solid',
+    colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
+    withArrow: false,
+    matchPercentage: '80% مناسب با فرم بدن',
   },
 ];
 export default function Page() {
@@ -60,6 +74,7 @@ export default function Page() {
           secondTitle='مـناسب هـوای بـرفی...' 
           title='Winter' 
           listItems={typedObjectt} 
+          link="/shop/id"
         />
       </div>
       <div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">

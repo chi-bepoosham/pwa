@@ -12,7 +12,7 @@ import { VoiceAssistant } from "@/stories/VoiceAssistant";
 import { Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "@heroui/react";
 import { Uploader } from "@/stories/Uploader";
 import { MinorInput } from "@/stories/MinorInput";
-
+import ClosetCardList from "../components/closet-card-list";
 
 
 export default function Page() {
@@ -22,47 +22,67 @@ export default function Page() {
 
   const objectt = [
     
-    // {
-    //     price: '859.000',
-    //     description: 'XL. 2X. 3X',
-    //     title: 'کلاه پشم‌گاو',
-    //     imageUrl: 'img.svg',
-    //     variant: 'solid',
-    //     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
-    //     withArrow: false,
-    //   },
-    //   {
-    //     price: '859.000',
-    //     description: 'XL. 2X. 3X',
-    //     title: 'کلاه پشم‌گاو',
-    //     imageUrl: 'img.svg',
-    //     variant: 'bordered',
-    //     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
-    //     withArrow: false,
-    //   },
-    //   {
-    //     price: '859.000',
-    //     description: 'XL. 2X. 3X',
-    //     title: 'کلاه پشم‌گاو',
-    //     imageUrl: 'img.svg',
-    //     variant: 'bordered',
-    //     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
-    //     withArrow: false,
-    //   },
-    //   {
-    //     price: '859.000',
-    //     description: 'XL. 2X. 3X',
-    //     title: 'کلاه پشم‌گاو',
-    //     imageUrl: 'img.svg',
-    //     variant: 'solid',
-    //     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
-    //     withArrow: false,
-    //   },
-  ];
+    {
+      variant: "primary",
+      imageUrl: "/public/image.png",
+      matchPercentage: "80% مناسب با فرم بدن",
+      // onClick={handleCardClick}
+      link: "/my-closet/id",
+      },
+      {
+        variant: "secondary",
+        imageUrl: "/public/image.png",
+        matchPercentage: "80% مناسب با فرم بدن",
+        // onClick={handleCardClick}
+        link: "/my-closet/id",
+        },
+        {
+          variant: "tertiary",
+          imageUrl: "/public/image.png",
+          matchPercentage: "80% مناسب با فرم بدن",
+          // onClick={handleCardClick}
+          link: "/my-closet/id",
+          },
+          {
+            variant: "quaternary",
+            imageUrl: "/public/image.png",
+            matchPercentage: "80% مناسب با فرم بدن",
+            // onClick={handleCardClick}
+            link: "/my-closet/id",
+            },
+            {
+              variant: "primary",
+              imageUrl: "/public/image.png",
+              matchPercentage: "80% مناسب با فرم بدن",
+              // onClick={handleCardClick}
+              link: "/my-closet/id",
+              },
+              {
+                variant: "secondary",
+                imageUrl: "/public/image.png",
+                matchPercentage: "80% مناسب با فرم بدن",
+                // onClick={handleCardClick}
+                link: "/my-closet/id",
+                },
+                {
+                  variant: "tertiary",
+                  imageUrl: "/public/image.png",
+                  matchPercentage: "80% مناسب با فرم بدن",
+                  // onClick={handleCardClick}
+                  link: "/my-closet/id",
+                  },
+                  {
+                    variant: "quaternary",
+                    imageUrl: "/public/image.png",
+                    matchPercentage: "80% مناسب با فرم بدن",
+                    // onClick={handleCardClick}
+                    link: "/my-closet/id",
+                    },
+    ];
 
   const typedObjectt = objectt.map((item) => ({
     ...item,
-    variant: item.variant as "bordered" | "solid",
+    variant: item.variant as "primary" | "secondary" | "tertiary" | "quaternary",
   }));
 
   const isMyClosetEmpty = typedObjectt.length === 0;
@@ -81,8 +101,8 @@ export default function Page() {
   ];
 
   return (
-    <main className="flex flex-col gap-8 w-full h-screen overflow-y-auto overflow-x-hidden">
-      <div className="sticky top-0 z-10 bg-white pb-5">
+    <main className="flex flex-col w-full h-screen overflow-y-auto overflow-x-hidden">
+      <div className="sticky top-0 z-20 bg-white pb-5">
         <MyClosetHeader isMyClosetEmpty={!isMyClosetEmpty} />
       </div>
 
@@ -98,7 +118,7 @@ export default function Page() {
         </div>
       )}
 
-      <div className="px-8 py-6 h-full">
+      <div className="px-8 py-6">
         {isMyClosetEmpty ? (
           <div className="flex flex-col gap-20 w-full px-5 relative">
             <div className="flex justify-center items-center">
@@ -125,11 +145,11 @@ export default function Page() {
             </div>
           </div>
         ) : (
-          <ShopProductList
+          <ClosetCardList
             secondTitle="مـناسب هـوای بـرفی..."
-            title="Winter"
-            listItems={typedObjectt}
+            title="All clothes"
             link="/my-closet/id"
+            listItems={typedObjectt}
           />
         )}
       </div>
@@ -140,7 +160,7 @@ export default function Page() {
         </div>
       )}                                                    
 
-      <div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">
+<div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">
         <BottomNavigation />
       </div>
 
