@@ -14,9 +14,9 @@ const ClosetCardList = ({ title, secondTitle, listItems ,link}: ClosetCardList) 
     <section className='w-full'>
       <Brand titleEn={title || ""} titleFa={secondTitle} />
       <div className='grid grid-cols-2 gap-4 mt-5'>
-      {listItems.map((item) => {
-        return (
+        {listItems.map((item, index) => (
           <ClosetCard
+            key={`${item.imageUrl}-${index}`}
             variant={item.variant}
             imageUrl={item.imageUrl}
             matchPercentage={item.matchPercentage}
@@ -24,8 +24,7 @@ const ClosetCardList = ({ title, secondTitle, listItems ,link}: ClosetCardList) 
             
             link={link}
           />
-        );
-      })}
+        ))}
       </div>
     </section>
   );

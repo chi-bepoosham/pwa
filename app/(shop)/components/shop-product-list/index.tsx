@@ -9,14 +9,14 @@ interface ShopProductList {
   link?: string;
 }
 
-const ShopProductList = ({ title, secondTitle, listItems ,link}: ShopProductList) => {
+const ShopProductList = ({ title, secondTitle, listItems, link }: ShopProductList) => {
   return (
     <section className='w-full'>
       <Brand titleEn={title || ""} titleFa={secondTitle} />
       <div className='grid grid-cols-2 gap-4 mt-5'>
-      {listItems.map((item) => {
-        return (
+        {listItems.map((item, index) => (
           <ProductCard
+            key={`${item.title}-${index}`}
             price={item.price}
             description={item.description}
             title={item.title}
@@ -26,8 +26,7 @@ const ShopProductList = ({ title, secondTitle, listItems ,link}: ShopProductList
             withArrow={item.withArrow}
             link={link}
           />
-        );
-      })}
+        ))}
       </div>
     </section>
   );

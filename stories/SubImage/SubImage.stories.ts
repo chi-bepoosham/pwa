@@ -7,7 +7,10 @@ export default {
 };
 
 export const Default = {
-    args: {},
+    args: {
+        percentNumber: 54,
+        subImageUrl: "image.png"
+    },
     parameters: {
         nextjs: {
             appDirectory: true,

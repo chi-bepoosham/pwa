@@ -5,6 +5,7 @@ import { BottomNavigation } from "@/stories/BottomNavigation"
 import { SuggestedSet } from "@/stories/SuggestedSet"
 import { StarIcon } from "@/stories/Icons"
 import { Title } from "@/stories/Title"
+import { SubImage } from "@/stories/SubImage"
 export default async function Page({
     params,
   }: {
@@ -66,6 +67,20 @@ export default async function Page({
       <ClosetSlider items={sampleItems} />
     </div>
       </div>
+<div className="w-full flex flex-row justify-center items-center gap-5">
+  <SubImage
+  subImageUrl="/path/to/image1.jpg"
+  percentNumber={80}
+  />
+  <SubImage
+  subImageUrl="/path/to/image1.jpg"
+  percentNumber={80}
+  />
+  <SubImage
+  subImageUrl="/path/to/image1.jpg"
+  percentNumber={80}
+/>
+</div>      
 
       <div className="w-full h-full flex flex-col gap-10 justify-center items-center">
         <div className="flex flex-row justify-center items-center gap-2">
