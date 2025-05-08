@@ -9,6 +9,10 @@ interface ClosetCardList {
   link?: string;
 }
 
+
+
+
+
 const ClosetCardList = ({ title, secondTitle, listItems ,link}: ClosetCardList) => {
   return (
     <section className='w-full'>

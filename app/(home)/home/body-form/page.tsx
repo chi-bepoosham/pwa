@@ -1,4 +1,3 @@
-import { BottomNavigation } from "@/stories/BottomNavigation"
 import BdFormHeader from "./components/bd-form-header/bd-form-header"
 import { BodyType } from "@/stories/BodyType"
 
