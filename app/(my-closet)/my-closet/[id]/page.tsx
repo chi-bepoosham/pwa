@@ -6,15 +6,14 @@ import { SuggestedSet } from '@/stories/SuggestedSet';
 import { StarIcon } from '@/stories/Icons';
 import { Title } from '@/stories/Title';
 import {  SubImageGrid } from '@/stories/SubImage';
-import { title } from 'process';
-import { ScrollShadow } from '@heroui/react';
+
 
 export default async function Page({
                                      params,
                                    }: {
   params: Promise<{ id: string }>
 }) {
-  const { id } = await params;
+  const {  } = await params;
 
   const categoryOptions = [
     { title: 'همۀ لباس‌ها' },

@@ -1,15 +1,14 @@
 "use client";
 import { Category } from "@/stories/Category";
 import MyClosetHeader from "../components/my-closet-header/my-closet-header";
-import ShopProductList from "@/app/(shop)/components/shop-product-list";
 import { BottomNavigation } from "@/stories/BottomNavigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CometStarVector, TryOnClothVector } from "@/stories/Vectors";
 import { PlusIcon } from "@/stories/Icons";
 import { MinorButton } from "@/stories/MinorButton";
 import { sacramento } from "@/lib/font";
 import { VoiceAssistant } from "@/stories/VoiceAssistant";
-import { Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "@heroui/react";
+import {  Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "@heroui/react";
 import { Uploader } from "@/stories/Uploader";
 import { MinorInput } from "@/stories/MinorInput";
 import ClosetCardList from "../components/closet-card-list";
@@ -173,7 +172,7 @@ export default function Page() {
       onClose={() => setOpenDrawer(false)}
       >
         <DrawerContent>
-          {(onClose) => (
+          {() => (
             <>
               <DrawerHeader className="flex flex-row gap-2 justify-center items-center pb-5 sticky top-0 z-10 bg-white truncate w-full">
                 <i className="text-secondary-300 rotate-180">
