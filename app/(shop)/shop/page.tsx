@@ -65,11 +65,10 @@ export default function Page() {
   return (
     <main className="flex flex-col w-full h-screen overflow-y-auto overflow-x-hidden">
       <div className="sticky top-0 z-10 bg-white">
-      <MainHeader />
+        <MainHeader />
       </div>
       
-      <div className="px-8 py-6">
-        
+      <div className="px-8 pb-24">
         <ShopProductList 
           secondTitle='مـناسب هـوای بـرفی...' 
           title='Winter' 
@@ -77,7 +76,7 @@ export default function Page() {
           link="/shop/id"
         />
       </div>
-      <div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">
+      <div className="fixed bottom-0 z-10 py-2.5 bg-white w-full max-w-screen-sm mx-auto">
         <BottomNavigation />
       </div>
     </main>

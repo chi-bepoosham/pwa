@@ -77,7 +77,7 @@ export default function Page() {
                     matchPercentage: "80% مناسب با فرم بدن",
                     // onClick={handleCardClick}
                     link: "/my-closet/id",
-                    },
+                  },
     ];
 
   const typedObjectt = objectt.map((item) => ({
@@ -118,7 +118,7 @@ export default function Page() {
         </div>
       )}
 
-      <div className="px-8 py-6">
+      <div className="px-8 pb-24 pt-6">
         {isMyClosetEmpty ? (
           <div className="flex flex-col gap-20 w-full px-5 relative">
             <div className="flex justify-center items-center">
@@ -154,27 +154,28 @@ export default function Page() {
         )}
       </div>
 
-      {isMyClosetEmpty && (
-        <div className="mt-auto">
-          <VoiceAssistant />
+      <div className="fixed bottom-0 z-10 w-full max-w-screen-sm mx-auto">
+        {isMyClosetEmpty && (
+          <div className="mb-2.5">
+            <VoiceAssistant />
+          </div>
+        )}
+        <div className="py-2.5 bg-white">
+          <BottomNavigation />
         </div>
-      )}                                                    
-
-<div className="sticky z-10 bottom-0 w-full py-2.5 bg-white">
-        <BottomNavigation />
       </div>
 
 <Drawer 
       isOpen={openDrawer} 
       placement="bottom"
       size="5xl"
-      className="w-fit max-w-full left-auto right-auto flex flex-col justify-center items-center h-[80vh]"
+      className="w-fit max-w-full left-auto right-auto flex flex-col justify-center items-center h-[80vh] overflow-y-auto overflow-x-hidden"
       onClose={() => setOpenDrawer(false)}
       >
         <DrawerContent>
           {(onClose) => (
             <>
-              <DrawerHeader className="flex flex-row gap-2 justify-center items-center pb-5 sticky top-0 z-10 bg-white">
+              <DrawerHeader className="flex flex-row gap-2 justify-center items-center pb-5 sticky top-0 z-10 bg-white truncate w-full">
                 <i className="text-secondary-300 rotate-180">
                   <CometStarVector/>
                 </i>
@@ -184,7 +185,7 @@ export default function Page() {
                 </i>
                 </DrawerHeader>
               <DrawerBody
-              className="flex flex-col justify-start h-full  w-[640px] max-w-full items-center gap-20"
+              className="flex flex-col justify-start h-full w-[640px] max-w-full items-center gap-20 overflow-y-auto"
               >
                 <div className="w-full flex flex-col gap-5 justify-center items-center pt-5">
                   <span className="text-secondary-300">
@@ -220,7 +221,7 @@ export default function Page() {
 
               </DrawerBody>
               <DrawerFooter
-              className="sticky bottom-0 z-10"
+              className="sticky bottom-0 z-10 w-full bg-white"
               >
                 <MinorButton
                 variant="solid"

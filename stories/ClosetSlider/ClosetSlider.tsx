@@ -17,6 +17,7 @@ export interface ClosetSliderProps {
     variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
     imageUrl: string;
     matchPercentage: string;
+    title: string;
   }>;
 }
 
@@ -24,6 +25,7 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [autoplayDelay, setAutoplayDelay] = useState(4000);
+  const [activeTitle, setActiveTitle] = useState(items[0].title);
 
   const handleNext = () => {
     swiperRef.current?.slideNext();
@@ -37,6 +39,7 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
 
   const handleSlideChange = (swiper: SwiperType) => {
     setActiveIndex(swiper.realIndex);
+    setActiveTitle(items[swiper.realIndex].title);
   };
 
   const resetAutoplayDelay = () => {
@@ -52,11 +55,11 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
   }, [autoplayDelay]);
 
   return (
-    <div className="w-full max-w-80 flex flex-col gap-5 justify-center items-center">
+    <div className="w-full max-w-72 flex flex-col gap-5 justify-center items-center">
       <div>
         <Title
           text="All clothes"
-          description="کـــاپشـن ضـــدآب کتــان مـــدل زارا"
+          description={activeTitle}
         />
       </div>
       <Swiper
@@ -114,7 +117,7 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
         </div>
       </div>
       
-        <div className="w-[calc(100%+100px)] flex flex-row justify-between items-center pt-6">
+        <div className="xs:w-[calc(100%+100px)] flex flex-row justify-between items-center pt-6 gap-1">
           <MinorButton
             variant="ghost"
             color="secondary"

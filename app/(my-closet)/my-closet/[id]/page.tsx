@@ -5,7 +5,9 @@ import { BottomNavigation } from '@/stories/BottomNavigation';
 import { SuggestedSet } from '@/stories/SuggestedSet';
 import { StarIcon } from '@/stories/Icons';
 import { Title } from '@/stories/Title';
-import { SubImage } from '@/stories/SubImage';
+import {  SubImageGrid } from '@/stories/SubImage';
+import { title } from 'process';
+import { ScrollShadow } from '@heroui/react';
 
 export default async function Page({
                                      params,
@@ -26,21 +28,25 @@ export default async function Page({
       variant: 'primary' as const,
       imageUrl: '/path/to/image1.jpg',
       matchPercentage: '80% مناسب با فرم بدن',
+      title: 'کاپشن بادی کتان'
     },
     {
       variant: 'secondary' as const,
       imageUrl: '/path/to/image2.jpg',
       matchPercentage: '75% مناسب با فرم بدن',
+      title: 'کلاه پشم‌گاو'
     },
     {
       variant: 'primary' as const,
       imageUrl: '/path/to/image3.jpg',
       matchPercentage: '90% مناسب با فرم بدن',
+      title: 'کاپشن بادی کتان'
     },
     {
       variant: 'secondary' as const,
       imageUrl: '/path/to/image2.jpg',
       matchPercentage: '75% مناسب با فرم بدن',
+      title: 'کلاه پشم‌گاو'
     },
   ];
 
@@ -67,22 +73,22 @@ export default async function Page({
           <ClosetSlider items={sampleItems} />
         </div>
       </div>
-      <div className="w-full flex flex-row justify-center items-center gap-5">
-        <SubImage
-          subImageUrl="/path/to/image1.jpg"
-          percentNumber={80}
-        />
-        <SubImage
-          subImageUrl="/path/to/image1.jpg"
-          percentNumber={80}
-        />
-        <SubImage
-          subImageUrl="/path/to/image1.jpg"
-          percentNumber={80}
-        />
-      </div>
+      
+  
+       <div className='w-full flex flex-row justify-center items-center gap-5'>
+       <SubImageGrid
+    images={[
+        { url: '/path/to/image1.jpg', percentNumber: 85 },
+        { url: '/path/to/image2.jpg', percentNumber: 75 },
+        { url: '/path/to/image3.jpg', percentNumber: 90 },
+        // Add more images as needed
+    ]}
+/>
 
-      <div className="w-full h-full flex flex-col gap-10 justify-center items-center">
+       </div>
+               
+
+      <div className="w-full h-full flex flex-col gap-10 justify-center items-center pb-32">
         <div className="flex flex-row justify-center items-center gap-2">
           <i className="text-primary">
             <StarIcon size={20} />
@@ -103,7 +109,7 @@ export default async function Page({
         />
       </div>
 
-      <div className="sticky z-20 bottom-0 w-full py-2.5 bg-white">
+      <div className="fixed bottom-0 z-20 py-2.5 bg-white w-full max-w-screen-sm mx-auto">
         <BottomNavigation />
       </div>
     </main>
