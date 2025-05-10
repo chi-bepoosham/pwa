@@ -7,7 +7,7 @@ import PersonalImage from './personal-image';
 
 
 export default function Page() {
-  const [pageNumber , setPageNumber] = useState<number>(0)
+  const [pageNumber] = useState<number>(0)
   return (
     <div className="flex flex-col justify-between w-full h-screen gap-12 bg-white overflow-x-hidden overflow-y-auto">
       <div className="flex flex-col gap-10">

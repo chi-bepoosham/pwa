@@ -1,6 +1,6 @@
 "use client";
 import { MinorButton } from '@/stories/MinorButton';
-import { ArrowRightIcon, PlusIcon, RecycleIcon, ShoppingBagIcon } from '@/stories/Icons';
+import {  PlusIcon, ShoppingBagIcon } from '@/stories/Icons';
 import { useRouter, usePathname } from 'next/navigation';
 import MagicTextBackground from '@/components/common/magic-text-background';
 import { Search } from '@/stories/Search';

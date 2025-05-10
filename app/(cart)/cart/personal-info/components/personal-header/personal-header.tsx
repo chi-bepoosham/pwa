@@ -1,6 +1,6 @@
 "use client";
 import { MinorButton } from '@/stories/MinorButton';
-import { ArrowRightIcon, PlusIcon, RecycleIcon, ShoppingBagIcon } from '@/stories/Icons';
+import { ArrowRightIcon } from '@/stories/Icons';
 import { useRouter } from 'next/navigation';
 
 const PersonalHeader = () => {

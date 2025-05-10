@@ -26,9 +26,9 @@ export default function Home() {
       </div>
       <div className="w-full flex flex-col gap-4 pb-16">
       
-      {/* <div className="w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center">
         <BodyForm />
-      </div> */}
+      </div>
         
         
       <div className="w-full flex justify-center items-center px-8">
