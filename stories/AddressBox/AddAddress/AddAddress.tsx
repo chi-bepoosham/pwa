@@ -66,7 +66,7 @@ export const AddAddress = (props: AddAddressProps) => {
              onClose={handleCloseDrawer} 
              placement="bottom" 
              size="5xl" 
-             className="w-fit max-w-full left-auto right-auto flex flex-col justify-center items-center h-full"
+             className="w-fit max-w-full left-auto right-auto flex flex-col justify-center items-center h-[90vh]"
             
              >
                 <DrawerContent>
