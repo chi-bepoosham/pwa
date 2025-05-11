@@ -1,8 +1,11 @@
-{
-  "name": "چی بپوشم",
-  "short_name": "چی بپوشم",
-  "description": "اولین اپلیکیشن حرفه ای در زمینه مد و پوشاک",
-  "categories": [
+import type { MetadataRoute } from 'next'
+ 
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: 'چی بپوشم',
+    short_name: 'چی بپوشم',
+    description: 'اولین اپلیکیشن حرفه ای در زمینه مد و پوشاک',
+    categories: [
     "fashion",
      "clothing",
       "shopping",
@@ -10,7 +13,12 @@
       "Online Peru",
       "Online Shopping"
     ],
-  "icons": [
+    start_url: '/',
+    display: 'standalone',
+    orientation: 'portrait',
+    background_color: '#FFFFFF',
+    theme_color: '#4141F9',
+    icons: [
     {
       "src": "appicon-16x16.png",
       "sizes": "16x16",
@@ -47,10 +55,5 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#4141F9",
-  "background_color": "#0C0D11",
-  "display": "standalone",
-  "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/"
+  }
 }
