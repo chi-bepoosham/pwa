@@ -16,11 +16,11 @@ export const SubImageGrid = ({ images, className = '' }: SubImageGridProps) => {
             size={10}
             orientation="horizontal"
             className={`w-full ${className}`}
-            hideScrollBar
+            hideScrollBar={false}
         >
-            <div className="flex">
+            <div className="flex justify-center">
                 {images.map((image, index) => (
-                    <div key={index} className="min-w-[250px] px-5">
+                    <div key={index} className="min-w-[200px] px-5">
                         <SubImage
                             subImageUrl={image.url}
                             percentNumber={image.percentNumber}
