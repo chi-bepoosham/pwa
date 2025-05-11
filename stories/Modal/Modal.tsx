@@ -55,7 +55,6 @@ export const Modal = (props: ModalProps) => {
                   <MinorButton
                     variant="solid"
                     color="primary"
-                    size="sm"
                     icon={
                       <i className="text-white">
                         <CameraIcon size={24} />
@@ -71,7 +70,6 @@ export const Modal = (props: ModalProps) => {
                   <MinorButton
                     variant="solid"
                     color="primary"
-                    size="sm"
                     icon={
                       <i className="text-white">
                         <GalleryIcon size={24} />
@@ -92,7 +90,6 @@ export const Modal = (props: ModalProps) => {
                       <MinorButton
                         variant="bordered"
                         color="secondary"
-                        size="sm"
                         icon={
                           <i className="text-secondary">
                             <RecycleIcon size={24} />
@@ -110,7 +107,6 @@ export const Modal = (props: ModalProps) => {
                       <MinorButton
                         variant="solid"
                         color="primary"
-                        size="sm"
                         icon={
                           <i className="text-white">
                             <FilesIcon size={24} />
