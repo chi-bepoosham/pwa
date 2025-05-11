@@ -10,7 +10,7 @@ export interface ProgressNavProps {
   deliveryTime?: string;
 }
 
-const StatusContent: Record<StatusType, JSX.Element> = {
+const StatusContent: Record<StatusType, React.ReactElement> = {
   delivered: (
     <span className="flex items-center gap-1">
       <i className="text-secondary">
