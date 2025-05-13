@@ -7,10 +7,10 @@ import PageTransition from '@/components/PageTransition';
 export const metadata: Metadata = {
   title: {
     default: "چی بپوشم",
-    template: `فروشگاه آنلاین پوشاک | %s`,
+    template: `چی بپوشم | %s`,
   },
-  description: "فروشگاه آنلاین پوشاک - خرید آنلاین انواع لباس، کفش و اکسسوری",
-  keywords: ["فروشگاه آنلاین", "خرید لباس", "پوشاک", "مد و فشن", "خرید آنلاین لباس", "فروشگاه اینترنتی پوشاک"],
+  description: "هر روز شیک تر از دیروز",
+  keywords: ["چی بپوشم", "خرید آنلاین", "پوشاک", "مد و فشن", "خرید آنلاین لباس", "فروشگاه اینترنتی پوشاک"],
   icons: {
     icon: "/favicon.ico",
     apple: "/icons/icon-512x512.png",
