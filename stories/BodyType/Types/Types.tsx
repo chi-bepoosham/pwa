@@ -53,7 +53,9 @@ export const Types = ({selectedType}: TypesProps) => {
     const {Component} = selectedBodyType;
 
     return (
-        <div className="flex flex-col items-center justify-center w-full h-full p-8">
+        <div 
+        className="flex flex-col items-center justify-center w-full h-full p-8 shrink-0 min-w-28"
+        >
             <Component/>
         </div>
     );

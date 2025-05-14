@@ -21,23 +21,25 @@ export const BodyType = (props: BodyTypeProps) => {
         <Types selectedType={selectedType} />
       </div>
       <Card shadow="none" radius="lg" className="col-span-3">
-        <CardHeader className="flex flex-row justify-start items-center gap-8 text-primary text-3xl font-bold">
+        <CardHeader 
+        className="flex flex-row justify-start items-center gap-8 text-primary text-nowrap text-small xs:text-lg sm:text-2xl font-bold"
+        >
           <Number number={number} />
           {title}
         </CardHeader>
         <Divider />
-        <CardBody className="flex flex-col gap-10 text-right">
+        <CardBody className="flex flex-col gap-8 text-right">
           <div>
-            <h1 className="text-secondary font-bold flex flex-row items-center">
+            <h1 className="text-secondary font-bold text-sm xs:text-base sm:text-lg flex flex-row items-center mb-2">
               نقاط <span className="text-[#07A537]">قوت</span>
             </h1>
-            <p className="text-secondary-300">{strength}</p>
+            <p className="text-secondary-300 text-xs xs:text-sm sm:text-base">{strength}</p>
           </div>
           <div>
-            <h1 className="text-secondary font-bold flex flex-row items-center">
+            <h1 className="text-secondary font-bold text-sm xs:text-base sm:text-lg flex flex-row items-center mb-2">
               نقاط <span className="text-[#E93B55]">ضعف</span>
             </h1>
-            <p className="text-secondary-300">{weaknessPoints}</p>
+            <p className="text-secondary-300 text-xs xs:text-sm sm:text-base">{weaknessPoints}</p>
           </div>
         </CardBody>
       </Card>

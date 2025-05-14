@@ -38,7 +38,7 @@ export default function Home() {
           celebrities={celebritiesData}
         />
       </div>
-      <div className="w-full flex justify-center items-center px-8">
+      <div className="w-full flex justify-center items-center px-8 pb-10">
         <SuggestionSlider
           slides={suggestionSliderData}
         />
