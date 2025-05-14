@@ -77,6 +77,27 @@ export default function Page() {
                     // onClick={handleCardClick}
                     link: "/my-closet/id",
                   },
+                  {
+                    variant: "quaternary",
+                    imageUrl: "/public/image.png",
+                    matchPercentage: "80% مناسب با فرم بدن",
+                    // onClick={handleCardClick}
+                    link: "/my-closet/id",
+                  },
+                  {
+                    variant: "quaternary",
+                    imageUrl: "/public/image.png",
+                    matchPercentage: "80% مناسب با فرم بدن",
+                    // onClick={handleCardClick}
+                    link: "/my-closet/id",
+                  },
+                  {
+                    variant: "quaternary",
+                    imageUrl: "/public/image.png",
+                    matchPercentage: "80% مناسب با فرم بدن",
+                    // onClick={handleCardClick}
+                    link: "/my-closet/id",
+                  }, 
     ];
 
   const typedObjectt = objectt.map((item) => ({
