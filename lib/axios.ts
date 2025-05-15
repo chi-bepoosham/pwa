@@ -24,7 +24,7 @@ const axiosCore = () => {
     })
     a.interceptors.response.use(
         (response) => {
-            return response.data;
+            return response;
         },
         (error) => {
             return Promise.reject(handleToastError(error))
@@ -38,6 +38,10 @@ const axiosCore = () => {
 const axiosCoreWithAuth = () => {
     const a = axios.create(config)
     a.interceptors.request.use(async (config) => {
+        const getCookie = document.cookie.split(';').find(c => c.trim().startsWith('token='))?.split('=')[1];
+        if (getCookie) {
+            config.headers.Authorization = `Bearer ${getCookie}`;
+        }
         return config
     })
     a.interceptors.response.use(
@@ -87,6 +91,8 @@ export const handleToastError = (error: ErrorResponse) => {
     }
     // show messages
     messages.map(message => toast.error(message || "خطای نامشخص 🥺"));
+
+    toast.error(messages.join("\n"))
 
     return response?.data || null
 };

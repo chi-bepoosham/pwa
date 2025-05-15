@@ -6,29 +6,38 @@ import { WomenGenderIcon, MenGenderIcon } from '@/stories/Icons';
 import { UseRadioProps } from '@/node_modules/@heroui/radio/dist/use-radio';
 
 export interface GenderSelectionProps {
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
-export const GenderSelection = (props: GenderSelectionProps) => {
-  const {} = props;
+export const GenderSelection = ({ value, onChange }: GenderSelectionProps) => {
+  const handleChange = (val: string) => {
+    if (onChange) {
+      onChange(val);
+    }
+  };
+
   return (
     <div className="w-full flex justify-center items-start">
       <RadioGroup
         label={
           <span className="text-secondary font-semibold text-large">
-              انتخاب جنسیت
+            انتخاب جنسیت
           </span>
         }
         orientation="horizontal"
         className="select-none"
+        value={value}
+        onValueChange={handleChange}
       >
         <CustomRadio
-          value="woman"
+          value="2"
           icon={<WomenGenderIcon size={20} />}
         >
           خانم
         </CustomRadio>
         <CustomRadio
-          value="man"
+          value="1"
           icon={<MenGenderIcon size={20} />}
         >
           آقـــــا
@@ -38,15 +47,12 @@ export const GenderSelection = (props: GenderSelectionProps) => {
   );
 };
 
-
 type CustomRadioProps = UseRadioProps & {
   icon: React.ReactNode;
   children: React.ReactNode;
 }
 
-
 export const CustomRadio = (props: CustomRadioProps) => {
-
   const {
     Component,
     children,
@@ -55,7 +61,6 @@ export const CustomRadio = (props: CustomRadioProps) => {
     getLabelProps,
     getLabelWrapperProps,
   } = useRadio(props);
-
 
   return (
     <Component

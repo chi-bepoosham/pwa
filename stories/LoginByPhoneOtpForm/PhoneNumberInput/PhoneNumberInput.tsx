@@ -38,7 +38,7 @@ export const PhoneNumberInput = (props: PhoneNumberInputProps) => {
           placeholder="127077707"
           labelPlacement="outside"
           description={(
-            <div className="flex flex-row justify-start items-start gap-2">
+            <div className="flex flex-row justify-start items-start gap-2 mt-4">
               <InfoIcon size={30} />
               <p className="text-sm text-right text-black">
                 استفاده از چی‌ بپوشم به معنی پذیرش{' '}
