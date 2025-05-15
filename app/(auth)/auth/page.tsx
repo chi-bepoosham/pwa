@@ -8,8 +8,6 @@ import { GoogleIcon } from '@/stories/Icons';
 import { LoginByPhoneOtpFormType } from '@/types/LoginByPhoneOtpForm.type';
 import { ErrorOption, FieldPath } from 'react-hook-form';
 import { axiosCore } from '@/lib/axios';
-import { toast } from 'react-toastify';
-import { AxiosError } from 'axios';
 import { useUserStore } from '@/store/UseUserStore';
 import { useRouter } from 'next/navigation';
 

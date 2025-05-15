@@ -2,7 +2,6 @@ import TextBackground from '@/components/common/text-background';
 import { MinorButton } from '@/stories/MinorButton';
 import { Uploader } from '@/stories/Uploader';
 import { VoiceAssistant } from '@/stories/VoiceAssistant';
-import { Button } from '@heroui/react';
 import { AccountName } from '@/stories/AccountName';
 import { HintSlider } from '@/stories/HintSlider';
 import { useForm } from 'react-hook-form';
@@ -20,11 +19,10 @@ interface PersonalImageProps {
   defaultValues?: RegisterFormData;
 }
 
-const PersonalImage: React.FC<PersonalImageProps> = ({ onNext, onSkip, loading, error, defaultValues }) => {
+const PersonalImage: React.FC<PersonalImageProps> = ({ onNext, loading, error, defaultValues }) => {
   const {
     setValue,
     handleSubmit,
-    watch
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
     defaultValues
@@ -60,7 +58,8 @@ const PersonalImage: React.FC<PersonalImageProps> = ({ onNext, onSkip, loading, 
 
       toast.success('تصویر با موفقیت آپلود شد');
       onNext(data);
-    } catch (error: any) {
+      
+    } catch (error: unknown) {
       console.error('Upload error:', error);
     }
   };
