@@ -5,7 +5,7 @@ import { BottomNavigation } from '@/stories/BottomNavigation';
 import { SuggestedSet } from '@/stories/SuggestedSet';
 import { StarIcon } from '@/stories/Icons';
 import { Title } from '@/stories/Title';
-import {  SubImageGrid } from '@/stories/SubImage';
+import {  SubImage } from '@/stories/SubImage';
 
 
 export default async function Page({
@@ -75,14 +75,10 @@ export default async function Page({
       
   
        <div className='w-full flex flex-row justify-center items-center gap-5'>
-       <SubImageGrid
-    images={[
-        { url: '/path/to/image1.jpg', percentNumber: 85 },
-        { url: '/path/to/image2.jpg', percentNumber: 75 },
-        { url: '/path/to/image3.jpg', percentNumber: 90 },
-        // Add more images as needed
-    ]}
-/>
+       <SubImage
+        subImageUrl="/path/to/image1.jpg"
+        percentNumber={80}
+       />
 
        </div>
                
