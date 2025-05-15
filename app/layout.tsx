@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     apple: '/icons/icon-512x512.png',
   },
   manifest: '/manifest.webmanifest',
-  themeColor: '#4141F9',
 };
 
 export const viewport: Viewport = {
