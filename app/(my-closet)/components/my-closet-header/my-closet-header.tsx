@@ -17,7 +17,7 @@ const MyClosetHeader = ({ isMyClosetEmpty }: { isMyClosetEmpty: boolean }) => {
 
   return (
     <header className='flex flex-col gap-5 px-5'>
-      <div className="flex flex-row justify-between items-center gap-1 p-5">
+      <div className="flex flex-row justify-between items-center gap-5 py-5">
         <div className='flex justify-center items-center truncate'>
           <MagicTextBackground
             title='کـمد لبـاس مـن!'
@@ -25,7 +25,7 @@ const MyClosetHeader = ({ isMyClosetEmpty }: { isMyClosetEmpty: boolean }) => {
         </div>
 
         {isMyClosetEmpty && (
-          <div className='flex flex-row justify-center items-center gap-2'>
+          <div className='flex flex-row justify-center items-center gap-5'>
             {!isInMyClosetId && (
               <MinorButton
                 variant='solid'

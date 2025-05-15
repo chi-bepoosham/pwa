@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export interface BottomNavigationProps {
+  isDisabled?: boolean;
 }
 
 export const BottomNavigation = (props: BottomNavigationProps) => {
@@ -30,6 +31,7 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
       icon: <OutlineChestIcon size={28} />,
       label: 'فـروشگـاه',
       href: '/shop',
+      disabled: true,
     },
     {
       actionIcon: <MyDrawerIcon size={28} />,
@@ -43,6 +45,21 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
     <div className="w-full flex flex-row justify-center items-center">
       {navItems.map((item, index) => {
         const isActive = pathname === item.href;
+        if (item.disabled) {
+          return (
+            <div
+              key={index}
+              className="flex flex-col gap-2.5 justify-center items-center w-28 relative max-h-fit opacity-50 cursor-not-allowed"
+            >
+              <i className="text-secondary">
+                {item.icon}
+              </i>
+              <span className="truncate text-secondary-400">
+                {item.label}
+              </span>
+            </div>
+          );
+        }
         return (
           <Link
             href={item.href}
