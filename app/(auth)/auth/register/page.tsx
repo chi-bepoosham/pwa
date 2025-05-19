@@ -20,7 +20,7 @@ interface RegisterRequestData {
 
 export default function Page() {
   const router = useRouter();
-  const [pageNumber, setPageNumber] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(1);
   const [formData, setFormData] = useState<RegisterFormData>({
     first_name: '',
     last_name: '',

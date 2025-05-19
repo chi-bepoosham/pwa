@@ -108,9 +108,9 @@ const PersonalImage: React.FC<PersonalImageProps> = ({ onNext, loading, error, d
         </Button> */}
       </div>
 
-      <div className="w-full">
+      {/* <div className="w-full">
         <VoiceAssistant />
-      </div>
+      </div> */}
       {error && <div className="text-red-500 text-center mt-4">{error}</div>}
     </>
   );
