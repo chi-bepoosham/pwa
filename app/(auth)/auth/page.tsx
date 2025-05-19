@@ -43,8 +43,8 @@ export default function Page() {
       setUserInfo('phone_number', `0${data.phone}`);
       Route.push('/auth/verify');
       console.log('OTP sent successfully:', response.status);
-    } catch (err) {
-      console.error(err);
+    } catch (err: unknown) {
+      console.error('Error sending OTP:', err instanceof Error ? err.message : 'Unknown error occurred');
     }
   };
 
