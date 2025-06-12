@@ -4,7 +4,12 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
   const token = request.cookies.get('token')?.value;
+  const userInfo = request.cookies.get('userInfo')?.value;
+  const userInfoParsed = userInfo ? JSON.parse(userInfo) : null;
+  const userUploadImageStatus = userInfoParsed ? userInfoParsed.status : null;
   const tokenFromQuery = searchParams.get('token');
+  console.log(userUploadImageStatus);
+  
 
   // If token is in query but not in cookies, set it and redirect (once)
   if (tokenFromQuery && !token) {
@@ -29,6 +34,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/home', request.url));
   }
 
+  if (token && (userUploadImageStatus === 1 || userUploadImageStatus === 3) && !pathname.startsWith('/personal-image-uploader')) {
+    return NextResponse.redirect(new URL('/personal-image-uploader', request.url));
+  }
   return NextResponse.next();
 }
 

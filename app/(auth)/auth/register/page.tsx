@@ -1,13 +1,14 @@
-"use client"
+'use client';
 import React, { useState } from 'react';
 import { CometStarVector } from '@/stories/Vectors';
 import ProfileInfo from './profile-info';
-import PersonalImage from './personal-image';
 import { useUserStore } from '@/store/UseUserStore';
 import { axiosCore } from '@/lib/axios';
 import { AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 import { RegisterFormData } from './schema';
+import { setCookie } from '@/lib/cookies';
+import { config } from '@/lib/config';
 
 interface RegisterRequestData {
   first_name: string;
@@ -20,6 +21,7 @@ interface RegisterRequestData {
 
 export default function Page() {
   const router = useRouter();
+  const { url } = config;
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [formData, setFormData] = useState<RegisterFormData>({
     first_name: '',
@@ -35,13 +37,13 @@ export default function Page() {
   const handleNextStep = async (data: RegisterFormData) => {
     setLoading(true);
     setError(null);
-    
+
     try {
       // Prepare request data with required fields
       const requestData: RegisterRequestData = {
         first_name: data.first_name,
         last_name: data.last_name,
-        mobile: phone_number
+        mobile: phone_number,
       };
 
       // Add optional fields except avatar
@@ -57,7 +59,7 @@ export default function Page() {
         const base64Response = await fetch(data.avatar);
         const blob = await base64Response.blob();
         formData.append('avatar', blob, 'avatar.jpg');
-        
+
         // Add other fields to FormData
         Object.entries(requestData).forEach(([key, value]) => {
           formData.append(key, value);
@@ -66,26 +68,26 @@ export default function Page() {
         response = await axiosCore().post('/user/auth/register', formData, {
           headers: {
             'Api-Key': api_key,
-            'Content-Type': 'multipart/form-data'
-          }
+            'Content-Type': 'multipart/form-data',
+          },
         });
       } else {
         // No avatar, send JSON
         response = await axiosCore().post('/user/auth/register', requestData, {
           headers: {
-            'Api-Key': api_key
-          }
+            'Api-Key': api_key,
+          },
         });
       }
 
       if (response.status === 200) {
         setFormData(data);
-        document.cookie = `token=${response.data.object.token}; path=/; max-age=2592000; SameSite=Strict`;
+        setCookie('token', response.data.object.token);
         if (pageNumber === 0) {
           setPageNumber(1);
         } else {
           // Registration complete, redirect to home or dashboard
-          router.push('/home');
+          router.push('/personal-image-uploader');
         }
       } else {
         throw new Error(response.data?.message || 'Registration failed');
@@ -106,7 +108,7 @@ export default function Page() {
       setPageNumber(1);
     } else {
       // Skip final step, redirect to home or dashboard
-      router.push('/home');
+      router.push('/personal-image-uploader');
     }
   };
 
@@ -123,26 +125,16 @@ export default function Page() {
               <CometStarVector />
             </i>
           </div>
-          <h3 className="text-secondary-300">مـرحـلۀ {pageNumber === 0 ? "اول" : "دوم"}</h3>
+          <h3 className="text-secondary-300">مـرحـلۀ اول</h3>
         </div>
       </div>
-      {pageNumber === 0 ? (
-        <ProfileInfo
-          onNext={handleNextStep}
-          onSkip={handleSkip}
-          loading={loading}
-          error={error}
-          defaultValues={formData}
-        />
-      ) : (
-        <PersonalImage
-          onNext={handleNextStep}
-          onSkip={handleSkip}
-          loading={loading}
-          error={error}
-          defaultValues={formData}
-        />
-      )}
+      <ProfileInfo
+        onNext={handleNextStep}
+        onSkip={handleSkip}
+        loading={loading}
+        error={error}
+        defaultValues={formData}
+      />
     </div>
   );
 }

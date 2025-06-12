@@ -12,10 +12,15 @@ import { useRouter } from 'next/navigation';
 import { axiosCore } from '@/lib/axios';
 import { toast } from 'react-toastify';
 import { AxiosError, AxiosResponse } from 'axios';
+import { setCookie } from '@/lib/cookies';
+import { config } from '@/lib/config';
 
 export default function Page() {
   const userInfo = useUserStore((state) => state.userInfo);
-  const setUserInfo = useUserStore((state) => state.setUserInfo)
+  const setUserInfo = useUserStore((state) => state.setUserInfo);
+  const { url } = config;
+  console.log(url);
+
   const Route = useRouter();
   const { control, handleSubmit } = useForm<LoginByPhoneOtpFormType>({
     defaultValues: {
@@ -29,21 +34,17 @@ export default function Page() {
     try {
       const axios = axiosCore();
 
-      const response : AxiosResponse = await axios.post('/user/auth/otp/confirm', {
+      const response: AxiosResponse = await axios.post('/user/auth/otp/confirm', {
         mobile: userInfo.phone_number,
         code: data.token,
       });
-
-      console.log('OTP confirmed:', response.status);
-
       if (response.data.object.token) {
-        // Save token if needed: localStorage.setItem('token', response.token)
-        document.cookie = `token=${response.data.object.token}; path=/; max-age=2592000; SameSite=Strict`;
+        await setCookie('token', response.data.object.token);
         toast.success('ورود با موفقیت انجام شد');
         Route.push('/home'); // Redirect to home
       } else {
-        setUserInfo("api_key" , response.data.object.api_key)
-        setUserInfo("has_rejester" , !!response.data.object.token)
+        setUserInfo('api_key', response.data.object.api_key);
+        setUserInfo('has_rejester', !!response.data.object.token);
         toast.info('برای تکمیل ثبت‌نام به صفحه ثبت‌نام منتقل شدید');
         Route.push('/auth/register'); // Redirect to register
       }
@@ -100,7 +101,9 @@ export default function Page() {
             isLoading={false}
             color="secondary"
           />
-          <button onClick={() => Route.push('/auth')} className="text-primary">اصلاح شماره موبایل</button>
+          <button onClick={() => Route.push('/auth')} className="text-primary">
+            اصلاح شماره موبایل
+          </button>
         </div>
       </div>
 
