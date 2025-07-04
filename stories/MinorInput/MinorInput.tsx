@@ -11,6 +11,7 @@ export interface MinorInputProps {
   value?: string;
   options?: { label: string; value: string }[];
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+  size?: 'sm' | 'md' | 'lg';
 }
 
 export const MinorInput = ({
@@ -20,6 +21,7 @@ export const MinorInput = ({
                              value,
                              options = [],
                              onChange,
+                             size = 'md',
                            }: MinorInputProps) => {
   const getPlaceholder = () => {
     if (placeholder) return placeholder;
@@ -75,6 +77,7 @@ export const MinorInput = ({
           placeholder={getPlaceholder()}
           value={value}
           onChange={onChange}
+          size={size}
           className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
           classNames={{
             innerWrapper: [

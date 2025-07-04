@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CometStarVector } from '@/stories/Vectors';
 import ProfileInfo from './profile-info';
 import { useUserStore } from '@/store/UseUserStore';
@@ -27,12 +27,19 @@ export default function Page() {
     first_name: '',
     last_name: '',
     avatar: '',
-    gender: undefined,
+    gender: '1',
     email: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { phone_number, api_key } = useUserStore((state) => state.userInfo);
+
+
+  useEffect(() => {
+    if (!api_key) {
+      router.replace('/auth');
+    }
+  }, [api_key])
 
   const handleNextStep = async (data: RegisterFormData) => {
     setLoading(true);
@@ -134,6 +141,7 @@ export default function Page() {
         loading={loading}
         error={error}
         defaultValues={formData}
+        isDisabled={!api_key}
       />
     </div>
   );

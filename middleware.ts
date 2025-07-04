@@ -9,7 +9,6 @@ export function middleware(request: NextRequest) {
   const userUploadImageStatus = userInfoParsed ? userInfoParsed.status : null;
   const tokenFromQuery = searchParams.get('token');
   console.log(userUploadImageStatus);
-  
 
   // If token is in query but not in cookies, set it and redirect (once)
   if (tokenFromQuery && !token) {

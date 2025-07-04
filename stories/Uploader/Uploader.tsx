@@ -57,10 +57,8 @@ export const Uploader = (props: UploaderProps) => {
   const IconComponent = image ? EditIcon : AddIcon;
 
   return (
-    <div className="relative flex flex-col items-center">
-
+    <div onClick={open} className="relative flex flex-col items-center cursor-pointer select-none active:scale-95 transition-all duration-300">
       <Button
-        onPress={open}
         className={clsx(
           'absolute z-20 bg-primary text-white flex items-center justify-center px-2.5',
           size === 'x-large'
