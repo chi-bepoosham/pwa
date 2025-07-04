@@ -1,9 +1,8 @@
 "use client"
 
 import React, {useState} from 'react';
-import {Button, Tooltip} from "@heroui/react";
+import {addToast, Button, Tooltip} from "@heroui/react";
 import {Control, useController, useFormState, useWatch} from "react-hook-form";
-import {toast} from "react-toastify";
 import {RefreshRounded} from "@mui/icons-material";
 import {LoginByPhoneOtpFormType} from "@/types/LoginByPhoneOtpForm.type";
 import {axiosCore} from "@/lib/axios";
@@ -40,11 +39,17 @@ export const Resend = (props: ResendOtpProps) => {
         try {
             resetToken()
             await axios.post('/auth/phoneOtp', {phone: phone})
-            toast.success("کد یکبار مصرف ارسال شد")
+            addToast({
+                title: "کد یکبار مصرف ارسال شد",
+                color: "success",
+            })
             setLoading(false)
             return
         } catch  {
-            toast.error("کمی صبر کنید و مجدد تلاش کنید!")
+            addToast({
+                title: "کمی صبر کنید و مجدد تلاش کنید!",
+                color: "danger",
+            })
             setLoading(false)
             throw ""
         }

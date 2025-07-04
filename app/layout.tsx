@@ -3,7 +3,6 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import clsx from 'clsx';
 import PageTransition from '@/components/PageTransition';
-import { ToastContainer } from 'react-toastify';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {

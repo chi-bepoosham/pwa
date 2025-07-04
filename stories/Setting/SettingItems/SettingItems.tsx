@@ -1,9 +1,8 @@
 "use client";
 import React, {useEffect, useRef, useState} from "react";
-import {Listbox, ListboxItem, Switch} from "@heroui/react";
+import {addToast, Listbox, ListboxItem, Switch} from "@heroui/react";
 import {BookmarkIcon, InfoIcon, NotificationIcon, PaymentIcon, ShareIcon, UserIcon} from "@/stories/Icons";
-import {ToastContainer, toast} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 export interface SettingItemProps {
 }
@@ -24,25 +23,15 @@ export const SettingItems = (props: SettingItemProps) => {
             return
         }
         if (isNotificationsEnabled) {
-            toast.info("اعلان‌های اپلیکیشن فعال شد", {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            addToast({
+                title: "اعلان‌های اپلیکیشن فعال شد",
+                color: "success",
+            })
         } else {
-            toast.info("اعلان‌های اپلیکیشن غیرفعال شد", {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            addToast({
+                title: "اعلان‌های اپلیکیشن غیرفعال شد",
+                color: "success",
+            })
         }
     }, [isNotificationsEnabled])
 
@@ -105,7 +94,6 @@ export const SettingItems = (props: SettingItemProps) => {
                     اعـلان‌هـای اپـلیکیشـن
                 </ListboxItem>
             </Listbox>
-            <ToastContainer/>
         </div>
     );
 };

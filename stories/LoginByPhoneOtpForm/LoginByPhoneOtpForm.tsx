@@ -9,9 +9,8 @@ import {PhoneNumberInput} from "@/stories/LoginByPhoneOtpForm/PhoneNumberInput";
 import {TokenInput} from "@/stories/LoginByPhoneOtpForm/TokenInput";
 import {Label} from "@/stories/LoginByPhoneOtpForm/Label";
 import {Submit} from "@/stories/LoginByPhoneOtpForm/Submit";
-import {axiosCore} from "@/lib/axios";
-import {toast} from "react-toastify";
 import { InfoIcon } from '../Icons';
+import { addToast } from '@heroui/react';
 
 
 type T = LoginByPhoneOtpFormType
@@ -84,7 +83,10 @@ export const LoginByPhoneOtpForm = (props: LoginByPhoneOtpFormProps) => {
     }
 
     const builtinSubmit = async (data: T) => {
-        toast.error("Submit Handler not implement!")
+        addToast({
+            title: 'Submit Handler not implement!',
+            color: "danger",
+        })
     }
 
 

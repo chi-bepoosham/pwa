@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { toast } from 'react-toastify';
 import { getCookie } from './cookies';
+import { addToast } from '@heroui/react';
 
 const config = {
   baseURL: `${process.env.NEXT_PUBLIC_CORE_BASE_URL}`,
@@ -95,9 +95,13 @@ export const handleToastError = (error: ErrorResponse) => {
     );
   }
   // show messages
-  messages.map((message) => toast.error(message || 'خطای نامشخص 🥺'));
-
-  toast.error(messages.join('\n'));
+  for (let idx = 0; idx < messages.length; idx++) {
+    const msg = messages[idx];
+    addToast({
+      title: msg || 'خطای نامشخص 🥺',
+      color: "danger",
+    })
+  }
 
   return response?.data || null;
 };

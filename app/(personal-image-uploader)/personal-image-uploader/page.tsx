@@ -3,14 +3,13 @@ import TextBackground from '@/components/common/text-background';
 import { MinorButton } from '@/stories/MinorButton';
 import { Uploader } from '@/stories/Uploader';
 import { VoiceAssistant } from '@/stories/VoiceAssistant';
-import { Button } from '@heroui/react';
+import { addToast, Button } from '@heroui/react';
 import { AccountName } from '@/stories/AccountName';
 import { HintSlider } from '@/stories/HintSlider';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterFormData, registerFormSchema } from './schema';
 import { axiosCoreWithAuth } from '@/lib/axios';
-import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { CometStarVector } from '@/stories/Vectors';
 import { useGetUser } from '@/api/user';
@@ -59,7 +58,10 @@ const PersonalImage: React.FC<PersonalImageProps> = ({
   const onSubmit = async (data: RegisterFormData) => {
     try {
       if (!selectedFile) {
-        toast.error('لطفا یک تصویر انتخاب کنید');
+        addToast({
+          title: "لطفا یک تصویر انتخاب کنید",
+          color: "danger",
+        })
         return;
       }
 
@@ -72,8 +74,10 @@ const PersonalImage: React.FC<PersonalImageProps> = ({
           'Content-Type': 'multipart/form-data',
         },
       });
-
-      toast.success('تصویر با موفقیت آپلود شد');
+      addToast({
+        title: 'تصویر با موفقیت آپلود شد',
+        color: "success",
+      })
       onNext(data);
     } catch (error: any) {
       console.error('Upload error:', error);
