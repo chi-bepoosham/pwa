@@ -11,6 +11,7 @@ import {Label} from "@/stories/LoginByPhoneOtpForm/Label";
 import {Submit} from "@/stories/LoginByPhoneOtpForm/Submit";
 import {axiosCore} from "@/lib/axios";
 import {toast} from "react-toastify";
+import { InfoIcon } from '../Icons';
 
 
 type T = LoginByPhoneOtpFormType
@@ -76,7 +77,6 @@ export const LoginByPhoneOtpForm = (props: LoginByPhoneOtpFormProps) => {
         resetField("token")
     }
 
-    const axios = axiosCore()
     const onSubmit = async (data: T) => {
         if (submit) await submit(data, setError, resetToken)
         else await builtinSubmit(data)
@@ -106,6 +106,20 @@ export const LoginByPhoneOtpForm = (props: LoginByPhoneOtpFormProps) => {
                 control={control}
                 changeNumber={resetForm}
             />
+            <div className="flex flex-row justify-start items-start gap-2 mt-4">
+              <InfoIcon size={30} />
+              <p className="text-sm text-right text-black">
+                استفاده از چی‌ بپوشم به معنی پذیرش{' '}
+                <a
+                  href="/terms"
+                  className="text-primary hover:underline"
+                >
+                  قوانین و مقررات
+                </a>{' '}
+                این سرویس می‌باشد.
+              </p>
+
+            </div>
             <TokenInput
                 control={control}
                 done={() => handleSubmit(onSubmit)()}

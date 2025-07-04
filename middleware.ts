@@ -24,6 +24,11 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
+  // Allow public paths like /terms to be accessed without token
+  if (pathname.startsWith('/terms')) {
+    return NextResponse.next();
+  }
+
   // Allow public paths like /auth to be accessed without token
   if (!token && !pathname.startsWith('/auth')) {
     return NextResponse.redirect(new URL('/auth', request.url));

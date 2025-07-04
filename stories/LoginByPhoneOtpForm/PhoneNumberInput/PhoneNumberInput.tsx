@@ -6,6 +6,7 @@ import { PatternFormat } from 'react-number-format';
 import { Control, Controller, useController } from 'react-hook-form';
 import { LoginByPhoneOtpFormType } from '@/types/LoginByPhoneOtpForm.type';
 import { InfoIcon } from '@/stories/Icons';
+import clsx from 'clsx';
 
 
 export interface PhoneNumberInputProps {
@@ -37,28 +38,10 @@ export const PhoneNumberInput = (props: PhoneNumberInputProps) => {
           variant="bordered"
           placeholder="127077707"
           labelPlacement="outside"
-          description={(
-            <div className="flex flex-row justify-start items-start gap-2 mt-4">
-              <InfoIcon size={30} />
-              <p className="text-sm text-right text-black">
-                استفاده از چی‌ بپوشم به معنی پذیرش{' '}
-                <a
-                  href="/terms"
-                  className="text-primary hover:underline"
-                >
-                  قوانین و مقررات
-                </a>{' '}
-                این سرویس می‌باشد.
-              </p>
-
-            </div>
-          )}
-
-
           type="tel"
 
           endContent={(
-            <div dir="ltr" className="flex flex-row items-center justify-start">
+            <div dir="ltr" className={clsx("flex flex-row items-center justify-start", fieldState.invalid && "text-danger")}>
               +98
               <Divider orientation="vertical" className="h-4 mx-2" />
             </div>
@@ -77,6 +60,8 @@ export const PhoneNumberInput = (props: PhoneNumberInputProps) => {
 
           isInvalid={fieldState.invalid}
           errorMessage={fieldState.error?.message}
+
+          autoFocus
 
           isReadOnly={hasTokenSent || formState.isLoading || formState.isSubmitting || formState.disabled || field.disabled}
         />

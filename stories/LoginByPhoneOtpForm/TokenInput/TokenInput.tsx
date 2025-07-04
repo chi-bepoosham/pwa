@@ -53,6 +53,7 @@ export const TokenInput = (props: PhoneNumberInputProps) => {
                         isDisabled={formState.isLoading || formState.isSubmitting || formState.disabled || field.disabled}
 
                         onComplete={done}
+                        autoFocus
                     />
                     {/*<Resend*/}
                     {/*    control={control}*/}

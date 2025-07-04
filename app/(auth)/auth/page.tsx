@@ -10,6 +10,8 @@ import { ErrorOption, FieldPath } from 'react-hook-form';
 import { axiosCore } from '@/lib/axios';
 import { useUserStore } from '@/store/UseUserStore';
 import { useRouter } from 'next/navigation';
+import { addToast } from '@heroui/react';
+import { AxiosError } from 'axios';
 
 // type input
 type T = LoginByPhoneOtpFormType;
@@ -40,10 +42,19 @@ export default function Page() {
       const response = await axios.post('/user/auth/otp/send', {
         mobile: `0${data.phone}`,
       });
+      addToast({
+        title: "کد تایید به شماره شما ارسال شد",
+        color: "success",
+      })
       setUserInfo('phone_number', `0${data.phone}`);
       Route.push('/auth/verify');
       console.log('OTP sent successfully:', response.status);
     } catch (err) {
+      addToast({
+        title: "خطایی در ارسال کد تایید رخ داد",
+        description: (err as AxiosError).message || "خطایی در ارسال کد تایید رخ داد",
+        color: "danger",
+      })
       console.error(err);
     }
   };
@@ -67,7 +78,7 @@ export default function Page() {
         <div className="py-4">
           <LoginByPhoneOtpForm submit={handleSubmit} reset={handleReset} />
         </div>
-        <div className="flex flex-row items-center justify-center w-full h-full gap-4">
+        {/* <div className="flex flex-row items-center justify-center w-full h-full gap-4">
           <i className="rotate-180">
             <CometStarVector />
           </i>
@@ -75,8 +86,8 @@ export default function Page() {
           <i>
             <CometStarVector />
           </i>
-        </div>
-        <div className="w-full h-full flex justify-center items-center py-4">
+        </div> */}
+        {/* <div className="w-full h-full flex justify-center items-center py-4">
           <MinorButton
             variant="ghost"
             buttonTitle="ورود بـــــا حســــاب گــــــوگل"
@@ -85,7 +96,7 @@ export default function Page() {
             icon={<GoogleIcon size={28} />}
             color="secondary"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

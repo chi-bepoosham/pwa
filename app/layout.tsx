@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next';
 import clsx from 'clsx';
 import PageTransition from '@/components/PageTransition';
 import { ToastContainer } from 'react-toastify';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
   title: {
@@ -44,9 +45,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={clsx('w-screen h-screen overflow-hidden bg-primary-200', IRANSansX.className)}
       >
         <main className="max-w-screen-sm mx-auto !min-h-screen bg-white">
-          <PageTransition>{children}</PageTransition>
+          <Providers>
+            {/* <PageTransition> */}
+              {children}
+          {/* </PageTransition> */}
+          </Providers>
         </main>
-        <ToastContainer toastClassName="font-[revert]"/>
+        {/* <ToastContainer toastClassName="font-[revert]"/> */}
       </body>
     </html>
   );

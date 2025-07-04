@@ -20,7 +20,7 @@ export const Banner = (props: BannerProps) => {
             <i className={`${textColor}`}>
                 <Text/>
             </i>
-            {withStar && <i className={`${starColor}`}><StarVector/></i>}
+            {withStar && <i className={`${starColor} `}><StarVector/></i>}
         </div>
     );
 };
