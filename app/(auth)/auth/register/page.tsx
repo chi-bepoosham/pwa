@@ -82,7 +82,9 @@ export default function Page() {
 
       if (response.status === 200) {
         setFormData(data);
-        setCookie('token', response.data.object.token);
+        await setCookie('token', response.data.object.token);
+        await setCookie('userInfo', JSON.stringify(response.data.object.user));
+
         if (pageNumber === 0) {
           setPageNumber(1);
         } else {

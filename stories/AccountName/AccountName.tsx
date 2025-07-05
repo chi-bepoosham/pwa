@@ -8,7 +8,7 @@ export const AccountName = (props: AccountNameProps) => {
   const { name } = props;
   return (
     <p className="text-center text-sm text-nowrap relative">
-      {name ?? 'کاربر عزیز'}
+      {(name || "کاربر") + ' عزیز'}
     </p>
   );
 };

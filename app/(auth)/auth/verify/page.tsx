@@ -39,8 +39,11 @@ export default function Page() {
         mobile: userInfo.phone_number,
         code: data.token,
       });
+
+      
       if (response.data.object.token) {
         await setCookie('token', response.data.object.token);
+        await setCookie('userInfo', JSON.stringify(response.data.object.user));
         addToast({
           title: "ورود با موفقیت انجام شد",
           color: "success",

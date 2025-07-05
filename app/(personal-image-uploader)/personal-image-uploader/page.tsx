@@ -7,32 +7,24 @@ import { addToast, Button } from '@heroui/react';
 import { AccountName } from '@/stories/AccountName';
 import { HintSlider } from '@/stories/HintSlider';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { RegisterFormData, registerFormSchema } from './schema';
 import { axiosCoreWithAuth } from '@/lib/axios';
 import { useEffect, useState } from 'react';
 import { CometStarVector } from '@/stories/Vectors';
 import { useGetUser } from '@/api/user';
 import { setCookie } from '@/lib/cookies';
+import { PersonalImageUploaderData, personalImageUploaderSchema } from './schema';
+import { useRouter } from 'next/navigation';
 
 interface PersonalImageProps {
-  onNext: (data: RegisterFormData) => void;
-  onSkip: () => void;
-  loading: boolean;
-  error: string | null;
-  defaultValues?: RegisterFormData;
 }
 
-const PersonalImage: React.FC<PersonalImageProps> = ({
-  onNext,
-  onSkip,
-  loading,
-  error,
-  defaultValues,
-}) => {
-  const { setValue, handleSubmit, watch } = useForm<RegisterFormData>({
-    resolver: zodResolver(registerFormSchema),
-    defaultValues,
+const PersonalImage: React.FC<PersonalImageProps> = (props) => {
+  const router = useRouter();
+
+  const { setValue, handleSubmit, watch } = useForm<PersonalImageUploaderData>({
+    defaultValues: {
+      body_image: '',
+    },
   });
   const { userInfo , userInfoError } = useGetUser();
 
@@ -50,12 +42,12 @@ const PersonalImage: React.FC<PersonalImageProps> = ({
     setSelectedFile(file);
     const reader = new FileReader();
     reader.onloadend = () => {
-      setValue('avatar', reader.result as string);
+      setValue('body_image', reader.result as string);
     };
     reader.readAsDataURL(file);
   };
 
-  const onSubmit = async (data: RegisterFormData) => {
+  const onSubmit = async () => {
     try {
       if (!selectedFile) {
         addToast({
@@ -78,7 +70,7 @@ const PersonalImage: React.FC<PersonalImageProps> = ({
         title: 'تصویر با موفقیت آپلود شد',
         color: "success",
       })
-      onNext(data);
+      router.replace('/');
     } catch (error: any) {
       console.error('Upload error:', error);
     }
@@ -104,7 +96,7 @@ const PersonalImage: React.FC<PersonalImageProps> = ({
         <Uploader size="x-large" title="تصویر نمایه" onImageUpload={handleFileUpload} />
         <div className="text-center flex gap-2 flex-col text-sm text-nowrap relative">
           <div>
-            <AccountName />
+            <AccountName name={userInfo?.first_name}/>
           </div>
           <TextBackground bgColor="#4141F9">
             عکس تمام قد خودت رو با نور مناسب اینجا اضافه کن!
@@ -115,12 +107,10 @@ const PersonalImage: React.FC<PersonalImageProps> = ({
       <div className="w-full p-4">
         <HintSlider
           slides={[
-            { picture: '/banner.png', matchRate: 85, isCorrect: true },
-            { picture: '/img_5.png', matchRate: 70, isCorrect: false },
-            { picture: '/banner.png', matchRate: 90, isCorrect: true },
-            { picture: '/img_5.png', matchRate: 35, isCorrect: false },
-            { picture: '/banner.png', matchRate: 60, isCorrect: true },
-            { picture: '/img_5.png', matchRate: 90, isCorrect: false },
+            { picture: '/static/images/correct_position.jpg', matchRate: 85, isCorrect: true },
+            { picture: '/static/images/incorrect_position.jpg', matchRate: 70, isCorrect: false },
+            { picture: '/static/images/correct_position.jpg', matchRate: 85, isCorrect: true },
+            { picture: '/static/images/incorrect_position.jpg', matchRate: 70, isCorrect: false },
           ]}
         />
       </div>
@@ -130,7 +120,7 @@ const PersonalImage: React.FC<PersonalImageProps> = ({
           variant="flat"
           buttonTitle="ورود بـه صفحۀ اصلـی"
           radius="md"
-          isLoading={loading}
+          isLoading={false}
           color="primary"
           onClick={handleSubmit(onSubmit)}
         />
@@ -142,7 +132,7 @@ const PersonalImage: React.FC<PersonalImageProps> = ({
       {/* <div className="w-full">
         <VoiceAssistant />
       </div> */}
-      {error && <div className="text-red-500 text-center mt-4">{error}</div>}
+      {/* {error && <div className="text-red-500 text-center mt-4">{error}</div>} */}
     </>
   );
 };

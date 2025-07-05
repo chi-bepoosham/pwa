@@ -14,36 +14,24 @@ export const HintSlider = (props: HintSliderProps) => {
   const { slides } = props;
 
   return (
-    <div className="relative w-full max-w-[800px] select-none flex flex-col gap-8">
+    <div className="relative w-full select-none flex flex-col gap-8">
       <Swiper
-        spaceBetween={10}
-        breakpoints={{
-          0: {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-          },
-          640: {
-            slidesPerView: 1.5,
-            slidesPerGroup: 1,
-          },
-          768: {
-            slidesPerView: 2,
-            slidesPerGroup: 2,
-          },
-        }}
+        slidesPerView="auto"
+        spaceBetween={0}
+        freeMode
         className="w-full"
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="relative w-full h-64 border-2 border-secondary rounded-2xl">
+          <SwiperSlide key={index} className='!w-60 mx-2'>
+            <div className="relative bg-white w-full h-64 border-2 border-secondary rounded-2xl">
               <div className="text-white flex justify-center items-center absolute top-2 left-2 bg-white/10 backdrop-blur rounded-full z-10 w-10 h-10">
                 {slide.matchRate}%
               </div>
 
               <Image
-                width="128"
-                height="128"
-                className="w-full h-full absolute object-cover rounded-xl"
+                width="512"
+                height="512"
+                className="w-full h-full absolute object-contain rounded-xl"
                 src={slide.picture}
                 alt="rating-amount"
               />

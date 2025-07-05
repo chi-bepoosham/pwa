@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
   const userInfoParsed = userInfo ? JSON.parse(userInfo) : null;
   const userUploadImageStatus = userInfoParsed ? userInfoParsed.status : null;
   const tokenFromQuery = searchParams.get('token');
-  console.log(userUploadImageStatus);
+  console.log({token, userInfoParsed, userUploadImageStatus});
 
   // If token is in query but not in cookies, set it and redirect (once)
   if (tokenFromQuery && !token) {
@@ -46,6 +46,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next|api|favicon.ico|images|fonts|assets).*)',
+    '/((?!_next|api|favicon.ico|images|fonts|assets|static|screenshots|icons|logo.png|sw.js|sw.js.map|workbox-*.js|workbox-*.js.map).*)',
   ],
 };
