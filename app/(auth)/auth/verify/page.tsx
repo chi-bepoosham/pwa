@@ -23,7 +23,7 @@ export default function Page() {
   console.log(url);
 
   const Route = useRouter();
-  const { control, handleSubmit, resetField, setFocus } = useForm<LoginByPhoneOtpFormType>({
+  const { control, handleSubmit, resetField, setFocus, formState } = useForm<LoginByPhoneOtpFormType>({
     defaultValues: {
       phone: '',
       hasTokenSent: true,
@@ -150,8 +150,8 @@ export default function Page() {
             color='primary'
             size='sm'
             onPress={sendAgain}
-            isLoading={isSending}
-            isDisabled={isSending}
+            isLoading={isSending || formState.isLoading || formState.isValidating || formState.isSubmitting}
+            isDisabled={isSending || formState.disabled}
           >
              ارسال مجدد کد پیامکی
           </Button>
@@ -162,6 +162,8 @@ export default function Page() {
             variant='solid'
             color='primary'
             size='lg'
+            isDisabled={formState.disabled}
+            isLoading={formState.isLoading || formState.isValidating || formState.isSubmitting}
           >
              تایید و ادامه
           </Button>

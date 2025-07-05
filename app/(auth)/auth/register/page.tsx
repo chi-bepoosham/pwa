@@ -21,7 +21,6 @@ interface RegisterRequestData {
 
 export default function Page() {
   const router = useRouter();
-  const { url } = config;
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [formData, setFormData] = useState<RegisterFormData>({
     first_name: '',
@@ -34,12 +33,6 @@ export default function Page() {
   const [error, setError] = useState<string | null>(null);
   const { phone_number, api_key } = useUserStore((state) => state.userInfo);
 
-
-  useEffect(() => {
-    if (!api_key) {
-      router.replace('/auth');
-    }
-  }, [api_key])
 
   const handleNextStep = async (data: RegisterFormData) => {
     setLoading(true);
@@ -118,6 +111,12 @@ export default function Page() {
       router.push('/personal-image-uploader');
     }
   };
+  useEffect(() => {
+    if (!api_key) {
+      router.replace('/auth');
+    }
+  }, [api_key])
+
 
   return (
     <div className="flex flex-col justify-between w-full h-screen gap-12 bg-white overflow-x-hidden overflow-y-auto">

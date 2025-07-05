@@ -15,7 +15,7 @@ export interface ProvidersProps {
 export function Providers({children}: ProvidersProps) {
 
     return (
-        <HeroUIProvider className="relative min-h-screen max-h-screen overflow-x-hidden scroll-smoth">
+        <HeroUIProvider className="relative min-h-screen max-h-screen overflow-x-hidden scroll-smoth flex flex-col">
             <SessionProvider>
                 <Suspense>
                     <SWRProvider>

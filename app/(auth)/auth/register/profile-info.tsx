@@ -2,8 +2,6 @@ import { GenderSelection } from '@/stories/GenderSelection';
 import { MinorButton } from '@/stories/MinorButton';
 import { MinorInput } from '@/stories/MinorInput';
 import { Uploader } from '@/stories/Uploader';
-import { VoiceAssistant } from '@/stories/VoiceAssistant';
-import { Button } from '@heroui/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterFormData, registerFormSchema } from './schema';

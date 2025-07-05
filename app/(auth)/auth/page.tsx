@@ -60,7 +60,7 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full overflow-hidden bg-primary">
+    <div className="flex-1 flex flex-col justify-center items-center w-full h-full overflow-hidden bg-primary">
       <div className="flex flex-col items-center justify-center h-full w-full gap-5 py-8">
         <Logo withLogoType={true} />
         <div className="flex flex-row justify-center items-center w-full gap-4">
@@ -74,7 +74,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-between w-full h-full rounded-t-3xl p-4 bg-white">
+      <div className="flex-1 flex flex-col items-center justify-between w-full h-full rounded-t-3xl p-4 bg-white">
         <div className="py-4">
           <LoginByPhoneOtpForm submit={handleSubmit} reset={handleReset} />
         </div>
