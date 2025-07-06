@@ -15,7 +15,7 @@ const ConfirmedBodyType: React.FC<ConfirmedBodyTypeProps> = (props) => {
 
     const router = useRouter()
     const goToMainPage = () => {
-        router.push('/')
+        router.push('/home')
     }
 
 

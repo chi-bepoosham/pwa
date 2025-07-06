@@ -2,8 +2,18 @@ import { InfoIcon, UserIcon } from '@/stories/Icons';
 import { MinorButton } from '@/stories/MinorButton';
 import { StarIcon } from '@/stories/Icons';
 import Link from "next/link"
+import { Spinner } from '@heroui/react';
 
-const MainHeader = () => {
+
+interface MainHeaderProps {
+  bodyTypeDetails: any;
+  isLoading: boolean;
+  error: any;
+}
+
+
+const MainHeader = (props: MainHeaderProps) => {
+  const { bodyTypeDetails, isLoading, error } = props;
   return (
     <div className="p-7 relative">
       <div className="flex flex-row justify-between items-center">
@@ -23,10 +33,10 @@ const MainHeader = () => {
               <StarIcon size={20} />
             </i>
           </h1>
-          {/*ToDo: add a prop to take it from back-end*/}
-          <h2 className='text-primary'>
-          ســــاعت شنــی
-          </h2>
+          <div className='text-primary'>
+            {isLoading && (<Spinner size="sm" color="primary" />)}
+            {!isLoading && bodyTypeDetails?.title}
+          </div>
         </div>
         <Link
         href="/home/body-form">
