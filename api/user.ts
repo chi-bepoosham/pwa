@@ -11,14 +11,16 @@ export function useGetUser(interval = 200000, header?: Record<string, string>) {
   console.log(data);
   
   const memoizedValue = useMemo(
-    () => ({
-      userInfo: data?.object?.user || [],
-      userInfoLoading: isLoading,
-      userInfoError: error,
-      userInfoValidating: isValidating,
-      userInfoEmpty: !isLoading && !data?.object?.length,
-      fetchUserInfo: mutate,
-    }),
+    () => {
+      return {
+        userInfo: (data as unknown as {object: {user: unknown}})?.object?.user || [],
+        userInfoLoading: isLoading,
+        userInfoError: error,
+        userInfoValidating: isValidating,
+        userInfoEmpty: !isLoading && !(data as unknown as {object: {user: unknown}})?.object?.user,
+        fetchUserInfo: mutate,
+      }
+    },
     [data, error, isLoading, isValidating]
   );
 

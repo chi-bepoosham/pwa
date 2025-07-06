@@ -6,14 +6,16 @@ import { Spinner } from '@heroui/react';
 
 
 interface MainHeaderProps {
-  bodyTypeDetails: any;
+  // TODO: add type for bodyTypeDetails
+  // TODO: add type for error
+  bodyTypeDetails: { id: number, title: string };
   isLoading: boolean;
-  error: any;
+  error: string;
 }
 
 
 const MainHeader = (props: MainHeaderProps) => {
-  const { bodyTypeDetails, isLoading, error } = props;
+  const { bodyTypeDetails, isLoading } = props;
   return (
     <div className="p-7 relative">
       <div className="flex flex-row justify-between items-center">

@@ -1,6 +1,5 @@
 'use client';
-import { MinorButton } from '@/stories/MinorButton';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CometStarVector } from '@/stories/Vectors';
 import { ArrowRightIcon } from '@/stories/Icons';
 import { Banner } from '@/stories/Banner';

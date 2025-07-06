@@ -17,13 +17,10 @@ import { Uploader } from "@/stories/Uploader";
 import { AccountName } from "@/stories/AccountName";
 import TextBackground from "@/components/common/text-background";
 import { HintSlider } from "@/stories/HintSlider";
-import { MinorButton } from "@/stories/MinorButton";
 
 
-interface PersonalImageProps {
-}
 
-const PersonalImage: React.FC<PersonalImageProps> = (props) => {
+const PersonalImage = () => {
   
 
   const { userInfo , userInfoError } = useGetUser(2000);
@@ -39,7 +36,7 @@ const PersonalImage: React.FC<PersonalImageProps> = (props) => {
   const router = useRouter();
 
 
-  const { setValue, handleSubmit, watch } = useForm<PersonalImageUploaderData>({
+  const { setValue, handleSubmit } = useForm<PersonalImageUploaderData>({
       defaultValues: {
         body_image: '',
       },
@@ -78,12 +75,12 @@ const PersonalImage: React.FC<PersonalImageProps> = (props) => {
             color: "success",
         })
         router.replace('/');
-      } catch (error: any) {
+      } catch (error) {
         console.error('Upload error:', error);
       }
   }
 
-  const status = userInfo?.process_body_image_status
+  const status = (userInfo as unknown as {process_body_image_status: number}).process_body_image_status
 
   return (
     <main className="flex flex-col min-h-full flex-1">
@@ -109,7 +106,7 @@ const PersonalImage: React.FC<PersonalImageProps> = (props) => {
         />
         <div className="text-center flex gap-2 flex-col text-sm text-nowrap relative">
           <div>
-            <AccountName name={userInfo?.first_name}/>
+            <AccountName name={(userInfo as unknown as {first_name: string}).first_name}/>
           </div>
           <TextBackground bgColor="#4141F9">
             عکس تمام قد خودت رو با نور مناسب اینجا اضافه کن!

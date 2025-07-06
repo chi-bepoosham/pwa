@@ -8,7 +8,6 @@ import { AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 import { RegisterFormData } from './schema';
 import { setCookie } from '@/lib/cookies';
-import { config } from '@/lib/config';
 
 interface RegisterRequestData {
   first_name: string;

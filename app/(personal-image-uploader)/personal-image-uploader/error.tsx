@@ -1,30 +1,21 @@
 'use client';
 
-import TextBackground from '@/components/common/text-background';
-import { MinorButton } from '@/stories/MinorButton';
-import { Uploader } from '@/stories/Uploader';
-import { addToast, Alert, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Spinner } from '@heroui/react';
-import { AccountName } from '@/stories/AccountName';
-import { HintSlider } from '@/stories/HintSlider';
-import { useForm } from 'react-hook-form';
-import { axiosCoreWithAuth } from '@/lib/axios';
+import { Alert, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
 import {useState } from 'react';
-import { CometStarVector } from '@/stories/Vectors';
-import { PersonalImageUploaderData } from './schema';
-import { useRouter } from 'next/navigation';
 
 
 interface ErrorBodyTypeProps {
-    userInfo: any;
+    // TODO: add type for userInfo
+    userInfo: unknown;
 }
 
 const ErrorBodyType: React.FC<ErrorBodyTypeProps> = (props) => {
 
     const { userInfo } = props
 
-    const router = useRouter();
+    // const router = useRouter();
 
-    const error = JSON.parse(userInfo.error_body_image)
+    const error = JSON.parse((userInfo as unknown as {error_body_image: string}).error_body_image)
 
     let code, message, detail = ''
 
@@ -84,9 +75,9 @@ const ErrorBodyType: React.FC<ErrorBodyTypeProps> = (props) => {
                                         </div>
                                         {detail && (
                                             <ul className='flex flex-col gap-1'>
-                                                {detail.split("|").map((v) => {
+                                                {detail.split("|").map((v , idx) => {
                                                     return (
-                                                        <li className='before:content-["-"] before:me-2'>{v}</li>
+                                                        <li key={idx} className='before:content-["-"] before:me-2'>{v}</li>
                                                     )
                                                 })}
                                             </ul>

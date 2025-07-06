@@ -15,7 +15,7 @@ interface ProfileInfoProps {
   isDisabled?: boolean;
 }
 
-const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, onSkip, loading, error, defaultValues }) => {
+const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, error, defaultValues }) => {
   const {
     handleSubmit,
     setValue,

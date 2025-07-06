@@ -1,16 +1,18 @@
 'use client';
 
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progress, Spinner } from '@heroui/react';
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
 import { CheckCircle } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 
 interface ConfirmedBodyTypeProps {
-    userInfo: any;
+    // TODO: add type for userInfo
+    
+    userInfo: unknown;
 }
 
-const ConfirmedBodyType: React.FC<ConfirmedBodyTypeProps> = (props) => {
+const ConfirmedBodyType: React.FC<ConfirmedBodyTypeProps> = () => {
 
-    const { userInfo } = props
+    // const { userInfo } = props
 
 
     const router = useRouter()
@@ -29,7 +31,7 @@ const ConfirmedBodyType: React.FC<ConfirmedBodyTypeProps> = (props) => {
             isOpen={true}
         >
             <ModalContent>
-                {(onClose) => (
+                {() => (
                     <>
                         <ModalHeader className="flex flex-col gap-1">
                             <div className='font-bold text-base'>تصویر شما با موفقیت ثبت شد</div>

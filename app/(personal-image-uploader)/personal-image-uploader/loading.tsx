@@ -3,12 +3,13 @@
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Spinner } from '@heroui/react';
 
 interface LoadingBodyTypeProps {
-    userInfo: any;
+    // TODO: add type for userInfo
+    userInfo: unknown;
 }
 
-const LoadingBodyType: React.FC<LoadingBodyTypeProps> = (props) => {
+const LoadingBodyType: React.FC<LoadingBodyTypeProps> = () => {
 
-    const { userInfo } = props
+    // const { userInfo } = props
 
 
     return (
@@ -21,7 +22,7 @@ const LoadingBodyType: React.FC<LoadingBodyTypeProps> = (props) => {
             isOpen={true}
         >
             <ModalContent>
-                {(onClose) => (
+                {() => (
                     <>
                         <ModalHeader className="flex flex-col gap-1">
                             <div className='font-bold text-base'>در حال بارگذاری</div>

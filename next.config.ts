@@ -3,7 +3,6 @@
 
 const baseConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   headers: async () => {
     return [
       {

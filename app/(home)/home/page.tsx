@@ -5,9 +5,6 @@ import MainHeader from "./components/header/main-header"
 import { Celebrities } from "@/stories/Celebrities"
 import { SuggestionSlider } from "@/stories/SuggestionSlider"
 import { BottomNavigation } from "@/stories/BottomNavigation"
-import { useEffect } from "react"
-import { useGetUser } from "@/api/user"
-import { setCookie } from "@/lib/cookies"
 import { endpoints } from "@/api/endpoints"
 import useSWR from "swr"
 import { fetcher } from "@/lib/axios"
@@ -43,7 +40,7 @@ export default function Home() {
 
   const URL = endpoints.user.bodyTypeDetails;
 
-  const { data, isLoading, error, isValidating, mutate } = useSWR(URL, fetcher);
+  const { data, isLoading, error } = useSWR(URL, fetcher);
 
 
 
@@ -51,7 +48,7 @@ export default function Home() {
     <main className="flex flex-col w-full h-screen overflow-y-auto overflow-x-hidden">
       <div className="w-full">
         <MainHeader
-          bodyTypeDetails={(data as any)?.object?.body_type}
+          bodyTypeDetails={(data as unknown as {object: {body_type: { id: number, title: string }}})?.object?.body_type}
           isLoading={isLoading}
           error={error}
         />

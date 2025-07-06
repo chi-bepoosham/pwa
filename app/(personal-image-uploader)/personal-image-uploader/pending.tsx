@@ -1,14 +1,15 @@
 'use client';
 
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progress, Spinner } from '@heroui/react';
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progress } from '@heroui/react';
 
 interface PendingBodyTypeProps {
-    userInfo: any;
+    // TODO: add type for userInfo
+    userInfo: unknown;
 }
 
-const PendingBodyType: React.FC<PendingBodyTypeProps> = (props) => {
+const PendingBodyType: React.FC<PendingBodyTypeProps> = () => {
 
-    const { userInfo } = props
+    // const { userInfo } = props
 
 
     return (
@@ -21,7 +22,7 @@ const PendingBodyType: React.FC<PendingBodyTypeProps> = (props) => {
             isOpen={true}
         >
             <ModalContent>
-                {(onClose) => (
+                {() => (
                     <>
                         <ModalHeader className="flex flex-col gap-1">
                             <div className='font-bold text-base'>در حال پردازش</div>

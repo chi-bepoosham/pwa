@@ -3,8 +3,6 @@ import React from 'react';
 import { Logo } from '@/stories/Logo';
 import { CometStarVector } from '@/stories/Vectors';
 import { LoginByPhoneOtpForm } from '@/stories/LoginByPhoneOtpForm';
-import { MinorButton } from '@/stories/MinorButton';
-import { GoogleIcon } from '@/stories/Icons';
 import { LoginByPhoneOtpFormType } from '@/types/LoginByPhoneOtpForm.type';
 import { ErrorOption, FieldPath } from 'react-hook-form';
 import { axiosCore } from '@/lib/axios';
