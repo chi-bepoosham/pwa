@@ -12,7 +12,7 @@ const TextBackground = ({ bgColor, children, className }: TextBackgroundProps) =
       {bg ? (
         <p
           className={clsx(
-            'z-0 relative after:absolute after:inset-0 after:right-2 after:w-[95%] after:-z-10 after:rounded-sm after:opacity-10',
+            'z-0 relative after:absolute after:inset-0 after:right-2 after:w-[95%] after:-z-10 after:rounded-sm after:opacity-20',
             `after:bg-[--bg-text-color]`,
             className
           )}

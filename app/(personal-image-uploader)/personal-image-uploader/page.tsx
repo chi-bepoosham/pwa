@@ -1,84 +1,93 @@
 'use client';
-import TextBackground from '@/components/common/text-background';
-import { MinorButton } from '@/stories/MinorButton';
-import { Uploader } from '@/stories/Uploader';
-import { VoiceAssistant } from '@/stories/VoiceAssistant';
-import { addToast, Button } from '@heroui/react';
-import { AccountName } from '@/stories/AccountName';
-import { HintSlider } from '@/stories/HintSlider';
-import { useForm } from 'react-hook-form';
-import { axiosCoreWithAuth } from '@/lib/axios';
-import { useEffect, useState } from 'react';
-import { CometStarVector } from '@/stories/Vectors';
-import { useGetUser } from '@/api/user';
-import { setCookie } from '@/lib/cookies';
-import { PersonalImageUploaderData, personalImageUploaderSchema } from './schema';
-import { useRouter } from 'next/navigation';
+
+import { useGetUser } from "@/api/user";
+import { setCookie } from "@/lib/cookies";
+import { useEffect, useState } from "react";
+import PendingBodyType from "./pending";
+import ConfirmedBodyType from "./confirmed";
+import ErrorBodyType from "./error";
+import LoadingBodyType from "./loading";
+import { useRouter } from "next/navigation";
+import { PersonalImageUploaderData } from "./schema";
+import { useForm } from "react-hook-form";
+import { addToast, Button } from "@heroui/react";
+import { axiosCoreWithAuth } from "@/lib/axios";
+import { CometStarVector } from "@/stories/Vectors";
+import { Uploader } from "@/stories/Uploader";
+import { AccountName } from "@/stories/AccountName";
+import TextBackground from "@/components/common/text-background";
+import { HintSlider } from "@/stories/HintSlider";
+import { MinorButton } from "@/stories/MinorButton";
+
 
 interface PersonalImageProps {
 }
 
 const PersonalImage: React.FC<PersonalImageProps> = (props) => {
-  const router = useRouter();
+  
 
-  const { setValue, handleSubmit, watch } = useForm<PersonalImageUploaderData>({
-    defaultValues: {
-      body_image: '',
-    },
-  });
-  const { userInfo , userInfoError } = useGetUser();
+  const { userInfo , userInfoError } = useGetUser(2000);
 
   useEffect(() => {
     if(!userInfoError){
       console.log(userInfo);
-      
       setCookie('userInfo', userInfo ? JSON.stringify(userInfo) : '');
     }
   }, [userInfo]);
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const router = useRouter();
+
+
+  const { setValue, handleSubmit, watch } = useForm<PersonalImageUploaderData>({
+      defaultValues: {
+        body_image: '',
+      },
+  })
+
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
 
   const handleFileUpload = (file: File) => {
-    setSelectedFile(file);
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setValue('body_image', reader.result as string);
-    };
-    reader.readAsDataURL(file);
-  };
+      setSelectedFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setValue('body_image', reader.result as string);
+      };
+      reader.readAsDataURL(file);
+  }
 
   const onSubmit = async () => {
-    try {
-      if (!selectedFile) {
+      try {
+        if (!selectedFile) {
+            addToast({
+            title: "لطفا یک تصویر انتخاب کنید",
+            color: "danger",
+            })
+            return;
+        }
+        const formData = new FormData();
+        formData.append('image', selectedFile);
+        const axios = axiosCoreWithAuth();
+        await axios.post('/user/body_type/upload/image', formData, {
+            headers: {
+            'Content-Type': 'multipart/form-data',
+            },
+        });
         addToast({
-          title: "لطفا یک تصویر انتخاب کنید",
-          color: "danger",
+            title: 'تصویر با موفقیت آپلود شد',
+            color: "success",
         })
-        return;
+        router.replace('/');
+      } catch (error: any) {
+        console.error('Upload error:', error);
       }
+  }
 
-      const formData = new FormData();
-      formData.append('image', selectedFile);
-
-      const axios = axiosCoreWithAuth();
-      await axios.post('/user/body_type/upload/image', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      addToast({
-        title: 'تصویر با موفقیت آپلود شد',
-        color: "success",
-      })
-      router.replace('/');
-    } catch (error: any) {
-      console.error('Upload error:', error);
-    }
-  };
+  const status = userInfo?.process_body_image_status
 
   return (
-    <>
-      <div className="flex flex-col gap-10 py-4">
+    <main className="flex flex-col min-h-full flex-1">
+      <div className="flex flex-col gap-10 py-4 sticky top-0 z-20 bg-white">
         <div className="flex flex-col justify-center items-center p-4">
           <div className="flex flex-row justify-center items-center gap-4">
             <i className="rotate-180">
@@ -92,8 +101,12 @@ const PersonalImage: React.FC<PersonalImageProps> = (props) => {
           <h3 className="text-secondary-300">مـرحـلۀ دوم</h3>
         </div>
       </div>
-      <div className="flex flex-col items-center gap-4 w-full px-7">
-        <Uploader size="x-large" title="تصویر نمایه" onImageUpload={handleFileUpload} />
+      <div className="flex flex-col items-center gap-4 w-full px-7 flex-1">
+        <Uploader 
+          size="x-large"
+          title="تصویر نمایه" 
+          onImageUpload={handleFileUpload}
+        />
         <div className="text-center flex gap-2 flex-col text-sm text-nowrap relative">
           <div>
             <AccountName name={userInfo?.first_name}/>
@@ -103,38 +116,49 @@ const PersonalImage: React.FC<PersonalImageProps> = (props) => {
           </TextBackground>
         </div>
       </div>
-
       <div className="w-full p-4">
         <HintSlider
           slides={[
-            { picture: '/static/images/correct_position.jpg', matchRate: 85, isCorrect: true },
-            { picture: '/static/images/incorrect_position.jpg', matchRate: 70, isCorrect: false },
-            { picture: '/static/images/correct_position.jpg', matchRate: 85, isCorrect: true },
-            { picture: '/static/images/incorrect_position.jpg', matchRate: 70, isCorrect: false },
+            { picture: '/static/images/correct_position_1.jpg', matchRate: 85, isCorrect: true },
+            { picture: '/static/images/incorrect_position_1.jpg', matchRate: 70, isCorrect: false },
+            { picture: '/static/images/correct_position_2.jpg', matchRate: 85, isCorrect: true },
+            { picture: '/static/images/incorrect_position_2.jpg', matchRate: 70, isCorrect: false },
           ]}
         />
       </div>
-
-      <div className="flex flex-col items-center gap-4 w-full">
-        <MinorButton
-          variant="flat"
-          buttonTitle="ورود بـه صفحۀ اصلـی"
-          radius="md"
-          isLoading={false}
+      <div className="flex flex-col items-center gap-4 w-full py-4 sticky bottom-0 z-20 bg-white">
+        <Button
+          variant="shadow"
           color="primary"
-          onClick={handleSubmit(onSubmit)}
-        />
-        {/* <Button color="default" variant="light" onClick={onSkip}>
-          مرحله قبل{' '}
-        </Button> */}
+          size="lg"
+          className="h-14"
+          onPress={() => handleSubmit(onSubmit)()}
+        >
+          ورود بـه صفحۀ اصلـی
+        </Button>
       </div>
-
-      {/* <div className="w-full">
-        <VoiceAssistant />
-      </div> */}
-      {/* {error && <div className="text-red-500 text-center mt-4">{error}</div>} */}
-    </>
-  );
+      {status == 3 && (
+        <ErrorBodyType
+          userInfo={userInfo} 
+        />
+      )}
+      {status == 2 && (
+        <ConfirmedBodyType
+          userInfo={userInfo} 
+        />
+      )}
+      {status == 1 && (
+        <PendingBodyType
+          userInfo={userInfo} 
+        />
+      )}
+      {![null, 1, 2, 3].includes(status) && (
+        <LoadingBodyType
+          userInfo={userInfo} 
+        />
+      )}
+    </main>
+  )
 };
 
 export default PersonalImage;

@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value;
   const userInfo = request.cookies.get('userInfo')?.value;
   const userInfoParsed = userInfo ? JSON.parse(userInfo) : null;
-  const userUploadImageStatus = userInfoParsed ? userInfoParsed.status : null;
+  const userUploadImageStatus = userInfoParsed ? userInfoParsed.process_body_image_status : null;
   const tokenFromQuery = searchParams.get('token');
   console.log({token, userInfoParsed, userUploadImageStatus});
 
@@ -38,9 +38,14 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/home', request.url));
   }
 
-  if (token && (userUploadImageStatus === 1 || userUploadImageStatus === 3) && !pathname.startsWith('/personal-image-uploader')) {
+  if (token && userUploadImageStatus !== 2 && pathname !== '/personal-image-uploader') {
     return NextResponse.redirect(new URL('/personal-image-uploader', request.url));
   }
+
+  if (token && userUploadImageStatus === 2 && pathname === '/personal-image-uploader') {
+    return NextResponse.redirect(new URL('/home', request.url));
+  }
+
   return NextResponse.next();
 }
 
