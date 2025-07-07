@@ -146,10 +146,7 @@ export default function Page() {
               variant='flat'
               color='primary'
               size='md'
-              startContent={(
-                <PlusIcon size={36} />
-              )}
-              className='h-14 rounded-2xl shrink-0'
+              className='h-12 rounded-2xl shrink-0'
               onPress={() => setSelectedCategory("all")}
             >
               مشاهده همه لباس ها
