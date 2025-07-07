@@ -1,16 +1,16 @@
 "use client"
 
-import { Category } from '@/stories/Category';
-import { ClosetSlider } from '@/stories/ClosetSlider';
-import { BottomNavigation } from '@/stories/BottomNavigation';
-import { SuggestedSet } from '@/stories/SuggestedSet';
+// import { Category } from '@/stories/Category';
+// import { ClosetSlider } from '@/stories/ClosetSlider';
+// import { BottomNavigation } from '@/stories/BottomNavigation';
+// import { SuggestedSet } from '@/stories/SuggestedSet';
 import { PlusIcon, StarIcon } from '@/stories/Icons';
-import { Title } from '@/stories/Title';
-import {  SubImage } from '@/stories/SubImage';
+// import { Title } from '@/stories/Title';
+// import { SubImage } from '@/stories/SubImage';
 import { Button, useDisclosure } from '@heroui/react';
 import Header from '../../components/Header';
-import { useGetUser } from '@/api/user';
-import { useState } from 'react';
+// import { useGetUser } from '@/api/user';
+// import { useState } from 'react';
 
 
 export default function Page({params}: {params: Promise<{ id: string }>}) {
@@ -18,32 +18,32 @@ export default function Page({params}: {params: Promise<{ id: string }>}) {
 
 
 
-  const sampleItems = [
-    {
-      variant: 'primary' as const,
-      imageUrl: '/path/to/image1.jpg',
-      matchPercentage: '80% مناسب با فرم بدن',
-      title: 'کاپشن بادی کتان'
-    },
-    {
-      variant: 'secondary' as const,
-      imageUrl: '/path/to/image2.jpg',
-      matchPercentage: '75% مناسب با فرم بدن',
-      title: 'کلاه پشم‌گاو'
-    },
-    {
-      variant: 'primary' as const,
-      imageUrl: '/path/to/image3.jpg',
-      matchPercentage: '90% مناسب با فرم بدن',
-      title: 'کاپشن بادی کتان'
-    },
-    {
-      variant: 'secondary' as const,
-      imageUrl: '/path/to/image2.jpg',
-      matchPercentage: '75% مناسب با فرم بدن',
-      title: 'کلاه پشم‌گاو'
-    },
-  ];
+  // const sampleItems = [
+  //   {
+  //     variant: 'primary' as const,
+  //     imageUrl: '/path/to/image1.jpg',
+  //     matchPercentage: '80% مناسب با فرم بدن',
+  //     title: 'کاپشن بادی کتان'
+  //   },
+  //   {
+  //     variant: 'secondary' as const,
+  //     imageUrl: '/path/to/image2.jpg',
+  //     matchPercentage: '75% مناسب با فرم بدن',
+  //     title: 'کلاه پشم‌گاو'
+  //   },
+  //   {
+  //     variant: 'primary' as const,
+  //     imageUrl: '/path/to/image3.jpg',
+  //     matchPercentage: '90% مناسب با فرم بدن',
+  //     title: 'کاپشن بادی کتان'
+  //   },
+  //   {
+  //     variant: 'secondary' as const,
+  //     imageUrl: '/path/to/image2.jpg',
+  //     matchPercentage: '75% مناسب با فرم بدن',
+  //     title: 'کلاه پشم‌گاو'
+  //   },
+  // ];
 
   
   return (

@@ -18,12 +18,11 @@ interface AddClothesDrawerProps {
 
 export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
 
-    const { isOpen, onOpen, onClose } = props
+    const { isOpen, onClose } = props
 
     const {
         handleSubmit,
         setValue,
-        watch,
         control,
         formState: { errors, isLoading, isSubmitting, isValidating },
     } = useForm<AddClothesFormData>({
@@ -51,9 +50,12 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
             const blob = await base64Response.blob();
             formData.append('image', blob, 'clothes.jpg');
 
-            const { image, ...reqData } = data
+            const req_data = {
+                title: data.title,
+                type: data.type,
+            }
             // Add other fields to FormData
-            Object.entries(reqData).forEach(([key, value]) => {
+            Object.entries(req_data).forEach(([key, value]) => {
                 formData.append(key, value);
             });
 
@@ -121,7 +123,7 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
                         <Controller
                             name="title"
                             control={control}
-                            render={({field, fieldState, formState}) => {
+                            render={({field}) => {
                                 return (
                                     <MinorInput
                                         placeholder="مثلا دورس اسپرت"
@@ -143,7 +145,7 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
                         <Controller
                             name="type"
                             control={control}
-                            render={({field, fieldState, formState}) => {
+                            render={({field}) => {
                                 return (
                                     <Category
                                         variant="primary"

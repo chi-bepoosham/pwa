@@ -20,7 +20,7 @@ import { ClosetCard } from "@/stories/ClosetCard";
 
 export default function Page() {
 
-  const { userInfo , userInfoError } = useGetUser(30000);
+  const { userInfo } = useGetUser(30000);
 
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const handleCategoryChange = (v: string) => {
@@ -68,6 +68,7 @@ export default function Page() {
         color: 'success',
       })
     } catch (error) {
+      console.log(error)
       addToast({
         title: 'خطا در حذف لباس',
         color: 'danger',
@@ -107,7 +108,7 @@ export default function Page() {
             className="flex justify-center items-center sticky top-[112px] py-2 z-30 bg-white"
           />
           <div className='grid grid-cols-2 gap-4'>
-            {items.map((item, index) => (
+            {items.map((item) => (
               <ClosetCard
                 key={item.id}
                 variant="primary"

@@ -1,8 +1,8 @@
 'use client'
 
 import { BodyForm } from "@/stories/BodyForm"
-import { Celebrities } from "@/stories/Celebrities"
-import { SuggestionSlider } from "@/stories/SuggestionSlider"
+// import { Celebrities } from "@/stories/Celebrities"
+// import { SuggestionSlider } from "@/stories/SuggestionSlider"
 import { endpoints } from "@/api/endpoints"
 import useSWR from 'swr';
 import { fetcher } from '@/lib/axios';
@@ -29,19 +29,19 @@ export default function Home() {
 
 
 
-  const celebritiesData = [
-    {fullName: "صالح", avatar: "https://i.pravatar.cc", id: 1},
-    {fullName: "ایلیا", avatar: "https://i.pravatar.cc", id: 2},
-    {fullName: "dsvcs", avatar: "https://i.pravatar.cc", id: 3},
-    {fullName: "csdcs", avatar: "https://i.pravatar.cc", id: 4},
-  ]
+  // const celebritiesData = [
+  //   {fullName: "صالح", avatar: "https://i.pravatar.cc", id: 1},
+  //   {fullName: "ایلیا", avatar: "https://i.pravatar.cc", id: 2},
+  //   {fullName: "dsvcs", avatar: "https://i.pravatar.cc", id: 3},
+  //   {fullName: "csdcs", avatar: "https://i.pravatar.cc", id: 4},
+  // ]
 
-  const suggestionSliderData = [
-    {imageUrl: "/124.jpeg", name: "tie"},
-    {imageUrl: "/124.jpeg", name: "tie"},
-    {imageUrl: "/124.jpeg", name: "tie"},
-    {imageUrl: "/124.jpeg", name: "tie"},
-  ]
+  // const suggestionSliderData = [
+  //   {imageUrl: "/124.jpeg", name: "tie"},
+  //   {imageUrl: "/124.jpeg", name: "tie"},
+  //   {imageUrl: "/124.jpeg", name: "tie"},
+  //   {imageUrl: "/124.jpeg", name: "tie"},
+  // ]
 
   const URL = endpoints.user.bodyTypeDetails
   const { data, isLoading, error } = useSWR<unknown>(URL, fetcher)
