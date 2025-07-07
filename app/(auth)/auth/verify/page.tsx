@@ -70,7 +70,7 @@ export default function Page() {
   };
 
   useEffect(() => {
-    if (!userInfo.phone_number) Route.push('/auth');
+    if (!userInfo.phone_number) router.push('/auth');
   }, [userInfo]);
 
 
@@ -87,7 +87,7 @@ export default function Page() {
         color: "success",
       })
       setUserInfo('phone_number', `${userInfo.phone_number}`);
-      Route.push('/auth/verify');
+      router.push('/auth/verify');
       console.log('OTP sent successfully:', response.status);
     } catch (err) {
       addToast({
@@ -111,7 +111,7 @@ export default function Page() {
             size='lg'
             isIconOnly
             className='border-foreground rounded-2xl'
-            onPress={() => Route.push('/auth')}
+            onPress={() => router.push('/auth')}
           >
             <i className="text-secondary">
               <ArrowRightIcon size={28} />
@@ -168,7 +168,7 @@ export default function Page() {
           </Button>
           <Button 
             fullWidth
-            onPress={() => Route.push('/auth')} 
+            onPress={() => router.push('/auth')} 
             variant='light'
             color='primary'
             size='lg'
