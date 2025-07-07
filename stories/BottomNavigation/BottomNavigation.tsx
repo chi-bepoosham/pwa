@@ -59,7 +59,7 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
             href={item.disabled ? "#" : item.href}
             key={index}
             data-active={isActive}
-            onClick={() => disabledHandler()}
+            onClick={item.disabled ? disabledHandler : undefined}
             className={clsx("flex flex-col gap-2.5 justify-center items-center cursor-pointer w-28 relative max-h-fit group")}
           >
             <i className="group-data-[active=true]:text-primary text-secondary group-data-[active=true]:hidden group-hover:hidden">

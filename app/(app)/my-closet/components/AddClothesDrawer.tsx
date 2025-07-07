@@ -49,7 +49,7 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
             // Convert base64 to blob
             const base64Response = await fetch(data.image);
             const blob = await base64Response.blob();
-            formData.append('image', blob);
+            formData.append('image', blob, 'clothes.jpg');
 
             const { image, ...reqData } = data
             // Add other fields to FormData
