@@ -34,6 +34,7 @@ export { Icon as OrdersIcon } from './Orders.stories';
 
 //Star
 export { Icon as StarIcon } from './Star.stories';
+export { Icon as MagicStarsIcon } from './MagicStars.stories';
 
 
 //Setting

@@ -16,11 +16,11 @@ export const BodyType = (props: BodyTypeProps) => {
   const { title, strength, weaknessPoints, selectedType, number } = props;
 
   return (
-    <div className="w-full grid grid-cols-4 border-2 border-secondary pr-2 rounded-lg">
+    <div className="w-full grid grid-cols-4 border-2 border-secondary overflow-hidden pr-2 rounded-3xl">
       <div className="col-span-1 bg-primary-50 rounded-lg my-2 flex justify-center items-center">
         <Types selectedType={selectedType} />
       </div>
-      <Card shadow="none" radius="lg" className="col-span-3">
+      <Card shadow="none" radius="none" className="col-span-3">
         <CardHeader 
         className="flex flex-row justify-start items-center gap-8 text-primary text-nowrap text-small xs:text-lg sm:text-2xl font-bold"
         >

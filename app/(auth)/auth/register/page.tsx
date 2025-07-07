@@ -88,7 +88,7 @@ export default function Page() {
           setPageNumber(1);
         } else {
           // Registration complete, redirect to home or dashboard
-          router.push('/personal-image-uploader');
+          router.replace('/personal-image-uploader');
         }
       } else {
         throw new Error(response.data?.message || 'Registration failed');
@@ -109,7 +109,7 @@ export default function Page() {
       setPageNumber(1);
     } else {
       // Skip final step, redirect to home or dashboard
-      router.push('/personal-image-uploader');
+      router.replace('/personal-image-uploader');
     }
   };
   useEffect(() => {

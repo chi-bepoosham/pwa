@@ -3,20 +3,20 @@ import React, { useState, useRef } from 'react';
 import { MinorButton } from '@/stories/MinorButton';
 
 export interface CategoryProps {
+  value?: string;
   onChange?: (selectedValue: string) => void;
   variant: 'primary' | 'secondary' | 'tertiary';
-  options: { title: string }[];
+  items: { key: string; title: string }[];
   className?: string;
-  defaultSelected?: string;
 }
 
-export const Category = ({  onChange, variant, options, className, defaultSelected }: CategoryProps) => {
-  const [selected, setSelected] = useState<string>(defaultSelected || options[0].title);
+export const Category = ({ onChange, variant, items, className, value }: CategoryProps) => {
+  const [selected, setSelected] = useState<string>(value || items[0].key);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleClick = (title: string) => {
-    setSelected(title);
-    onChange?.(title);
+  const handleClick = (key: string) => {
+    setSelected(key);
+    onChange?.(key);
   };
 
   const getVariantClasses = (isActive: boolean) => {
@@ -58,48 +58,23 @@ export const Category = ({  onChange, variant, options, className, defaultSelect
         scrollbarColor: '#888 #f1f1f1',
       }}
     >
-      <div className="flex gap-3 px-4">
-        {options.map((item, index) => {
-          const isActive = selected === item.title;
+      <div className="flex gap-3 px-4 justify-start">
+        {items.map((item, index) => {
+          const isActive = selected === item.key;
           const variantClasses = getVariantClasses(isActive);
-
           return (
             <MinorButton
               key={index}
               buttonTitle={item.title}
-              onClick={() => handleClick(item.title)}
+              onClick={() => handleClick(item.key)}
               variant={isActive ? 'solid' : 'bordered'}
               radius="md"
-              className={`p-4 border-1.5 transition-all duration-200 w-fit flex-shrink-0 ${variantClasses}`}
+              className={`p-4 py-6 border-1.5 transition-all duration-200 w-fit flex-shrink-0 ${variantClasses}`}
               data-title={item.title}
             />
           );
         })}
       </div>
     </div>
-  );
-};
-
-// Example usage of the Category component
-const ExampleUsage = () => {
-  const categoryOptions = [
-    { title: 'Shirts' },
-    { title: 'Pants' },
-    { title: 'Shoes' },
-    { title: 'Accessories' }
-  ];
-
-  const handleCategoryChange = (selectedCategory: string) => {
-    console.log('Selected category:', selectedCategory);
-  };
-
-  return (
-    <Category
-      variant="primary"
-      options={categoryOptions}
-      onChange={handleCategoryChange}
-      className="my-4"
-      defaultSelected="Pants"
-    />
   );
 };

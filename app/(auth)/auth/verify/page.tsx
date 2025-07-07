@@ -21,7 +21,7 @@ export default function Page() {
   const { url } = config;
   console.log(url);
 
-  const Route = useRouter();
+  const router = useRouter();
   const { control, handleSubmit, resetField, setFocus, formState } = useForm<LoginByPhoneOtpFormType>({
     defaultValues: {
       phone: '',
@@ -38,7 +38,6 @@ export default function Page() {
         mobile: userInfo.phone_number,
         code: data.token,
       });
-
       
       if (response.data.object.token) {
         await setCookie('token', response.data.object.token);
@@ -47,7 +46,7 @@ export default function Page() {
           title: "ورود با موفقیت انجام شد",
           color: "success",
         })
-        Route.push('/home'); // Redirect to home
+        router.replace('/home'); // Redirect to home
       } else {
         setUserInfo('api_key', response.data.object.api_key);
         setUserInfo('has_rejester', !!response.data.object.token);
@@ -55,7 +54,7 @@ export default function Page() {
           title: "برای تکمیل ثبت‌نام به صفحه ثبت‌نام منتقل شدید",
           color: "success",
         })
-        Route.push('/auth/register'); // Redirect to register
+        router.replace('/auth/register'); // Redirect to register
       }
     } catch (err) {
       const error = err as AxiosError<{ message: string; errors?: Record<string, string[]> }>;
@@ -65,8 +64,6 @@ export default function Page() {
         description: message,
         color: "danger",
       })
-
-      
       resetField('token')
       setFocus("token", {shouldSelect: true})
     }

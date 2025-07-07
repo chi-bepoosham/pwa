@@ -10,6 +10,8 @@ import {
 } from '@/stories/Icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
+import { addToast } from '@heroui/react';
 
 export interface BottomNavigationProps {
   isDisabled?: boolean;
@@ -41,49 +43,37 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
     },
   ];
 
+  const disabledHandler = () => {
+    addToast({
+      title: "این قسمت هنوز فعال نشده است",
+      color: "warning",
+    })
+  }
+
   return (
-    <div className="w-full flex flex-row justify-center items-center">
+    <div className="h-28 bg-white shadow-[0px_-28px_24px_0px_#4141f926] rounded-t-[40px] w-full max-w-screen-sm mx-auto w-full flex flex-row justify-center items-center">
       {navItems.map((item, index) => {
         const isActive = pathname === item.href;
-        if (item.disabled) {
-          return (
-            <div
-              key={index}
-              className="flex flex-col gap-2.5 justify-center items-center w-28 relative max-h-fit opacity-50 cursor-not-allowed"
-            >
-              <i className="text-secondary">
-                {item.icon}
-              </i>
-              <span className="truncate text-secondary-400">
-                {item.label}
-              </span>
-            </div>
-          );
-        }
         return (
           <Link
-            href={item.href}
+            href={item.disabled ? "#" : item.href}
             key={index}
-            className={`flex flex-col gap-2.5 justify-center items-center cursor-pointer w-28 relative max-h-fit ${
-              isActive ? "" : "group"
-            }`}
+            data-active={isActive}
+            onClick={() => disabledHandler()}
+            className={clsx("flex flex-col gap-2.5 justify-center items-center cursor-pointer w-28 relative max-h-fit group")}
           >
-            <i className={isActive ? "text-primary" : "text-secondary group-hover:hidden"}>
-              {isActive ? item.actionIcon : item.icon}
+            <i className="group-data-[active=true]:text-primary text-secondary group-data-[active=true]:hidden group-hover:hidden">
+              {item.icon}
             </i>
-            <i className={isActive ? "hidden" : "text-primary hidden group-hover:block"}>
+            <i className="text-primary hidden group-data-[active=true]:block group-hover:block">
               {item.actionIcon}
             </i>
-            <span className={`truncate ${
-              isActive ? "text-secondary" : "text-secondary-400 group-hover:text-secondary"
-            }`}>
+            <span className="truncate group-data-[active=true]:text-secondary text-secondary-400 group-hover:text-secondary">
               {item.label}
             </span>
             <span
-              className={`absolute -bottom-2 h-0.5 bg-primary rounded-2xl transition-all duration-300 ${
-                isActive ? "w-8 h-1" : "w-0 group-hover:w-8 group-hover:h-1"
-              }`}>
-            </span>
+              className="absolute -bottom-2 h-1 bg-primary rounded-2xl transition-all duration-300 group-data-[active=true]:w-6 w-0 group-hover:w-8"
+            />
           </Link>
         );
       })}

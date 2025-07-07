@@ -67,6 +67,7 @@ export const Uploader = (props: UploaderProps) => {
               : 'absolute bottom-4 w-[calc(85%)] rounded-2xl'
             : '-bottom-4 min-w-0 rounded-full',
         )}
+        onPress={open}
       >
         <IconComponent size={20} />
         {size === 'x-large' && (!image && 'افزودن عکس')}
