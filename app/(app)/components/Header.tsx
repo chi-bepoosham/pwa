@@ -5,6 +5,7 @@ import clsx from 'clsx';
 
 interface HeaderProps {
   variant: "centered" | "side";
+  withStar?: boolean;
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   startContent?: React.ReactNode;
@@ -14,6 +15,7 @@ interface HeaderProps {
 const Header = (props: HeaderProps) => {
   const {
     variant = "centered",
+    withStar,
     title,
     subtitle,
     startContent,
@@ -27,19 +29,19 @@ const Header = (props: HeaderProps) => {
       <div className="flex flex-row justify-between items-center">
         {startContent}
         <div className={clsx("flex flex-col gap-2 flex-1", isCentered ? "items-center" : "items-start")}>
-          <h1 className={clsx("flex flex-row gap-2 text-nowrap truncate", isCentered ? "" : "font-semibold text-lg")}>
-            {!isCentered && (
+          <h1 className={clsx("flex flex-row gap-2 text-nowrap truncate", isCentered ? "font-bold" : "font-semibold text-lg")}>
+            {withStar && !isCentered && (
               <i className='text-primary'>
                 <MagicStarsIcon size={20} />
               </i>
             )}
-            {isCentered && (
+            {withStar && isCentered && (
               <i className='text-secondary'>
                 <StarIcon size={20} />
               </i>
             )}
             {title}
-            {isCentered && (
+            {withStar && isCentered && (
               <i className='text-secondary'>
                 <StarIcon size={20} />
               </i>

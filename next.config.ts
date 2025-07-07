@@ -3,6 +3,9 @@
 
 const baseConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ['core.chibepoosham.app'],
+  },
   headers: async () => {
     return [
       {

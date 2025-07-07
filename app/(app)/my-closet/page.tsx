@@ -1,133 +1,26 @@
 "use client";
+
+
+
 import { Category } from "@/stories/Category";
 import { useState } from "react";
 import { PlusIcon } from "@/stories/Icons";
-import { Button, useDisclosure } from "@heroui/react";
+import { addToast, Button, Pagination, Spinner, useDisclosure } from "@heroui/react";
 import Header from "../components/Header";
 import { TryOnClothVector } from "@/stories/Vectors";
 import { sacramento } from "@/lib/font";
 import { useGetUser } from "@/api/user";
 import { AddClothesDrawer } from "./components/AddClothesDrawer";
+import useSWR from "swr";
+import { axiosCoreWithAuth, fetcher } from "@/lib/axios";
+import { endpoints } from "@/api/endpoints";
+import { MyClothesResponseType } from "@/types/MyClothesResponse.type";
+import { ClosetCard } from "@/stories/ClosetCard";
 
 
 export default function Page() {
 
   const { userInfo , userInfoError } = useGetUser(30000);
-
-  const objectt = [
-    {
-      variant: "primary",
-      imageUrl: "/public/image.png",
-      matchPercentage: "80% مناسب با فرم بدن",
-      // onClick={handleCardClick}
-      link: "/my-closet/id",
-    },
-    {
-      variant: "primary",
-      imageUrl: "/public/image.png",
-      matchPercentage: "80% مناسب با فرم بدن",
-      // onClick={handleCardClick}
-      link: "/my-closet/id",
-    },
-    {
-      variant: "primary",
-      imageUrl: "/public/image.png",
-      matchPercentage: "80% مناسب با فرم بدن",
-      // onClick={handleCardClick}
-      link: "/my-closet/id",
-    },
-    {
-      variant: "primary",
-      imageUrl: "/public/image.png",
-      matchPercentage: "80% مناسب با فرم بدن",
-      // onClick={handleCardClick}
-      link: "/my-closet/id",
-    },
-    {
-      variant: "primary",
-      imageUrl: "/public/image.png",
-      matchPercentage: "80% مناسب با فرم بدن",
-      // onClick={handleCardClick}
-      link: "/my-closet/id",
-    },
-      {
-        variant: "secondary",
-        imageUrl: "/public/image.png",
-        matchPercentage: "80% مناسب با فرم بدن",
-        // onClick={handleCardClick}
-        link: "/my-closet/id",
-        },
-        {
-          variant: "tertiary",
-          imageUrl: "/public/image.png",
-          matchPercentage: "80% مناسب با فرم بدن",
-          // onClick={handleCardClick}
-          link: "/my-closet/id",
-          },
-          {
-            variant: "quaternary",
-            imageUrl: "/public/image.png",
-            matchPercentage: "80% مناسب با فرم بدن",
-            // onClick={handleCardClick}
-            link: "/my-closet/id",
-            },
-            {
-              variant: "primary",
-              imageUrl: "/public/image.png",
-              matchPercentage: "80% مناسب با فرم بدن",
-              // onClick={handleCardClick}
-              link: "/my-closet/id",
-              },
-              {
-                variant: "secondary",
-                imageUrl: "/public/image.png",
-                matchPercentage: "80% مناسب با فرم بدن",
-                // onClick={handleCardClick}
-                link: "/my-closet/id",
-                },
-                {
-                  variant: "tertiary",
-                  imageUrl: "/public/image.png",
-                  matchPercentage: "80% مناسب با فرم بدن",
-                  // onClick={handleCardClick}
-                  link: "/my-closet/id",
-                  },
-                  {
-                    variant: "quaternary",
-                    imageUrl: "/public/image.png",
-                    matchPercentage: "80% مناسب با فرم بدن",
-                    // onClick={handleCardClick}
-                    link: "/my-closet/id",
-                  },
-                  {
-                    variant: "quaternary",
-                    imageUrl: "/public/image.png",
-                    matchPercentage: "80% مناسب با فرم بدن",
-                    // onClick={handleCardClick}
-                    link: "/my-closet/id",
-                  },
-                  {
-                    variant: "quaternary",
-                    imageUrl: "/public/image.png",
-                    matchPercentage: "80% مناسب با فرم بدن",
-                    // onClick={handleCardClick}
-                    link: "/my-closet/id",
-                  },
-                  {
-                    variant: "quaternary",
-                    imageUrl: "/public/image.png",
-                    matchPercentage: "80% مناسب با فرم بدن",
-                    // onClick={handleCardClick}
-                    link: "/my-closet/id",
-                  }, 
-  ];
-
-  const typedObjectt = objectt.map((item) => ({
-    ...item,
-    variant: item.variant as "primary" | "secondary" | "tertiary" | "quaternary",
-  }));
-
-  const isEmpty = true || typedObjectt.length === 0;
 
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const handleCategoryChange = (v: string) => {
@@ -137,19 +30,59 @@ export default function Page() {
   const addClothesDrawer = useDisclosure({defaultOpen: false});
 
   const categoryItems = [
-    { key: 'all', title: 'همۀ لباس‌ها' },
-    { key: 'upper', title: 'بالا پوش' },
-    { key: 'lower', title: 'پایین پوش' },
+    { key: 'all', title: 'همه' },
+    { key: 'upper', title: 'بالا تنه' },
+    { key: 'lower', title: 'پایین تنه' },
   ];
-
+  if ((userInfo as unknown as {gender: number}).gender == 2) {
+    categoryItems.push({key: 'whole', title: 'تمام تنه'})
+  }
 
   
+
+  const [page, setPage] = useState(1)
+  let URL = `${endpoints.user.clothes}?paginate=1&page=${page}&per_page=10`;
+
+
+  const { data: dmEmp } = useSWR<unknown>(URL, fetcher)
+
+  if (selectedCategory === 'upper')  URL += '&clothes_type=1'
+  if (selectedCategory === 'lower')  URL += '&clothes_type=2'
+  if (selectedCategory === 'whole')  URL += '&clothes_type=3'
+  const { data, isLoading, error, mutate } = useSWR<unknown>(URL, fetcher)
+
+
+  const response = data as unknown as MyClothesResponseType
+  const items = response?.object?.data || []
+  const isEmpty = (dmEmp as MyClothesResponseType)?.object?.total === 0;
+
+  const isCurrentEmpty = (data as MyClothesResponseType)?.object?.total === 0;
+  
+  const axios = axiosCoreWithAuth()
+  const onDelete = async (id: number) => {
+    try {
+      await axios.delete(`/user/clothes/${id}`)
+      mutate()
+      addToast({
+        title: 'لباس با موفقیت حذف شد',
+        color: 'success',
+      })
+    } catch (error) {
+      addToast({
+        title: 'خطا در حذف لباس',
+        color: 'danger',
+      })
+    }
+    
+  }
+
+
   return (
     <div className="flex flex-col w-full h-full">
       <Header
         variant="side"
         title="کـمد لبـاس مـن!"
-        endContent={!isEmpty && (
+        endContent={!isLoading && !isEmpty && !error && (
           <Button
             variant='flat'
             color='primary'
@@ -164,14 +97,74 @@ export default function Page() {
           </Button>
         )}
       />
-      {isEmpty && (
+      {!isLoading && !isEmpty && !error && (
+        <div className="flex flex-col gap-5 px-5 relative">
+          <Category
+            variant="primary"
+            items={categoryItems}
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+            className="flex justify-center items-center sticky top-[112px] py-2 z-30 bg-white"
+          />
+          <div className='grid grid-cols-2 gap-4'>
+            {items.map((item, index) => (
+              <ClosetCard
+                key={item.id}
+                variant="primary"
+                imageUrl={process.env.NEXT_PUBLIC_STORAGE_BASE_URL + item.image}
+                matchPercentage={item.match_percentage}
+                // link={`/my-closet/${item.id}`}
+                onDelete={() => onDelete(item.id)}
+              />
+            ))}
+          </div>
+          <div className="flex justify-center items-center">
+            <Pagination
+              total={Math.ceil(response?.object?.total / response?.object?.per_page)}
+              page={page}
+              onChange={(page) => setPage(page)}
+            />
+          </div>
+        </div>
+      )}
+      {!isLoading && !isEmpty && isCurrentEmpty && !error && (
         <div className="flex flex-col justify-center gap-10 h-full w-full px-5 relative">
           <div className="flex justify-center items-center">
             <TryOnClothVector />
           </div>
           <div className="flex flex-col justify-center items-center gap-3">
             <span className={`${sacramento.className} text-3xl font-bold text-secondary-200`}>Your closet is empty</span>
-            <span className="text-lg text-secondary font-semibold">{userInfo?.first_name || "کاربر"} عزیز!</span>
+            <span className="text-lg text-secondary font-semibold">{(userInfo as unknown as {first_name: string})?.first_name || "کاربر"} عزیز!</span>
+            <span className="text-lg text-secondary font-semibold">
+              تا حالا لباس
+              {" "}
+              {categoryItems.find((v) => (v.key === selectedCategory))?.title}
+              {" "}
+              اضافه نکردی!
+            </span>
+            <Button
+              variant='flat'
+              color='primary'
+              size='md'
+              startContent={(
+                <PlusIcon size={36} />
+              )}
+              className='h-14 rounded-2xl shrink-0'
+              onPress={() => setSelectedCategory("all")}
+            >
+              مشاهده همه لباس ها
+            </Button>
+          </div>
+        </div>
+      )}
+      {!isLoading && isEmpty && !error && (
+        <div className="flex flex-col justify-center gap-10 h-full w-full px-5 relative">
+          <div className="flex justify-center items-center">
+            <TryOnClothVector />
+          </div>
+          <div className="flex flex-col justify-center items-center gap-3">
+            <span className={`${sacramento.className} text-3xl font-bold text-secondary-200`}>Your closet is empty</span>
+            <span className="text-lg text-secondary font-semibold">{(userInfo as unknown as {first_name: string})?.first_name || "کاربر"} عزیز!</span>
             <span className="text-lg text-secondary font-semibold">کمد لباس شما خالی هست!</span>
             <Button
               variant='flat'
@@ -188,14 +181,16 @@ export default function Page() {
           </div>
         </div>
       )}
-      {!isEmpty && (
-        <Category
-          variant="primary"
-          items={categoryItems}
-          value={selectedCategory}
-          onChange={handleCategoryChange}
-          className="flex justify-center items-center"
-        />
+      {isLoading && !error && (
+        <div className="flex justify-center items-center h-full w-full">
+          <Spinner size="lg" color="primary" />
+        </div>
+      )}
+      {!isLoading && !!error && (
+        <div className="flex flex-col justify-center items-center h-full w-full text-red-500 ">
+          <span className="font-bold">خطا در دریافت کمد من</span>
+          <span>{error?.message}</span>
+        </div>
       )}
       <AddClothesDrawer
         isOpen={addClothesDrawer.isOpen}

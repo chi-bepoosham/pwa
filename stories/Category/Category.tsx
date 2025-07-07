@@ -49,6 +49,10 @@ export const Category = ({ onChange, variant, items, className, value }: Categor
     scrollToSelected();
   }, [selected]);
 
+  React.useEffect(() => {
+    if (value) setSelected(value);
+  }, [value]);
+
   return (
     <div 
       ref={containerRef}

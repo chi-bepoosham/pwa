@@ -1,25 +1,21 @@
+"use client"
+
 import { Category } from '@/stories/Category';
-import MyClosetHeader from '../../components/my-closet-header/my-closet-header';
 import { ClosetSlider } from '@/stories/ClosetSlider';
 import { BottomNavigation } from '@/stories/BottomNavigation';
 import { SuggestedSet } from '@/stories/SuggestedSet';
-import { StarIcon } from '@/stories/Icons';
+import { PlusIcon, StarIcon } from '@/stories/Icons';
 import { Title } from '@/stories/Title';
 import {  SubImage } from '@/stories/SubImage';
+import { Button, useDisclosure } from '@heroui/react';
+import Header from '../../components/Header';
+import { useGetUser } from '@/api/user';
+import { useState } from 'react';
 
 
-export default async function Page({
-                                     params,
-                                   }: {
-  params: Promise<{ id: string }>
-}) {
-  const {  } = await params;
+export default function Page({params}: {params: Promise<{ id: string }>}) {
+  const {  } = params;
 
-  const categoryOptions = [
-    { title: 'همۀ لباس‌ها' },
-    { title: 'بالا پوش' },
-    { title: 'پایین پوش' },
-  ];
 
 
   const sampleItems = [
@@ -49,25 +45,28 @@ export default async function Page({
     },
   ];
 
-  // const handleCategoryChange = (selectedCategory: string) => {
-  //   console.log('Selected category:', selectedCategory);
-  // };
+  
   return (
-
-    <main className="flex flex-col gap-8 w-full h-screen overflow-y-auto overflow-x-hidden">
-      <div className="sticky top-0 z-10 bg-white pb-5">
-        <MyClosetHeader isMyClosetEmpty={true} />
-      </div>
-      <div className="w-full flex justify-center items-center">
-        <Category
-          variant="primary"
-          options={categoryOptions}
-          // onChange={handleCategoryChange}
-          className="flex justify-center items-center"
-          defaultSelected="همۀ لباس‌ها"
-        />
-      </div>
-      <div className="px-8 py-6 flex justify-center w-full">
+    <div className="flex flex-col w-full h-full">
+      <Header
+        variant="side"
+        title="کـمد لبـاس مـن!"
+        endContent={(
+          <Button
+            variant='flat'
+            color='primary'
+            size='md'
+            startContent={(
+              <PlusIcon size={36} />
+            )}
+            className='h-14 rounded-2xl shrink-0'
+            // onPress={() => addClothesDrawer.onOpen()}
+          >
+            افزودن لباس
+          </Button>
+        )}
+      />
+      {/* <div className="px-8 py-6 flex justify-center w-full">
         <div className="p-4">
           <ClosetSlider items={sampleItems} />
         </div>
@@ -106,8 +105,7 @@ export default async function Page({
 
       <div className="fixed bottom-0 z-20 py-2.5 bg-white w-full max-w-screen-sm mx-auto">
         <BottomNavigation />
-      </div>
-    </main>
-
+      </div> */}
+    </div>
   );
 }

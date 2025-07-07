@@ -44,9 +44,8 @@ export default function Home() {
   ]
 
   const URL = endpoints.user.bodyTypeDetails
-  const { data, isLoading, error } = useSWR<{object: {body_type: BodyTypeType}}>(URL, fetcher)
-
-
+  const { data, isLoading, error } = useSWR<unknown>(URL, fetcher)
+  const bd = data as {object: {body_type: BodyTypeType}}
 
   return (
     <div className="flex flex-col w-full">
@@ -56,7 +55,7 @@ export default function Home() {
         subtitle={(
           <div className='text-primary'>
             {isLoading && !error && (<Spinner size="sm" color="primary" />)}
-            {!isLoading && !error && data?.object.body_type.title}
+            {!isLoading && !error && bd?.object.body_type.title}
             {!!error && <p className='text-red-500 truncate'>{error?.message || "خطا در دریافت"}</p>}
           </div>
         )}
