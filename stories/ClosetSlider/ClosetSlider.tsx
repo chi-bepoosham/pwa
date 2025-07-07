@@ -16,7 +16,7 @@ export interface ClosetSliderProps {
   items: Array<{
     variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
     imageUrl: string;
-    matchPercentage: string;
+    matchPercentage: number;
     title: string;
   }>;
 }
