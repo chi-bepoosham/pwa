@@ -4,10 +4,10 @@
 // import { ClosetSlider } from '@/stories/ClosetSlider';
 // import { BottomNavigation } from '@/stories/BottomNavigation';
 // import { SuggestedSet } from '@/stories/SuggestedSet';
-import { PlusIcon, StarIcon } from '@/stories/Icons';
+import { PlusIcon } from '@/stories/Icons';
 // import { Title } from '@/stories/Title';
 // import { SubImage } from '@/stories/SubImage';
-import { Button, useDisclosure } from '@heroui/react';
+import { Button } from '@heroui/react';
 import Header from '../../components/Header';
 // import { useGetUser } from '@/api/user';
 // import { useState } from 'react';
