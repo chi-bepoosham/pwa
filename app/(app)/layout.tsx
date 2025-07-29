@@ -20,9 +20,9 @@ export default function Layout({ children }: {children: React.ReactNode}) {
       >
         {children}
       </ScrollShadow>
-      <div className="sticky w-full bottom-0 z-10">
+      {/* <div className="sticky w-full bottom-0 z-10">
         <BottomNavigation />
-      </div>
+      </div> */}
     </main>
   );
 }

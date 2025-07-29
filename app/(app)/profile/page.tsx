@@ -5,6 +5,10 @@ import Link from "next/link"
 import { Button } from "@heroui/react"
 import { ArrowRightIcon, ShoppingBagIcon } from "@/stories/Icons"
 import { useRouter } from "next/navigation"
+import { DashboardItems } from "@/stories/DashboardItems"
+import { Fitting } from "@/stories/Fitting"
+import { SettingItems } from "@/stories/Setting/SettingItems"
+import { Banner } from "@/stories/Banner"
 
 
 
@@ -45,8 +49,21 @@ export default function Home() {
           </Button>
         )}
       />
-      <div className="w-full flex flex-col gap-4 pb-16">
-        
+      <div className="w-full flex flex-col gap-4 pb-16 relative">
+        <div>
+          <DashboardItems/>
+        </div>
+        <div className="w-full max-w-[550px] mx-auto">
+          <Fitting/>
+        </div>
+        <div>
+          <SettingItems/>
+        </div>
+        {/* <div className="absolute bottom w-full">
+          <Banner
+            withStar={true}
+          />
+        </div> */}
       </div>
     </div>
   )

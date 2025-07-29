@@ -41,7 +41,7 @@
     "react-modal-sheet": "^4.0.1",
     "react-number-format": "^5.4.3",
     "swiper": "^11.2.5",
-    "swr": "^2.3.3",
+    "swr": "^2.3.4",
     "zod": "^3.24.2",
     "zustand": "^4.5.7"
   },

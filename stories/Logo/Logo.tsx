@@ -22,7 +22,7 @@ const LogoType = () => {
             width={216}
             height={31}
             viewBox="0 0 216 31"
-            fill="white"
+            fill="#4141F9"
             xmlns="http://www.w3.org/2000/svg"
         >
             <g clipPath="url(#clip0_1839_3079)">

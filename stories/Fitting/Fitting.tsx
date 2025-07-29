@@ -17,7 +17,7 @@ export const Fitting = (props: FittingProps) => {
         <Card
             isPressable
             disableAnimation={true}
-            className="bg-primary w-96"
+            className="bg-primary w-full"
             radius="lg"
         >
             <CardBody
