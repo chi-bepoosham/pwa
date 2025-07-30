@@ -23,7 +23,7 @@ export const MinorInput = ({
                              options = [],
                              onChange,
                              size = 'md',
-                             isMultieline = true,
+                             isMultieline,
                            }: MinorInputProps) => {
   // const getPlaceholder = () => {
   //   if (placeholder) return placeholder;

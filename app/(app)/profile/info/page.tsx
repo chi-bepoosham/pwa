@@ -12,13 +12,52 @@ import { Uploader } from "@/stories/Uploader";
 import { MinorInput } from "@/stories/MinorInput";
 import { GenderSelection } from "@/stories/GenderSelection";
 import { MyBodyTypeCard } from "@/stories/MyBodyTypeCard";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 
+
+// const userSchema = z.object({
+//     name: z
+//       .string()
+//       .min(3, "نام و فامیل باید حداقل ۳ کاراکتر باشد")
+//       .trim()
+//       .regex(/^[آ-ی\s]+$/, "نام و فامیل باید فقط شامل حروف فارسی و فاصله باشد"),
+//   });
+
+
+
+
+//   type UserFormData = z.infer<typeof userSchema>;
+
+
+
+//   const {
+//     control,
+//     handleSubmit,
+//     formState: { errors },
+//   } = useForm<UserFormData>({
+//     resolver: zodResolver(userSchema),
+//     defaultValues: {
+//       name: "",
+//     },
+//   });
+
+
+
+//    // تابع برای مدیریت ارسال فرم
+//    const onSubmit = (data: UserFormData) => {
+//     console.log("داده معتبر:", data);
+//     // اینجا می‌تونید داده رو به سرور بفرستید یا کار دیگه‌ای انجام بدید
+//     // مثلاً: router.push("/next-page");
+//   };
 
 
 export default function Home() {
 
     const router = useRouter()
+
 
     return(
         <div className="flex flex-col w-full">
@@ -58,11 +97,14 @@ export default function Home() {
             <div className="w-full max-w-[550px] mx-auto flex flex-col gap-10">
                 <MinorInput
                 label="مشخصات شما"
-                size="lg"
                 isMultieline={false}
+                placeholder="نام و نام‌خانوادگی"
+                size="lg"
+                type="email"
                 />
                 <MinorInput
-                isMultieline
+                isMultieline={false}
+                placeholder="ایمیل خود را وارد کنید"
                 size="lg"
                 type="email"
                 />
