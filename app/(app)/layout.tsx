@@ -1,4 +1,4 @@
-import { BottomNavigation } from "@/stories/BottomNavigation";
+//import { BottomNavigation } from "@/stories/BottomNavigation";
 import { ScrollShadow } from "@heroui/react";
 import { Metadata } from "next";
 
