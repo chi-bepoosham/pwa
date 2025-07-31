@@ -1,7 +1,7 @@
 "use client";
 import Header from "../../components/Header"
 import { Button } from "@heroui/react";
-import { ArrowRightIcon, ShoppingBagIcon } from "@/stories/Icons"
+//import { ArrowRightIcon, ShoppingBagIcon } from "@/stories/Icons"
 import { useRouter } from "next/navigation"
 
 import { Logo } from "@/stories/Logo";
