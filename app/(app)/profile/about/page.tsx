@@ -3,7 +3,7 @@ import Header from "../../components/Header"
 import { Button } from "@heroui/react";
 import { ArrowRightIcon, ShoppingBagIcon } from "@/stories/Icons"
 import { useRouter } from "next/navigation"
-import Link from "next/link"
+
 import { Logo } from "@/stories/Logo";
 import { Social } from "@/stories/Social";
 
