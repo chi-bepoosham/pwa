@@ -9,6 +9,9 @@ export interface SettingItemProps {
 
 export const SettingItems = (props: SettingItemProps) => {
     const {} = props;
+
+    const appLink = `${typeof window !== "undefined" ? window.location.origin : "https://chibepoosham.app"}`;
+
     const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(false);
 
     const handleNotificationsClick = () => {
@@ -71,14 +74,36 @@ export const SettingItems = (props: SettingItemProps) => {
                 </ListboxItem>
                 <ListboxItem
                     key="share"
-                    onPress={() => {
-                        const link = "https://chibepoosham.app";
-                        navigator.clipboard.writeText(link);
-                        addToast({
-                            title: "لینک با موفقیت کپی شد ✅",
-                            description: link,
-                            color: "secondary",
-                        });
+                    onPress={async () => {
+                        const link = appLink;
+                
+                        if (navigator.share) {
+                            try {
+                                await navigator.share({
+                                    title: "چی بپوشم؟ ",
+                                    text: "یه اپلیکیشن هوشمند برای انتخاب استایل — امتحانش کن!",
+                                    url: link,
+                                });
+                                addToast({
+                                    title: "لینک با موفقیت ارسال شد ",
+                                    color: "success",
+                                });
+                            } catch (err) {
+                                addToast({
+                                    title: "ارسال لغو شد",
+                                    color: "warning",
+                                });
+                            }
+                        } 
+                        // else {
+                            
+                        //     navigator.clipboard.writeText(link);
+                        //     addToast({
+                        //         title: "اشتراک‌گذاری پشتیبانی نمی‌شود",
+                        //         description: "لینک کپی شد: " + link,
+                        //         color: "secondary",
+                        //     });
+                        // }
                     }}
                     endContent={<ChevronRightIcon/>}
                     startContent={<ShareIcon size={24}/>}
@@ -94,7 +119,6 @@ export const SettingItems = (props: SettingItemProps) => {
                     دربارۀ تیم ما
                 </ListboxItem>
                 <ListboxItem
-                    href=""
                     key="notifications"
                     onPress={handleNotificationsClick}
                     endContent={
