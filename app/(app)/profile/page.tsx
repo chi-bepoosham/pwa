@@ -13,7 +13,7 @@ import { Banner } from "@/stories/Banner"
 
 
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <div className="flex flex-col w-full overflow-hidden relative min-h-screen">
