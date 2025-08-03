@@ -45,6 +45,7 @@ export const SettingItems = (props: SettingItemProps) => {
                 }}
             >
                 <ListboxItem
+                    href="/profile/info"
                     key="user info"
                     endContent={<ChevronRightIcon/>}
                     startContent={<UserIcon size={24}/>}
@@ -52,6 +53,7 @@ export const SettingItems = (props: SettingItemProps) => {
                     اطلاعات حساب کاربری
                 </ListboxItem>
                 <ListboxItem
+                    href="/"
                     key="orders payment"
                     endContent={<ChevronRightIcon/>}
                     startContent={<PaymentIcon size={24}/>}
@@ -59,6 +61,8 @@ export const SettingItems = (props: SettingItemProps) => {
                     سفارشات و تراکنش‌ها
                 </ListboxItem>
                 <ListboxItem
+                    isDisabled={true}
+                    href="/profile/shown"
                     key="bookmarks"
                     endContent={<ChevronRightIcon/>}
                     startContent={<BookmarkIcon size={24}/>}
@@ -67,12 +71,22 @@ export const SettingItems = (props: SettingItemProps) => {
                 </ListboxItem>
                 <ListboxItem
                     key="share"
+                    onPress={() => {
+                        const link = "https://chibepoosham.app";
+                        navigator.clipboard.writeText(link);
+                        addToast({
+                            title: "لینک با موفقیت کپی شد ✅",
+                            description: link,
+                            color: "secondary",
+                        });
+                    }}
                     endContent={<ChevronRightIcon/>}
                     startContent={<ShareIcon size={24}/>}
                 >
                     مـــعرفی بــه دوستـــان
                 </ListboxItem>
                 <ListboxItem
+                    href="/profile/about"
                     key="aboutus"
                     endContent={<ChevronRightIcon/>}
                     startContent={<InfoIcon size={24}/>}
@@ -80,6 +94,7 @@ export const SettingItems = (props: SettingItemProps) => {
                     دربارۀ تیم ما
                 </ListboxItem>
                 <ListboxItem
+                    href=""
                     key="notifications"
                     onPress={handleNotificationsClick}
                     endContent={
