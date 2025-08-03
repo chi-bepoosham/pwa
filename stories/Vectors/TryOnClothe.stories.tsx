@@ -1,15 +1,24 @@
 import React from 'react';
 
 
-export const Vector = () => {
+
+
+export interface VectorProps {
+  size?: number;
+  className?: string;
+}
+
+
+export const Vector = ({size = 60, className}: VectorProps) => {
     return (
 
         <svg
-        width={248}
-        height={145}
+        width={size}
+        height={size}
         viewBox="0 0 248 145"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className={className}
       >
         <path
           d="M111.691 78.7979V144.09H105.534V78.7979H111.691Z"
