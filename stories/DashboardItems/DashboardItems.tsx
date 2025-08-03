@@ -10,13 +10,13 @@ export const DashboardItems = (props: SocialProps) => {
     <ScrollShadow
       orientation="horizontal"
       hideScrollBar={true}
-      size={10}
-      className="sm:flex sm:flex-row-reverse sm:gap-6 sm:justify-center sm:overflow-visible overflow-x-auto"
+      size={0}
+      className="xs:flex xs:flex-row-reverse xs:gap-6 xs:justify-center xs:overflow-visible overflow-x-auto"
     >
-      <div className="flex flex-row-reverse gap-6 justify-end sm:justify-center">
+      <div className="flex flex-row-reverse gap-5 justify-end xs:justify-center">
         <Button
           variant="bordered"
-          className="w-40 h-40 shrink-0 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text active:transition active:duration-500"
+          className="w-36 h-36 aspect-square shrink-0 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text active:transition active:duration-500"
         >
           <i className="mb-2">
             <BookmarkIcon size={36} />
@@ -29,7 +29,7 @@ export const DashboardItems = (props: SocialProps) => {
 
         <Button
           variant="bordered"
-          className="w-40 h-40 shrink-0 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-secondary active:transition active:duration-500"
+          className="w-36 h-36 aspect-square shrink-0 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-secondary active:transition active:duration-500"
         >
           <i className="mb-2">
             <ShapeIcon size={36} />
@@ -42,7 +42,7 @@ export const DashboardItems = (props: SocialProps) => {
 
         <Button
           variant="bordered"
-          className="w-40 h-40 shrink-0 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-white active:transition active:duration-500"
+          className="w-36 h-36 aspect-square shrink-0 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-white active:transition active:duration-500"
         >
           <i className="mb-2">
             <OrdersIcon size={36} />

@@ -49,16 +49,16 @@ export default function Home() {
           </Button>
         )}
       />
-      <div className="w-full flex flex-col gap-4 pb-16 relative">
-        {/* <div>
+      <div className="w-full flex flex-col gap-14 pb-16 relative">
+        <div>
           <DashboardItems/>
-        </div> */}
+        </div>
         <div className="w-full max-w-[550px] mx-auto">
           <Fitting/>
         </div>
-        {/* <div>
+        <div>
           <SettingItems/>
-        </div> */}
+        </div>
         {/* <div className="absolute bottom w-full">
           <Banner
             withStar={true}
