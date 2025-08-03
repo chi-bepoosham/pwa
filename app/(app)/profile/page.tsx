@@ -28,7 +28,7 @@ export default function Home() {
             color='secondary'
             size='lg'
             isIconOnly
-            className='h-14 w-14 rounded-2xl shrink-0'
+            className='h-14 w-14 aspect-square rounded-2xl shrink-0'
             onPress={() => router.back()}
           >
             <ArrowRightIcon size={36} />
@@ -40,7 +40,7 @@ export default function Home() {
             color='primary'
             size='lg'
             isIconOnly
-            className='h-14 w-14 rounded-2xl shrink-0'
+            className='h-14 w-14 aspect-square rounded-2xl shrink-0'
             as={Link}
             href="/profile"
             isDisabled
