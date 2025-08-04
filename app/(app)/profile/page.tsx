@@ -16,7 +16,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col w-full overflow-hidden relative min-h-screen">
+    <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide relative min-h-screen">
       <Header
         variant="centered"
         title="تنظیمات"
@@ -54,13 +54,13 @@ export default function Home() {
         <SettingItems/>
       </div>
 
-      <div className="absolute -bottom-20 w-full z-0">
+      {/* <div className="absolute -bottom-20 w-full z-0">
         <Banner
         textColor="text-primary/50" 
         withStar={true}
         starColor="text-primary"
         />
-      </div>
+      </div> */}
     </div>
   )
 }
