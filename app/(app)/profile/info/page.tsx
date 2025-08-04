@@ -106,11 +106,9 @@ export default function Home() {
                 />
             </div>
             <GenderSelection/>
-            <div className="w-full max-w-[550px] mx-auto">
             <MyBodyTypeCard/>
-            </div>
         </div>
-        </div>
+    </div>
     )
 }
 
