@@ -123,18 +123,11 @@ export default function Home() {
 
 
 
-
-
-
-
-// utils/logout.ts
 import { deleteCookie } from 'cookies-next'
 
 export const logout = () => {
-  // حذف توکن از کوکی
-  deleteCookie('accessToken') // یا اسم کوکی‌ای که استفاده می‌کنی
+  deleteCookie('accessToken') 
   deleteCookie('refreshToken')
 
-  // ریدایرکت به صفحه ورود
   window.location.href = '/'
 }
