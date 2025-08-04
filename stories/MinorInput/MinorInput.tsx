@@ -12,7 +12,7 @@ export interface MinorInputProps {
   options?: { label: string; value: string }[];
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
   size?: 'sm' | 'md' | 'lg';
-  isMultieline: boolean;
+  isMultieline?: boolean;
 }
 
 export const MinorInput = ({

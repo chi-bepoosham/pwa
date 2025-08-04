@@ -126,6 +126,7 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
                             render={({field}) => {
                                 return (
                                     <MinorInput
+                                    isMultieline={false}
                                         placeholder="مثلا دورس اسپرت"
                                         size="lg"
                                         value={field.value}
