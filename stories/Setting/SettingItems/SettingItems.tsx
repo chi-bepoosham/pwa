@@ -2,6 +2,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {addToast, Listbox, ListboxItem, Switch} from "@heroui/react";
 import {BookmarkIcon, InfoIcon, NotificationIcon, PaymentIcon, ShareIcon, UserIcon} from "@/stories/Icons";
+import { json } from "stream/consumers";
 
 
 export interface SettingItemProps {
@@ -9,6 +10,9 @@ export interface SettingItemProps {
 
 export const SettingItems = (props: SettingItemProps) => {
     const {} = props;
+
+    const appLink = "https://chibepoosham.app";
+
     const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(false);
 
     const handleNotificationsClick = () => {
@@ -45,6 +49,7 @@ export const SettingItems = (props: SettingItemProps) => {
                 }}
             >
                 <ListboxItem
+                    href="/profile/info"
                     key="user info"
                     endContent={<ChevronRightIcon/>}
                     startContent={<UserIcon size={24}/>}
@@ -52,6 +57,7 @@ export const SettingItems = (props: SettingItemProps) => {
                     اطلاعات حساب کاربری
                 </ListboxItem>
                 <ListboxItem
+                    href="/"
                     key="orders payment"
                     endContent={<ChevronRightIcon/>}
                     startContent={<PaymentIcon size={24}/>}
@@ -59,6 +65,8 @@ export const SettingItems = (props: SettingItemProps) => {
                     سفارشات و تراکنش‌ها
                 </ListboxItem>
                 <ListboxItem
+                    isDisabled={true}
+                    href="/profile/shown"
                     key="bookmarks"
                     endContent={<ChevronRightIcon/>}
                     startContent={<BookmarkIcon size={24}/>}
@@ -67,12 +75,29 @@ export const SettingItems = (props: SettingItemProps) => {
                 </ListboxItem>
                 <ListboxItem
                     key="share"
+                    onPress={async () => {
+                        const link = appLink;
+
+                        try {
+                            await navigator.share({
+                                title: "چی بپوشم؟ ",
+                                text: "یه اپلیکیشن هوشمند برای انتخاب استایل — امتحانش کن!",
+                                url: link,
+                            });
+                        } catch (err) {
+                            addToast({
+                                title: "اشتراک گذاری با خطا مواجه شد",
+                                color: "warning",
+                            });
+                        }
+                    }}
                     endContent={<ChevronRightIcon/>}
                     startContent={<ShareIcon size={24}/>}
                 >
                     مـــعرفی بــه دوستـــان
                 </ListboxItem>
                 <ListboxItem
+                    href="/profile/about"
                     key="aboutus"
                     endContent={<ChevronRightIcon/>}
                     startContent={<InfoIcon size={24}/>}

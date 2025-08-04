@@ -13,12 +13,10 @@ import { SettingItems } from "@/stories/Setting/SettingItems"
 
 
 export default function Home() {
-
-  const router = useRouter()
-
+  const router = useRouter();
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide relative min-h-screen">
       <Header
         variant="centered"
         title="تنظیمات"
@@ -28,7 +26,7 @@ export default function Home() {
             color='secondary'
             size='lg'
             isIconOnly
-            className='h-14 w-14 rounded-2xl shrink-0'
+            className='h-14 w-14 aspect-square rounded-2xl shrink-0'
             onPress={() => router.back()}
           >
             <ArrowRightIcon size={36} />
@@ -40,7 +38,7 @@ export default function Home() {
             color='primary'
             size='lg'
             isIconOnly
-            className='h-14 w-14 rounded-2xl shrink-0'
+            className='h-14 w-14 aspect-square rounded-2xl shrink-0'
             as={Link}
             href="/profile"
             isDisabled
@@ -49,22 +47,21 @@ export default function Home() {
           </Button>
         )}
       />
-      <div className="w-full flex flex-col gap-4 pb-16 relative">
-        <div>
-          <DashboardItems/>
-        </div>
-        <div className="w-full max-w-[550px] mx-auto">
-          <Fitting/>
-        </div>
-        <div>
-          <SettingItems/>
-        </div>
-        {/* <div className="absolute bottom w-full">
-          <Banner
-            withStar={true}
-          />
-        </div> */}
+
+      <div className="w-full flex flex-col gap-10 relative z-10">
+        <DashboardItems/>
+        <Fitting/>
+        <SettingItems/>
       </div>
+
+      {/* <div className="absolute -bottom-20 w-full z-0">
+        <Banner
+        textColor="text-primary/50" 
+        withStar={true}
+        starColor="text-primary"
+        />
+      </div> */}
     </div>
   )
 }
+

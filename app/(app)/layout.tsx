@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 export default function Layout({ children }: {children: React.ReactNode}) {
   return (
     <main className="relative flex flex-col w-full h-screen overflow-hidden">
-      <ScrollShadow
+      {/* <ScrollShadow
         hideScrollBar
         className="flex flex-col w-full h-[calc(100%-96px)] bg-white"
-      >
+      > */}
         {children}
-      </ScrollShadow>
+      {/* </ScrollShadow> */}
       {/* <div className="sticky w-full bottom-0 z-10">
         <BottomNavigation />
       </div> */}

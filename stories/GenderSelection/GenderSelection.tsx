@@ -67,7 +67,7 @@ export const CustomRadio = (props: CustomRadioProps) => {
       {...getBaseProps()}
       className={cn(
         'group inline-flex items-center active:opacity-50 justify-between flex-row-reverse tap-highlight-transparent',
-        'max-w-[300px] cursor-pointer border-2 border-[#68BAA6]/40 rounded-xl gap-4 p-3',
+        'max-w-[200px] cursor-pointer border-2 border-[#68BAA6]/40 rounded-xl gap-4 p-3',
         'data-[selected=true]:border-secondary',
         'data-[selected=true]:bg-secondary',
       )}

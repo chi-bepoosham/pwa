@@ -119,3 +119,5 @@ export {Icon as CrossIcon} from "./Cross.stories"
 export {Icon as LocationIcon} from "./Location.stories"
 
 
+// Logout
+export {Icon as LogoutIcon} from "./Logout.stories"

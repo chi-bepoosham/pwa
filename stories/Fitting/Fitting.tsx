@@ -17,23 +17,29 @@ export const Fitting = (props: FittingProps) => {
         <Card
             isPressable
             disableAnimation={true}
-            className="bg-primary w-full"
+            className="bg-primary w-full h-32 us:max-w-[calc(100%-10px)] sm:max-w-[630px] shrink-0 mx-auto"
             radius="lg"
         >
             <CardBody
                 className="flex flex-row justify-between items-center relative overflow-hidden"
             >
                 <div className="flex flex-row-reverse justify-center items-start relative">
-                    <span className="text-white font-semibold text-lg" dir="rtl">
+                    <span className="text-white font-semibold truncate text-xs sm:text-lg" dir="rtl">
             تو اتاق خودت لباسارو پرو کن!
                     </span>
                     <div className="flex flex-row items-start text-white">
-                        <StarIcon size={12}/>
-                        <StarIcon size={24}/>
+                        <StarIcon 
+                        className="us:size-3 sm:size-4"
+                        />
+                        <StarIcon
+                        className="us:size-5 sm:size-7"
+                        />
                     </div>
                 </div>
                 <div className="flex justify-center items-center">
-                    <TryOnClothVector/>
+                    <TryOnClothVector
+                    className="us:size-32 sm:size-40"
+                    />
                 </div>
                 <div className="absolute -bottom-20 -right-32 fill-green-950 z-50">
                     <SquareVector/>
