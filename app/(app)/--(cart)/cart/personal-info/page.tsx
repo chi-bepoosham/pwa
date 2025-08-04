@@ -33,6 +33,7 @@ export default function Page() {
      
       <div className="w-full flex  flex-col gap-y-5 justify-start items-center px-10">
             <MinorInput
+            isMultieline
             label="نام کامل گیرنده"
             placeholder="نام و نام خانوادگی گیرنده را در این قسمت وارد کنید."
             type="fullName"
@@ -52,6 +53,7 @@ export default function Page() {
           
           <div className="w-full flex  flex-col gap-y-5 justify-start items-center px-10">
             <MinorInput
+            isMultieline
             label="شماره تلفن گیرنده"
             placeholder=""
             type="phone"
@@ -76,6 +78,7 @@ export default function Page() {
 
 <div className="w-full px-10">
 <MinorInput
+isMultieline
             label="توضیحات شما"
             placeholder="توضیحات"
             type="description"

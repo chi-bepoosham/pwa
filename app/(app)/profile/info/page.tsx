@@ -9,6 +9,7 @@ import { Uploader } from "@/stories/Uploader";
 import { MinorInput } from "@/stories/MinorInput";
 import { GenderSelection } from "@/stories/GenderSelection";
 import { MyBodyTypeCard } from "@/stories/MyBodyTypeCard";
+import { deleteCookie } from 'cookies-next'
 
 
 
@@ -43,7 +44,12 @@ export default function Home() {
             size='lg'
             isIconOnly
             className='h-14 w-14 rounded-2xl shrink-0'
-            onPress={logout}
+            onPress={() => {
+                deleteCookie('token') 
+                deleteCookie('userInfo')
+              
+                window.location.href = '/'
+              }}
             >
                 <LogoutIcon size={36} />
             </Button>
@@ -86,11 +92,5 @@ export default function Home() {
 
 
 
-import { deleteCookie } from 'cookies-next'
 
-export const logout = () => {
-  deleteCookie('token') 
-  deleteCookie('userInfo')
 
-  window.location.href = '/'
-}
