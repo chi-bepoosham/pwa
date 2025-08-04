@@ -126,8 +126,8 @@ export default function Home() {
 import { deleteCookie } from 'cookies-next'
 
 export const logout = () => {
-  deleteCookie('accessToken') 
-  deleteCookie('refreshToken')
+  deleteCookie('token') 
+  deleteCookie('userInfo')
 
   window.location.href = '/'
 }

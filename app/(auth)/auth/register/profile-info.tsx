@@ -1,6 +1,6 @@
 import { GenderSelection } from '@/stories/GenderSelection';
 import { MinorButton } from '@/stories/MinorButton';
-import { MinorInput } from '@/stories/MinorInput';
+import { MinorInput } from '@/stories/MinorInput/MinorInput';
 import { Uploader } from '@/stories/Uploader';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -61,6 +61,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
           <h2 className="text-secondary font-semibold">مشخصات شما</h2>
           <div className="flex flex-col gap-1 w-full">
             <MinorInput
+            isMultieline
               type="fullName"
               placeholder="نام"
               size="lg"
@@ -73,6 +74,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
           </div>
           <div className="flex flex-col gap-1 w-full">
             <MinorInput
+            isMultieline
               type="fullName"
               placeholder="نام خانوادگی"
               size="lg"
