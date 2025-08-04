@@ -35,6 +35,7 @@ orientation="horizontal"
 />
 <div className="w-full flex  flex-col gap-y-5 justify-start items-center px-10">
   <MinorInput
+  isMultieline
   label="کد تخفیف"
   placeholder="کد تخفیف مورد نظر خود را در این قسمت وارد کنید."
   type="discount"
