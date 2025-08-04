@@ -5,16 +5,10 @@ import Header from "../../components/Header"
 import { Button } from "@heroui/react";
 import { ArrowRightIcon, LogoutIcon, ShoppingBagIcon } from "@/stories/Icons"
 import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { Logo } from "@/stories/Logo";
-import { link } from "fs";
 import { Uploader } from "@/stories/Uploader";
 import { MinorInput } from "@/stories/MinorInput";
 import { GenderSelection } from "@/stories/GenderSelection";
 import { MyBodyTypeCard } from "@/stories/MyBodyTypeCard";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 
 
@@ -59,8 +53,10 @@ export default function Home() {
     const router = useRouter()
 
 
+    
+
     return(
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide relative min-h-screen">
             <Header
             variant="centered"
             title="اطلاعات حساب کاربری"
@@ -83,13 +79,13 @@ export default function Home() {
             size='lg'
             isIconOnly
             className='h-14 w-14 rounded-2xl shrink-0'
-            onPress={() => router.back()}
+            onPress={logout}
             >
                 <LogoutIcon size={36} />
             </Button>
               )}
         />
-        <div className="flex flex-col justify-center gap-10">
+        <div className="w-full flex flex-col gap-10 relative z-10">
             <Uploader
             size="medium"
             title=""
@@ -116,4 +112,29 @@ export default function Home() {
         </div>
         </div>
     )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// utils/logout.ts
+import { deleteCookie } from 'cookies-next'
+
+export const logout = () => {
+  // حذف توکن از کوکی
+  deleteCookie('accessToken') // یا اسم کوکی‌ای که استفاده می‌کنی
+  deleteCookie('refreshToken')
+
+  // ریدایرکت به صفحه ورود
+  window.location.href = '/'
 }
