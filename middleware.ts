@@ -11,17 +11,17 @@ export function middleware(request: NextRequest) {
   console.log({token, userInfoParsed, userUploadImageStatus});
 
   // If token is in query but not in cookies, set it and redirect (once)
-  if (tokenFromQuery && !token) {
-    const url = request.nextUrl.clone();
-    url.searchParams.delete('token'); // Remove token from URL
-    const response = NextResponse.redirect(url);
-    response.cookies.set('token', tokenFromQuery, {
-      path: '/',
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-    });
-    return response;
-  }
+  // if (tokenFromQuery && !token) {
+  //   const url = request.nextUrl.clone();
+  //   url.searchParams.delete('token'); // Remove token from URL
+  //   const response = NextResponse.redirect(url);
+  //   response.cookies.set('token', tokenFromQuery, {
+  //     path: '/',
+  //     httpOnly: true,
+  //     secure: process.env.NODE_ENV === 'production',
+  //   });
+  //   return response;
+  // }
 
   // Allow public paths like /terms to be accessed without token
   if (pathname.startsWith('/terms')) {
@@ -29,22 +29,22 @@ export function middleware(request: NextRequest) {
   }
 
   // Allow public paths like /auth to be accessed without token
-  if (!token && !pathname.startsWith('/auth')) {
-    return NextResponse.redirect(new URL('/auth', request.url));
-  }
+  // if (!token && !pathname.startsWith('/auth')) {
+  //   return NextResponse.redirect(new URL('/auth', request.url));
+  // }
 
   // // Prevent authenticated users from accessing /auth
-  if (token && pathname.startsWith('/auth')) {
-    return NextResponse.redirect(new URL('/home', request.url));
-  }
+  // if (token && pathname.startsWith('/auth')) {
+  //   return NextResponse.redirect(new URL('/home', request.url));
+  // }
 
-  if (token && userUploadImageStatus !== 2 && pathname !== '/personal-image-uploader') {
-    return NextResponse.redirect(new URL('/personal-image-uploader', request.url));
-  }
+  // if (token && userUploadImageStatus !== 2 && pathname !== '/personal-image-uploader') {
+  //   return NextResponse.redirect(new URL('/personal-image-uploader', request.url));
+  // }
 
-  if (token && userUploadImageStatus === 2 && pathname === '/personal-image-uploader') {
-    return NextResponse.redirect(new URL('/home', request.url));
-  }
+  // if (token && userUploadImageStatus === 2 && pathname === '/personal-image-uploader') {
+  //   return NextResponse.redirect(new URL('/home', request.url));
+  // }
 
   return NextResponse.next();
 }

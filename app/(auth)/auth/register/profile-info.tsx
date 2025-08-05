@@ -5,6 +5,7 @@ import { Uploader } from '@/stories/Uploader';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterFormData, registerFormSchema } from './schema';
+import { VoiceAssistant } from '@/stories/VoiceAssistant';
 
 interface ProfileInfoProps {
   onNext: (data: RegisterFormData) => void;
@@ -51,7 +52,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
 
   return (
     <>
-      <div className="flex flex-col items-center gap-10 w-full p-6">
+      <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide relative min-h-screen gap-10 p-6">
         <Uploader 
           size="medium" 
           title="تصویر نمایه" 
@@ -120,9 +121,9 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
         </Button> */}
       </div>
 
-      {/* <div className="w-full">
+      <div className="w-full">
         <VoiceAssistant />
-      </div> */}
+      </div>
       {error && <div className="text-red-500 text-center mt-4">{error}</div>}
     </>
   );
