@@ -3,7 +3,7 @@
 
 import Header from "../../components/Header"
 import { Button } from "@heroui/react";
-import { ArrowRightIcon, LogoutIcon, ShoppingBagIcon } from "@/stories/Icons"
+import { ArrowRightIcon, LogoutIcon } from "@/stories/Icons"
 import { useRouter } from "next/navigation"
 import { Uploader } from "@/stories/Uploader";
 import { MinorInput } from "@/stories/MinorInput";
@@ -11,6 +11,41 @@ import { GenderSelection } from "@/stories/GenderSelection";
 import { MyBodyTypeCard } from "@/stories/MyBodyTypeCard";
 
 
+
+// const userSchema = z.object({
+//     name: z
+//       .string()
+//       .min(3, "نام و فامیل باید حداقل ۳ کاراکتر باشد")
+//       .trim()
+//       .regex(/^[آ-ی\s]+$/, "نام و فامیل باید فقط شامل حروف فارسی و فاصله باشد"),
+//   });
+
+
+
+
+//   type UserFormData = z.infer<typeof userSchema>;
+
+
+
+//   const {
+//     control,
+//     handleSubmit,
+//     formState: { errors },
+//   } = useForm<UserFormData>({
+//     resolver: zodResolver(userSchema),
+//     defaultValues: {
+//       name: "",
+//     },
+//   });
+
+
+
+//    // تابع برای مدیریت ارسال فرم
+//    const onSubmit = (data: UserFormData) => {
+//     console.log("داده معتبر:", data);
+//     // اینجا می‌تونید داده رو به سرور بفرستید یا کار دیگه‌ای انجام بدید
+//     // مثلاً: router.push("/next-page");
+//   };
 
 
 export default function Home() {
