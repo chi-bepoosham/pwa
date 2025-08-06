@@ -1,8 +1,7 @@
 import { z } from 'zod';
 
 export const registerFormSchema = z.object({
-  first_name: z.string().min(1, { message: 'نام الزامی است' }),
-  last_name: z.string().min(1, { message: 'نام خانوادگی الزامی است' }),
+  full_name: z.string().min(1, { message: 'نام و نام‌خانوادگی الزامی است' }),
   avatar: z.string().optional(),
   gender: z.enum(['1', '2'], { message: 'جنسیت الزامی است' }),
   email: z.string().email({ message: 'ایمیل معتبر نیست' }).optional().or(z.literal('')),

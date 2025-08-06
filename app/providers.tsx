@@ -3,7 +3,7 @@
 import * as React from "react";
 import {HeroUIProvider} from "@heroui/react";
 import {Suspense} from "react";
-import {SessionProvider} from "next-auth/react";
+// import {SessionProvider} from "next-auth/react";
 import SWRProvider from "@/components/SWRProvider";
 import {ToastProvider} from "@heroui/toast";
 
@@ -15,8 +15,9 @@ export interface ProvidersProps {
 export function Providers({children}: ProvidersProps) {
 
     return (
-        <HeroUIProvider className="relative min-h-screen max-h-screen overflow-x-hidden scroll-smoth flex flex-col">
-            <SessionProvider>
+        <HeroUIProvider
+            className="relative min-h-screen max-h-screen overflow-x-hidden scroll-smoth flex flex-col">
+            {/* <SessionProvider> */}
                 <Suspense>
                     <SWRProvider>
                         <ToastProvider
@@ -30,7 +31,7 @@ export function Providers({children}: ProvidersProps) {
                         {children}
                     </SWRProvider>
                 </Suspense>
-            </SessionProvider>
+            {/* </SessionProvider> */}
         </HeroUIProvider>
     );
 }

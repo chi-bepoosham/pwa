@@ -10,8 +10,7 @@ import { RegisterFormData } from './schema';
 import { setCookie } from '@/lib/cookies';
 
 interface RegisterRequestData {
-  first_name: string;
-  last_name: string;
+  full_name: string;
   mobile: string;
   avatar?: string;
   gender?: '1' | '2';
@@ -22,8 +21,7 @@ export default function Page() {
   const router = useRouter();
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [formData, setFormData] = useState<RegisterFormData>({
-    first_name: '',
-    last_name: '',
+    full_name: '',
     avatar: '',
     gender: '1',
     email: '',
@@ -40,8 +38,7 @@ export default function Page() {
     try {
       // Prepare request data with required fields
       const requestData: RegisterRequestData = {
-        first_name: data.first_name,
-        last_name: data.last_name,
+        full_name: data.full_name,
         mobile: phone_number,
       };
 
@@ -112,15 +109,15 @@ export default function Page() {
       router.replace('/personal-image-uploader');
     }
   };
-  useEffect(() => {
-    if (!api_key) {
-      router.replace('/auth');
-    }
-  }, [api_key])
+  // useEffect(() => {
+  //   if (!api_key) {
+  //     router.replace('/auth');
+  //   }
+  // }, [api_key])
 
 
   return (
-    <div className="flex flex-col justify-between w-full h-screen gap-12 bg-white overflow-x-hidden overflow-y-auto">
+    <div className="flex flex-col justify-between w-full gap-12 bg-white overflow-x-hidden scrollbar-hide min-h-screen">
       <div className="flex flex-col gap-10">
         <div className="flex flex-col justify-center items-center p-4">
           <div className="flex flex-row justify-center items-center gap-4">
@@ -141,7 +138,7 @@ export default function Page() {
         loading={loading}
         error={error}
         defaultValues={formData}
-        isDisabled={!api_key}
+        // isDisabled={!api_key}s
       />
     </div>
   );

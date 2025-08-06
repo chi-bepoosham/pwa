@@ -1,3 +1,5 @@
+"use client";
+import { Button } from '@heroui/button';
 import { GenderSelection } from '@/stories/GenderSelection';
 import { MinorButton } from '@/stories/MinorButton';
 import { MinorInput } from '@/stories/MinorInput/MinorInput';
@@ -6,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterFormData, registerFormSchema } from './schema';
 import { VoiceAssistant } from '@/stories/VoiceAssistant';
+import { redirect } from 'next/dist/server/api-utils';
 
 interface ProfileInfoProps {
   onNext: (data: RegisterFormData) => void;
@@ -25,8 +28,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
-      first_name: '',
-      last_name: '',
+      full_name: '',
       avatar: '',
       gender: undefined,
       email: '',
@@ -52,49 +54,27 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
 
   return (
     <>
-      <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide relative min-h-screen gap-10 p-6">
+      <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide relative gap-10 py-10">
         <Uploader 
           size="medium" 
           title="تصویر نمایه" 
           onImageUpload={handleFileUpload}
         />
         <div className="flex flex-col gap-4 w-full">
-          <h2 className="text-secondary font-semibold">مشخصات شما</h2>
           <div className="flex flex-col gap-1 w-full">
             <MinorInput
-            isMultieline
+              label='مشخصات شما'
+              isMultieline={false}
               type="fullName"
-              placeholder="نام"
+              placeholder="نام و نام‌خانوادگی"
               size="lg"
-              value={formValues.first_name}
-              onChange={(e) => setValue('first_name', e.target.value)}
+              value={formValues.full_name}
+              onChange={(e) => setValue('full_name', e.target.value)}
             />
-            {errors.first_name && (
-              <span className="text-red-500 text-sm">{errors.first_name.message}</span>
+            {errors.full_name && (
+              <span className="text-red-500 text-sm mt-5 px-5">{errors.full_name.message}</span>
             )}
           </div>
-          <div className="flex flex-col gap-1 w-full">
-            <MinorInput
-            isMultieline
-              type="fullName"
-              placeholder="نام خانوادگی"
-              size="lg"
-              value={formValues.last_name}
-              onChange={(e) => setValue('last_name', e.target.value)}
-            />
-            {errors.last_name && (
-              <span className="text-red-500 text-sm">{errors.last_name.message}</span>
-            )}
-          </div>
-          {/* <MinorInput
-            type="email"
-            placeholder="ایمیل (اختیاری)"
-            value={formValues.email}
-            onChange={(e) => setValue('email', e.target.value)}
-          />
-          {errors.email && (
-            <span className="text-red-500 text-sm">{errors.email.message}</span>
-          )} */}
           <div className="flex flex-col gap-1 w-full">
             <GenderSelection
               value={formValues.gender || ''}
@@ -108,7 +88,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
       </div>
       <div className="flex flex-col items-center py-4 gap-4 w-full">
         <MinorButton
-          className="w-full max-w-64 text-large"
+          className="w-full max-w-72 text-large"
           variant="flat"
           buttonTitle="مـــرحلۀ بــــعدی"
           radius="md"
@@ -116,13 +96,14 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
           color="primary"
           onClick={handleSubmit(onSubmit)}
         />
-        {/* <Button color="default" variant="light" onClick={onSkip}>
+        <Button 
+        color="default" 
+        variant="light"
+        isDisabled={true} 
+        // onClick={onSkip}
+        >
           بعــدا تکـــمیل میکنـــم!
-        </Button> */}
-      </div>
-
-      <div className="w-full">
-        <VoiceAssistant />
+        </Button>
       </div>
       {error && <div className="text-red-500 text-center mt-4">{error}</div>}
     </>

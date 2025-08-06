@@ -12,41 +12,6 @@ import { MyBodyTypeCard } from "@/stories/MyBodyTypeCard";
 
 
 
-// const userSchema = z.object({
-//     name: z
-//       .string()
-//       .min(3, "نام و فامیل باید حداقل ۳ کاراکتر باشد")
-//       .trim()
-//       .regex(/^[آ-ی\s]+$/, "نام و فامیل باید فقط شامل حروف فارسی و فاصله باشد"),
-//   });
-
-
-
-
-//   type UserFormData = z.infer<typeof userSchema>;
-
-
-
-//   const {
-//     control,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm<UserFormData>({
-//     resolver: zodResolver(userSchema),
-//     defaultValues: {
-//       name: "",
-//     },
-//   });
-
-
-
-//    // تابع برای مدیریت ارسال فرم
-//    const onSubmit = (data: UserFormData) => {
-//     console.log("داده معتبر:", data);
-//     // اینجا می‌تونید داده رو به سرور بفرستید یا کار دیگه‌ای انجام بدید
-//     // مثلاً: router.push("/next-page");
-//   };
-
 
 export default function Home() {
 
@@ -79,7 +44,7 @@ export default function Home() {
             size='lg'
             isIconOnly
             className='h-14 w-14 rounded-2xl shrink-0'
-            onPress={logout}
+            // onPress={logout}
             >
                 <LogoutIcon size={36} />
             </Button>
@@ -121,11 +86,11 @@ export default function Home() {
 
 
 
-import { deleteCookie } from 'cookies-next'
+// import { deleteCookie } from 'cookies-next'
 
-export const logout = () => {
-  deleteCookie('token') 
-  deleteCookie('userInfo')
+// export const logout = () => {
+//   deleteCookie('token') 
+//   deleteCookie('userInfo')
 
-  window.location.href = '/'
-}
+//   window.location.href = '/'
+// }

@@ -10,6 +10,8 @@ import { useUserStore } from '@/store/UseUserStore';
 import { useRouter } from 'next/navigation';
 import { addToast } from '@heroui/react';
 import { AxiosError } from 'axios';
+import { MinorButton } from '@/stories/MinorButton';
+import { GoogleIcon } from '@/stories/Icons';
 
 // type input
 type T = LoginByPhoneOtpFormType;
@@ -76,7 +78,7 @@ export default function Page() {
         <div className="py-4">
           <LoginByPhoneOtpForm submit={handleSubmit} reset={handleReset} />
         </div>
-        {/* <div className="flex flex-row items-center justify-center w-full h-full gap-4">
+        <div className="flex flex-row items-center justify-center w-full h-full gap-4">
           <i className="rotate-180">
             <CometStarVector />
           </i>
@@ -84,8 +86,8 @@ export default function Page() {
           <i>
             <CometStarVector />
           </i>
-        </div> */}
-        {/* <div className="w-full h-full flex justify-center items-center py-4">
+        </div>
+        <div className="w-full h-full flex justify-center items-center py-4">
           <MinorButton
             variant="ghost"
             buttonTitle="ورود بـــــا حســــاب گــــــوگل"
@@ -94,7 +96,7 @@ export default function Page() {
             icon={<GoogleIcon size={28} />}
             color="secondary"
           />
-        </div> */}
+        </div>
       </div>
     </div>
   );

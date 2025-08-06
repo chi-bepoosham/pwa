@@ -41,7 +41,7 @@ export const MinorInput = ({
   // };
 
   return (
-    <div className="w-full flex flex-col gap-2">
+    <div className="w-full px-5 flex flex-col gap-2">
       {label && <label className="text-large text-secondary">{label}</label>}
       {isMultieline ? (
         <Textarea
