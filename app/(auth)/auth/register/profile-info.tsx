@@ -43,10 +43,15 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
     reader.readAsDataURL(file);
   };
 
-  const onSubmit = (data: RegisterFormData) => {
-    onNext(data); 
-    router.push('/auth/x'); 
+  const onSubmit = async (data: RegisterFormData) => {
+    try {
+      await onNext(data);
+      router.push('/auth/x');
+    } catch (err) {
+      console.error('خطا در ثبت فرم:', err);
+    }
   };
+  
 
   const formValues = watch();
 
