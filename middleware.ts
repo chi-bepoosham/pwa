@@ -33,7 +33,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/auth', request.url));
   }
 
-  // Prevent authenticated users from accessing /auth
+  // // Prevent authenticated users from accessing /auth
   if (token && pathname.startsWith('/auth')) {
     return NextResponse.redirect(new URL('/home', request.url));
   }

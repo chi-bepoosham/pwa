@@ -7,7 +7,6 @@ import { Uploader } from '@/stories/Uploader';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterFormData, registerFormSchema } from './schema';
-import router from 'next/router';
 
 interface ProfileInfoProps {
   onNext: (data: RegisterFormData) => void;
@@ -43,15 +42,9 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
     reader.readAsDataURL(file);
   };
 
-  const onSubmit = async (data: RegisterFormData) => {
-    try {
-      await onNext(data);
-      router.push('/auth/x');
-    } catch (err) {
-      console.error('خطا در ثبت فرم:', err);
-    }
+  const onSubmit = (data: RegisterFormData) => {
+    onNext(data);
   };
-  
 
   const formValues = watch();
 
