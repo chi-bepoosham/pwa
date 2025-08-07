@@ -15,6 +15,7 @@ export interface MinorButtonProps {
   icon?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'default';
   onClick?: () => void;
+  isDisable?: boolean;
 }
 
 
@@ -47,7 +48,7 @@ export const MinorButton = (props: MinorButtonProps) => {
     color = 'primary',
     onClick,
     isIconOnly = false,
-
+    isDisable = false
   } = props;
 
   const [, setClicked] = useState(false);
@@ -67,6 +68,7 @@ export const MinorButton = (props: MinorButtonProps) => {
         onPress={handleClick}
         startContent={icon}
         isIconOnly={isIconOnly}
+        isDisabled={isDisable}
       >
         {isLoading ? (
           <div className="flex justify-center gap-3">
