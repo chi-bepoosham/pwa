@@ -64,7 +64,7 @@ export const Uploader = (props: UploaderProps) => {
           size === 'x-large'
             ? image
               ? 'absolute left-3 bottom-3 !px-2.5 !min-w-0 rounded-full'
-              : 'absolute bottom-4 w-[calc(85%)] rounded-2xl'
+              : 'absolute bottom-4 w-[calc(30%)] rounded-2xl'
             : '-bottom-4 min-w-0 rounded-full',
         )}
         onPress={open}

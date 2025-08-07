@@ -109,11 +109,11 @@ export default function Page() {
       router.replace('/personal-image-uploader');
     }
   };
-  useEffect(() => {
-    if (!api_key) {
-      router.replace('/auth');
-    }
-  }, [api_key])
+  // useEffect(() => {
+  //   if (!api_key) {
+  //     router.replace('/auth');
+  //   }
+  // }, [api_key])
 
 
   return (
