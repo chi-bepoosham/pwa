@@ -7,7 +7,7 @@ import { Uploader } from "@/stories/Uploader";
 
 
 interface ProfileInfoProps {
-
+    matchPercent?: number;
 }
 
 
