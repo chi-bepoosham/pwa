@@ -7,8 +7,6 @@ import { Uploader } from '@/stories/Uploader';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterFormData, registerFormSchema } from './schema';
-import { VoiceAssistant } from '@/stories/VoiceAssistant';
-import { redirect } from 'next/dist/server/api-utils';
 
 interface ProfileInfoProps {
   onNext: (data: RegisterFormData) => void;
@@ -54,59 +52,55 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
 
   return (
     <>
-      <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide relative gap-10 py-10">
+    <div className='flex flex-col w-full justify-center gap-20 overflow-x-hidden scrollbar-hide py-16'>
         <Uploader 
           size="medium" 
           title="تصویر نمایه" 
           onImageUpload={handleFileUpload}
         />
-        <div className="flex flex-col gap-4 w-full">
-          <div className="flex flex-col gap-1 w-full">
-            <MinorInput
-              label='مشخصات شما'
-              isMultieline={false}
-              type="fullName"
-              placeholder="نام و نام‌خانوادگی"
-              size="lg"
-              value={formValues.full_name}
-              onChange={(e) => setValue('full_name', e.target.value)}
-            />
-            {errors.full_name && (
-              <span className="text-red-500 text-sm mt-5 px-5">{errors.full_name.message}</span>
-            )}
-          </div>
-          <div className="flex flex-col gap-1 w-full">
-            <GenderSelection
-              value={formValues.gender || ''}
-              onChange={(value) => setValue('gender', value as '1' | '2')}
-            />
-            {errors.gender && (
-              <span className="text-red-500 text-sm">{errors.gender.message}</span>
-            )}
-          </div>
+            <div className='flex flex-col justify-center gap-8'>
+              <MinorInput
+                label='مشخصات شما'
+                isMultieline={false}
+                type="fullName"
+                placeholder="نام و نام‌خانوادگی"
+                size="lg"
+                value={formValues.full_name}
+                onChange={(e) => setValue('full_name', e.target.value)}
+              />
+              {errors.full_name && (
+                <span className="text-red-500 text-sm mt-5 px-5">{errors.full_name.message}</span>
+              )}
+              <GenderSelection
+                value={formValues.gender || ''}
+                onChange={(value) => setValue('gender', value as '1' | '2')}
+              />
+              {errors.gender && (
+                <span className="text-red-500 text-sm">{errors.gender.message}</span>
+              )}
+            </div>
         </div>
+        <div className='flex flex-col justify-center gap-5 w-full max-w-80 mx-auto'>
+          <MinorButton
+            className="text-large"
+            variant="flat"
+            buttonTitle="مـــرحلۀ بــــعدی"
+            radius="md"
+            isLoading={loading}
+            color="primary"
+            onClick={handleSubmit(onSubmit)}
+          />
+          <Button 
+          color="default" 
+          variant="light"
+          isDisabled={true} 
+          // onClick={onSkip}
+          >
+            بعــدا تکـــمیل میکنـــم!
+          </Button>
+        {error && <div className="text-red-500 text-center mt-4">{error}</div>}
       </div>
-      <div className="flex flex-col items-center py-4 gap-4 w-full">
-        <MinorButton
-          className="w-full max-w-72 text-large"
-          variant="flat"
-          buttonTitle="مـــرحلۀ بــــعدی"
-          radius="md"
-          isLoading={loading}
-          color="primary"
-          onClick={handleSubmit(onSubmit)}
-        />
-        <Button 
-        color="default" 
-        variant="light"
-        isDisabled={true} 
-        // onClick={onSkip}
-        >
-          بعــدا تکـــمیل میکنـــم!
-        </Button>
-      </div>
-      {error && <div className="text-red-500 text-center mt-4">{error}</div>}
-    </>
+      </>
   );
 };
 

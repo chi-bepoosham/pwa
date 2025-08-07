@@ -59,52 +59,52 @@ export const MinorButton = (props: MinorButtonProps) => {
     }
   };
   return (
-    <Button
-
-      className={clsx(`!min-w-0 ${getCustomColorClass(color)} `, className)}
-      variant={variant}
-      radius={radius}
-      color={color}
-      onPress={handleClick}
-      startContent={icon}
-      isIconOnly={isIconOnly}
-    >
-      {isLoading ? (
-        <div className="flex justify-center gap-3">
-          <motion.div
-            className="w-3 h-3 bg-white rounded-full"
-            animate={{ opacity: [1, 0.2, 1] }}
-            transition={{
-              duration: 2.5,
-              repeat: Infinity,
-              repeatType: 'loop',
-              delay: 1.4,
-            }}
-          />
-          <motion.div
-            className="w-3 h-3 bg-white rounded-full"
-            animate={{ opacity: [1, 0.2, 1] }}
-            transition={{
-              duration: 2.5,
-              repeat: Infinity,
-              repeatType: 'loop',
-              delay: 1,
-            }}
-          />
-          <motion.div
-            className="w-3 h-3 bg-white rounded-full"
-            animate={{ opacity: [1, 0.2, 1] }}
-            transition={{
-              duration: 2.5,
-              repeat: Infinity,
-              repeatType: 'loop',
-              delay: 0.6,
-            }}
-          />
-        </div>
-      ) : (
-        buttonTitle
-      )}
-    </Button>
+        <Button
+        className={clsx(`!min-w-0 ${getCustomColorClass(color)} `, className)}
+        variant={variant}
+        radius={radius}
+        color={color}
+        onPress={handleClick}
+        startContent={icon}
+        isIconOnly={isIconOnly}
+      >
+        {isLoading ? (
+          <div className="flex justify-center gap-3">
+            <motion.div
+              className="w-3 h-3 bg-white rounded-full"
+              animate={{ opacity: [1, 0.2, 1] }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                repeatType: 'loop',
+                delay: 1.4,
+              }}
+            />
+            <motion.div
+              className="w-3 h-3 bg-white rounded-full"
+              animate={{ opacity: [1, 0.2, 1] }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                repeatType: 'loop',
+                delay: 1,
+              }}
+            />
+            <motion.div
+              className="w-3 h-3 bg-white rounded-full"
+              animate={{ opacity: [1, 0.2, 1] }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                repeatType: 'loop',
+                delay: 0.6,
+              }}
+            />
+          </div>
+        ) : (
+          buttonTitle
+        )}
+      </Button>
+    
   );
 };

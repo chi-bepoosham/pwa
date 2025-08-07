@@ -117,8 +117,7 @@ export default function Page() {
 
 
   return (
-    <div className="flex flex-col justify-between w-full gap-12 bg-white overflow-x-hidden scrollbar-hide min-h-screen">
-      <div className="flex flex-col gap-10">
+    <div className='flex flex-col justify-between w-full h-screen gap-10 overflow-x-hidden scrollbar-hide'>
         <div className="flex flex-col justify-center items-center p-4">
           <div className="flex flex-row justify-center items-center gap-4">
             <i className="rotate-180">
@@ -131,15 +130,15 @@ export default function Page() {
           </div>
           <h3 className="text-secondary-300">مـرحـلۀ اول</h3>
         </div>
-      </div>
-      <ProfileInfo
-        onNext={handleNextStep}
-        onSkip={handleSkip}
-        loading={loading}
-        error={error}
-        defaultValues={formData}
-        // isDisabled={!api_key}s
-      />
+        <ProfileInfo
+            onNext={handleNextStep}
+            onSkip={handleSkip}
+            loading={loading}
+            error={error}
+            defaultValues={formData}
+            // isDisabled={!api_key}s
+          />
     </div>
+      
   );
 }
