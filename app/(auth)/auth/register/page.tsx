@@ -21,7 +21,8 @@ export default function Page() {
   const router = useRouter();
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [formData, setFormData] = useState<RegisterFormData>({
-    full_name: '',
+    first_name: '',
+    last_name: '',
     avatar: '',
     gender: '1',
     email: '',
@@ -38,7 +39,7 @@ export default function Page() {
     try {
       // Prepare request data with required fields
       const requestData: RegisterRequestData = {
-        full_name: data.full_name,
+        full_name: `${data.first_name} ${data.last_name}`,
         mobile: phone_number,
       };
 
@@ -109,11 +110,11 @@ export default function Page() {
       router.replace('/personal-image-uploader');
     }
   };
-  useEffect(() => {
-    if (!api_key) {
-      router.replace('/auth');
-    }
-  }, [api_key])
+  // useEffect(() => {
+  //   if (!api_key) {
+  //     router.replace('/auth');
+  //   }
+  // }, [api_key])
 
 
   return (

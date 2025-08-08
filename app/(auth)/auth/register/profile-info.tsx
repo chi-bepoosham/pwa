@@ -26,7 +26,8 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
-      full_name: '',
+      first_name: '',
+      last_name: '',
       avatar: '',
       gender: undefined,
       email: '',
@@ -64,28 +65,35 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
           onImageUpload={handleFileUpload}
         />
             <div className='flex flex-col justify-center gap-8'>
+              <div className='flex flex-col gap-4'>
               <MinorInput
                 label='مشخصات شما'
                 isMultieline={false}
                 type="fullName"
-                placeholder="نام و نام‌خانوادگی"
+                placeholder="نام"
                 size="lg"
-                value={formValues.full_name}
-                onChange={(e) => {
-                  console.log("✅ full_name:", e.target.value);
-                  setValue('full_name', e.target.value, { shouldValidate: true });
-                }}
-              />
-              {errors.full_name && (
-                <span className="text-red-500 text-sm mt-5 px-5">{errors.full_name.message}</span>
+                value={formValues.first_name}
+                onChange={(e) => setValue('first_name', e.target.value)}
+                />
+              {errors.first_name && (
+                <span className="text-red-500 text-sm mt-5 px-5">{errors.first_name.message}</span>
               )}
+              <MinorInput
+                isMultieline={false}
+                type="fullName"
+                placeholder="نام‌خانوادگی"
+                size="lg"
+                value={formValues.last_name}
+                onChange={(e) => setValue('last_name', e.target.value)}
+                />
+              {errors.last_name && (
+                <span className="text-red-500 text-sm mt-5 px-5">{errors.last_name.message}</span>
+              )}
+              </div>
               <GenderSelection
                 value={formValues.gender || ''}
-                onChange={(value) => {
-                  console.log("✅ gender selected:", value);
-                  setValue('gender', value as '1' | '2', { shouldValidate: true });
-                }}
-              />
+                onChange={(value) => setValue('gender', value as '1' | '2')}
+                />
               {errors.gender && (
                 <span className="text-red-500 text-sm">{errors.gender.message}</span>
               )}
