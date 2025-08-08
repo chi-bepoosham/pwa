@@ -25,20 +25,7 @@ export const MinorInput = ({
                              size = 'md',
                              isMultieline,
                            }: MinorInputProps) => {
-  // const getPlaceholder = () => {
-  //   if (placeholder) return placeholder;
-  //   switch (type) {
-  //     case 'email': return 'ایمیل خود را وارد کنید';
-  //     case 'fullName': return 'نام و نام‌خانوادگی';
-  //     case 'phone': return '+98';
-  //     case 'select': return 'انتخاب کنید';
-  //     case 'unit': return 'شماره واحد';
-  //     case 'plate': return 'شماره پلاک';
-  //     case 'discount': return 'کد تخفیف را وارد کنید';
-  //     case 'description': return 'توضیحات خود را وارد کنید';
-  //     default: return '';
-  //   }
-  // };
+
 
   return (
     <div className="w-full px-5 flex flex-col gap-2">

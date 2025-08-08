@@ -50,6 +50,11 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
 
   if (isDisabled) return null
 
+
+  console.log("❌ errors", errors);
+  console.log("👀 formValues", formValues);
+  
+  
   return (
     <>
     <div className='flex flex-col w-full justify-center gap-20 overflow-x-hidden scrollbar-hide py-16'>
@@ -66,14 +71,20 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ onNext, isDisabled, loading, 
                 placeholder="نام و نام‌خانوادگی"
                 size="lg"
                 value={formValues.full_name}
-                onChange={(e) => setValue('full_name', e.target.value)}
+                onChange={(e) => {
+                  console.log("✅ full_name:", e.target.value);
+                  setValue('full_name', e.target.value, { shouldValidate: true });
+                }}
               />
               {errors.full_name && (
                 <span className="text-red-500 text-sm mt-5 px-5">{errors.full_name.message}</span>
               )}
               <GenderSelection
                 value={formValues.gender || ''}
-                onChange={(value) => setValue('gender', value as '1' | '2')}
+                onChange={(value) => {
+                  console.log("✅ gender selected:", value);
+                  setValue('gender', value as '1' | '2', { shouldValidate: true });
+                }}
               />
               {errors.gender && (
                 <span className="text-red-500 text-sm">{errors.gender.message}</span>
