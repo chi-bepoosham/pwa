@@ -1,14 +1,14 @@
 'use client';
 
-import Header from '../components/Header';
-import Link from 'next/link';
-import { Button } from '@heroui/react';
-import { ArrowRightIcon, ShoppingBagIcon } from '@/stories/Icons';
-import { useRouter } from 'next/navigation';
+import { Banner } from '@/stories/Banner';
 import { DashboardItems } from '@/stories/DashboardItems';
 import { Fitting } from '@/stories/Fitting';
+import { ArrowRightIcon, ShoppingBagIcon } from '@/stories/Icons';
 import { SettingItems } from '@/stories/Setting/SettingItems';
-//import { Banner } from "@/stories/Banner"
+import { Button } from '@heroui/react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Header from '../components/Header';
 
 export default function Home() {
   const router = useRouter();
@@ -45,20 +45,18 @@ export default function Home() {
           </Button>
         }
       />
-
-      <div className="w-full flex flex-col gap-10 relative z-10">
-        <DashboardItems />
-        <Fitting />
-        <SettingItems />
+      <div className="flex flex-col gap-10 px-8">
+        <div className="w-full flex flex-col gap-4 relative z-10">
+          <DashboardItems />
+          <Fitting />
+        </div>
+        <div className="shadow-[0px_-10px_24px_0px_#f1f1f1] rounded-2xl overflow-hidden">
+          <SettingItems />
+        </div>
       </div>
-
-      {/* <div className="absolute -bottom-20 w-full z-0">
-        <Banner
-        textColor="text-primary/50" 
-        withStar={true}
-        starColor="text-primary"
-        />
-      </div> */}
+      <div className="w-full absolute bottom-0 left-0">
+        <Banner withStar={true} textColor="text-primary-200" starColor="text-primary" />
+      </div>
     </div>
   );
 }

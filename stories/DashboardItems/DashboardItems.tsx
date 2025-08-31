@@ -1,11 +1,11 @@
-import React from "react";
-import { Button, ScrollShadow } from "@heroui/react";
-import { BookmarkIcon, OrdersIcon, ShapeIcon, StarIcon } from "@/stories/Icons";
+import { BookmarkIcon, OrdersIcon, ShapeIcon, StarIcon } from '@/stories/Icons';
+import { Button, ScrollShadow } from '@heroui/react';
+import React from 'react';
 
-export interface SocialProps {}
+// export interface SocialProps {}
 
-export const DashboardItems = (props: SocialProps) => {
-  const {} = props;
+export const DashboardItems = () => {
+  // const {} = props;
   return (
     <ScrollShadow
       orientation="horizontal"
@@ -13,43 +13,43 @@ export const DashboardItems = (props: SocialProps) => {
       size={0}
       className="xs:flex xs:flex-row-reverse xs:gap-6 xs:justify-center xs:overflow-visible overflow-x-auto"
     >
-      <div className="flex flex-row-reverse gap-5 justify-end xs:justify-center">
+      <div className="flex flex-row-reverse gap-5 justify-center">
         <Button
           variant="bordered"
-          className="w-32 h-32 sm:w-36 sm:h-36 aspect-square shrink-0 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text active:transition active:duration-500"
+          className="w-24 h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text active:transition active:duration-500 group"
         >
-          <i className="mb-2">
-            <BookmarkIcon size={36} />
+          <i>
+            <BookmarkIcon size={24} />
           </i>
-          <span className="text-medium font-bold sm:text-xl">نشان‌شده‌ها</span>
-          <i className="text-[#68BAA6]">
-            <StarIcon size={20} />
+          <span className="font-bold text-xs">نشان‌شده‌ها</span>
+          <i className="text-[#68BAA6] group-focus:text-black">
+            <StarIcon size={12} />
           </i>
         </Button>
 
         <Button
           variant="bordered"
-          className="w-32 h-32 sm:w-36 sm:h-36 aspect-square shrink-0 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-secondary active:transition active:duration-500"
+          className="w-24 h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-secondary active:transition active:duration-500 group"
         >
-          <i className="mb-2">
-            <ShapeIcon size={36} />
+          <i>
+            <ShapeIcon size={24} />
           </i>
-          <span className="text-medium font-bold sm:text-xl">تصویر فرم بدن</span>
-          <i className="text-[#68BAA6]">
-            <StarIcon size={20} />
+          <span className="font-bold text-xs">تصویر فرم بدن</span>
+          <i className="text-[#68BAA6] group-focus:text-black">
+            <StarIcon size={12} />
           </i>
         </Button>
 
         <Button
           variant="bordered"
-          className="w-32 h-32 sm:w-36 sm:h-36 aspect-square shrink-0 flex flex-col items-center justify-center border-2 border-[#68BAA6] rounded-2xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-white active:transition active:duration-500"
+          className="w-24 h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-white active:transition active:duration-500 group"
         >
-          <i className="mb-2">
-            <OrdersIcon size={36} />
+          <i>
+            <OrdersIcon size={24} />
           </i>
-          <span className="text-medium font-bold sm:text-xl">سـفارشــات</span>
-          <i className="text-[#68BAA6]">
-            <StarIcon size={20} />
+          <span className="font-bold text-xs">سـفارشــات</span>
+          <i className="text-[#68BAA6] group-focus:text-black">
+            <StarIcon size={12} />
           </i>
         </Button>
       </div>

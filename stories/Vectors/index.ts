@@ -10,7 +10,6 @@ export {Vector as BackBoxVector} from "./BackBox.stories"
 
 // Fitting
 export {Vector as TryOnClothVector} from "./TryOnClothe.stories"
-export {Vector as SquareVector} from "./Square.stories"
 
 
 // VoiceAssistant
