@@ -6,7 +6,7 @@ import { BottomNavigation } from '../BottomNavigation';
 export const BottomNavWrapper = () => {
   const pathname = usePathname();
 
-  const hideOnRoutes = ['/body_types', '/profile', '/celebrities'];
+  const hideOnRoutes = ['/body_types', '/profile', '/celebrities', '/profile/about'];
 
   if (hideOnRoutes.includes(pathname)) return null;
 

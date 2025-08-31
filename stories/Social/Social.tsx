@@ -1,51 +1,62 @@
-import React from "react";
-import {Button} from "@heroui/react";
-import {EmailIcon, InstagramIcon, TelegramIcon} from "@/stories/Icons";
-import {sacramento} from "@/lib/font";
+import { SacramentoLocal } from '@/lib/font';
+import { EmailIcon, InstagramIcon, TelegramIcon } from '@/stories/Icons';
+import { Button } from '@heroui/react';
+import React from 'react';
 
+export const Social = () => {
+  return (
+    <div className="grid grid-cols-3 gap-4 justify-between w-full max-w-screen-sm">
+      {/* Telegram */}
+      <a
+        href="https://t.me/ilyanozary"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="col-span-1"
+      >
+        <Button
+          as="div"
+          variant="bordered"
+          className="w-full h-24 p-2 flex flex-col items-center justify-around border-1 border-primary rounded-3xl bg-primary-50 hover:bg-primary hover:text-white transition duration-300"
+        >
+          <i>
+            <TelegramIcon size={28} />
+          </i>
+          <span className={`text-xl ${SacramentoLocal.className}`}>Telegram</span>
+        </Button>
+      </a>
 
-export interface SocialProps {
-}
+      {/* Email */}
+      <a href="mailto:chibepoosham.app@gmail.com" className="col-span-1">
+        <Button
+          as="div"
+          variant="bordered"
+          className="w-full h-24 p-2 flex flex-col items-center justify-around border-1 border-primary rounded-3xl bg-primary-50 hover:bg-primary hover:text-white transition duration-300"
+        >
+          <i>
+            <EmailIcon size={28} />
+          </i>
+          <span className={`text-xl ${SacramentoLocal.className}`}>Email</span>
+        </Button>
+      </a>
 
-export const Social = (props: SocialProps) => {
-    const {} = props
-    return (
-        <div className="flex flex-row-reverse gap-6 justify-center">
-            <Button
-                variant="bordered"
-                className="w-40 h-40 flex flex-col items-center justify-center border-2 border-primary rounded-2xl bg-primary-50 active:bg-primary active:text-white active:transition active:duration-500"
-            >
-                <i className="mb-2">
-                    <TelegramIcon size={36}/>
-                </i>
-                <span className={`text-xl ${sacramento.className}`}>
-                    Telegram
-                </span>
-            </Button>
-
-            <Button
-                variant="bordered"
-                className="w-40 h-40 flex flex-col items-center justify-center border-2 border-primary rounded-2xl bg-primary-50 active:bg-primary active:text-white active:transition active:duration-500"
-            >
-                <i className="mb-2">
-                    <EmailIcon size={36}/>
-                </i>
-                <span className={`text-xl ${sacramento.className}`}>
-                    Email
-                </span>
-            </Button>
-
-            <Button
-                variant="bordered"
-                className="w-40 h-40 flex flex-col items-center justify-center border-2 border-primary rounded-2xl bg-primary-50 active:bg-primary active:text-white active:transition active:duration-500"
-            >
-                <i className="mb-2">
-                    <InstagramIcon size={36}/>
-                </i>
-                <span className={`text-xl ${sacramento.className}`}>
-                    Instagram
-                </span>
-            </Button>
-        </div>
-    );
+      {/* Instagram */}
+      <a
+        href="https://instagram.com/chibepoosham.ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="col-span-1"
+      >
+        <Button
+          as="div"
+          variant="bordered"
+          className="w-full h-24 p-2 flex flex-col items-center justify-around border-1 border-primary rounded-3xl bg-primary-50 hover:bg-primary hover:text-white transition duration-300"
+        >
+          <i>
+            <InstagramIcon size={28} />
+          </i>
+          <span className={`text-xl ${SacramentoLocal.className}`}>Instagram</span>
+        </Button>
+      </a>
+    </div>
+  );
 };

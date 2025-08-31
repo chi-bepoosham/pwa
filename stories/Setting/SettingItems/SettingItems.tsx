@@ -1,7 +1,5 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { addToast, Listbox, ListboxItem, Switch } from '@heroui/react';
 import {
   BookmarkIcon,
   InfoIcon,
@@ -10,6 +8,8 @@ import {
   ShareIcon,
   UserIcon,
 } from '@/stories/Icons';
+import { addToast, Listbox, ListboxItem, Switch } from '@heroui/react';
+import React, { useEffect, useRef, useState } from 'react';
 // import { json } from 'stream/consumers';
 
 // export interface SettingItemProps {}
