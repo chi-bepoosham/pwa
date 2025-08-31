@@ -14,7 +14,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide relative min-h-screen">
+    <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide  min-h-screen">
       <Header
         variant="centered"
         title="تنظیمات"
@@ -50,11 +50,11 @@ export default function Home() {
           <DashboardItems />
           <Fitting />
         </div>
-        <div className="shadow-[0px_-10px_24px_0px_#f1f1f1] rounded-2xl overflow-hidden">
+        <div className="shadow-[0px_-10px_24px_0px_#f1f1f1] rounded-2xl overflow-hidden mb-20 bg-background z-10">
           <SettingItems />
         </div>
       </div>
-      <div className="w-full absolute bottom-0 left-0">
+      <div className="w-full absolute bottom-0 left-0 z-0">
         <Banner withStar={true} textColor="text-primary-200" starColor="text-primary" />
       </div>
     </div>

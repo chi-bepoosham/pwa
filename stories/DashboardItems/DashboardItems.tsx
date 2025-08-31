@@ -13,10 +13,10 @@ export const DashboardItems = () => {
       size={0}
       className="xs:flex xs:flex-row-reverse xs:gap-6 xs:justify-center xs:overflow-visible overflow-x-auto"
     >
-      <div className="flex flex-row-reverse gap-5 justify-center">
+      <div className="grid grid-cols-3 gap-4 justify-between w-full max-w-screen-sm">
         <Button
           variant="bordered"
-          className="w-24 h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text active:transition active:duration-500 group"
+          className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text active:transition active:duration-500 group"
         >
           <i>
             <BookmarkIcon size={24} />
@@ -29,7 +29,7 @@ export const DashboardItems = () => {
 
         <Button
           variant="bordered"
-          className="w-24 h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-secondary active:transition active:duration-500 group"
+          className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-secondary active:transition active:duration-500 group"
         >
           <i>
             <ShapeIcon size={24} />
@@ -42,7 +42,7 @@ export const DashboardItems = () => {
 
         <Button
           variant="bordered"
-          className="w-24 h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-white active:transition active:duration-500 group"
+          className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-white active:transition active:duration-500 group"
         >
           <i>
             <OrdersIcon size={24} />
