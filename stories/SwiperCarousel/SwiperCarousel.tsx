@@ -3,7 +3,7 @@
 import { capitalizeWords } from '@/lib/capitalizeWords';
 import { ArrowBoldLeftIcon, MagicStarsIcon } from '@/stories/Icons';
 import SwiperCarouselLoading from '@/stories/SwiperCarousel/loading';
-import { CelebrityType } from '@/types/BodyType.type';
+import { CelebrityType } from '@/types/CelebrityType.type';
 import { Button } from '@heroui/react';
 import Image from 'next/image';
 import React, { useRef, useState } from 'react';

@@ -1,6 +1,6 @@
+import { CelebrityType } from '@/types/CelebrityType.type';
 import { Meta, StoryObj } from '@storybook/react';
 import { SwiperCarousel } from './SwiperCarousel';
-import { CelebrityType } from '@/types/BodyType.type';
 
 const meta: Meta<typeof SwiperCarousel> = {
   title: 'Components/SwiperCarousel',

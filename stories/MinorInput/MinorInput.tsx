@@ -1,72 +1,45 @@
 'use client';
-import React from 'react';
+
+import React, { forwardRef } from 'react';
 import { Input, Textarea } from '@heroui/react';
 
-// export type InputType = 'email' | 'fullName' | 'phone' | 'select' | 'unit' | 'plate' | 'discount' | 'description';
-
 export interface MinorInputProps {
-  type?: string;
+  type?: 'text' | 'email' | 'phone' | 'unit' | 'plate';
   placeholder?: string;
   label?: string;
-  value?: string;
-  options?: { label: string; value: string }[];
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
   size?: 'sm' | 'md' | 'lg';
   isMultieline?: boolean;
+  // تمام props اضافی مثل onChange و value از react-hook-form
+  [key: string]: any;
 }
 
-export const MinorInput = ({
-                             type = 'fullName',
-                             placeholder,
-                             label,
-                             value,
-                             options = [],
-                             onChange,
-                             size = 'md',
-                             isMultieline,
-                           }: MinorInputProps) => {
+export const MinorInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, MinorInputProps>(
+  ({ type = 'text', placeholder, label, size = 'md', isMultieline = false, ...props }, ref) => {
+    return (
+      <div className="w-full px-5 flex flex-col gap-2">
+        {label && <label className="text-large text-secondary">{label}</label>}
 
+        {isMultieline ? (
+          <Textarea
+            placeholder={placeholder}
+            ref={ref as any}
+            size={size}
+            {...props} // onChange و value از register میاد
+            className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
+          />
+        ) : (
+          <Input
+            type={type === 'phone' || type === 'unit' || type === 'plate' ? 'tel' : type}
+            placeholder={placeholder}
+            ref={ref as any}
+            size={size}
+            {...props} // onChange و value از register میاد
+            className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
+          />
+        )}
+      </div>
+    );
+  }
+);
 
-  return (
-    <div className="w-full px-5 flex flex-col gap-2">
-      {label && <label className="text-large text-secondary">{label}</label>}
-      {isMultieline ? (
-        <Textarea
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
-        classNames={{
-          innerWrapper: [
-            'bg-white',
-          ],
-          inputWrapper: [
-            'bg-white',
-            'data-[hover=true]:bg-white',
-            'group-data-[focus=true]:bg-white'
-          ],
-        }}
-      />
-      ) : (
-        <Input
-          type={(type === 'phone' || type === 'unit' || type === 'plate') ? 'tel' : 'text'}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          size={size}
-          className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
-          classNames={{
-            innerWrapper: [
-              'bg-white',
-            ],
-            inputWrapper: [
-              'bg-white',
-              'data-[hover=true]:bg-white',
-              'group-data-[focus=true]:bg-white'
-            ],
-          }}
-        />
-      )}
-    </div>
-  );
-};
+MinorInput.displayName = 'MinorInput';

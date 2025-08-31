@@ -1,21 +1,15 @@
+import { CelebrityType } from './CelebrityType.type';
+import { ClothType } from './ClothType.type';
+
 export interface BodyTypeType {
   id: number;
   title: string;
   gender: 1 | 2;
   predict_value: string;
-}
-export interface CelebrityType {
-  id: number;
-  title: string;
-  body_type_id: number;
-  image: string;
+  created_at: number | null;
+  updated_at: number | null;
 }
 
-interface ClothType {
-  id: number;
-  body_type_id: number;
-  image: string;
-}
 export interface BodyTypeResponseType {
   object: {
     body_type: BodyTypeType & {

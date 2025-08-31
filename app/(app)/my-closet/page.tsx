@@ -16,7 +16,7 @@ import { MyClothesResponseType } from '@/types/MyClothesResponse.type';
 import { ClosetCard } from '@/stories/ClosetCard';
 
 export default function Page() {
-  const { userInfo } = useGetUser(30000);
+  const { userInfo } = useGetUser(3000);
 
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const handleCategoryChange = (v: string) => {
