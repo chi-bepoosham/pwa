@@ -1,8 +1,6 @@
-//import { BottomNavigation } from "@/stories/BottomNavigation";
+import { BottomNavWrapper } from '@/stories/BottomNavWrapper';
 // import { ScrollShadow } from "@heroui/react";
-import { Metadata } from "next";
-
-
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
@@ -11,18 +9,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Layout({ children }: {children: React.ReactNode}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <main className="relative flex flex-col w-full h-screen overflow-hidden">
       {/* <ScrollShadow
         hideScrollBar
         className="flex flex-col w-full h-[calc(100%-96px)] bg-white"
       > */}
-        {children}
+      {children}
       {/* </ScrollShadow> */}
-      {/* <div className="sticky w-full bottom-0 z-10">
-        <BottomNavigation />
-      </div> */}
+      <BottomNavWrapper />
     </main>
   );
 }

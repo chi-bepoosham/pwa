@@ -10,7 +10,9 @@ import { RegisterFormData } from './schema';
 import { setCookie } from '@/lib/cookies';
 
 interface RegisterRequestData {
-  full_name: string;
+  // full_name: string;
+  first_name: string;
+  last_name: string;
   mobile: string;
   avatar?: string;
   gender?: '1' | '2';
@@ -31,7 +33,6 @@ export default function Page() {
   const [error, setError] = useState<string | null>(null);
   const { phone_number, api_key } = useUserStore((state) => state.userInfo);
 
-
   const handleNextStep = async (data: RegisterFormData) => {
     setLoading(true);
     setError(null);
@@ -39,7 +40,9 @@ export default function Page() {
     try {
       // Prepare request data with required fields
       const requestData: RegisterRequestData = {
-        full_name: `${data.first_name} ${data.last_name}`,
+        // full_name: `${data.first_name} ${data.last_name}`,
+        first_name: data.first_name,
+        last_name: data.last_name,
         mobile: phone_number,
       };
 
@@ -114,32 +117,30 @@ export default function Page() {
     if (!api_key) {
       router.replace('/auth');
     }
-  }, [api_key])
-
+  }, [api_key]);
 
   return (
-    <div className='flex flex-col justify-between w-full h-screen gap-10 overflow-x-hidden scrollbar-hide'>
-        <div className="flex flex-col justify-center items-center p-4">
-          <div className="flex flex-row justify-center items-center gap-4">
-            <i className="rotate-180">
-              <CometStarVector />
-            </i>
-            <h2 className="text-secondary font-semibold">ثــــبت‌نــــام</h2>
-            <i>
-              <CometStarVector />
-            </i>
-          </div>
-          <h3 className="text-secondary-300">مـرحـلۀ اول</h3>
+    <div className="flex flex-col justify-between w-full h-screen gap-10 overflow-x-hidden scrollbar-hide">
+      <div className="flex flex-col justify-center items-center p-4">
+        <div className="flex flex-row justify-center items-center gap-4">
+          <i className="rotate-180">
+            <CometStarVector />
+          </i>
+          <h2 className="text-secondary font-semibold">ثــــبت‌نــــام</h2>
+          <i>
+            <CometStarVector />
+          </i>
         </div>
-        <ProfileInfo
-            onNext={handleNextStep}
-            onSkip={handleSkip}
-            loading={loading}
-            error={error}
-            defaultValues={formData}
-            // isDisabled={!api_key}s
-          />
+        <h3 className="text-secondary-300">مـرحـلۀ اول</h3>
+      </div>
+      <ProfileInfo
+        onNext={handleNextStep}
+        onSkip={handleSkip}
+        loading={loading}
+        error={error}
+        defaultValues={formData}
+        // isDisabled={!api_key}s
+      />
     </div>
-      
   );
 }

@@ -2,47 +2,66 @@ import { MagicStarsIcon } from '@/stories/Icons';
 import { StarIcon } from '@/stories/Icons';
 import clsx from 'clsx';
 
-
 interface HeaderProps {
-  variant: "centered" | "side";
+  variant: 'centered' | 'side';
   withStar?: boolean;
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   startContent?: React.ReactNode;
   endContent?: React.ReactNode;
+  color?: string;
+  textColor?: string;
 }
 
 const Header = (props: HeaderProps) => {
   const {
-    variant = "centered",
+    variant = 'centered',
     withStar,
     title,
     subtitle,
     startContent,
     endContent,
+    color,
+    textColor,
   } = props;
 
-  const isCentered = variant === "centered";
+  const isCentered = variant === 'centered';
 
   return (
-    <header className="p-7 sticky top-0 z-20 bg-white">
+    <header
+      className={clsx(
+        'p-7 sticky top-0 z-20 ',
+        color ? color : 'bg-white',
+        textColor ? textColor : 'bg-black'
+      )}
+    >
       <div className="flex flex-row justify-between items-center">
         {startContent}
-        <div className={clsx("flex flex-col gap-2 flex-1", isCentered ? "items-center" : "items-start")}>
-          <h1 className={clsx("flex flex-row gap-2 text-nowrap truncate", isCentered ? "font-bold" : "font-semibold text-lg")}>
+        <div
+          className={clsx(
+            'flex flex-col gap-2 flex-1',
+            isCentered ? 'items-center' : 'items-start'
+          )}
+        >
+          <h1
+            className={clsx(
+              'flex flex-row gap-2 text-nowrap truncate',
+              isCentered ? 'font-bold' : 'font-semibold text-lg'
+            )}
+          >
             {withStar && !isCentered && (
-              <i className='text-primary'>
+              <i className="text-primary">
                 <MagicStarsIcon size={20} />
               </i>
             )}
             {withStar && isCentered && (
-              <i className='text-secondary'>
+              <i className="text-secondary">
                 <StarIcon size={20} />
               </i>
             )}
             {title}
             {withStar && isCentered && (
-              <i className='text-secondary'>
+              <i className="text-secondary">
                 <StarIcon size={20} />
               </i>
             )}

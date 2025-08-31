@@ -1,0 +1,60 @@
+'use client';
+
+import { endpoints } from '@/api/endpoints';
+import { useGetUser } from '@/api/user';
+import { fetcher } from '@/lib/axios';
+import { setCookie } from '@/lib/cookies';
+import { CrossIcon } from '@/stories/Icons';
+import { SwiperCarousel } from '@/stories/SwiperCarousel/SwiperCarousel';
+import { BodyTypeResponseType } from '@/types/BodyType.type';
+import { Button } from '@heroui/react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import useSWR from 'swr';
+import Header from '../components/Header';
+
+export default function Page() {
+  const router = useRouter();
+
+  const { userInfo } = useGetUser(3000);
+
+  useEffect(() => {
+    if (userInfo) {
+      setCookie('userInfo', JSON.stringify(userInfo));
+    }
+  }, [userInfo]);
+
+  const bodyTypeURL = endpoints.user.bodyTypeDetails;
+  const { data, isLoading, error } = useSWR<BodyTypeResponseType>(bodyTypeURL, fetcher);
+  const celebrities = data?.object.body_type.celebrities;
+
+  const handleGoBack = () => {
+    router.replace('/home');
+  };
+
+  return (
+    <div className="flex flex-col w-full  bg-black">
+      <Header
+        color="bg-black"
+        textColor="text-zinc-400"
+        variant="side"
+        title="هــرروز شیک‌تــر از دیــروز..."
+        endContent={
+          <Button
+            variant="bordered"
+            color="secondary"
+            size="lg"
+            isIconOnly
+            className="h-14 w-14 rounded-2xl shrink-0 text-white border-white"
+            onPress={handleGoBack}
+          >
+            <CrossIcon size={48} />
+          </Button>
+        }
+      />
+      <div className="flex max-w-screen-sm justify-center items-center px-8 pb-16">
+        <SwiperCarousel isLoading={isLoading} error={error} celebrities={celebrities ?? []} />
+      </div>
+    </div>
+  );
+}

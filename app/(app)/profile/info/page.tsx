@@ -1,14 +1,14 @@
 "use client";
 
 
-import Header from "../../components/Header"
-import { Button } from "@heroui/react";
-import { ArrowRightIcon, LogoutIcon } from "@/stories/Icons"
-import { useRouter } from "next/navigation"
-import { Uploader } from "@/stories/Uploader";
-import { MinorInput } from "@/stories/MinorInput";
 import { GenderSelection } from "@/stories/GenderSelection";
+import { ArrowRightIcon, LogoutIcon } from "@/stories/Icons";
+import { MinorInput } from "@/stories/MinorInput";
 import { MyBodyTypeCard } from "@/stories/MyBodyTypeCard";
+import { Uploader } from "@/stories/Uploader";
+import { Button } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import Header from "../../components/Header";
 
 
 
@@ -48,7 +48,7 @@ import { MyBodyTypeCard } from "@/stories/MyBodyTypeCard";
 //   };
 
 
-export default function Home() {
+export default function page() {
 
     const router = useRouter()
 
