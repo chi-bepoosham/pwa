@@ -26,7 +26,7 @@ export const Celebrities: React.FC<CelebrityProps> = ({
 }) => {
   if (isLoading) {
     return (
-      <div className="w-full max-w-screen-md grid grid-cols-3 gap-1 bg-[#68BAA6]/50 border-2 border-[#68BAA6] rounded-3xl py-6 px-2">
+      <div className="w-full max-w-screen-md grid grid-cols-3 gap-1 bg-[#68BAA6]/20 border-2 border-[#68BAA6] rounded-3xl py-6 px-2">
         <div className="flex flex-row-reverse justify-center overflow-x-auto col-span-1">
           <div className="flex">
             <Skeleton className="w-10 h-10 rounded-full -mx-2 border-2 border-white" />
@@ -55,7 +55,7 @@ export const Celebrities: React.FC<CelebrityProps> = ({
 
   return (
     <Link href="/celebrities" className="w-full max-w-screen-md">
-      <div className="w-full max-w-screen-md grid grid-cols-3 gap-1 bg-[#68BAA6]/50 border-2 border-[#68BAA6] rounded-3xl py-6 px-2 truncate">
+      <div className="w-full max-w-screen-md grid grid-cols-3 gap-1 bg-[#68BAA6]/20 border-2 border-[#68BAA6] rounded-3xl py-6 px-2 truncate">
         <div className="flex flex-row-reverse justify-center overflow-x-auto col-span-1">
           <div className="flex">
             <AvatarGroup>

@@ -54,7 +54,7 @@ export const Category = ({ onChange, variant, items, className, value }: Categor
   }, [value]);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={`w-full overflow-x-auto whitespace-nowrap flex gap-3 pb-2 ${className || ''}`}
       style={{
@@ -62,7 +62,7 @@ export const Category = ({ onChange, variant, items, className, value }: Categor
         scrollbarColor: '#888 #f1f1f1',
       }}
     >
-      <div className="flex gap-3 px-4 justify-start">
+      <div className="grid grid-cols-3 gap-3 px-4 justify-start w-full">
         {items.map((item, index) => {
           const isActive = selected === item.key;
           const variantClasses = getVariantClasses(isActive);
@@ -73,7 +73,7 @@ export const Category = ({ onChange, variant, items, className, value }: Categor
               onClick={() => handleClick(item.key)}
               variant={isActive ? 'solid' : 'bordered'}
               radius="md"
-              className={`p-4 py-6 border-1.5 transition-all duration-200 w-fit flex-shrink-0 ${variantClasses}`}
+              className={`p-4 py-7 border-1.5 transition-all duration-200 w-full rounded-2xl ${variantClasses}`}
               data-title={item.title}
             />
           );

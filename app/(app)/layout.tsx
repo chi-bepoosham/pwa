@@ -1,6 +1,6 @@
 import { BottomNavWrapper } from '@/stories/BottomNavWrapper';
-// import { ScrollShadow } from "@heroui/react";
 import { Metadata } from 'next';
+// import { ScrollShadow } from "@heroui/react";
 
 export const metadata: Metadata = {
   title: {

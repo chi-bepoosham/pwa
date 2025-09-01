@@ -9,6 +9,7 @@ export {Vector as CometStarVector} from "./CometStar.stories"
 export {Vector as BackBoxVector} from "./BackBox.stories"
 
 // Fitting
+export {Vector as BannerVector} from "./BannerVector.stories"
 export {Vector as TryOnClothVector} from "./TryOnClothe.stories"
 
 

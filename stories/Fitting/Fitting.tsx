@@ -1,5 +1,5 @@
 import { MagicStarsIcon } from '@/stories/Icons';
-import { TryOnClothVector } from '@/stories/Vectors';
+import { BannerVector } from '@/stories/Vectors';
 import React from 'react';
 
 export const Fitting = () => {
@@ -14,7 +14,7 @@ export const Fitting = () => {
           <MagicStarsIcon size={24} />
         </div>
         <div className="flex justify-center items-center col-span-1 h-full w-full">
-          <TryOnClothVector />
+          <BannerVector />
         </div>
       </div>
     </div>

@@ -1,11 +1,12 @@
 'use client';
 
-import { ArrowRightIcon, StarIcon } from '@/stories/Icons';
+import { ArrowRightIcon } from '@/stories/Icons';
+import { Logo } from '@/stories/Logo';
+import { Social } from '@/stories/Social';
+import { CometStarVector } from '@/stories/Vectors';
 import { Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import Header from '../../components/Header';
-import { Logo } from '@/stories/Logo';
-import { Social } from '@/stories/Social';
 
 export default function Home() {
   const router = useRouter();
@@ -42,15 +43,13 @@ export default function Home() {
         </div>
         <div className="flex flex-col justify-center items-center gap-8">
           <div className="grid grid-cols-3 gap-4 items-center">
-            <div className="flex items-center text-zinc-400/30">
-              <div className="bg-gradient-to-r to-white from-zinc-400/30 h-0.5 w-full"></div>
-              <StarIcon size={12} />
-            </div>
+            <i className="rotate-180">
+              <CometStarVector />
+            </i>
             <h3 className="font-semibold text-nowrap ">راه‌هــای ارتباطــی</h3>
-            <div className="flex items-center text-zinc-400/30">
-              <StarIcon size={12} />
-              <div className="bg-gradient-to-r from-white to-zinc-400/30 h-0.5 w-full"></div>
-            </div>
+            <i>
+              <CometStarVector />
+            </i>
           </div>
           <Social />
         </div>

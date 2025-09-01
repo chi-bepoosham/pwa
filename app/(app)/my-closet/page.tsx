@@ -1,19 +1,20 @@
 'use client';
 
-import { Category } from '@/stories/Category';
-import { useState } from 'react';
-import { PlusIcon } from '@/stories/Icons';
-import { addToast, Button, Pagination, Spinner, useDisclosure } from '@heroui/react';
-import Header from '../components/Header';
-import { TryOnClothVector } from '@/stories/Vectors';
-import { sacramento } from '@/lib/font';
-import { useGetUser } from '@/api/user';
-import { AddClothesDrawer } from './components/AddClothesDrawer';
-import useSWR from 'swr';
-import { axiosCoreWithAuth, fetcher } from '@/lib/axios';
 import { endpoints } from '@/api/endpoints';
+import { useGetUser } from '@/api/user';
+import { axiosCoreWithAuth, fetcher } from '@/lib/axios';
+import { Category } from '@/stories/Category';
+import ClosetList from '@/stories/ClosetList/ClosetList';
+import ClosetEmptyState from '@/stories/EmptyCloset/EmptyCloset';
+import { PlusIcon } from '@/stories/Icons';
 import { MyClothesResponseType } from '@/types/MyClothesResponse.type';
-import { ClosetCard } from '@/stories/ClosetCard';
+import { addToast, Button, useDisclosure } from '@heroui/react';
+import { useState } from 'react';
+import useSWR from 'swr';
+import Header from '../components/Header';
+import { AddClothesDrawer } from './components/AddClothesDrawer';
+import Error from './error';
+import Loading from './loading';
 
 export default function Page() {
   const { userInfo } = useGetUser(3000);
@@ -30,7 +31,8 @@ export default function Page() {
     { key: 'upper', title: 'بالا تنه' },
     { key: 'lower', title: 'پایین تنه' },
   ];
-  if ((userInfo as unknown as { gender: number }).gender == 2) {
+
+  if (userInfo && userInfo.gender === 2) {
     categoryItems.push({ key: 'whole', title: 'تمام تنه' });
   }
 
@@ -45,8 +47,11 @@ export default function Page() {
   const { data, isLoading, error, mutate } = useSWR<unknown>(URL, fetcher);
 
   const response = data as unknown as MyClothesResponseType;
+
   const items = response?.object?.data || [];
-  console.log(items);
+  const total = response?.object?.total || 0;
+  const perPage = response?.object?.per_page || 10;
+
   const isEmpty = (dmEmp as MyClothesResponseType)?.object?.total === 0;
 
   const isCurrentEmpty = (data as MyClothesResponseType)?.object?.total === 0;
@@ -101,93 +106,37 @@ export default function Page() {
               onChange={handleCategoryChange}
               className="flex justify-center items-center sticky top-[112px] py-2 z-30 bg-white"
             />
-            <div className="columns-2 gap-4">
-              {items.map((item) => (
-                <div key={item.id} className="mb-4 break-inside-avoid">
-                  <ClosetCard
-                    variant="primary"
-                    imageUrl={'https://core.chibepoosham.app/' + item.image}
-                    matchPercentage={item.match_percentage}
-                    onDelete={() => onDelete(item.id)}
-                  />
-                </div>
-              ))}
-            </div>
-
-            <div className="flex justify-center items-center">
-              <Pagination
-                total={Math.ceil(response?.object?.total / response?.object?.per_page)}
-                page={page}
-                onChange={(page) => setPage(page)}
-              />
-            </div>
+            <ClosetList
+              items={items}
+              onDelete={onDelete}
+              total={total}
+              perPage={perPage}
+              page={page}
+              onPageChange={setPage}
+            />
           </div>
         )}
         {!isLoading && !isEmpty && isCurrentEmpty && !error && (
-          <div className="flex flex-col justify-center gap-10 h-full w-full px-5 relative">
-            <div className="flex justify-center items-center">
-              <TryOnClothVector />
-            </div>
-            <div className="flex flex-col justify-center items-center gap-3">
-              <span className={`${sacramento.className} text-3xl font-bold text-secondary-200`}>
-                Your closet is empty
-              </span>
-              <span className="text-lg text-secondary font-semibold">
-                {(userInfo as unknown as { first_name: string })?.first_name || 'کاربر'} عزیز!
-              </span>
-              <span className="text-lg text-secondary font-semibold">
-                تا حالا لباس {categoryItems.find((v) => v.key === selectedCategory)?.title} اضافه
-                نکردی!
-              </span>
-              <Button
-                variant="flat"
-                color="primary"
-                size="md"
-                className="h-12 rounded-2xl shrink-0"
-                onPress={() => setSelectedCategory('all')}
-              >
-                مشاهده همه لباس ها
-              </Button>
-            </div>
-          </div>
+          <ClosetEmptyState
+            type="emptyCategory"
+            userName={userInfo?.first_name}
+            categoryTitle={categoryItems.find((v) => v.key === selectedCategory)?.title}
+            onShowAll={() => setSelectedCategory('all')}
+            onAddClothes={addClothesDrawer.onOpen}
+          />
         )}
         {!isLoading && isEmpty && !error && (
-          <div className="flex flex-col justify-center gap-10 h-full w-full px-5 relative">
-            <div className="flex justify-center items-center">
-              <TryOnClothVector />
-            </div>
-            <div className="flex flex-col justify-center items-center gap-3">
-              <span className={`${sacramento.className} text-3xl font-bold text-secondary-200`}>
-                Your closet is empty
-              </span>
-              <span className="text-lg text-secondary font-semibold">
-                {(userInfo as unknown as { first_name: string })?.first_name || 'کاربر'} عزیز!
-              </span>
-              <span className="text-lg text-secondary font-semibold">کمد لباس شما خالی هست!</span>
-              <Button
-                variant="flat"
-                color="primary"
-                size="md"
-                startContent={<PlusIcon size={36} />}
-                className="h-14 rounded-2xl shrink-0"
-                onPress={() => addClothesDrawer.onOpen()}
-              >
-                افزودن لباس
-              </Button>
-            </div>
-          </div>
+          <ClosetEmptyState
+            type="emptyAll"
+            userName={userInfo?.first_name}
+            onShowAll={() => setSelectedCategory('all')}
+            onAddClothes={addClothesDrawer.onOpen}
+          />
         )}
-        {isLoading && !error && (
-          <div className="flex justify-center items-center h-full w-full">
-            <Spinner size="lg" color="primary" />
-          </div>
-        )}
-        {!isLoading && !!error && (
-          <div className="flex flex-col justify-center items-center h-full w-full text-red-500 ">
-            <span className="font-bold">خطا در دریافت کمد من</span>
-            <span>{error?.message}</span>
-          </div>
-        )}
+
+        {isLoading && !error && <Loading />}
+        {!isLoading && !!error && <Error message={error?.message} />}
+
         <AddClothesDrawer
           isOpen={addClothesDrawer.isOpen}
           onOpen={addClothesDrawer.onOpen}
