@@ -6,12 +6,12 @@ import SwiperCarouselLoading from '@/stories/SwiperCarousel/loading';
 import { CelebrityType } from '@/types/CelebrityType.type';
 import { Button } from '@heroui/react';
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { CelebrityTitle } from '../CelebrityTitle';
 
@@ -27,8 +27,33 @@ export const SwiperCarousel: React.FC<SwiperCarouselProps> = ({
   isLoading = false,
 }) => {
   const swiperRef = useRef<SwiperType | null>(null);
+
   const initialTitle = capitalizeWords(celebrities[0]?.title || '');
   const [activeTitle, setActiveTitle] = useState(initialTitle);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [autoplayDelay, setAutoplayDelay] = useState(4000);
+
+  const handleNext = () => {
+    swiperRef.current?.slideNext();
+    resetAutoplayDelay();
+  };
+
+  const resetAutoplayDelay = () => {
+    setAutoplayDelay(8000);
+  };
+
+  const handleSlideChange = (swiper: SwiperType) => {
+    setActiveIndex(swiper.realIndex);
+    setActiveTitle(capitalizeWords(celebrities[swiper.realIndex]?.title || ''));
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAutoplayDelay(4000);
+    }, 8000);
+
+    return () => clearTimeout(timer);
+  }, [autoplayDelay]);
 
   if (isLoading) {
     return <SwiperCarouselLoading />;
@@ -44,22 +69,33 @@ export const SwiperCarousel: React.FC<SwiperCarouselProps> = ({
 
   return (
     <div className="relative w-full max-w-screen-sm mx-auto">
+      <div className="flex justify-center my-4">
+        <div className="flex flex-row gap-2">
+          {celebrities.map((_, index) => (
+            <div
+              key={index}
+              className={`w-6 h-1 rounded-full ${
+                index === activeIndex ? 'bg-white' : 'bg-white/20'
+              }`}
+            ></div>
+          ))}
+        </div>
+      </div>
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={20}
         slidesPerView={1}
+        centeredSlides={true}
         loop={true}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        onSlideChange={(swiper) =>
-          setActiveTitle(capitalizeWords(celebrities[swiper.realIndex]?.title || ''))
-        }
-        pagination={{
-          el: '.swiper-pagination',
-          clickable: true,
-          renderBullet: (index, className) => {
-            return `<span class="${className} inline-block w-10 h-2 rounded-full bg-gray-400"></span>`;
-          },
+        autoplay={{
+          delay: autoplayDelay,
+          disableOnInteraction: false,
         }}
+        onBeforeInit={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSlideChange={handleSlideChange}
       >
         {celebrities.map((celeb) => (
           <SwiperSlide key={celeb.id} className="flex justify-center">
@@ -88,7 +124,7 @@ export const SwiperCarousel: React.FC<SwiperCarouselProps> = ({
                   className="w-4"
                   variant="flat"
                   color="default"
-                  onPress={() => swiperRef.current?.slideNext()}
+                  onPress={handleNext}
                 >
                   <ArrowBoldLeftIcon size={24} />
                 </Button>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@heroui/react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
-
+import { IRANSansX } from '@/lib/font';
 
 export interface MinorButtonProps {
   className?: string;
@@ -17,7 +17,6 @@ export interface MinorButtonProps {
   onClick?: () => void;
   isDisable?: boolean;
 }
-
 
 const getCustomColorClass = (color?: string) => {
   switch (color) {
@@ -36,7 +35,6 @@ const getCustomColorClass = (color?: string) => {
   }
 };
 
-
 export const MinorButton = (props: MinorButtonProps) => {
   const {
     className = '',
@@ -48,7 +46,7 @@ export const MinorButton = (props: MinorButtonProps) => {
     color = 'primary',
     onClick,
     isIconOnly = false,
-    isDisable = false
+    isDisable = false,
   } = props;
 
   const [, setClicked] = useState(false);
@@ -60,53 +58,52 @@ export const MinorButton = (props: MinorButtonProps) => {
     }
   };
   return (
-        <Button
-        className={clsx(`!min-w-0 ${getCustomColorClass(color)} `, className)}
-        variant={variant}
-        radius={radius}
-        color={color}
-        onPress={handleClick}
-        startContent={icon}
-        isIconOnly={isIconOnly}
-        isDisabled={isDisable}
-      >
-        {isLoading ? (
-          <div className="flex justify-center gap-3">
-            <motion.div
-              className="w-3 h-3 bg-white rounded-full"
-              animate={{ opacity: [1, 0.2, 1] }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                repeatType: 'loop',
-                delay: 1.4,
-              }}
-            />
-            <motion.div
-              className="w-3 h-3 bg-white rounded-full"
-              animate={{ opacity: [1, 0.2, 1] }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                repeatType: 'loop',
-                delay: 1,
-              }}
-            />
-            <motion.div
-              className="w-3 h-3 bg-white rounded-full"
-              animate={{ opacity: [1, 0.2, 1] }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                repeatType: 'loop',
-                delay: 0.6,
-              }}
-            />
-          </div>
-        ) : (
-          buttonTitle
-        )}
-      </Button>
-    
+    <Button
+      className={clsx(`!min-w-0 ${getCustomColorClass(color)}  ${IRANSansX.className}`, className)}
+      variant={variant}
+      radius={radius}
+      color={color}
+      onPress={handleClick}
+      startContent={icon}
+      isIconOnly={isIconOnly}
+      isDisabled={isDisable}
+    >
+      {isLoading ? (
+        <div className="flex justify-center gap-3">
+          <motion.div
+            className="w-3 h-3 bg-white rounded-full"
+            animate={{ opacity: [1, 0.2, 1] }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              repeatType: 'loop',
+              delay: 1.4,
+            }}
+          />
+          <motion.div
+            className="w-3 h-3 bg-white rounded-full"
+            animate={{ opacity: [1, 0.2, 1] }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              repeatType: 'loop',
+              delay: 1,
+            }}
+          />
+          <motion.div
+            className="w-3 h-3 bg-white rounded-full"
+            animate={{ opacity: [1, 0.2, 1] }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              repeatType: 'loop',
+              delay: 0.6,
+            }}
+          />
+        </div>
+      ) : (
+        buttonTitle
+      )}
+    </Button>
   );
 };

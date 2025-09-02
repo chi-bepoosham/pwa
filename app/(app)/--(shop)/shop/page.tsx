@@ -12,7 +12,7 @@ const objectt = [
     variant: 'solid',
     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
-    matchPercentage: '80% مناسب با فرم بدن',
+    matchPercentage: '80',
   },
   {
     price: '859.000',
@@ -22,7 +22,7 @@ const objectt = [
     variant: 'bordered',
     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
-    matchPercentage: '80% مناسب با فرم بدن',
+    matchPercentage: '80',
   },
   {
     price: '859.000',
@@ -32,7 +32,7 @@ const objectt = [
     variant: 'bordered',
     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
-    matchPercentage: '80% مناسب با فرم بدن',
+    matchPercentage: '80',
   },
   {
     price: '859.000',
@@ -42,7 +42,7 @@ const objectt = [
     variant: 'solid',
     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
-    matchPercentage: '80% مناسب با فرم بدن',
+    matchPercentage: '80',
   },
   {
     price: '859.000',
@@ -52,7 +52,7 @@ const objectt = [
     variant: 'solid',
     colors: ['##8E9880', '#47A3FF', '#DB9155', '#F5A623'],
     withArrow: false,
-    matchPercentage: '80% مناسب با فرم بدن',
+    matchPercentage: '80',
   },
 ];
 export default function Page() {

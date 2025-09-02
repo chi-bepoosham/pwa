@@ -12,22 +12,22 @@ export const Default = {
             {
               variant: 'primary',
               imageUrl: '/path/to/image1.jpg',
-              matchPercentage: '80% مناسب با فرم بدن',
+              matchPercentage: '80',
             },
             {
               variant: 'secondary',
               imageUrl: '/path/to/image2.jpg',
-              matchPercentage: '75% مناسب با فرم بدن',
+              matchPercentage: '75',
             },
             {
               variant: 'tertiary',
               imageUrl: '/path/to/image3.jpg',
-              matchPercentage: '90% مناسب با فرم بدن',
+              matchPercentage: '90',
             },
             {
                 variant: 'quaternary',
                 imageUrl: '/path/to/image4.jpg',
-                matchPercentage: '90% مناسب با فرم بدن',
+                matchPercentage: '90',
               },
         ],
     },

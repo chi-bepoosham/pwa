@@ -41,7 +41,7 @@ export default function ClosetEmptyState({
               variant="flat"
               color="primary"
               size="md"
-              className="h-12 rounded-2xl shrink-0"
+              className="h-14 rounded-3xl shrink-0 bg-success-50 border border-success text-black"
               onPress={onShowAll}
             >
               مشاهده همه لباس ها
@@ -56,8 +56,12 @@ export default function ClosetEmptyState({
               variant="flat"
               color="primary"
               size="md"
-              startContent={<PlusIcon size={36} />}
-              className="h-14 rounded-2xl shrink-0"
+              startContent={
+                <span className="text-success">
+                  <PlusIcon size={36} />
+                </span>
+              }
+              className="h-14 rounded-3xl shrink-0 bg-success-50 border border-success text-black"
               onPress={onAddClothes}
             >
               افزودن لباس

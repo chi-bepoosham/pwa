@@ -1,8 +1,10 @@
 import { MyClothesResponseType } from '@/types/MyClothesResponse.type';
 import { Pagination } from '@heroui/react';
+import Masonry from 'react-masonry-css';
 import { ClosetCard } from '../ClosetCard';
 
 export default function ClosetList({
+  userName,
   items,
   onDelete,
   total,
@@ -10,6 +12,7 @@ export default function ClosetList({
   page,
   onPageChange,
 }: {
+  userName: string;
   items: MyClothesResponseType['object']['data'];
   onDelete: (id: number) => void;
   total: number;
@@ -19,27 +22,30 @@ export default function ClosetList({
 }) {
   return (
     <>
-      <div className="columns-2 gap-4">
+      <Masonry breakpointCols={2} className="flex gap-4" columnClassName="flex flex-col gap-4">
         {items.map((item) => (
-          <div key={item.id} className="mb-4 break-inside-avoid">
-            <ClosetCard
-              link={item.id ? `/my-closet/${item.id}` : '/my-closet'}
-              variant="primary"
-              imageUrl={'https://core.chibepoosham.app/' + item.image}
-              matchPercentage={item.match_percentage}
-              onDelete={() => onDelete(item.id)}
-            />
-          </div>
+          <ClosetCard
+            key={item.id}
+            userName={userName}
+            link={item.id ? `/my-closet/${item.id}` : '/my-closet'}
+            variant="primary"
+            imageUrl={item.image}
+            matchPercentage={item.match_percentage}
+            title={item.title}
+            onDelete={() => onDelete(item.id)}
+            isPending={item.process_status === 1}
+          />
         ))}
-      </div>
-
-      <div className="flex justify-center items-center">
-        <Pagination
-          total={Math.ceil(total / perPage)}
-          page={page}
-          onChange={(page) => onPageChange(page)}
-        />
-      </div>
+      </Masonry>
+      {total > 0 && (
+        <div className="flex justify-center items-center mt-4 z-10">
+          <Pagination
+            total={Math.ceil(total / perPage)}
+            page={page}
+            onChange={(page) => onPageChange(page)}
+          />
+        </div>
+      )}
     </>
   );
 }

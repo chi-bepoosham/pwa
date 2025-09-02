@@ -1,6 +1,5 @@
 import { heroui } from '@heroui/react';
 
-
 export default {
   content: [
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,12 +10,12 @@ export default {
   theme: {
     extend: {
       screens: {
-        'us': '320px',
-        'xs': '480px',
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
+        us: '320px',
+        xs: '480px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
         '2xl': '1536px',
         '3xl': '1680px',
         '4xl': '1920px',
@@ -60,6 +59,19 @@ export default {
               700: 'rgba(12,13,17,0.8)',
               800: 'rgba(12,13,17,0.9)',
               900: 'rgba(12,13,17,1)',
+            },
+            success: {
+              DEFAULT: 'rgba(104, 186, 166, 1)',
+              50: 'rgba(230, 245, 241, 1)',
+              100: 'rgba(192, 230, 217, 1)',
+              200: 'rgba(153, 215, 193, 1)',
+              300: 'rgba(115, 201, 169, 1)',
+              400: 'rgba(76, 187, 145, 1)',
+              500: 'rgba(40, 173, 121, 1)',
+              600: 'rgba(32, 147, 106, 1)',
+              700: 'rgba(24, 122, 91, 1)',
+              800: 'rgba(16, 80, 76, 1)',
+              900: 'rgba(8, 53, 61, 1)',
             },
           },
         },

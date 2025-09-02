@@ -11,7 +11,7 @@ export const Default = {
     args: {
         variant: "primary",
         imageUrl: "image.png",
-        matchPercentage: "60% مناسب با فرم بدن",
+        matchPercentage: "60",
         isSliderActive: false
     },
     parameters: {

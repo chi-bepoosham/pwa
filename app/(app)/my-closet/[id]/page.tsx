@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 // import { Category } from '@/stories/Category';
 // import { ClosetSlider } from '@/stories/ClosetSlider';
@@ -9,69 +9,68 @@ import { PlusIcon } from '@/stories/Icons';
 // import { SubImage } from '@/stories/SubImage';
 import { Button } from '@heroui/react';
 import Header from '../../components/Header';
+import { ClosetSlider } from '@/stories/ClosetSlider';
 // import { useGetUser } from '@/api/user';
 // import { useState } from 'react';
 
+export default function Page({ params }: { params: Promise<{ id: string }> }) {
+  const {} = params;
 
-export default function Page({params}: {params: Promise<{ id: string }>}) {
-  const {  } = params;
+  const sampleItems = [
+    {
+      variant: 'primary' as const,
+      imageUrl: '/path/to/image1.jpg',
+      matchPercentage: '80',
+      title: 'کاپشن بادی کتان',
+    },
+    {
+      variant: 'secondary' as const,
+      imageUrl: '/path/to/image2.jpg',
+      matchPercentage: '75',
+      title: 'کلاه پشم‌گاو',
+    },
+    {
+      variant: 'primary' as const,
+      imageUrl: '/path/to/image3.jpg',
+      matchPercentage: '90',
+      title: 'کاپشن بادی کتان',
+    },
+    {
+      variant: 'secondary' as const,
+      imageUrl: '/path/to/image2.jpg',
+      matchPercentage: '75',
+      title: 'کلاه پشم‌گاو',
+    },
+  ];
 
-
-
-  // const sampleItems = [
-  //   {
-  //     variant: 'primary' as const,
-  //     imageUrl: '/path/to/image1.jpg',
-  //     matchPercentage: '80% مناسب با فرم بدن',
-  //     title: 'کاپشن بادی کتان'
-  //   },
-  //   {
-  //     variant: 'secondary' as const,
-  //     imageUrl: '/path/to/image2.jpg',
-  //     matchPercentage: '75% مناسب با فرم بدن',
-  //     title: 'کلاه پشم‌گاو'
-  //   },
-  //   {
-  //     variant: 'primary' as const,
-  //     imageUrl: '/path/to/image3.jpg',
-  //     matchPercentage: '90% مناسب با فرم بدن',
-  //     title: 'کاپشن بادی کتان'
-  //   },
-  //   {
-  //     variant: 'secondary' as const,
-  //     imageUrl: '/path/to/image2.jpg',
-  //     matchPercentage: '75% مناسب با فرم بدن',
-  //     title: 'کلاه پشم‌گاو'
-  //   },
-  // ];
-
-  
   return (
     <div className="flex flex-col w-full h-full">
       <Header
         variant="side"
         title="کـمد لبـاس مـن!"
-        endContent={(
+        endContent={
           <Button
-            variant='flat'
-            color='primary'
-            size='md'
-            startContent={(
-              <PlusIcon size={36} />
-            )}
-            className='h-14 rounded-2xl shrink-0'
-            // onPress={() => addClothesDrawer.onOpen()}
+            variant="flat"
+            color="primary"
+            size="md"
+            startContent={
+              <span className="text-success">
+                <PlusIcon size={36} />
+              </span>
+            }
+            className="h-14 rounded-3xl shrink-0 bg-success-50 border border-success text-black"
+            // onPress={addClothesDrawer.onOpen}
           >
             افزودن لباس
           </Button>
-        )}
+        }
       />
-      {/* <div className="px-8 py-6 flex justify-center w-full">
+      <div className="px-8 py-6 flex justify-center w-full">
         <div className="p-4">
           <ClosetSlider items={sampleItems} />
         </div>
       </div>
-      
+      {/*
   
        <div className='w-full flex flex-row justify-center items-center gap-5'>
        <SubImage

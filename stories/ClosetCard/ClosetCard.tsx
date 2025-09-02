@@ -4,23 +4,44 @@ import { Button } from '@heroui/react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
+import DeleteClothesModal from '../DeleteClothesModal/DeleteClothesModal';
 import { ArrowRightIcon, RecycleIcon } from '../Icons';
 
 export interface ClosetCardProps {
   variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
   imageUrl: string;
   matchPercentage: number | null;
-  link: string;
+  link?: string;
+  title: string;
   isSliderActive?: boolean;
   onDelete?: () => void;
+  userName: string;
+  isPending?: boolean;
 }
 
 export const ClosetCard = (props: ClosetCardProps) => {
-  const { variant, imageUrl, matchPercentage, link, isSliderActive, onDelete } = props;
+  const {
+    userName,
+    variant,
+    imageUrl,
+    matchPercentage,
+    title,
+    link,
+    isSliderActive,
+    onDelete,
+    isPending,
+  } = props;
 
-  const handleDelete = () => {
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  const handleDeleteClick = () => {
+    setDeleteModalOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
     if (onDelete) onDelete();
+    setDeleteModalOpen(false);
   };
 
   return (
@@ -31,18 +52,27 @@ export const ClosetCard = (props: ClosetCardProps) => {
           size="sm"
           className={clsx(
             'bg-secondary-100 absolute top-2 z-10 rounded-3xl',
-            !isSliderActive ? 'left-2' : 'right-2'
+            !isSliderActive ? 'left-2' : 'right-2',
+            isPending && 'pointer-events-none opacity-50'
           )}
+          disabled={isPending}
           isIconOnly
-          onPress={handleDelete}
+          onPress={handleDeleteClick}
         >
-          <i className="text-secondary">
+          <i className="text-red-600">
             <RecycleIcon size={20} />
           </i>
         </Button>
       )}
 
-      <Link href={link} className="block">
+      <Link
+        href={link || '/my-closet'}
+        className={clsx(
+          'block',
+          isPending && 'pointer-events-none opacity-50',
+          isSliderActive && 'pointer-events-none '
+        )}
+      >
         <div
           className={clsx(
             'min:w-60 mx-auto rounded-3xl overflow-hidden cursor-pointer flex flex-col shrink-0 select-none relative',
@@ -57,7 +87,7 @@ export const ClosetCard = (props: ClosetCardProps) => {
               width={128}
               height={128}
               className="w-full object-cover shrink-0"
-              src={imageUrl}
+              src={'https://core.chibepoosham.app/' + imageUrl}
               alt="image"
             />
           </div>
@@ -75,31 +105,48 @@ export const ClosetCard = (props: ClosetCardProps) => {
                 isSliderActive && variant === 'quaternary' && 'bg-none'
               )}
             >
-              <h3
-                className={clsx(
-                  'text-sm font-semibold truncate',
-                  isSliderActive ? 'text-white' : 'text-secondary'
-                )}
-              >
-                {matchPercentage}%
-              </h3>
-              <Button
-                variant="flat"
-                size="sm"
-                className={clsx(
-                  'rounded-3xl',
-                  isSliderActive ? 'bg-secondary' : 'bg-secondary-100'
-                )}
-                isIconOnly
-              >
-                <i className={clsx('-rotate-45', isSliderActive ? 'text-white' : 'text-secondary')}>
-                  <ArrowRightIcon size={20} />
-                </i>
-              </Button>
+              {isPending ? (
+                <span className="text-sm font-light truncate"> {title} </span>
+              ) : (
+                <div
+                  className={clsx(
+                    'text-sm font-semibold flex gap-2',
+                    isSliderActive ? 'text-white' : 'text-secondary'
+                  )}
+                >
+                  <h3>{matchPercentage}%</h3>
+                  <span className="text-sm font-light truncate"> مناسب با فرم بدن</span>
+                </div>
+              )}
+              {!isSliderActive && (
+                <Button
+                  variant="flat"
+                  size="sm"
+                  className={clsx(
+                    'rounded-3xl',
+                    isSliderActive ? 'bg-secondary' : 'bg-secondary-100'
+                  )}
+                  isIconOnly
+                >
+                  <i
+                    className={clsx('-rotate-45', isSliderActive ? 'text-white' : 'text-secondary')}
+                  >
+                    <ArrowRightIcon size={20} />
+                  </i>
+                </Button>
+              )}
             </div>
           </div>
         </div>
       </Link>
+
+      {/* Modal */}
+      <DeleteClothesModal
+        userName={userName}
+        isOpen={isDeleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 };

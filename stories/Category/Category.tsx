@@ -1,6 +1,7 @@
 'use client';
-import React, { useState, useRef } from 'react';
+
 import { MinorButton } from '@/stories/MinorButton';
+import React, { useRef, useState } from 'react';
 
 export interface CategoryProps {
   value?: string;
@@ -22,17 +23,15 @@ export const Category = ({ onChange, variant, items, className, value }: Categor
   const getVariantClasses = (isActive: boolean) => {
     switch (variant) {
       case 'primary':
-        return isActive
-          ? 'bg-primary text-white border-primary'
-          : 'bg-white text-primary border-primary';
+        return isActive ? 'bg-primary text-white' : 'bg-primary/20 text-primary';
       case 'secondary':
         return isActive
-          ? 'bg-secondary text-white border-secondary'
-          : 'bg-white text-secondary border-secondary';
+          ? 'bg-secondary text-white border-1.5 border-secondary '
+          : 'bg-white text-secondary border-1.5 border-secondary ';
       case 'tertiary':
         return isActive
-          ? 'bg-tertiary text-white border-tertiary'
-          : 'bg-white text-tertiary border-tertiary';
+          ? 'bg-tertiary text-white border-1.5 border-tertiary'
+          : 'bg-white text-tertiary border-1.5 border-tertiary';
       default:
         return '';
     }
@@ -73,7 +72,7 @@ export const Category = ({ onChange, variant, items, className, value }: Categor
               onClick={() => handleClick(item.key)}
               variant={isActive ? 'solid' : 'bordered'}
               radius="md"
-              className={`p-4 py-7 border-1.5 transition-all duration-200 w-full rounded-2xl ${variantClasses}`}
+              className={`p-4 py-7 border-0 transition-all duration-200 w-full rounded-2xl text-lg ${variantClasses}`}
               data-title={item.title}
             />
           );

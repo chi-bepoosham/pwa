@@ -39,6 +39,8 @@
     "react-dropzone": "^14.3.8",
     "react-easy-crop": "^5.4.1",
     "react-hook-form": "^7.55.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-masonry-css": "^1.0.16",
     "react-modal-sheet": "^4.0.1",
     "react-number-format": "^5.4.3",
     "swiper": "^11.2.10",

@@ -20,6 +20,7 @@ interface AddClothesDrawerProps {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
+  onSuccess?: () => void;
 }
 
 export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
@@ -29,6 +30,7 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
     handleSubmit,
     setValue,
     control,
+    reset,
     formState: { errors, isLoading, isSubmitting, isValidating },
   } = useForm<AddClothesFormData>({
     resolver: zodResolver(addClothesFormSchema),
@@ -75,6 +77,10 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
         title: 'لباس با موفقیت ثبت شد',
         color: 'success',
       });
+      reset();
+      setValue('image', '');
+
+      if (props.onSuccess) props.onSuccess();
     } catch (error) {
       console.log(error);
       addToast({

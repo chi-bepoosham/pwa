@@ -9,7 +9,6 @@ export function useGetUser(interval = 200000, header?: Record<string, string>) {
   const { data, isLoading, error, isValidating, mutate } = useSWR(URL, fetcher, {
     refreshInterval: interval,
   });
-  // console.log(data);
 
   const memoizedValue = useMemo(() => {
     return {

@@ -22,8 +22,11 @@ const PersonalImage = () => {
   const { userInfo, userInfoError } = useGetUser(2000);
 
   useEffect(() => {
+    // if (userInfoError) {
+    //   console.log('here', userInfo);
+    // }
     if (!userInfoError) {
-      console.log(userInfo);
+      // console.log(userInfo);
       setCookie('userInfo', userInfo ? JSON.stringify(userInfo) : '');
     }
   }, [userInfo]);
@@ -73,9 +76,11 @@ const PersonalImage = () => {
       console.error('Upload error:', error);
     }
   };
-
-  const status = (userInfo as unknown as { process_body_image_status: number })
-    .process_body_image_status;
+  let status;
+  if (userInfo) {
+    status = (userInfo as unknown as { process_body_image_status: number })
+      .process_body_image_status;
+  }
 
   return (
     <main className="flex flex-col min-h-full flex-1">
@@ -97,7 +102,7 @@ const PersonalImage = () => {
         <Uploader size="x-large" title="تصویر نمایه" onImageUpload={handleFileUpload} />
         <div className="text-center flex gap-2 flex-col text-sm text-nowrap relative">
           <div>
-            <AccountName name={(userInfo as unknown as { first_name: string }).first_name} />
+            <AccountName name={userInfo ? (userInfo as any).first_name : ''} />
           </div>
           <TextBackground bgColor="#4141F9">
             عکس تمام قد خودت رو با نور مناسب اینجا اضافه کن!
