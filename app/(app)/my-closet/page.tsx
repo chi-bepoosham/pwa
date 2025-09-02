@@ -13,6 +13,7 @@ import Header from '../components/Header';
 import { AddClothesDrawer } from './components/AddClothesDrawer';
 import Error from './error';
 import Loading from './loading';
+import { SacramentoLocal } from '@/lib/font';
 
 export default function Page() {
   const { userInfo } = useGetUser();
@@ -21,12 +22,13 @@ export default function Page() {
   const [page, setPage] = useState(1);
 
   const categoryItems = [
-    { key: 'all', title: 'همه لباس‌ها' },
-    { key: 'upper', title: 'بالا تنه' },
-    { key: 'lower', title: 'پایین تنه' },
+    { key: 'all', title: 'همه لباس‌ها', enTitle: 'All Clothes' },
+    { key: 'upper', title: 'بالا تنه', enTitle: 'Upper body clothing' },
+    { key: 'lower', title: 'پایین تنه', enTitle: 'Lower body clothing' },
   ];
 
-  if (userInfo?.gender === 2) categoryItems.push({ key: 'whole', title: 'تمام تنه' });
+  if (userInfo?.gender === 2)
+    categoryItems.push({ key: 'whole', title: 'تمام تنه', enTitle: 'Full-body clothing' });
 
   const {
     clothes,
@@ -54,7 +56,7 @@ export default function Page() {
               color="secondary"
               size="md"
               startContent={
-                <span className='text-success'>
+                <span className="text-success">
                   <PlusIcon size={36} />
                 </span>
               }
@@ -69,13 +71,18 @@ export default function Page() {
 
       {/* Category*/}
       {!clothesLoading && !clothesEmpty && !clothesError && (
-        <Category
-          variant="primary"
-          items={categoryItems}
-          value={selectedCategory}
-          onChange={setSelectedCategory}
-          className="flex justify-center items-center py-2 z-30 bg-white/40"
-        />
+        <>
+          <Category
+            variant="primary"
+            items={categoryItems}
+            value={selectedCategory}
+            onChange={setSelectedCategory}
+            className="flex justify-center items-center py-2 z-30 bg-white/40"
+          />
+          <div className={`text-2xl text-secondary-100 p-4 mx-4 ${SacramentoLocal.className}`}>
+            {categoryItems.find((v) => v.key === selectedCategory)?.enTitle}
+          </div>
+        </>
       )}
 
       {/* Clothes List*/}
