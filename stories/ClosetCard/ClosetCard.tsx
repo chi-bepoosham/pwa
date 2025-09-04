@@ -13,7 +13,7 @@ export interface ClosetCardProps {
   imageUrl: string;
   matchPercentage: number | null;
   link?: string;
-  title: string;
+  title?: string;
   isSliderActive?: boolean;
   onDelete?: () => void;
   userName: string;
@@ -77,16 +77,16 @@ export const ClosetCard = (props: ClosetCardProps) => {
           className={clsx(
             'min:w-60 mx-auto rounded-3xl overflow-hidden cursor-pointer flex flex-col shrink-0 select-none relative',
             variant === 'primary' && 'bg-white border-2 border-secondary',
-            variant === 'secondary' && 'bg-secondary-50',
+            variant === 'secondary' && 'bg-secondary-50 border border-secondary-50',
             variant === 'tertiary' && 'bg-primary',
             variant === 'quaternary' && 'bg-[#68BAA6]'
           )}
         >
-          <div className="w-full h-full">
+          <div className={clsx('w-full', isSliderActive && 'h-96')}>
             <Image
               width={128}
               height={128}
-              className="w-full object-cover shrink-0"
+              className="w-full object-cover h-full"
               src={'https://core.chibepoosham.app/' + imageUrl}
               alt="image"
             />

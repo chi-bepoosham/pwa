@@ -1,3 +1,17 @@
+export interface SetType {
+  id: number;
+  user_id: number;
+  title: string | null;
+  created_at: number;
+  updated_at: number;
+  deleted_at: number | null;
+  pivot: {
+    user_clothe_id: number;
+    user_set_id: number;
+  };
+  clothes: MyClothesType[];
+}
+
 export interface MyClothesType {
   id: number;
   image: string;
@@ -10,8 +24,8 @@ export interface MyClothesType {
   title: string;
   deleted_at: number | null;
   error_clothes: string | null;
-  sets: MyClothesType[];
-};
+  sets: SetType[];
+}
 
 export interface MyClothesResponseType {
   object: {
@@ -19,9 +33,5 @@ export interface MyClothesResponseType {
     current_page: number;
     per_page: number;
     total: number;
-  }
+  };
 }
-
-
-
-

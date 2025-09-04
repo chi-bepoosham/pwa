@@ -3,6 +3,16 @@ import { Pagination } from '@heroui/react';
 import Masonry from 'react-masonry-css';
 import { ClosetCard } from '../ClosetCard';
 
+export interface ClosetListProps {
+  userName: string;
+  total: number;
+  perPage: number;
+  page: number;
+  items: MyClothesResponseType['object']['data'];
+  onDelete: (id: number) => void;
+  onPageChange: (page: number) => void;
+}
+
 export default function ClosetList({
   userName,
   items,
@@ -11,15 +21,7 @@ export default function ClosetList({
   perPage,
   page,
   onPageChange,
-}: {
-  userName: string;
-  items: MyClothesResponseType['object']['data'];
-  onDelete: (id: number) => void;
-  total: number;
-  perPage: number;
-  page: number;
-  onPageChange: (page: number) => void;
-}) {
+}: ClosetListProps) {
   return (
     <>
       <Masonry breakpointCols={2} className="flex gap-4" columnClassName="flex flex-col gap-4">

@@ -1,5 +1,6 @@
 'use client';
 
+import { MyClothesType } from '@/types/MyClothesResponse.type';
 import React, { useEffect, useRef, useState } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
@@ -9,75 +10,96 @@ import 'swiper/css/navigation';
 import { Autoplay, EffectCreative, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ClosetCard } from '../ClosetCard/ClosetCard';
-import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
-import { MinorButton } from '../MinorButton';
 import { Title } from '../Title';
+// import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
+// import { MinorButton } from '../MinorButton';
 
 export interface ClosetSliderProps {
-  items: Array<{
-    variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
-    imageUrl: string;
-    matchPercentage: number;
-    title: string;
-  }>;
+  userName: string;
+  category: string;
+  items: MyClothesType[];
+  initialId?: number | null;
+  onDelete: (id: number) => void;
+  onActiveChange?: (item: MyClothesType) => void;
 }
 
-export const ClosetSlider = ({ items }: ClosetSliderProps) => {
+export const ClosetSlider = ({
+  items,
+  userName,
+  category,
+  initialId,
+  onDelete,
+  onActiveChange,
+}: ClosetSliderProps) => {
   const swiperRef = useRef<SwiperType | null>(null);
+
   const [activeIndex, setActiveIndex] = useState(0);
-  const [autoplayDelay, setAutoplayDelay] = useState(4000);
-  const [activeTitle, setActiveTitle] = useState(items[0].title);
+  const [autoplayDelay, setAutoplayDelay] = useState(20000);
+  const [activeTitle, setActiveTitle] = useState(items.length > 0 ? items[0].title : '');
 
-  const handleNext = () => {
-    swiperRef.current?.slideNext();
-    resetAutoplayDelay();
-  };
+  // const handleNext = () => {
+  //   swiperRef.current?.slideNext();
+  //   resetAutoplayDelay();
+  // };
 
-  const handlePrev = () => {
-    swiperRef.current?.slidePrev();
-    resetAutoplayDelay();
-  };
+  // const handlePrev = () => {
+  //   swiperRef.current?.slidePrev();
+  //   resetAutoplayDelay();
+  // };
 
   const handleSlideChange = (swiper: SwiperType) => {
+    const current = items[swiper.realIndex];
     setActiveIndex(swiper.realIndex);
-    setActiveTitle(items[swiper.realIndex].title);
+    setActiveTitle(current.title);
+
+    onActiveChange?.(current);
   };
 
-  const resetAutoplayDelay = () => {
-    setAutoplayDelay(8000); // Reset to a longer delay after manual navigation
-  };
+  // const resetAutoplayDelay = () => {
+  //   setAutoplayDelay(8000); // Reset to a longer delay after manual navigation
+  // };
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setAutoplayDelay(4000); // Reset to original delay after the longer delay
+      setAutoplayDelay(20000); // Reset to original delay after the longer delay
     }, 8000);
 
     return () => clearTimeout(timer);
   }, [autoplayDelay]);
 
+  useEffect(() => {
+    if (initialId && items.length > 0 && swiperRef.current) {
+      const index = items.findIndex((i) => i.id === initialId);
+      if (index >= 0) {
+        swiperRef.current.slideToLoop(index, 0);
+        setActiveIndex(index);
+        setActiveTitle(items[index].title);
+        onActiveChange?.(items[index]);
+      }
+    }
+  }, [initialId, items]);
+
   return (
-    <div className="w-full max-w-72 flex flex-col gap-5 justify-center items-center">
+    <div className="w-full max-w-screen-sm flex flex-col gap-5 justify-center items-center">
       <div>
-        <Title text="All clothes" description={activeTitle} />
+        <Title text={category} description={activeTitle} />
       </div>
       <Swiper
         className="w-full"
         modules={[Navigation, EffectCreative, Autoplay]}
-        spaceBetween={30}
-        slidesPerView={1}
+        spaceBetween={50}
+        slidesPerView={2}
         centeredSlides={true}
         loop={true}
         effect="creative"
         creativeEffect={{
           prev: {
-            shadow: true,
             translate: ['-150%', 0, -500],
-            rotate: [0, 0, -15],
+            rotate: [0, 0, -5],
           },
           next: {
-            shadow: true,
             translate: ['150%', 0, -500],
-            rotate: [0, 0, 15],
+            rotate: [0, 0, -5],
           },
         }}
         autoplay={{
@@ -91,14 +113,19 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
       >
         {items.map((item, index) => (
           <SwiperSlide key={index}>
-            {({ isActive }) => (
-              <div className={`transition-all duration-300 ${isActive ? 'scale-100' : 'scale-90'}`}>
+            {({ isActive, isPrev, isNext }) => (
+              <div
+                className={`transition-opacity duration-300 ${
+                  isActive || isPrev || isNext ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
                 <ClosetCard
-                  // userName={username}
-                  variant={item.variant}
-                  imageUrl={item.imageUrl}
-                  matchPercentage={item.matchPercentage}
+                  userName={userName}
+                  variant={isActive ? 'primary' : 'secondary'}
+                  imageUrl={item.image}
+                  matchPercentage={item.match_percentage}
                   isSliderActive={isActive}
+                  onDelete={() => onDelete(item.id)}
                 />
               </div>
             )}
@@ -118,7 +145,7 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
         </div>
       </div>
 
-      <div className="xs:w-[calc(100%+100px)] flex flex-row justify-between items-center pt-6 gap-1">
+      {/* <div className="xs:w-[calc(100%+100px)] flex flex-row justify-between items-center pt-6 gap-1">
         <MinorButton
           variant="ghost"
           color="secondary"
@@ -134,7 +161,7 @@ export const ClosetSlider = ({ items }: ClosetSliderProps) => {
           isIconOnly
           onClick={handleNext}
         />
-      </div>
+      </div> */}
     </div>
   );
 };

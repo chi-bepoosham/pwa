@@ -2,6 +2,7 @@
 
 import { useGetClothes } from '@/api/clothe';
 import { useGetUser } from '@/api/user';
+import { SacramentoLocal } from '@/lib/font';
 import { Category } from '@/stories/Category';
 import ClosetList from '@/stories/ClosetList/ClosetList';
 import ClosetEmptyState from '@/stories/EmptyCloset/EmptyCloset';
@@ -13,7 +14,6 @@ import Header from '../components/Header';
 import { AddClothesDrawer } from './components/AddClothesDrawer';
 import Error from './error';
 import Loading from './loading';
-import { SacramentoLocal } from '@/lib/font';
 
 export default function Page() {
   const { userInfo } = useGetUser();
