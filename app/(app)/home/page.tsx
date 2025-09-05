@@ -26,7 +26,7 @@ export default function Home() {
 
   // گرفتن جزئیات فرم بدن
   const bodyTypeURL = endpoints.user.bodyTypeDetails;
-  const { data, isLoading, error } = useSWR<BodyTypeResponseType>(bodyTypeURL, fetcher);
+  const { data, isLoading, error } = useSWR<BodyTypeResponseType>(bodyTypeURL);
   const bd = data?.object.body_type;
 
   // const suggestionSliderData = [
