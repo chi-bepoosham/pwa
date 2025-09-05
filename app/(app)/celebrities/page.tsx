@@ -2,7 +2,7 @@
 
 import { endpoints } from '@/api/endpoints';
 import { useGetUser } from '@/api/user';
-import { fetcher } from '@/lib/axios';
+// import { fetcher } from '@/lib/axios';
 import { setCookie } from '@/lib/cookies';
 import { CrossIcon } from '@/stories/Icons';
 import { SwiperCarousel } from '@/stories/SwiperCarousel/SwiperCarousel';
@@ -25,7 +25,7 @@ export default function Page() {
   }, [userInfo]);
 
   const bodyTypeURL = endpoints.user.bodyTypeDetails;
-  const { data, isLoading, error } = useSWR<BodyTypeResponseType>(bodyTypeURL, fetcher);
+  const { data, isLoading, error } = useSWR<BodyTypeResponseType>(bodyTypeURL);
   const celebrities = data?.object.body_type.celebrities;
 
   const handleGoBack = () => {
