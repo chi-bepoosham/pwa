@@ -27,7 +27,7 @@ const hasProcessingItem =data?.data?.object?.data?.some((item: MyClothesType) =>
   const deleteClothes = async (id: number) => {
     try {
       const axios = axiosCoreWithAuth();
-      await axios.delete(/user/clothes/${id});
+      await axios.delete(`/user/clothes/${id}`);
       mutate();
       addToast({ title: 'لباس با موفقیت حذف شد', color: 'success' });
     } catch (err) {
