@@ -5,7 +5,7 @@ import { addToast } from '@heroui/react';
 import useSWR from 'swr';
 
 export function useGetClothes(page: number = 1, category: string = 'all') {
-  let URL = ${endpoints.user.clothes}?paginate=1&page=${page}&per_page=10;
+  let URL = `${endpoints.user.clothes}?paginate=1&page=${page}&per_page=10`;
 
   const { data: dmEmp } = useSWR(URL, fetcher);
 
