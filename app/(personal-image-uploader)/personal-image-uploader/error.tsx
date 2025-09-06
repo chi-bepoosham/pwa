@@ -1,5 +1,6 @@
 'use client';
 
+import { UserType } from '@/types/UserType.type';
 import {
   Alert,
   Button,
@@ -12,20 +13,17 @@ import {
 import { useState } from 'react';
 
 interface ErrorBodyTypeProps {
-  // TODO: add type for userInfo
-  userInfo: unknown;
+  userInfo: UserType;
 }
 
-const ErrorBodyType: React.FC<ErrorBodyTypeProps> = (props) => {
-  const { userInfo } = props;
+function ErrorBodyType({ userInfo }: ErrorBodyTypeProps) {
+  const [isOpen, setIsOpen] = useState(true);
 
-  // const router = useRouter();
-
-  if (!userInfo || !(userInfo as any).error_body_image) {
+  if (!userInfo || !userInfo.error_body_image) {
     return null;
   }
 
-  const error = JSON.parse((userInfo as any).error_body_image);
+  const error = JSON.parse(userInfo.error_body_image);
 
   let code,
     message,
@@ -48,7 +46,6 @@ const ErrorBodyType: React.FC<ErrorBodyTypeProps> = (props) => {
       break;
   }
 
-  const [isOpen, setIsOpen] = useState(true);
   const onOpenChange = () => {
     setIsOpen((v) => !v);
   };
@@ -111,6 +108,6 @@ const ErrorBodyType: React.FC<ErrorBodyTypeProps> = (props) => {
       </ModalContent>
     </Modal>
   );
-};
+}
 
 export default ErrorBodyType;

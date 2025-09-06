@@ -1,22 +1,20 @@
 'use client';
 
+import { endpoints } from '@/api/endpoints';
+import { useGetUser } from '@/api/user';
+import { fetcher } from '@/lib/axios';
+import { setCookie } from '@/lib/cookies';
 import { BodyForm } from '@/stories/BodyForm';
 import { Celebrities } from '@/stories/Celebrities';
-import { endpoints } from '@/api/endpoints';
-import useSWR from 'swr';
-import { fetcher } from '@/lib/axios';
-import Header from '../components/Header';
-import { BodyTypeResponseType } from '@/types/BodyType.type';
-import Link from 'next/link';
-import { Button, Spinner } from '@heroui/react';
 import { InfoIcon, UserIcon } from '@/stories/Icons';
-import { useGetUser } from '@/api/user';
+import { Button, Spinner } from '@heroui/react';
+import Link from 'next/link';
 import { useEffect } from 'react';
-import { setCookie } from '@/lib/cookies';
+import useSWR from 'swr';
+import Header from '../components/Header';
 
 export default function Home() {
-  // گرفتن اطلاعات کاربر
-  const { userInfo, userInfoError } = useGetUser(3000);
+  const { userInfo } = useGetUser(3000);
 
   useEffect(() => {
     if (userInfo) {
@@ -24,10 +22,9 @@ export default function Home() {
     }
   }, [userInfo]);
 
-  // گرفتن جزئیات فرم بدن
   const bodyTypeURL = endpoints.user.bodyTypeDetails;
-  const { data, isLoading, error } = useSWR<BodyTypeResponseType>(bodyTypeURL);
-  const bd = data?.object.body_type;
+  const { data, isLoading, error } = useSWR(bodyTypeURL, fetcher);
+  const bd = data?.data?.object.body_type;
 
   // const suggestionSliderData = [
   //   { imageUrl: "/124.jpeg", name: "tie" },
@@ -87,7 +84,7 @@ export default function Home() {
             error={error}
             number={bd?.celebrities.length || 0}
             celebrities={
-              bd?.celebrities?.map((celeb) => ({
+              bd?.celebrities?.map((celeb: { id: number; title: string; image: string }) => ({
                 id: celeb.id,
                 fullName: celeb.title,
                 image: celeb.image,

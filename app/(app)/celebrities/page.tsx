@@ -2,11 +2,10 @@
 
 import { endpoints } from '@/api/endpoints';
 import { useGetUser } from '@/api/user';
-// import { fetcher } from '@/lib/axios';
+import { fetcher } from '@/lib/axios';
 import { setCookie } from '@/lib/cookies';
 import { CrossIcon } from '@/stories/Icons';
 import { SwiperCarousel } from '@/stories/SwiperCarousel/SwiperCarousel';
-import { BodyTypeResponseType } from '@/types/BodyType.type';
 import { Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -25,8 +24,8 @@ export default function Page() {
   }, [userInfo]);
 
   const bodyTypeURL = endpoints.user.bodyTypeDetails;
-  const { data, isLoading, error } = useSWR<BodyTypeResponseType>(bodyTypeURL);
-  const celebrities = data?.object.body_type.celebrities;
+  const { data, isLoading, error } = useSWR(bodyTypeURL, fetcher);
+  const celebrities = data?.data?.object.body_type.celebrities;
 
   const handleGoBack = () => {
     router.replace('/home');

@@ -1,4 +1,4 @@
-import { BodyTypeResponseType } from './BodyType.type';
+import { BodyTypeType } from './BodyType.type';
 
 export type UserType = {
   id: number;
@@ -10,7 +10,7 @@ export type UserType = {
   email_verified_at: string | null;
   avatar: string | null;
   body_image: string | null;
-  body_type: BodyTypeResponseType | null;
+  body_type: BodyTypeType | null;
   body_type_id: number;
   gender: number;
   status: number;

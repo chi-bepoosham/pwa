@@ -1,17 +1,18 @@
 'use client';
-import React from 'react';
-import { Logo } from '@/stories/Logo';
-import { CometStarVector } from '@/stories/Vectors';
-import { LoginByPhoneOtpForm } from '@/stories/LoginByPhoneOtpForm';
-import { LoginByPhoneOtpFormType } from '@/types/LoginByPhoneOtpForm.type';
-import { ErrorOption, FieldPath } from 'react-hook-form';
+
 import { axiosCore } from '@/lib/axios';
 import { useUserStore } from '@/store/UseUserStore';
-import { useRouter } from 'next/navigation';
+import { GoogleIcon } from '@/stories/Icons';
+import { LoginByPhoneOtpForm } from '@/stories/LoginByPhoneOtpForm';
+import { Logo } from '@/stories/Logo';
+import { MinorButton } from '@/stories/MinorButton';
+import { CometStarVector } from '@/stories/Vectors';
+import { LoginByPhoneOtpFormType } from '@/types/LoginByPhoneOtpForm.type';
 import { addToast } from '@heroui/react';
 import { AxiosError } from 'axios';
-import { MinorButton } from '@/stories/MinorButton';
-import { GoogleIcon } from '@/stories/Icons';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import { ErrorOption, FieldPath } from 'react-hook-form';
 
 // type input
 type T = LoginByPhoneOtpFormType;
@@ -43,18 +44,18 @@ export default function Page() {
         mobile: `0${data.phone}`,
       });
       addToast({
-        title: "کد تایید به شماره شما ارسال شد",
-        color: "success",
-      })
+        title: 'کد تایید به شماره شما ارسال شد',
+        color: 'success',
+      });
       setUserInfo('phone_number', `0${data.phone}`);
       Route.push('/auth/verify');
       console.log('OTP sent successfully:', response.status);
     } catch (err) {
       addToast({
-        title: "خطایی در ارسال کد تایید رخ داد",
-        description: (err as AxiosError).message || "خطایی در ارسال کد تایید رخ داد",
-        color: "danger",
-      })
+        title: 'خطایی در ارسال کد تایید رخ داد',
+        description: (err as AxiosError).message || 'خطایی در ارسال کد تایید رخ داد',
+        color: 'danger',
+      });
       console.error(err);
     }
   };

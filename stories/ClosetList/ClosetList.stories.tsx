@@ -1,22 +1,91 @@
+import { MyClothesType } from '@/types/MyClothesResponse.type';
 import { Meta, StoryObj } from '@storybook/react';
 import ClosetList from './ClosetList';
-import { MyClothesResponseType } from '@/types/MyClothesResponse.type';
 
-const sampleItems: MyClothesResponseType['object']['data'] = [
+const sampleItems: MyClothesType[] = [
   {
     id: 1,
     image: 'images/item1.jpg',
-    match_percentage: 75,
+    match_percentage: 85,
+    clothes_type: 1,
+    process_status: 1,
+    created_at: Date.now(),
+    updated_at: Date.now(),
+    user_id: 101,
+    title: 'Blue Casual Shirt',
+    deleted_at: null,
+    error_clothes: null,
+    sets: [
+      {
+        id: 11,
+        user_id: 101,
+        title: 'Casual Friday',
+        created_at: Date.now(),
+        updated_at: Date.now(),
+        deleted_at: null,
+        pivot: {
+          user_clothe_id: 1,
+          user_set_id: 11,
+        },
+        clothes: [],
+      },
+    ],
   },
   {
     id: 2,
-    image: 'images/item2.jpg',
-    match_percentage: 60,
+    image: 'images/item3.jpg',
+    match_percentage: 90,
+    clothes_type: 2,
+    process_status: 1,
+    created_at: Date.now(),
+    updated_at: Date.now(),
+    user_id: 101,
+    title: 'Black Slim Pants',
+    deleted_at: null,
+    error_clothes: null,
+    sets: [
+      {
+        id: 12,
+        user_id: 101,
+        title: 'Office Outfit',
+        created_at: Date.now(),
+        updated_at: Date.now(),
+        deleted_at: null,
+        pivot: {
+          user_clothe_id: 2,
+          user_set_id: 12,
+        },
+        clothes: [],
+      },
+    ],
   },
   {
     id: 3,
     image: 'images/item3.jpg',
-    match_percentage: 90,
+    match_percentage: 75,
+    clothes_type: 3,
+    process_status: 2,
+    created_at: Date.now(),
+    updated_at: Date.now(),
+    user_id: 101,
+    title: 'Leather Jacket',
+    deleted_at: null,
+    error_clothes: null,
+    sets: [
+      {
+        id: 13,
+        user_id: 101,
+        title: 'Night Out',
+        created_at: Date.now(),
+        updated_at: Date.now(),
+        deleted_at: null,
+        pivot: {
+          user_clothe_id: 3,
+          user_set_id: 13,
+        },
+        clothes: [],
+      },
+    ],
   },
 ];
 
@@ -57,6 +126,15 @@ export const ManyItems: Story = {
       id: i + 1,
       image: `images/item${i + 1}.jpg`,
       match_percentage: Math.floor(Math.random() * 100),
+      clothes_type: ((i % 3) + 1) as 1 | 2 | 3,
+      process_status: 1,
+      created_at: Date.now(),
+      updated_at: Date.now(),
+      user_id: 101,
+      title: `Item ${i + 1}`,
+      deleted_at: null,
+      error_clothes: null,
+      sets: [],
     })),
     total: 15,
     perPage: 5,

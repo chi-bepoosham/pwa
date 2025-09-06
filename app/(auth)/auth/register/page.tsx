@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
 import { CometStarVector } from '@/stories/Vectors';
 import ProfileInfo from './profile-info';
@@ -15,7 +16,7 @@ interface RegisterRequestData {
   last_name: string;
   mobile: string;
   avatar?: string;
-  gender?: '1' | '2';
+  gender?: 1 | 2;
   email?: string;
 }
 
@@ -26,7 +27,7 @@ export default function Page() {
     first_name: '',
     last_name: '',
     avatar: '',
-    gender: '1',
+    gender: 1,
     email: '',
   });
   const [loading, setLoading] = useState(false);
@@ -47,7 +48,7 @@ export default function Page() {
       };
 
       // Add optional fields except avatar
-      if (data.gender) requestData.gender = data.gender;
+      if (data.gender) requestData.gender = data.gender as 1 | 2;
       if (data.email) requestData.email = data.email;
 
       let response: AxiosResponse;
@@ -117,6 +118,7 @@ export default function Page() {
     if (!api_key) {
       router.replace('/auth');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [api_key]);
 
   return (
