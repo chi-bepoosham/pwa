@@ -25,7 +25,8 @@ export default function Page() {
 
   const bodyTypeURL = endpoints.user.bodyTypeDetails;
   const { data, isLoading, error } = useSWR(bodyTypeURL, fetcher);
-  const celebrities = data?.data?.object.body_type.celebrities;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const celebrities = (data as any)?.object.body_type.celebrities;
 
   const handleGoBack = () => {
     router.replace('/home');

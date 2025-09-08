@@ -1,7 +1,7 @@
 'use client';
-import gif from '@/public/static/images/emojyGif.gif';
 
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
+import gif from '@/public/static/images/emojyGif.gif';
+import { Button, Modal, ModalBody, ModalContent, ModalFooter } from '@heroui/react';
 import Image from 'next/image';
 
 interface DeleteClothesModalProps {
@@ -27,7 +27,6 @@ function DeleteClothesModal({ isOpen, onClose, onConfirm, userName }: DeleteClot
         {() => (
           <>
             <ModalBody className="p-2">
-              {/* <div className="flex flex-col items-center gap-2 absolute"> */}
               <div className="absolute p-4 top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 z-10">
                 <div className="relative mt-4">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 w-24 h-24 bg-white/20 backdrop-blur-lg border-2 border-white rounded-[2rem]"></div>

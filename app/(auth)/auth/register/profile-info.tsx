@@ -95,10 +95,12 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
               <span className="text-red-500 text-sm mt-5 px-5">{errors.last_name.message}</span>
             )}
           </div>
-          <GenderSelection
-            value={formValues.gender || 1}
-            onChange={(value) => setValue('gender', value)}
-          />
+          <div className="px-5">
+            <GenderSelection
+              value={formValues.gender || 1}
+              onChange={(value) => setValue('gender', value)}
+            />
+          </div>
           {errors.gender && <span className="text-red-500 text-sm">{errors.gender.message}</span>}
         </div>
       </div>

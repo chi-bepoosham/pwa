@@ -1,17 +1,16 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { CometStarVector } from '@/stories/Vectors';
-import ProfileInfo from './profile-info';
-import { useUserStore } from '@/store/UseUserStore';
 import { axiosCore } from '@/lib/axios';
+import { setCookie } from '@/lib/cookies';
+import { useUserStore } from '@/store/UseUserStore';
+import { CometStarVector } from '@/stories/Vectors';
 import { AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import ProfileInfo from './profile-info';
 import { RegisterFormData } from './schema';
-import { setCookie } from '@/lib/cookies';
 
 interface RegisterRequestData {
-  // full_name: string;
   first_name: string;
   last_name: string;
   mobile: string;
@@ -41,7 +40,6 @@ export default function Page() {
     try {
       // Prepare request data with required fields
       const requestData: RegisterRequestData = {
-        // full_name: `${data.first_name} ${data.last_name}`,
         first_name: data.first_name,
         last_name: data.last_name,
         mobile: phone_number,
@@ -141,7 +139,7 @@ export default function Page() {
         loading={loading}
         error={error}
         defaultValues={formData}
-        // isDisabled={!api_key}s
+        // isDisabled={!api_keys}
       />
     </div>
   );

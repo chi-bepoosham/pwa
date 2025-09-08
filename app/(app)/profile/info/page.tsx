@@ -7,26 +7,16 @@ import ProfileForm from '@/stories/ProfileInfo/ProfileInfoForm';
 import { Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import Header from '../../components/Header';
+import Error from './error';
+import Loading from './loading';
 
 export default function Page() {
-  const router = useRouter();
   const { userInfo, userInfoLoading, userInfoError } = useGetUser(3000);
-
-  if (userInfoLoading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p>در حال بارگذاری اطلاعات کاربری...</p>
-      </div>
-    );
-  }
-
-  if (userInfoError) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-red-500">خطا در دریافت اطلاعات کاربری. لطفاً دوباره تلاش کنید.</p>
-      </div>
-    );
-  }
+  
+  const router = useRouter();
+  
+  if (userInfoLoading) return <Loading />;
+  if (userInfoError) return <Error message={userInfoError.message} />;
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden scrollbar-hide relative min-h-screen">

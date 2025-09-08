@@ -7,7 +7,7 @@ import { setCookie } from '@/lib/cookies';
 import { BodyForm } from '@/stories/BodyForm';
 import { Celebrities } from '@/stories/Celebrities';
 import { InfoIcon, UserIcon } from '@/stories/Icons';
-import { Button, Spinner } from '@heroui/react';
+import { Button, ScrollShadow, Spinner } from '@heroui/react';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import useSWR from 'swr';
@@ -24,7 +24,8 @@ export default function Home() {
 
   const bodyTypeURL = endpoints.user.bodyTypeDetails;
   const { data, isLoading, error } = useSWR(bodyTypeURL, fetcher);
-  const bd = data?.data?.object.body_type;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const bd = (data as any)?.object.body_type;
 
   // const suggestionSliderData = [
   //   { imageUrl: "/124.jpeg", name: "tie" },
@@ -34,7 +35,7 @@ export default function Home() {
   // ]
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full h-full">
       <Header
         variant="centered"
         title="فــــرم بـــــدن شـــــما"
@@ -72,31 +73,35 @@ export default function Home() {
           </Button>
         }
       />
+      <ScrollShadow
+        hideScrollBar
+        className="flex-1 overflow-y-auto max-w-screen-sm overflow-x-hidden px-5 pb-36 bg-white"
+      >
+        <div className="w-full flex flex-col gap-4 pb-16">
+          <div className="w-full flex justify-center items-center">
+            <BodyForm />
+          </div>
 
-      <div className="w-full flex flex-col gap-4 pb-16">
-        <div className="w-full flex justify-center items-center">
-          <BodyForm />
-        </div>
+          <div className="w-full flex justify-center items-center px-8">
+            <Celebrities
+              isLoading={isLoading}
+              error={error}
+              number={bd?.celebrities.length || 0}
+              celebrities={
+                bd?.celebrities?.map((celeb: { id: number; title: string; image: string }) => ({
+                  id: celeb.id,
+                  fullName: celeb.title,
+                  image: celeb.image,
+                })) || []
+              }
+            />
+          </div>
 
-        <div className="w-full flex justify-center items-center px-8">
-          <Celebrities
-            isLoading={isLoading}
-            error={error}
-            number={bd?.celebrities.length || 0}
-            celebrities={
-              bd?.celebrities?.map((celeb: { id: number; title: string; image: string }) => ({
-                id: celeb.id,
-                fullName: celeb.title,
-                image: celeb.image,
-              })) || []
-            }
-          />
-        </div>
-
-        {/* <div className="w-full flex justify-center items-center px-8 pb-10">
+          {/* <div className="w-full flex justify-center items-center px-8 pb-10">
           <SuggestionSlider slides={suggestionSliderData} />
         </div> */}
-      </div>
+        </div>
+      </ScrollShadow>
     </div>
   );
 }

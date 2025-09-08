@@ -1,14 +1,14 @@
-import { Button } from '@heroui/react';
 import Image from 'next/image';
-import { EditIcon } from '../Icons';
+// import { Button } from '@heroui/react';
+// import { EditIcon } from '../Icons';
 
 export interface MyBodyTypeCardProps {
   value?: string;
   image?: string;
-  onChange?: () => void;
+  // onChange?: () => void;
 }
 
-export const MyBodyTypeCard = ({ value, image, onChange }: MyBodyTypeCardProps) => {
+export const MyBodyTypeCard = ({ value, image }: MyBodyTypeCardProps) => {
   return (
     <div className="flex justify-between w-full border border-primary/10 rounded-2xl p-2">
       <div className="flex items-center gap-4">
@@ -29,7 +29,7 @@ export const MyBodyTypeCard = ({ value, image, onChange }: MyBodyTypeCardProps) 
           <span className="text-xs text-secondary/50">{value || 'نامشخص'}</span>
         </div>
       </div>
-      <div>
+      {/* <div>
         <Button
           variant="light"
           startContent={<EditIcon size={18} />}
@@ -38,7 +38,7 @@ export const MyBodyTypeCard = ({ value, image, onChange }: MyBodyTypeCardProps) 
         >
           ویرایش
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };

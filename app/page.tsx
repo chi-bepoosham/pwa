@@ -1,9 +1,10 @@
 "use client";
-import { Logo } from '@/stories/Logo';
+
 import { Banner } from '@/stories/Banner';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { Logo } from '@/stories/Logo';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Home() {
   const router = useRouter();

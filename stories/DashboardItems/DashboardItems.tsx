@@ -15,6 +15,7 @@ export const DashboardItems = () => {
     >
       <div className="grid grid-cols-3 gap-4 justify-between w-full max-w-screen-sm">
         <Button
+          isDisabled
           variant="bordered"
           className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text active:transition active:duration-500 group"
         >
@@ -41,6 +42,7 @@ export const DashboardItems = () => {
         </Button>
 
         <Button
+          isDisabled
           variant="bordered"
           className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 flex flex-col items-center justify-around border-2 border-[#68BAA6] rounded-3xl bg-[#68BAA6]/10 focus:bg-[#68BAA6] active:text-white active:transition active:duration-500 group"
         >
