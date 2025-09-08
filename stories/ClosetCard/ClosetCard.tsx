@@ -89,6 +89,8 @@ export const ClosetCard = (props: ClosetCardProps) => {
               className="w-full object-cover h-full"
               src={'https://core.chibepoosham.app/' + imageUrl}
               alt="image"
+              unoptimized
+              quality={100}
             />
           </div>
           <div className="p-1.5">

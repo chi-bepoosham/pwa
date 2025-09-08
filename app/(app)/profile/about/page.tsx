@@ -36,10 +36,9 @@ export default function Home() {
           <h1 className="text-primary tracking-wider font-light text-xl">Chi Bepoosham</h1>
         </div>
         <div className="w-full max-w-[500px] mx-auto text-medium text-foreground text-justify font-light">
-          لورم ایپسوم متن ساختگی با تولید سـادگی نـــامفهوم از صنعت چاپ و با استفاده از طراحان
-          گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و ســــطرآنچنان که لازم است و
-          بـــرای شرایط فعلی تکنولوژی مورد نـــیاز و کاربردهای متنوع بـا هدف بهبود ابزارهای کاربردی
-          می باشد.
+          ما در چی بپوشم باور داریم که استایل هر فرد منحصر به فرده. با ترکیب تکنولوژی و مد، فضایی
+          ساختیم که بتونید استایل مخصوص خودتون رو کشف کنید، از کمد دیجیتالی استفاده کنید و حتی
+          لباس‌ها رو به‌صورت مجازی امتحان کنید. آینده استایل شخصی همینجاست.
         </div>
         <div className="flex flex-col justify-center items-center gap-8">
           <div className="grid grid-cols-3 gap-4 items-center">

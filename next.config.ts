@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 
-
 const baseConfig = {
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     domains: ['core.chibepoosham.app'],
   },
   headers: async () => {
@@ -42,8 +42,8 @@ const baseConfig = {
           },
         ],
       },
-    ]
-  }
+    ];
+  },
 };
 
 export default baseConfig;

@@ -8,14 +8,17 @@ import { Uploader } from '@/stories/Uploader';
 import { UserType } from '@/types/UserType.type';
 import { Button } from '@heroui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import BodyTypeImageModal from '../BodyTypeImageModal/BodyTypeImageModal';
 
 interface ProfileFormProps {
   userInfo: UserType;
 }
 
 const ProfileForm = ({ userInfo }: ProfileFormProps) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -53,58 +56,67 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="w-full flex flex-col gap-10 relative z-10 px-8"
-    >
-      <Uploader size="medium" title="" />
+    <>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full flex flex-col gap-10 relative z-10 px-8"
+      >
+        <Uploader size="medium" title="" />
 
-      <div className="w-full mx-auto flex flex-col gap-6">
-        <h3 className="font-semibold text-lg">مشخصات شما</h3>
+        <div className="w-full mx-auto flex flex-col gap-6">
+          <h3 className="font-semibold text-lg">مشخصات شما</h3>
 
-        <MinorInputWrapper
-          placeholder="نام"
-          error={errors.first_name?.message}
-          {...register('first_name')}
-        />
-        <MinorInputWrapper
-          placeholder="نام خانوادگی"
-          error={errors.last_name?.message}
-          {...register('last_name')}
-        />
-        <MinorInputWrapper
-          placeholder="ایمیل خود را وارد کنید"
-          type="email"
-          error={errors.email?.message}
-          {...register('email')}
-        />
-        <MinorInputWrapper
-          placeholder="شماره موبایل"
-          type="tel"
-          error={errors.mobile?.message}
-          {...register('mobile')}
-        />
-      </div>
+          <MinorInputWrapper
+            placeholder="نام"
+            error={errors.first_name?.message}
+            {...register('first_name')}
+          />
+          <MinorInputWrapper
+            placeholder="نام خانوادگی"
+            error={errors.last_name?.message}
+            {...register('last_name')}
+          />
+          <MinorInputWrapper
+            placeholder="ایمیل خود را وارد کنید"
+            type="email"
+            error={errors.email?.message}
+            {...register('email')}
+          />
+          <MinorInputWrapper
+            placeholder="شماره موبایل"
+            type="tel"
+            error={errors.mobile?.message}
+            {...register('mobile')}
+          />
+        </div>
 
-      <GenderSelection value={watch('gender')} onChange={(val) => setValue('gender', val)} />
+        <GenderSelection value={watch('gender')} onChange={(val) => setValue('gender', val)} />
+        <div className="cursor-pointer" onClick={() => setModalOpen(true)}>
+          <MyBodyTypeCard
+            value={userInfo?.body_type?.title ?? undefined}
+            image={userInfo?.body_image ?? undefined}
+          />
+        </div>
 
-      <MyBodyTypeCard
-        value={userInfo?.body_type?.title ?? undefined}
-        image={userInfo?.body_image ?? undefined}
+        <div className="w-full flex justify-center mb-16">
+          <Button
+            type="submit"
+            size="lg"
+            variant="shadow"
+            className="bg-primary rounded-3xl text-white h-16 px-8"
+            isLoading={isSubmitting}
+          >
+            ذخیره تغییرات جدید
+          </Button>
+        </div>
+      </form>
+      {/* Modal */}
+      <BodyTypeImageModal
+        userInfo={userInfo}
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
       />
-
-      <div className="w-full flex justify-center mb-16">
-        <Button
-          type="submit"
-          size="lg"
-          variant="shadow"
-          className="bg-primary rounded-3xl text-white h-16 px-8"
-          isLoading={isSubmitting}
-        >
-          ذخیره تغییرات جدید
-        </Button>
-      </div>
-    </form>
+    </>
   );
 };
 

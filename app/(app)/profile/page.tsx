@@ -45,7 +45,7 @@ export default function Home() {
           </Button>
         }
       />
-      <div className="flex flex-col gap-10 px-8">
+      <div className="flex flex-col gap-10 px-8 pb-32">
         <div className="w-full flex flex-col gap-4 relative z-10">
           <DashboardItems />
           <Fitting />
