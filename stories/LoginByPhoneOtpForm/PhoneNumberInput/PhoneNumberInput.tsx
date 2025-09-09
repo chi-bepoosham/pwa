@@ -1,13 +1,11 @@
 'use client';
 
-import React from 'react';
-import { Divider, Input } from '@heroui/react';
-import { PatternFormat } from 'react-number-format';
-import { Control, Controller, useController } from 'react-hook-form';
 import { LoginByPhoneOtpFormType } from '@/types/LoginByPhoneOtpForm.type';
-import { InfoIcon } from '@/stories/Icons';
+import { Divider, Input } from '@heroui/react';
 import clsx from 'clsx';
-
+import React from 'react';
+import { Control, Controller, useController } from 'react-hook-form';
+import { PatternFormat } from 'react-number-format';
 
 export interface PhoneNumberInputProps {
   control: Control<LoginByPhoneOtpFormType>;
@@ -15,15 +13,13 @@ export interface PhoneNumberInputProps {
 }
 
 export const PhoneNumberInput = (props: PhoneNumberInputProps) => {
+  const { control } = props;
 
-  const {
+  const hasTokenSentField = useController({
     control,
-  } = props;
-
-
-  const hasTokenSentField = useController({ control, name: 'hasTokenSent' as keyof LoginByPhoneOtpFormType });
+    name: 'hasTokenSent' as keyof LoginByPhoneOtpFormType,
+  });
   const hasTokenSent = hasTokenSentField.field.value as boolean;
-
 
   return (
     <Controller
@@ -33,40 +29,43 @@ export const PhoneNumberInput = (props: PhoneNumberInputProps) => {
         <PatternFormat
           fullWidth
           size="lg"
-          radius="sm"
+          radius="lg"
           color="secondary"
           variant="bordered"
-          placeholder="127077707"
-          labelPlacement="outside"
+          placeholder="شماره موبایل"
           type="tel"
-
-          endContent={(
-            <div dir="ltr" className={clsx("flex flex-row items-center justify-start", fieldState.invalid && "text-danger")}>
+          endContent={
+            <div
+              dir="ltr"
+              className={clsx(
+                'flex flex-row items-center justify-start',
+                fieldState.invalid ? 'text-danger' : 'text-secondary-400'
+              )}
+            >
               +98
               <Divider orientation="vertical" className="h-4 mx-2" />
             </div>
-          )}
-
+          }
           customInput={Input}
           getInputRef={field.ref}
           name={field.name}
-
           format="### ### ####"
           allowEmptyFormatting
-          mask=" "
-
+          mask=""
           value={field.value}
           onChange={field.onChange}
-
           isInvalid={fieldState.invalid}
           errorMessage={fieldState.error?.message}
-
           autoFocus
-
-          isReadOnly={hasTokenSent || formState.isLoading || formState.isSubmitting || formState.disabled || field.disabled}
+          isReadOnly={
+            hasTokenSent ||
+            formState.isLoading ||
+            formState.isSubmitting ||
+            formState.disabled ||
+            field.disabled
+          }
         />
       )}
     />
   );
 };
-

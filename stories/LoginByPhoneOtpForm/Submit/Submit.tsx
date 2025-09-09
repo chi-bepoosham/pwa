@@ -1,54 +1,62 @@
-"use client"
+'use client';
 
+import { MinorButton } from '@/stories/MinorButton';
+import { LoginByPhoneOtpFormType } from '@/types/LoginByPhoneOtpForm.type';
+import { Button } from '@heroui/react';
+import { KeyboardArrowLeft } from '@mui/icons-material';
 import React from 'react';
-import {Control, useWatch, useFormState} from "react-hook-form";
-import {LoginByPhoneOtpFormType} from "@/types/LoginByPhoneOtpForm.type";
-import {Button} from "@heroui/react";
-import {KeyboardArrowLeft} from "@mui/icons-material";
-
+import { Control, useFormState, useWatch } from 'react-hook-form';
 
 export interface PhoneOtpLabelProps {
-    control: Control<LoginByPhoneOtpFormType>;
+  isLoading?: boolean;
+  control: Control<LoginByPhoneOtpFormType>;
 }
 
 export const Submit = (props: PhoneOtpLabelProps) => {
+  const { isLoading, control } = props;
 
-    const {
-        control,
-    } = props
+  const formState = useFormState({ control });
+  const hasTokenSent = useWatch({ control, name: 'hasTokenSent' as keyof LoginByPhoneOtpFormType });
 
-    const formState = useFormState({control})
-    const hasTokenSent = useWatch({control, name: "hasTokenSent" as keyof LoginByPhoneOtpFormType});
-
-    if (hasTokenSent) {
-        return (
-            <Button
-                type="submit"
-                color="primary"
-                variant="shadow"
-                size="lg"
-                isDisabled={formState.disabled}
-                isLoading={formState.isLoading || formState.isValidating || formState.isSubmitting}
-                endContent={<KeyboardArrowLeft/>}
-            >
-                ورود
-            </Button>
-        )
-    }
+  if (hasTokenSent) {
     return (
-        <Button
-            type="submit"
-            color="secondary"
-            variant="solid"
-            radius="lg"
-            size="lg"
-            isDisabled={formState.disabled}
-            isLoading={formState.isLoading || formState.isValidating || formState.isSubmitting}
-        >
-            تایید و دریافت کد تایید
-        </Button>
-    )
-
-
-}
-
+      <Button
+        className="text-sm w-full"
+        type="submit"
+        color="primary"
+        variant="shadow"
+        size="lg"
+        isDisabled={formState.disabled}
+        isLoading={formState.isLoading || formState.isValidating || formState.isSubmitting}
+        endContent={<KeyboardArrowLeft />}
+      >
+        ورود
+      </Button>
+    );
+  }
+  return (
+    <MinorButton
+      className="text-sm w-full"
+      type="submit"
+      color="secondary"
+      variant="solid"
+      radius="lg"
+      buttonTitle="تایید و دریافت کد تایید"
+      size="lg"
+      isDisable={
+        isLoading ||
+        formState.disabled ||
+        formState.isLoading ||
+        formState.isValidating ||
+        formState.isSubmitting
+      }
+      isLoading={
+        isLoading ||
+        formState.disabled ||
+        formState.isLoading ||
+        formState.isValidating ||
+        formState.isSubmitting
+      }
+    />
+  );
+};

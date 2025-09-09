@@ -1,19 +1,22 @@
 'use client';
-import React, { useState } from 'react';
-import { Button } from '@heroui/react';
-import { motion } from 'framer-motion';
-import clsx from 'clsx';
+
 import { IRANSansX } from '@/lib/font';
+import { Button } from '@heroui/react';
+import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 
 export interface MinorButtonProps {
   className?: string;
   variant?: 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | 'ghost';
   buttonTitle?: string | React.ReactNode;
   radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+  size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   isIconOnly?: boolean;
   icon?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'default';
+  type?: 'reset' | 'button' | 'submit';
   onClick?: () => void;
   isDisable?: boolean;
 }
@@ -41,12 +44,14 @@ export const MinorButton = (props: MinorButtonProps) => {
     buttonTitle,
     variant,
     radius,
+    size,
     isLoading,
     icon,
     color = 'primary',
     onClick,
     isIconOnly = false,
     isDisable = false,
+    type,
   } = props;
 
   const [, setClicked] = useState(false);
@@ -59,10 +64,12 @@ export const MinorButton = (props: MinorButtonProps) => {
   };
   return (
     <Button
+      type={type}
       className={clsx(`!min-w-0 ${getCustomColorClass(color)}  ${IRANSansX.className}`, className)}
       variant={variant}
       radius={radius}
       color={color}
+      size={size}
       onPress={handleClick}
       startContent={icon}
       isIconOnly={isIconOnly}

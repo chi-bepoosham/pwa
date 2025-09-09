@@ -20,15 +20,13 @@ function BodyTypeImageModal({ userInfo, isOpen, onClose }: BodyTypeImageModalPro
       hideCloseButton={false}
       isKeyboardDismissDisabled={true}
       placement="center"
-      className="border border-black relative overflow-visible rounded-3xl"
+      size='sm'
       isOpen={isOpen}
       onClose={onClose}
     >
       <ModalContent>
         {() => (
           <ModalBody>
-         
-
             {userInfo && (
               <div className="text-lg font-semibold text-center flex justify-center flex-col items-center gap-2 py-12">
                 <div className="border-2 border-primary-100 p-4 rounded-3xl bg-primary-50">

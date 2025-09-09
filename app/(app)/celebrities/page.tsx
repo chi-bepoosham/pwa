@@ -6,7 +6,7 @@ import { fetcher } from '@/lib/axios';
 import { setCookie } from '@/lib/cookies';
 import { CrossIcon } from '@/stories/Icons';
 import { SwiperCarousel } from '@/stories/SwiperCarousel/SwiperCarousel';
-import { Button } from '@heroui/react';
+import { Button, ScrollShadow } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import useSWR from 'swr';
@@ -52,9 +52,15 @@ export default function Page() {
           </Button>
         }
       />
-      <div className="flex max-w-screen-sm justify-center items-center px-8 pb-16">
-        <SwiperCarousel isLoading={isLoading} error={error} celebrities={celebrities ?? []} />
-      </div>
+
+      <ScrollShadow
+        hideScrollBar
+        className="flex-1 overflow-y-auto max-w-screen-sm overflow-x-hidden px-5 pb-36 bg-black"
+      >
+        <div className="flex max-w-screen-sm justify-center items-center px-8 pb-16">
+          <SwiperCarousel isLoading={isLoading} error={error} celebrities={celebrities ?? []} />
+        </div>
+      </ScrollShadow>
     </div>
   );
 }

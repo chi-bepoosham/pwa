@@ -1,35 +1,54 @@
 'use client';
 
 import { LogoutIcon } from '@/stories/Icons';
-import { deleteCookie } from 'cookies-next';
+import { Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { MinorButton } from '../MinorButton';
 
 export const LogoutButton = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const clearAllCookies = () => {
+    const cookies = document.cookie.split(';');
 
-  const handleLogout = () => {
-    setIsLoading(true);
+    cookies.forEach((c) => {
+      const eqPos = c.indexOf('=');
+      const name = eqPos > -1 ? c.substr(0, eqPos) : c;
 
-    setTimeout(() => {
-      deleteCookie('token');
-      deleteCookie('userInfo');
-      router.push('/');
-    }, 500);
+      document.cookie = `${name.trim()}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+
+      document.cookie = `${name.trim()}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=${
+        window.location.pathname
+      };`;
+
+      document.cookie = `${name.trim()}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=127.0.0.1;`;
+    });
   };
 
+  // const handleLogout = () => {
+  //   setIsLoading(true);
+
+  //   setTimeout(() => {
+  //     clearCookies();
+  //     router.push('/');
+  //   }, 500);
+  // };
+
   return (
-    <MinorButton
-      icon={<LogoutIcon size={36} />}
+    <Button
       variant="bordered"
       color="secondary"
       radius="lg"
       isIconOnly
       isLoading={isLoading}
       className="h-14 w-14"
-      onClick={handleLogout}
-    />
+      onPress={() => {
+        setIsLoading(true);
+        clearAllCookies();
+        router.push('/auth');
+      }}
+    >
+      <LogoutIcon size={36} />
+    </Button>
   );
 };

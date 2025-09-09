@@ -6,6 +6,7 @@ import { useUserStore } from '@/store/UseUserStore';
 import { Banner } from '@/stories/Banner';
 import { ArrowRightIcon } from '@/stories/Icons';
 import { TokenInput } from '@/stories/LoginByPhoneOtpForm/TokenInput';
+import { MinorButton } from '@/stories/MinorButton';
 import { CometStarVector } from '@/stories/Vectors';
 import { LoginByPhoneOtpFormType } from '@/types/LoginByPhoneOtpForm.type';
 import { addToast, Button } from '@heroui/react';
@@ -15,11 +16,20 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function Page() {
+  const [isSending, setIsSending] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [timer, setTimer] = useState(120);
+
+  const minutes = Math.floor(timer / 60);
+  const seconds = timer % 60;
+
   const userInfo = useUserStore((state) => state.userInfo);
   const setUserInfo = useUserStore((state) => state.setUserInfo);
 
   const router = useRouter();
-  const { control, handleSubmit, resetField, setFocus, formState } =
+
+  const { control, handleSubmit, resetField, setFocus, formState, watch } =
     useForm<LoginByPhoneOtpFormType>({
       defaultValues: {
         phone: '',
@@ -27,9 +37,11 @@ export default function Page() {
         token: '',
       },
     });
+  const tokenValue = watch('token');
 
   const onSubmit = async (data: LoginByPhoneOtpFormType) => {
     try {
+      setIsLoading(true);
       const axios = axiosCore();
 
       const response: AxiosResponse = await axios.post('/user/auth/otp/confirm', {
@@ -64,6 +76,8 @@ export default function Page() {
       });
       resetField('token');
       setFocus('token', { shouldSelect: true });
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -72,8 +86,17 @@ export default function Page() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo]);
 
-  const [isSending, setIsSending] = useState(false);
+  useEffect(() => {
+    if (timer <= 0) return;
+    const interval = setInterval(() => {
+      setTimer((prev) => prev - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timer]);
+
   const sendAgain = async () => {
+    if (timer > 0) return;
+
     setIsSending(true);
     try {
       const axios = axiosCore();
@@ -84,9 +107,14 @@ export default function Page() {
         title: 'کد تایید به شماره شما ارسال شد',
         color: 'success',
       });
+
       setUserInfo('phone_number', `${userInfo.phone_number}`);
+
       router.push('/auth/verify');
+
       console.log('OTP sent successfully:', response.status);
+
+      setTimer(120);
     } catch (err) {
       addToast({
         title: 'خطایی در ارسال کد تایید رخ داد',
@@ -100,7 +128,7 @@ export default function Page() {
   };
 
   return (
-    <main className="flex flex-col justify-between h-full overflow-hidden">
+    <main className="flex flex-col justify-between h-full max-h-screen overflow-hidden">
       <div className="p-6 sticky top-0 w-full bg-white z-10">
         <Button
           variant="bordered"
@@ -115,9 +143,9 @@ export default function Page() {
           </i>
         </Button>
       </div>
-      <div className="flex flex-col justify-center items-center gap-14 w-full h-full mx-auto max-w-80">
+      <div className="pt-12 flex flex-col justify-center items-center gap-14 w-full h-full mx-auto max-w-80">
         <div className="flex flex-col justify-center items-center gap-5">
-          <div className="flex flex-row justify-center items-center gap-1.5">
+          <div className="flex flex-row justify-center items-center gap-4">
             <i className="rotate-180">
               <CometStarVector />
             </i>
@@ -132,45 +160,56 @@ export default function Page() {
         <TokenInput control={control} done={handleSubmit(onSubmit)} />
 
         <div className="flex flex-col justify-center items-center gap-3 w-full">
-          {/* <MinorButton
-            className="w-full max-w-64"
-            variant="flat"
-            buttonTitle="تایید و ادامه"
-            radius="md"
-            isLoading={false}
-            color="primary"
-          /> */}
           <Button
             fullWidth
             variant="light"
-            color="primary"
+            color="secondary"
             size="sm"
             onPress={sendAgain}
-            isLoading={
-              isSending || formState.isLoading || formState.isValidating || formState.isSubmitting
+            isLoading={isSending}
+            isDisabled={
+              timer > 0 ||
+              isSending ||
+              isLoading ||
+              formState.disabled ||
+              formState.isLoading ||
+              formState.isValidating ||
+              formState.isSubmitting
             }
-            isDisabled={isSending || formState.disabled}
           >
-            ارسال مجدد کد پیامکی
+            {timer > 0
+              ? `${minutes}:${seconds.toString().padStart(2, '0')} ثانیه تا درخواست مجدد کد تایید`
+              : 'ارسال مجدد کد پیامکی'}
           </Button>
-          <Button
-            fullWidth
-            // isDisabled={true}
+          <MinorButton
+            className="w-full"
             type="submit"
-            variant="solid"
+            variant="flat"
             color="primary"
+            buttonTitle="تایید و ادامه"
             size="lg"
-            isDisabled={formState.disabled}
-            isLoading={formState.isLoading || formState.isValidating || formState.isSubmitting}
-          >
-            تایید و ادامه
-          </Button>
+            radius="lg"
+            isDisable={
+              isLoading ||
+              !tokenValue ||
+              tokenValue.length < 5 ||
+              formState.disabled ||
+              formState.isLoading ||
+              formState.isValidating
+            }
+            isLoading={
+              formState.isLoading || formState.isValidating || formState.isSubmitting || isLoading
+            }
+          />
+
           <Button
             fullWidth
             onPress={() => router.push('/auth')}
             variant="light"
             color="primary"
             size="lg"
+            className="text-sm"
+            isDisabled={formState.disabled || formState.isLoading || formState.isValidating}
           >
             اصلاح شماره موبایل
           </Button>

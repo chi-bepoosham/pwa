@@ -11,7 +11,7 @@ import { LoginByPhoneOtpFormType } from '@/types/LoginByPhoneOtpForm.type';
 import { addToast } from '@heroui/react';
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import { ErrorOption, FieldPath } from 'react-hook-form';
 
 // type input
@@ -27,18 +27,17 @@ export interface LoginHandleSubmit {
 }
 
 export default function Page() {
-  // zustand
+  const [isLoading, setIsLoading] = useState(false);
+
   const setUserInfo = useUserStore((state) => state.setUserInfo);
 
-  // state
   const Route = useRouter();
 
-  const handleReset = () => {
-    console.log('فرم ریست شد');
-  };
+  const handleReset = () => {};
 
   const handleSubmit = async (data: LoginByPhoneOtpFormType) => {
     try {
+      setIsLoading(true);
       const axios = axiosCore();
       const response = await axios.post('/user/auth/otp/send', {
         mobile: `0${data.phone}`,
@@ -57,15 +56,17 @@ export default function Page() {
         color: 'danger',
       });
       console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-center items-center w-full h-full overflow-hidden bg-primary">
+    <div className="flex-1 flex flex-col justify-center items-center w-full h-full max-h-screen overflow-hidden bg-primary">
       <div className="flex flex-col items-center justify-center h-full w-full gap-5 py-8">
         <Logo withLogoType={true} />
         <div className="flex flex-row justify-center items-center w-full gap-4">
-          <i className="rotate-180">
+          <i className="rotate-180 text-white">
             <CometStarVector />
           </i>
           <h2 className="text-nowrap text-white">ورود و ثــبت‌نـــام</h2>
@@ -75,9 +76,9 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-between w-full h-full rounded-t-3xl p-4 bg-white">
-        <div className="py-4">
-          <LoginByPhoneOtpForm submit={handleSubmit} reset={handleReset} />
+      <div className="flex-1 flex flex-col items-center justify-around w-full h-full rounded-t-3xl p-8 bg-white">
+        <div className="py-4 w-full">
+          <LoginByPhoneOtpForm submit={handleSubmit} reset={handleReset} isLoading={isLoading} />
         </div>
         <div className="flex flex-row items-center justify-center w-full h-full gap-4">
           <i className="rotate-180">
@@ -93,9 +94,12 @@ export default function Page() {
             variant="ghost"
             buttonTitle="ورود بـــــا حســــاب گــــــوگل"
             radius="md"
+            size="lg"
+            isDisable
             isLoading={false}
-            icon={<GoogleIcon size={28} />}
+            icon={<GoogleIcon size={20} />}
             color="secondary"
+            className="w-full text-sm"
           />
         </div>
       </div>

@@ -1,11 +1,11 @@
 'use client';
-import React, { useState, useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { Button } from '@heroui/react';
-import { AddIcon, EditIcon } from '@/stories/Icons';
-import Image from 'next/image';
-import clsx from 'clsx';
 
+import { AddIcon, EditIcon } from '@/stories/Icons';
+import { Button } from '@heroui/react';
+import clsx from 'clsx';
+import Image from 'next/image';
+import React, { useCallback, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 
 type sizeType = 'medium' | 'large' | 'x-large';
 
@@ -13,24 +13,26 @@ export interface UploaderProps {
   title?: string | React.ReactNode;
   onImageUpload?: (file: File) => void;
   size: sizeType;
+  initialImage?: string | null;
 }
 
-export const Uploader = (props: UploaderProps) => {
-  const { title, onImageUpload, size } = props;
+export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderProps) => {
+  const [image, setImage] = useState<string | null>(initialImage ?? null);
 
-  const [image, setImage] = useState<string | null>(null);
-
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    if (acceptedFiles.length > 0) {
-      const file = acceptedFiles[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result as string);
-        onImageUpload?.(file);
-      };
-      reader.readAsDataURL(file);
-    }
-  }, [onImageUpload]);
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      if (acceptedFiles.length > 0) {
+        const file = acceptedFiles[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImage(reader.result as string);
+          onImageUpload?.(file);
+        };
+        reader.readAsDataURL(file);
+      }
+    },
+    [onImageUpload]
+  );
 
   const { getRootProps, getInputProps, open } = useDropzone({
     onDrop,
@@ -57,7 +59,10 @@ export const Uploader = (props: UploaderProps) => {
   const IconComponent = image ? EditIcon : AddIcon;
 
   return (
-    <div onClick={open} className="relative flex flex-col items-center cursor-pointer select-none active:scale-95 transition-all duration-300">
+    <div
+      onClick={open}
+      className="relative flex flex-col items-center cursor-pointer select-none active:scale-95 transition-all duration-300"
+    >
       <Button
         className={clsx(
           'absolute z-20 bg-primary text-white flex items-center justify-center px-2.5',
@@ -65,12 +70,12 @@ export const Uploader = (props: UploaderProps) => {
             ? image
               ? 'absolute left-3 bottom-3 !px-2.5 !min-w-0 rounded-full'
               : 'absolute bottom-4 w-[calc(30%)] rounded-2xl'
-            : '-bottom-4 min-w-0 rounded-full',
+            : '-bottom-4 min-w-0 rounded-full'
         )}
         onPress={open}
       >
         <IconComponent size={20} />
-        {size === 'x-large' && (!image && 'افزودن عکس')}
+        {size === 'x-large' && !image && 'افزودن عکس'}
       </Button>
 
       <div {...getRootProps({ className: 'hidden' })}>
@@ -83,7 +88,7 @@ export const Uploader = (props: UploaderProps) => {
             ? 'after:bg-primary-100 after:h-4 after:absolute after:rounded-[2px]'
             : '',
           size === 'medium' ? 'after:w-full' : '',
-          size === 'large' ? 'after:w-[80%]' : '',
+          size === 'large' ? 'after:w-[80%]' : ''
         )}
       >
         {image ? (
@@ -95,9 +100,7 @@ export const Uploader = (props: UploaderProps) => {
             className="w-full h-full absolute object-cover rounded-[28px]"
           />
         ) : (
-          <div className="text-secondary truncate select-none text-nowrap">
-            {title}
-          </div>
+          <div className="text-secondary truncate select-none text-nowrap">{title}</div>
         )}
       </div>
       {/* <div

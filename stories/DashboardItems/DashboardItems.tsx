@@ -1,15 +1,25 @@
 import { useGetUser } from '@/api/user';
-import Loading from '@/app/(app)/profile/loading';
 import { BookmarkIcon, OrdersIcon, ShapeIcon, StarIcon } from '@/stories/Icons';
-import { Button, ScrollShadow } from '@heroui/react';
+import { Button, ScrollShadow, Skeleton } from '@heroui/react';
 import React, { useState } from 'react';
 import BodyTypeImageModal from '../BodyTypeImageModal/BodyTypeImageModal';
 
 export const DashboardItems = () => {
-  const { userInfo, userInfoLoading, userInfoError } = useGetUser(3000);
+  const { userInfo, userInfoLoading, userInfoError } = useGetUser();
+
   const [isModalOpen, setModalOpen] = useState(false);
 
-  if (userInfoLoading && !userInfoError) return <Loading />;
+  if (userInfoLoading && !userInfoError) {
+    return (
+      <div className="xs:flex xs:flex-row-reverse xs:gap-6 xs:justify-center xs:overflow-visible overflow-x-auto">
+        <div className="grid grid-cols-3 gap-4 justify-between w-full max-w-screen-sm">
+          <Skeleton className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 rounded-3xl" />
+          <Skeleton className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 rounded-3xl" />
+          <Skeleton className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 rounded-3xl" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -63,7 +73,7 @@ export const DashboardItems = () => {
           </Button>
         </div>
       </ScrollShadow>
-      
+
       {/* Modal */}
       <BodyTypeImageModal
         userInfo={userInfo}

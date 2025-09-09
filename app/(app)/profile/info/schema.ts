@@ -19,7 +19,8 @@ export const userSchema = z.object({
     .optional()
     .or(z.literal('').transform(() => undefined)),
   mobile: z.string().regex(/^09\d{9}$/, 'شماره موبایل معتبر نیست'),
-gender: z.number().min(0).max(2, 'جنسیت معتبر نیست'),  
+  gender: z.number().min(0).max(2, 'جنسیت معتبر نیست'),
+  avatar: z.any().optional(),
 });
 
 export type UserFormData = z.infer<typeof userSchema>;

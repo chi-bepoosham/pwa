@@ -1,11 +1,7 @@
-import React from 'react';
 import { BFormVector, BorderVector } from '@/stories/Vectors';
+import React from 'react';
 
-export interface BodyFormProps {
-}
-
-export const BodyForm = (props: BodyFormProps) => {
-  const {} = props;
+export const BodyForm = () => {
   return (
     <div className="relative w-96 flex flex-col items-center justify-center">
       <BorderVector />

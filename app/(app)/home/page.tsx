@@ -23,7 +23,9 @@ export default function Home() {
   }, [userInfo]);
 
   const bodyTypeURL = endpoints.user.bodyTypeDetails;
+
   const { data, isLoading, error } = useSWR(bodyTypeURL, fetcher);
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const bd = (data as any)?.object.body_type;
 

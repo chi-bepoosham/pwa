@@ -4,7 +4,7 @@ interface UserInfo {
   phone_number: string;
   is_login: boolean;
   has_rejester: boolean;
-  api_key: string
+  api_key: string;
 }
 
 interface StoreState {
@@ -17,7 +17,7 @@ export const useUserStore = create<StoreState>((set) => ({
     phone_number: '',
     is_login: false,
     has_rejester: false,
-    api_key: ""
+    api_key: '',
   },
   setUserInfo: (name, value) =>
     set((state) => ({
