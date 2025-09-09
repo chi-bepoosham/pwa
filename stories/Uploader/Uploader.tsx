@@ -38,6 +38,7 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
     onDrop,
     accept: { 'image/png': [], 'image/jpeg': [], 'image/jpg': [] },
     maxSize: 2 * 1024 * 1024,
+    multiple: false,
   });
 
   let sizeClass = '';
@@ -49,7 +50,7 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
       sizeClass = 'w-[10rem] h-[10rem] text-lg';
       break;
     case 'x-large':
-      sizeClass = 'w-[14rem] h-[18rem] text-xl';
+      sizeClass = 'w-[12rem] h-[16rem] text-xl';
       break;
     default:
       sizeClass = 'w-[6.5rem] h-[6.5rem] text-base';
@@ -61,7 +62,7 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
   return (
     <div
       onClick={open}
-      className="relative flex flex-col items-center cursor-pointer select-none active:scale-95 transition-all duration-300"
+      className="relative flex flex-col items-center cursor-pointer select-none active:scale-95 transition-all duration-300 pt-2"
     >
       <Button
         className={clsx(
@@ -69,13 +70,13 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
           size === 'x-large'
             ? image
               ? 'absolute left-3 bottom-3 !px-2.5 !min-w-0 rounded-full'
-              : 'absolute bottom-4 w-[calc(30%)] rounded-2xl'
+              : 'absolute bottom-4 w-fit rounded-2xl'
             : '-bottom-4 min-w-0 rounded-full'
         )}
         onPress={open}
       >
         <IconComponent size={20} />
-        {size === 'x-large' && !image && 'افزودن عکس'}
+        {size === 'x-large' && !image && <span>افزودن عکس</span>}
       </Button>
 
       <div {...getRootProps({ className: 'hidden' })}>
@@ -91,13 +92,19 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
           size === 'large' ? 'after:w-[80%]' : ''
         )}
       >
+        {size === 'x-large' ? (
+          <div className="w-full h-full bg-primary-50/5 absolute top-0 -z-30 rounded-[28px] -rotate-6"></div>
+        ) : (
+          <div className="w-full h-full bg-primary-50/10 absolute top-0 -z-30 rounded-[35px] rotate-45"></div>
+        )}
+        <div className="w-full h-full bg-white absolute top-0 -z-20 rounded-[28px]"></div>
         {image ? (
           <Image
             width="32"
             height="32"
             src={image}
             alt="Profile"
-            className="w-full h-full absolute object-cover rounded-[28px]"
+            className="w-full h-full absolute object-cover object-top rounded-[26px]"
           />
         ) : (
           <div className="text-secondary truncate select-none text-nowrap">{title}</div>

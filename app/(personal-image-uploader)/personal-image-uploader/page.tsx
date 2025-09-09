@@ -6,9 +6,10 @@ import { axiosCoreWithAuth } from '@/lib/axios';
 import { setCookie } from '@/lib/cookies';
 import { AccountName } from '@/stories/AccountName';
 import { HintSlider } from '@/stories/HintSlider';
+import { MinorButton } from '@/stories/MinorButton';
 import { Uploader } from '@/stories/Uploader';
 import { CometStarVector } from '@/stories/Vectors';
-import { addToast, Button } from '@heroui/react';
+import { addToast, ScrollShadow } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -80,8 +81,8 @@ const PersonalImage = () => {
   }
 
   return (
-    <main className="flex flex-col min-h-full flex-1">
-      <div className="flex flex-col gap-10 py-4 sticky top-0 z-20 bg-white">
+    <main className="flex flex-col w-full h-screen gap-4 overflow-x-hidden scrollbar-hide">
+      <div className="flex flex-col gap-10 p-4 sticky top-0 z-20 bg-white">
         <div className="flex flex-col justify-center items-center p-4">
           <div className="flex flex-row justify-center items-center gap-4">
             <i className="rotate-180">
@@ -95,37 +96,61 @@ const PersonalImage = () => {
           <h3 className="text-secondary-300">مـرحـلۀ دوم</h3>
         </div>
       </div>
-      <div className="flex flex-col items-center gap-4 w-full px-7 flex-1">
-        <Uploader size="x-large" title="تصویر نمایه" onImageUpload={handleFileUpload} />
-        <div className="text-center flex gap-2 flex-col text-sm text-nowrap relative">
-          <div>
-            <AccountName name={userInfo ? userInfo.first_name : ''} />
+      <ScrollShadow
+        hideScrollBar
+        className="flex-1 overflow-y-auto w-full overflow-x-hidden pb-36 bg-white"
+      >
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col items-center justify-start gap-4 w-full px-8">
+            <Uploader size="x-large" title="تصویر نمایه" onImageUpload={handleFileUpload} />
+            <div className="text-center flex gap-2 flex-col text-sm text-nowrap relative">
+              <div>
+                <AccountName name={userInfo ? userInfo.first_name : ''} />
+              </div>
+              <TextBackground bgColor="#4141bf">
+                عکس تمام قد خودت رو با نور مناسب اینجا اضافه کن!
+              </TextBackground>
+            </div>
           </div>
-          <TextBackground bgColor="#4141F9">
-            عکس تمام قد خودت رو با نور مناسب اینجا اضافه کن!
-          </TextBackground>
+          <div className="w-full">
+            <HintSlider
+              slides={[
+                {
+                  picture: '/static/images/correct_position_1.jpg',
+                  matchRate: 85,
+                  isCorrect: true,
+                },
+                {
+                  picture: '/static/images/incorrect_position_1.jpg',
+                  matchRate: 70,
+                  isCorrect: false,
+                },
+                {
+                  picture: '/static/images/correct_position_2.jpg',
+                  matchRate: 85,
+                  isCorrect: true,
+                },
+                {
+                  picture: '/static/images/incorrect_position_2.jpg',
+                  matchRate: 70,
+                  isCorrect: false,
+                },
+              ]}
+            />
+          </div>
         </div>
-      </div>
-      <div className="w-full p-4">
-        <HintSlider
-          slides={[
-            { picture: '/static/images/correct_position_1.jpg', matchRate: 85, isCorrect: true },
-            { picture: '/static/images/incorrect_position_1.jpg', matchRate: 70, isCorrect: false },
-            { picture: '/static/images/correct_position_2.jpg', matchRate: 85, isCorrect: true },
-            { picture: '/static/images/incorrect_position_2.jpg', matchRate: 70, isCorrect: false },
-          ]}
-        />
-      </div>
-      <div className="flex flex-col items-center gap-4 w-full py-4 sticky bottom-0 z-20 bg-white">
-        <Button
-          variant="shadow"
+      </ScrollShadow>
+      <div className="flex flex-col items-center gap-4 w-full p-6 md:absolute fixed  bottom-0 z-20 bg-white shadow-[0px_-1px_10px_0px_#f1f1f1]">
+        <MinorButton
+          variant="solid"
+          buttonTitle="ورود بـه صفحۀ اصلـی"
           color="primary"
           size="lg"
-          className="h-14"
-          onPress={() => handleSubmit(onSubmit)()}
-        >
-          ورود بـه صفحۀ اصلـی
-        </Button>
+          radius="md"
+          className="w-full"
+          onClick={handleSubmit(onSubmit)}
+        />
+
         {/* <Button
           variant="light"
           color="primary"

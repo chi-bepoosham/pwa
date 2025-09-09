@@ -121,7 +121,7 @@ export default function Page() {
   }, [api_key]);
 
   return (
-    <div className="flex flex-col justify-between w-full h-screen gap-10 overflow-x-hidden scrollbar-hide">
+    <main className="flex flex-col w-full h-screen gap-10 overflow-x-hidden scrollbar-hide">
       <div className="flex flex-col justify-center items-center p-4">
         <div className="flex flex-row justify-center items-center gap-4">
           <i className="rotate-180">
@@ -142,6 +142,6 @@ export default function Page() {
         defaultValues={formData}
         // isDisabled={!api_keys}
       />
-    </div>
+    </main>
   );
 }
