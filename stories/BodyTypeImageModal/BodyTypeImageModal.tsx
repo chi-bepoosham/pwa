@@ -78,10 +78,7 @@ function BodyTypeImageModal({ userInfo, isOpen, onClose }: BodyTypeImageModalPro
                         src={'https://core.chibepoosham.app/' + userInfo.body_image}
                         width={128}
                         height={128}
-                        priority
                         alt="Body image"
-                        unoptimized
-                        quality={100}
                         className="w-full h-full object-cover z-10 "
                       />
                       <div className="absolute z-20 top-0 left-1/2 -translate-x-1/2 w-full p-4">

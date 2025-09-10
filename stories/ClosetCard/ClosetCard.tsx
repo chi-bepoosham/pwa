@@ -96,19 +96,31 @@ export const ClosetCard = (props: ClosetCardProps) => {
           <div className="p-1.5">
             <div
               className={clsx(
-                'p-2.5 flex flex-row justify-between items-center w-full gap-1 rounded-2xl',
-                variant === 'primary' && !isSliderActive && 'bg-secondary-50',
-                variant === 'secondary' && !isSliderActive && 'bg-white',
-                variant === 'tertiary' && !isSliderActive && 'bg-white',
-                variant === 'quaternary' && !isSliderActive && 'bg-white',
-                isSliderActive && variant === 'primary' && 'bg-primary',
-                isSliderActive && variant === 'secondary' && 'bg-primary',
-                isSliderActive && variant === 'tertiary' && 'bg-none',
-                isSliderActive && variant === 'quaternary' && 'bg-none'
+                'flex flex-row justify-between items-center w-full gap-1 rounded-2xl',
+                variant === 'primary' && !isSliderActive && 'bg-secondary-50 p-2.5 ',
+                variant === 'secondary' && !isSliderActive && 'bg-white p-2.5 ',
+                variant === 'tertiary' && !isSliderActive && 'bg-white p-2.5 ',
+                variant === 'quaternary' && !isSliderActive && 'bg-white p-2.5 ',
+                isSliderActive &&
+                  variant === 'primary' &&
+                  'bg-primary px-0 py-2.5  rounded-b-2xl rounded-t-xl',
+                isSliderActive && variant === 'secondary' && 'bg-primary p-2.5',
+                isSliderActive && variant === 'tertiary' && 'bg-none p-2.5 ',
+                isSliderActive && variant === 'quaternary' && 'bg-none p-2.5 '
               )}
             >
               {isPending ? (
                 <span className="text-sm font-light truncate"> {title} </span>
+              ) : isSliderActive && variant === 'primary' ? (
+                <div className={clsx('text-sm font-semibold flex flex-col gap-2 text-white')}>
+                  <div className="flex gap-2 items-end">
+                    <div className="bg-white/20 text-xl w-fit rounded-l-md px-2 font-bold">
+                      {matchPercentage}
+                    </div>
+                    <span className="text-black text-sm">درصد</span>
+                  </div>
+                  <p className="truncate py-1 px-4"> مناسب با فرم بدن!</p>
+                </div>
               ) : (
                 <div
                   className={clsx(

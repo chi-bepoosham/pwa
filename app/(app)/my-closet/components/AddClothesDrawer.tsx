@@ -13,6 +13,7 @@ import {
   addToast,
 } from '@heroui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { Controller, useForm } from 'react-hook-form';
 import { AddClothesFormData, addClothesFormSchema } from '../schema';
 
@@ -26,6 +27,8 @@ interface AddClothesDrawerProps {
 export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
   const { isOpen, onClose } = props;
 
+  const router = useRouter();
+  
   const {
     handleSubmit,
     setValue,
@@ -79,6 +82,7 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
       });
       reset();
       setValue('image', '');
+      router.push('/my-closet');
 
       if (props.onSuccess) props.onSuccess();
     } catch (error) {

@@ -14,9 +14,16 @@ export interface UploaderProps {
   onImageUpload?: (file: File) => void;
   size: sizeType;
   initialImage?: string | null;
+  isDisabled?: boolean;
 }
 
-export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderProps) => {
+export const Uploader = ({
+  title,
+  onImageUpload,
+  size,
+  initialImage,
+  isDisabled,
+}: UploaderProps) => {
   const [image, setImage] = useState<string | null>(initialImage ?? null);
 
   const onDrop = useCallback(
@@ -60,6 +67,7 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
     },
     maxSize: 20 * 1024 * 1024,
     multiple: false,
+    disabled: isDisabled,
   });
 
   let sizeClass = '';
@@ -82,8 +90,11 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
 
   return (
     <div
-      onClick={open}
-      className="relative flex flex-col items-center cursor-pointer select-none active:scale-95 transition-all duration-300 pt-3"
+      onClick={!isDisabled ? open : undefined}
+      className={clsx(
+        'relative flex flex-col items-center cursor-pointer select-none active:scale-95 transition-all duration-300 pt-3',
+        isDisabled && 'opacity-50 cursor-not-allowed active:scale-100'
+      )}
     >
       <Button
         className={clsx(

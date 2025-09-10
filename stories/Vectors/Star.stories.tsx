@@ -4,8 +4,8 @@ export const Vector = () => {
   return (
     <svg
       width="10"
-      height="100"
-      viewBox="0 0 10 100"
+      height="130"
+      viewBox="0 0 10 130"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >

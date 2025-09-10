@@ -24,7 +24,7 @@ export interface MyClothesType {
   title: string;
   deleted_at: number | null;
   error_clothes: string | null;
-  sets: SetType[];
+  sets?: SetType[];
 }
 
 export interface MyClothesResponseType {

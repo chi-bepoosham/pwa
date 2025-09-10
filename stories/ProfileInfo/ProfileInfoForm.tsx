@@ -1,14 +1,14 @@
 'use client';
 
 import { UserFormData, userSchema } from '@/app/(app)/profile/info/schema';
+import { axiosCoreWithAuth } from '@/lib/axios';
 import { GenderSelection } from '@/stories/GenderSelection';
 import { MinorInput } from '@/stories/MinorInput';
 import { MyBodyTypeCard } from '@/stories/MyBodyTypeCard';
 import { Uploader } from '@/stories/Uploader';
 import { UserType } from '@/types/UserType.type';
-import { Button } from '@heroui/react';
+import { addToast, Button } from '@heroui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import BodyTypeImageModal from '../BodyTypeImageModal/BodyTypeImageModal';
@@ -60,6 +60,7 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
       let response;
 
       // Prepare FormData if avatar exists
+      const axios = axiosCoreWithAuth();
       if (data.avatar) {
         const formData = new FormData();
 
@@ -70,13 +71,11 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
           formData.append('avatar', blob, 'avatar.jpg');
         }
 
-        // Add other fields
         Object.entries(data).forEach(([key, value]) => {
           if (key !== 'avatar' && value !== undefined) {
             formData.append(key, String(value));
           }
         });
-
         response = await axios.post(
           'https://core.chibepoosham.app/api/v1/user/update/profile',
           formData,
@@ -87,16 +86,24 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
           }
         );
       } else {
-        // No avatar, send JSON
         response = await axios.post(
           'https://core.chibepoosham.app/api/v1/user/update/profile',
           data
         );
       }
-
+      addToast({
+        title: 'پروفایل با موفقیت به‌روزرسانی شد',
+        color: 'success',
+      });
       console.log('Profile updated', response.data);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'An unknown error occurred');
+      const message = err instanceof Error ? err.message : 'خطای ناشناخته‌ای رخ داد';
+      setError(message);
+      addToast({
+        title: 'خطا در ذخیره تغییرات',
+        description: message,
+        color: 'danger',
+      });
     } finally {
       setLoading(false);
     }
@@ -132,7 +139,6 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
           />
           <MinorInputWrapper
             placeholder="ایمیل خود را وارد کنید"
-            type="email"
             error={errors.email?.message}
             {...register('email')}
           />
@@ -144,7 +150,7 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
           />
         </div>
 
-        <GenderSelection value={watch('gender')} onChange={(val) => setValue('gender', val)} />
+        <GenderSelection value={watch('gender')} />
         <div className="cursor-pointer" onClick={() => setModalOpen(true)}>
           <MyBodyTypeCard
             value={userInfo?.body_type?.title ?? undefined}
@@ -184,6 +190,6 @@ const MinorInputWrapper = ({
 }: React.ComponentProps<typeof MinorInput> & { error?: string }) => (
   <div>
     <MinorInput {...props} size="lg" />
-    {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
   </div>
 );

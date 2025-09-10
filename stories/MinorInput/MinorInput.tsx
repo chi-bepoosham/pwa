@@ -1,7 +1,7 @@
 'use client';
 
-import React, { forwardRef } from 'react';
 import { Input, Textarea } from '@heroui/react';
+import React, { forwardRef } from 'react';
 
 export interface MinorInputProps {
   type?: 'text' | 'email' | 'phone' | 'unit' | 'plate';
@@ -25,7 +25,7 @@ export const MinorInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Min
             ref={ref as any}
             size={size}
             {...props} // onChange و value از register میاد
-            className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
+            className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary outline-none"
           />
         ) : (
           <Input
@@ -34,7 +34,7 @@ export const MinorInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Min
             ref={ref as any}
             size={size}
             {...props} // onChange و value از register میاد
-            className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary"
+            className="w-full border-2 border-secondary-100 rounded-xl text-secondary hover:border-secondary focus:border-secondary outline-none"
           />
         )}
       </div>

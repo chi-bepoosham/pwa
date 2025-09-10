@@ -83,7 +83,6 @@ export default function Page() {
         setFormData(data);
         await setCookie('token', response.data.object.token);
         await setCookie('userInfo', JSON.stringify(response.data.object.user));
-        await setCookie('api_key', api_key);
 
         if (pageNumber === 0) {
           setPageNumber(1);

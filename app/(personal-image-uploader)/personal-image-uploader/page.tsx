@@ -22,6 +22,8 @@ import { PersonalImageUploaderData } from './schema';
 const PersonalImage = () => {
   const { userInfo, userInfoError } = useGetUser(2000);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     if (!userInfoError) {
       setCookie('userInfo', userInfo ? JSON.stringify(userInfo) : '');
@@ -38,7 +40,6 @@ const PersonalImage = () => {
   });
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
   const handleFileUpload = (file: File) => {
     setSelectedFile(file);
     const reader = new FileReader();
@@ -50,6 +51,7 @@ const PersonalImage = () => {
 
   const onSubmit = async () => {
     try {
+      setIsLoading(true);
       if (!selectedFile) {
         addToast({
           title: 'لطفا یک تصویر انتخاب کنید',
@@ -72,6 +74,8 @@ const PersonalImage = () => {
       router.replace('/');
     } catch (error) {
       console.error('Upload error:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
   let status;
@@ -102,7 +106,12 @@ const PersonalImage = () => {
       >
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center justify-start gap-4 w-full px-8">
-            <Uploader size="x-large" title="تصویر نمایه" onImageUpload={handleFileUpload} />
+            <Uploader
+              size="x-large"
+              title="تصویر نمایه"
+              onImageUpload={handleFileUpload}
+              isDisabled={!selectedFile || isLoading}
+            />
             <div className="text-center flex gap-2 flex-col text-sm text-nowrap relative">
               <div>
                 <AccountName name={userInfo ? userInfo.first_name : ''} />
@@ -149,6 +158,8 @@ const PersonalImage = () => {
           radius="md"
           className="w-full"
           onClick={handleSubmit(onSubmit)}
+          isDisable={!selectedFile || isLoading}
+          isLoading={isLoading}
         />
 
         {/* <Button
@@ -163,7 +174,7 @@ const PersonalImage = () => {
       </div>
       {status == 3 && <ErrorBodyType userInfo={userInfo} />}
       {status == 2 && <ConfirmedBodyType userInfo={userInfo} />}
-      {status == 1 && <PendingBodyType userInfo={userInfo} />}
+      {status == 1 && <PendingBodyType />}
       {![null, 1, 2, 3].includes(status ?? null) && <LoadingBodyType userInfo={userInfo} />}
     </main>
   );

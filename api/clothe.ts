@@ -3,6 +3,7 @@ import { endpoints } from '@/api/endpoints';
 import { axiosCoreWithAuth, fetcher } from '@/lib/axios';
 import { MyClothesType } from '@/types/MyClothesResponse.type';
 import { addToast } from '@heroui/react';
+import { useRouter } from 'next/navigation';
 import useSWR from 'swr';
 
 export function useGetClothes(page: number = 1, category: string = 'all') {
@@ -56,5 +57,40 @@ export function useGetClothes(page: number = 1, category: string = 'all') {
     fetchClothes: mutate,
     deleteClothes,
     currentCategory: category,
+  };
+}
+
+export function useGetClothe(id: string | null) {
+  const URL = id ? `/user/clothes/${id}` : null;
+
+  const router = useRouter();
+
+  const { data, isLoading, error, isValidating, mutate } = useSWR(URL, fetcher, {
+    revalidateOnFocus: false,
+  });
+
+  const deleteClothes = async () => {
+    if (!id) return;
+    try {
+      const axios = axiosCoreWithAuth();
+      await axios.delete(`/user/clothes/${id}`);
+      mutate();
+      addToast({ title: 'لباس با موفقیت حذف شد', color: 'success' });
+      router.push('/my-closet');
+    } catch (err) {
+      console.log(err);
+      addToast({ title: 'خطا در حذف لباس', color: 'danger' });
+    }
+  };
+
+  const item: MyClothesType = (data as any)?.object;
+
+  return {
+    clothe: item,
+    clotheLoading: isLoading,
+    clotheError: error,
+    clotheValidating: isValidating,
+    fetchClothe: mutate,
+    deleteClothes,
   };
 }
