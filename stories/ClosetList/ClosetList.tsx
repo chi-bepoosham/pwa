@@ -30,8 +30,11 @@ export default function ClosetList({
             key={item.id}
             userName={userName}
             link={item.id ? `/my-closet/${item.id}` : '/my-closet'}
-            variant="primary"
+            variant={item.process_status === 3 ? 'error' : 'primary'}
             imageUrl={item.image}
+            errorMessage={
+              item.process_status === 3 ? item.error_clothes || 'خطایی رخ داد' : undefined
+            }
             matchPercentage={item.match_percentage}
             title={item.title}
             onDelete={() => onDelete(item.id)}

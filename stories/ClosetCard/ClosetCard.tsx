@@ -5,13 +5,15 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import ClotheStatusErrorModal from '../ClotheStatusErrorModal/ClotheStatusErrorModal';
 import DeleteClothesModal from '../DeleteClothesModal/DeleteClothesModal';
-import { ArrowRightIcon, RecycleIcon } from '../Icons';
+import { ArrowRightIcon, InfoIcon, RecycleIcon } from '../Icons';
 
 export interface ClosetCardProps {
-  variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'error';
   imageUrl: string;
   matchPercentage: number | null;
+  errorMessage?: string;
   link?: string;
   title?: string;
   isSliderActive?: boolean;
@@ -31,12 +33,17 @@ export const ClosetCard = (props: ClosetCardProps) => {
     isSliderActive,
     onDelete,
     isPending,
+    errorMessage,
   } = props;
 
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [isErrorModalOpen, setErrorModalOpen] = useState(false);
 
   const handleDeleteClick = () => {
     setDeleteModalOpen(true);
+  };
+  const handleErrorModal = () => {
+    setErrorModalOpen(true);
   };
 
   const handleConfirmDelete = () => {
@@ -51,7 +58,7 @@ export const ClosetCard = (props: ClosetCardProps) => {
           variant="flat"
           size="sm"
           className={clsx(
-            'bg-secondary-100 absolute top-2 z-10 rounded-3xl',
+            'bg-white/20 absolute top-2 z-10 rounded-3xl',
             !isSliderActive ? 'left-2' : 'right-2',
             isPending && 'pointer-events-none opacity-50'
           )}
@@ -59,18 +66,30 @@ export const ClosetCard = (props: ClosetCardProps) => {
           isIconOnly
           onPress={handleDeleteClick}
         >
-          <i className="text-red-600">
+          <i className="text-black">
             <RecycleIcon size={20} />
           </i>
         </Button>
       )}
-
+      {variant === 'error' && errorMessage && (
+        <Button
+          variant="flat"
+          size="sm"
+          className="bg-white/20 rounded-full absolute bottom-1 z-10 left-1"
+          isIconOnly
+          onPress={handleErrorModal}
+        >
+          <i className="text-red-500">
+            <InfoIcon size={20} />
+          </i>
+        </Button>
+      )}
       <Link
         href={link || '/my-closet'}
         className={clsx(
           'block',
           isPending && 'pointer-events-none opacity-50',
-          isSliderActive && 'pointer-events-none '
+          (isSliderActive || variant === 'error') && 'pointer-events-none '
         )}
       >
         <div
@@ -79,7 +98,8 @@ export const ClosetCard = (props: ClosetCardProps) => {
             variant === 'primary' && 'bg-white border-2 border-secondary',
             variant === 'secondary' && 'bg-secondary-50 border border-secondary-50',
             variant === 'tertiary' && 'bg-primary',
-            variant === 'quaternary' && 'bg-[#68BAA6]'
+            variant === 'quaternary' && 'bg-[#68BAA6]',
+            variant === 'error' && 'bg-red-200  shadow-md shadow-red-300/50'
           )}
         >
           <div className={clsx('w-full', isSliderActive && 'h-96')}>
@@ -111,8 +131,12 @@ export const ClosetCard = (props: ClosetCardProps) => {
             >
               {isPending ? (
                 <span className="text-sm font-light truncate"> {title} </span>
+              ) : variant === 'error' ? (
+                <div className="text-sm font-semibold flex flex-col gap-2 text-red-500">
+                  <p className="truncate py-1 px-4">خطا در پردازش تصویر!</p>
+                </div>
               ) : isSliderActive && variant === 'primary' ? (
-                <div className={clsx('text-sm font-semibold flex flex-col gap-2 text-white')}>
+                <div className="text-sm font-semibold flex flex-col gap-2 text-white">
                   <div className="flex gap-2 items-end">
                     <div className="bg-white/20 text-xl w-fit rounded-l-md px-2 font-bold">
                       {matchPercentage}
@@ -132,7 +156,7 @@ export const ClosetCard = (props: ClosetCardProps) => {
                   <span className="text-sm font-light truncate"> مناسب با فرم بدن</span>
                 </div>
               )}
-              {!isSliderActive && (
+              {!isSliderActive && variant !== 'error' && (
                 <Button
                   variant="flat"
                   size="sm"
@@ -161,6 +185,13 @@ export const ClosetCard = (props: ClosetCardProps) => {
         onClose={() => setDeleteModalOpen(false)}
         onConfirm={handleConfirmDelete}
       />
+      {errorMessage && (
+        <ClotheStatusErrorModal
+          message={errorMessage}
+          isOpen={isErrorModalOpen}
+          onClose={() => setErrorModalOpen(false)}
+        />
+      )}
     </div>
   );
 };
