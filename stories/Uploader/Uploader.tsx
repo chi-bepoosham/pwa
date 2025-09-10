@@ -1,11 +1,11 @@
 'use client';
 
 import { AddIcon, EditIcon } from '@/stories/Icons';
-import { Button } from '@heroui/react';
+import { addToast, Button } from '@heroui/react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useCallback, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { FileRejection, useDropzone } from 'react-dropzone';
 
 type sizeType = 'medium' | 'large' | 'x-large';
 
@@ -20,7 +20,21 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
   const [image, setImage] = useState<string | null>(initialImage ?? null);
 
   const onDrop = useCallback(
-    (acceptedFiles: File[]) => {
+    (acceptedFiles: File[], fileRejections: FileRejection[]) => {
+      if (fileRejections.length > 0) {
+        const rejection = fileRejections[0];
+        rejection.errors.forEach((err) => {
+          if (err.code === 'file-too-large') {
+            addToast({ title: 'حجم فایل بیش از حد مجاز است (20MB)', color: 'danger' });
+          } else if (err.code === 'file-invalid-type') {
+            addToast({ title: 'فرمت فایل پشتیبانی نمی‌شود', color: 'danger' });
+          } else {
+            addToast({ title: err.message, color: 'danger' });
+          }
+        });
+        return;
+      }
+
       if (acceptedFiles.length > 0) {
         const file = acceptedFiles[0];
         const reader = new FileReader();
@@ -36,8 +50,15 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
 
   const { getRootProps, getInputProps, open } = useDropzone({
     onDrop,
-    accept: { 'image/png': [], 'image/jpeg': [], 'image/jpg': [] },
-    maxSize: 2 * 1024 * 1024,
+    accept: {
+      'image/png': [],
+      'image/jpeg': [],
+      'image/jpg': [],
+      'image/webp': [],
+      'image/heic': [],
+      'image/heif': [],
+    },
+    maxSize: 20 * 1024 * 1024,
     multiple: false,
   });
 
@@ -62,7 +83,7 @@ export const Uploader = ({ title, onImageUpload, size, initialImage }: UploaderP
   return (
     <div
       onClick={open}
-      className="relative flex flex-col items-center cursor-pointer select-none active:scale-95 transition-all duration-300 pt-2"
+      className="relative flex flex-col items-center cursor-pointer select-none active:scale-95 transition-all duration-300 pt-3"
     >
       <Button
         className={clsx(
