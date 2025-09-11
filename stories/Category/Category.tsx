@@ -3,7 +3,6 @@
 import { MinorButton } from '@/stories/MinorButton';
 import clsx from 'clsx';
 import React, { useRef, useState } from 'react';
-import { Item } from '../Item';
 
 export interface CategoryProps {
   value?: string;
