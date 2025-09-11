@@ -1,38 +1,42 @@
 'use client';
 
+import { axiosCoreWithAuth } from '@/lib/axios';
+import { deleteCookie } from '@/lib/cookies';
+import { useUserStore } from '@/store/UseUserStore';
 import { LogoutIcon } from '@/stories/Icons';
-import { Button } from '@heroui/react';
+import { addToast, Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 export const LogoutButton = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const clearAllCookies = () => {
-    const cookies = document.cookie.split(';');
+  const setUserInfo = useUserStore((state) => state.setUserInfo);
 
-    cookies.forEach((c) => {
-      const eqPos = c.indexOf('=');
-      const name = eqPos > -1 ? c.substr(0, eqPos) : c;
-
-      document.cookie = `${name.trim()}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
-
-      document.cookie = `${name.trim()}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=${
-        window.location.pathname
-      };`;
-
-      document.cookie = `${name.trim()}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=127.0.0.1;`;
-    });
+  const clearAllCookies = async () => {
+    setUserInfo('is_login', false);
+    await deleteCookie('token', { path: '/' });
+    await deleteCookie('userInfo', { path: '/' });
   };
 
-  // const handleLogout = () => {
-  //   setIsLoading(true);
+  const handleLogout = async () => {
+    setIsLoading(true);
+    try {
+      const axios = axiosCoreWithAuth();
+      await axios.post('/user/auth/logout');
 
-  //   setTimeout(() => {
-  //     clearCookies();
-  //     router.push('/');
-  //   }, 500);
-  // };
+      clearAllCookies();
+
+      router.push('/auth');
+
+      addToast({ title: 'خروج از حساب کاربری با موفقیت انجام شد.', color: 'success' });
+    } catch (error) {
+      console.error('Logout error:', error);
+      addToast({ title: 'خطایی وجود دارد.', color: 'danger' });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Button
@@ -42,11 +46,7 @@ export const LogoutButton = () => {
       isIconOnly
       isLoading={isLoading}
       className="h-14 w-14"
-      onPress={() => {
-        setIsLoading(true);
-        clearAllCookies();
-        router.push('/auth');
-      }}
+      onPress={handleLogout}
     >
       <LogoutIcon size={36} />
     </Button>

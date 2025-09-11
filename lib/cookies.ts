@@ -11,14 +11,31 @@ export const getCookie = async (name: string): Promise<string | undefined> => {
 export const setCookie = async (
   name: string,
   value: string,
-  options: { maxAge?: number; domain?: string , path?: string, secure?: boolean, httpOnly?: boolean } = { 
-    path: '/', 
+  options: {
+    maxAge?: number;
+    domain?: string;
+    path?: string;
+    secure?: boolean;
+    httpOnly?: boolean;
+  } = {
+    path: '/',
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     maxAge: 60 * 60 * 24 * 30, // 30 days
-    domain: process.env.NEXT_PUBLIC_BASE_URL || undefined
+    domain: process.env.NEXT_PUBLIC_BASE_URL || undefined,
   }
 ): Promise<void> => {
   const cookieStore = cookies();
   (await cookieStore).set(name, value, options);
+};
+
+export const deleteCookie = async (
+  name: string,
+  options: { path?: string; domain?: string } = {
+    path: '/',
+    domain: process.env.NEXT_PUBLIC_BASE_URL,
+  }
+): Promise<void> => {
+  const cookieStore = cookies();
+  (await cookieStore).delete({ name, path: options.path || '/', domain: options.domain });
 };
