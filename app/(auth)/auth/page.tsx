@@ -51,7 +51,7 @@ export default function Page() {
       console.log('OTP sent successfully:', response.status);
     } catch (err) {
       addToast({
-        title: 'خطایی در ارسال کد تایید رخ داد',
+        title: 'خطای ارسال',
         description: (err as AxiosError).message || 'خطایی در ارسال کد تایید رخ داد',
         color: 'danger',
       });

@@ -1,6 +1,6 @@
-import axios, { AxiosRequestConfig } from 'axios';
-import { getCookie } from './cookies';
 import { addToast } from '@heroui/react';
+import axios, { AxiosRequestConfig } from 'axios';
+import { deleteCookie, getCookie } from './cookies';
 
 const config = {
   baseURL: `${process.env.NEXT_PUBLIC_CORE_BASE_URL}`,
@@ -34,7 +34,8 @@ const axiosCore = () => {
 
 // Core with (auth)
 const axiosCoreWithAuth = () => {
-  const a = axios.create(config);  a.interceptors.request.use(async (config) => {
+  const a = axios.create(config);
+  a.interceptors.request.use(async (config) => {
     try {
       const token = await getCookie('token');
       if (token) {
@@ -49,8 +50,8 @@ const axiosCoreWithAuth = () => {
     (response) => {
       return response.data;
     },
-    (error) => {
-      return Promise.reject(handleToastError(error));
+    async (error) => {
+      return Promise.reject(await handleToastError(error));
     }
   );
   return a;
@@ -59,7 +60,10 @@ const axiosCoreWithAuth = () => {
 export { axiosCore, axiosCoreWithAuth };
 
 // ======================================================> fetchers
-type FetcherArgs = string | [string, AxiosRequestConfig & { auth?: boolean }] | [string, AxiosRequestConfig & { headers?: Record<string, string> }];
+type FetcherArgs =
+  | string
+  | [string, AxiosRequestConfig & { auth?: boolean }]
+  | [string, AxiosRequestConfig & { headers?: Record<string, string> }];
 export const fetcher = async (args: FetcherArgs) => {
   const [url, config = {}] = Array.isArray(args) ? args : [args, {}];
   const { headers, ...restConfig } = config;
@@ -84,9 +88,11 @@ type ErrorResponse = {
   };
 };
 
-export const handleToastError = (error: ErrorResponse) => {
+export const handleToastError = async (error: ErrorResponse) => {
   const response = error?.response;
+  const status = error.response?.status;
   const messages = [];
+
   if (!response) {
     messages.push('خطای شبکه');
   } else {
@@ -94,13 +100,31 @@ export const handleToastError = (error: ErrorResponse) => {
       response?.data?.message || response?.data?.error || `خطای ناشتاخته: ${response.status}`
     );
   }
+
+  if (!error.response) {
+    addToast({
+      title: 'خطای شبکه',
+      description: 'اتصال اینترنت خود را بررسی کنید',
+      color: 'danger',
+    });
+    return null;
+  }
+
+  if (status === 401) {
+    await deleteCookie('token', { path: '/' });
+    await deleteCookie('userInfo', { path: '/' });
+
+    addToast({ title: '.لطفا دوباره وارد شوید.', color: 'danger' });
+    window.location.href = '/auth';
+  }
+
   // show messages
   for (let idx = 0; idx < messages.length; idx++) {
     const msg = messages[idx];
     addToast({
       title: msg || 'خطای نامشخص 🥺',
-      color: "danger",
-    })
+      color: 'danger',
+    });
   }
 
   return response?.data || null;
