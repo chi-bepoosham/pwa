@@ -31,7 +31,7 @@ export default function Page() {
 
   const setUserInfo = useUserStore((state) => state.setUserInfo);
 
-  const Route = useRouter();
+  const router = useRouter();
 
   const handleReset = () => {};
 
@@ -39,7 +39,7 @@ export default function Page() {
     try {
       setIsLoading(true);
       const axios = axiosCore();
-      const response = await axios.post('/user/auth/otp/send', {
+      await axios.post('/user/auth/otp/send', {
         mobile: `0${data.phone}`,
       });
       addToast({
@@ -47,17 +47,15 @@ export default function Page() {
         color: 'success',
       });
       setUserInfo('phone_number', `0${data.phone}`);
-      Route.push('/auth/verify');
-      console.log('OTP sent successfully:', response.status);
+      router.push('/auth/verify');
     } catch (err) {
+      setIsLoading(false);
       addToast({
         title: 'خطای ارسال',
         description: (err as AxiosError).message || 'خطایی در ارسال کد تایید رخ داد',
         color: 'danger',
       });
       console.error(err);
-    } finally {
-      setIsLoading(false);
     }
   };
 

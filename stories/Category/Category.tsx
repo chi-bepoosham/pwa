@@ -1,7 +1,9 @@
 'use client';
 
 import { MinorButton } from '@/stories/MinorButton';
+import clsx from 'clsx';
 import React, { useRef, useState } from 'react';
+import { Item } from '../Item';
 
 export interface CategoryProps {
   value?: string;
@@ -61,7 +63,12 @@ export const Category = ({ onChange, variant, items, className, value }: Categor
         scrollbarColor: '#888 #f1f1f1',
       }}
     >
-      <div className="grid grid-cols-3 gap-3 px-4 justify-start w-full">
+      <div
+        className={clsx(
+          `grid gap-3 px-4 justify-start w-full`,
+          items.length === 4 ? 'grid-cols-4' : 'grid-cols-3'
+        )}
+      >
         {items.map((item, index) => {
           const isActive = selected === item.key;
           const variantClasses = getVariantClasses(isActive);

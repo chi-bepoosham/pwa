@@ -110,7 +110,7 @@ const PersonalImage = () => {
               size="x-large"
               title="تصویر نمایه"
               onImageUpload={handleFileUpload}
-              isDisabled={!selectedFile || isLoading}
+              isDisabled={isLoading}
             />
             <div className="text-center flex gap-2 flex-col text-sm text-nowrap relative">
               <div>

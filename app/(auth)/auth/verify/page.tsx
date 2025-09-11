@@ -76,8 +76,6 @@ export default function Page() {
       });
       resetField('token');
       setFocus('token', { shouldSelect: true });
-    } finally {
-      setIsSending(false);
     }
   };
 
