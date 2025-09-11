@@ -19,9 +19,10 @@ import Loading from './loading';
 export default function Page() {
   const { userInfo } = useGetUser();
 
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [page, setPage] = useState(1);
-  const [searchText, setSearchText] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchText, setSearchText] = useState<string | undefined>(undefined);
+  const [statusFilter, setStatusFilter] = useState<number | undefined>(undefined);
 
   const addClothesDrawer = useDisclosure({ defaultOpen: false });
 
@@ -44,12 +45,13 @@ export default function Page() {
     currentCategory,
     fetchClothes,
     deleteClothes,
-  } = useGetClothes(page, selectedCategory, searchText);
+  } = useGetClothes(page, selectedCategory, searchText, statusFilter);
 
   useEffect(() => {
-    setSearchText('');
+    setSearchText(undefined);
     setPage(1);
   }, [selectedCategory]);
+
   return (
     <div className="flex flex-col w-full h-full">
       <Header
@@ -87,6 +89,12 @@ export default function Page() {
               onSearch={(val) => {
                 setPage(1);
                 setSearchText(val);
+              }}
+              searchText={searchText}
+              statusFilter={statusFilter}
+              onStatusChange={(status) => {
+                setPage(1);
+                setStatusFilter(status);
               }}
             />
           </div>
