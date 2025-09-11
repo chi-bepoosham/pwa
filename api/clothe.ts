@@ -6,7 +6,12 @@ import { addToast } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import useSWR from 'swr';
 
-export function useGetClothes(page: number = 1, category: string = 'all') {
+export function useGetClothes(
+  page: number = 1,
+  category: string = 'all',
+  title?: string | undefined,
+  status?: number | undefined
+) {
   let URL = `${endpoints.user.clothes}?paginate=1&page=${page}&per_page=10`;
 
   const { data: dmEmp } = useSWR(URL, fetcher);
@@ -14,6 +19,10 @@ export function useGetClothes(page: number = 1, category: string = 'all') {
   if (category === 'upper') URL += '&clothes_type=1';
   if (category === 'lower') URL += '&clothes_type=2';
   if (category === 'whole') URL += '&clothes_type=3';
+
+  if (status) URL += `&process_status=${status}`;
+
+  if (title) URL += `&title=${title}`;
 
   const { data, isLoading, error, isValidating, mutate } = useSWR(URL, fetcher, {
     revalidateOnFocus: false,

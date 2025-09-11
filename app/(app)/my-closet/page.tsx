@@ -7,9 +7,10 @@ import { Category } from '@/stories/Category';
 import ClosetList from '@/stories/ClosetList/ClosetList';
 import ClosetEmptyState from '@/stories/EmptyCloset/EmptyCloset';
 import { PlusIcon } from '@/stories/Icons';
+import { Search } from '@/stories/Search';
 import { MyClothesType } from '@/types/MyClothesResponse.type';
 import { Button, ScrollShadow, useDisclosure } from '@heroui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import { AddClothesDrawer } from './components/AddClothesDrawer';
 import Error from './error';
@@ -17,9 +18,12 @@ import Loading from './loading';
 
 export default function Page() {
   const { userInfo } = useGetUser();
+
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const addClothesDrawer = useDisclosure({ defaultOpen: false });
   const [page, setPage] = useState(1);
+  const [searchText, setSearchText] = useState<string>('');
+
+  const addClothesDrawer = useDisclosure({ defaultOpen: false });
 
   const categoryItems = [
     { key: 'all', title: 'همه لباس‌ها', enTitle: 'All Clothes' },
@@ -40,8 +44,12 @@ export default function Page() {
     currentCategory,
     fetchClothes,
     deleteClothes,
-  } = useGetClothes(page, selectedCategory);
+  } = useGetClothes(page, selectedCategory, searchText);
 
+  useEffect(() => {
+    setSearchText('');
+    setPage(1);
+  }, [selectedCategory]);
   return (
     <div className="flex flex-col w-full h-full">
       <Header
@@ -72,6 +80,16 @@ export default function Page() {
       {/* Category*/}
       {!clothesLoading && !clothesEmpty && !clothesError && (
         <>
+          <div className="w-full mt-2 px-5">
+            <Search
+              withFilter={true}
+              title="جستجوی لباس"
+              onSearch={(val) => {
+                setPage(1);
+                setSearchText(val);
+              }}
+            />
+          </div>
           <Category
             variant="primary"
             items={categoryItems}

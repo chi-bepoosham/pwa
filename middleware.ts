@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
   const userInfoParsed = userInfo ? JSON.parse(userInfo) : null;
   const userUploadImageStatus = userInfoParsed ? userInfoParsed.process_body_image_status : null;
   const tokenFromQuery = searchParams.get('token');
-  console.log({token, userInfoParsed, userUploadImageStatus});
+  console.log({ token, userInfoParsed, userUploadImageStatus });
 
   // If token is in query but not in cookies, set it and redirect (once)
   if (tokenFromQuery && !token) {
