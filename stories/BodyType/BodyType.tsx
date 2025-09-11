@@ -21,9 +21,7 @@ export const BodyType = (props: BodyTypeProps) => {
         <Types selectedType={selectedType} />
       </div>
       <Card shadow="none" radius="none" className="col-span-3">
-        <CardHeader 
-        className="flex flex-row justify-start items-center gap-8 text-primary text-nowrap text-small xs:text-lg sm:text-2xl font-bold"
-        >
+        <CardHeader className="flex flex-row justify-start items-center gap-8 text-primary text-nowrap text-small xs:text-lg sm:text-2xl font-bold">
           <Number number={number} />
           {title}
         </CardHeader>

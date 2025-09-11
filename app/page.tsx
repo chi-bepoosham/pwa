@@ -30,7 +30,7 @@ export default function Home() {
       </motion.div>
       <Banner
         withStar={true}
-        textColor="text-white/50"
+        textColor="text-white/70"
         starColor="text-white"
       />
     </div>
