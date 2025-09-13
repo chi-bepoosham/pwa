@@ -24,7 +24,7 @@ export default function ClosetList({
 }: ClosetListProps) {
   return (
     <>
-      <Masonry breakpointCols={2} className="flex gap-4" columnClassName="flex flex-col gap-4">
+      <Masonry breakpointCols={2} className="flex gap-2" columnClassName="flex flex-col gap-2">
         {items.map((item) => (
           <ClosetCard
             key={item.id}

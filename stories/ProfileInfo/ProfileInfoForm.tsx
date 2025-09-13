@@ -59,7 +59,6 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
     try {
       let response;
 
-      // Prepare FormData if avatar exists
       const axios = axiosCoreWithAuth();
       if (data.avatar) {
         const formData = new FormData();

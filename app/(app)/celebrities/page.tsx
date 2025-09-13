@@ -33,7 +33,7 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col w-full  bg-black">
+    <div className="flex flex-col w-full  bg-black pb-4">
       <Header
         color="bg-black"
         textColor="text-zinc-400"
@@ -54,10 +54,11 @@ export default function Page() {
       />
 
       <ScrollShadow
+        visibility={'bottom'}
         hideScrollBar
-        className="flex-1 overflow-y-auto max-w-screen-sm overflow-x-hidden px-5 pb-36 bg-black"
+        className="flex-1 overflow-y-auto max-w-screen-sm overflow-x-hidden px-4 pb-36 bg-black"
       >
-        <div className="flex max-w-screen-sm justify-center items-center px-8 pb-16">
+        <div className="flex max-w-screen-sm justify-center items-center px-0 pb-16">
           <SwiperCarousel isLoading={isLoading} error={error} celebrities={celebrities ?? []} />
         </div>
       </ScrollShadow>

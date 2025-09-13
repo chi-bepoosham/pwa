@@ -100,7 +100,7 @@ export default function Page() {
   const genderKey = gender === 1 ? 'male' : 'female';
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full pb-4">
       <Header
         variant="side"
         title="انــواع فــرم بــدن!"

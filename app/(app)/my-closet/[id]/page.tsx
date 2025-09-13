@@ -79,8 +79,9 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
       />
       {!clotheLoading && !clotheError && (
         <ScrollShadow
+          visibility={'bottom'}
           hideScrollBar
-          className="flex-1 overflow-y-auto  max-w-screen-sm overflow-x-hidden px-5 pb-36 bg-white"
+          className="flex-1 overflow-y-auto  max-w-screen-sm overflow-x-hidden px-4 pb-36 bg-white"
         >
           <div className="flex flex-col w-full items-center gap-12">
             <div className="flex flex-col w-full items-center gap-6">
@@ -89,8 +90,8 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 text="Your clothe"
                 description={clothe?.title || 'لباس شما'}
               />
-              <div className="p-4 flex justify-center w-full">
-                <div className="p-4">
+              <div className="flex justify-center w-full">
+                <div className="w-full px-4">
                   <ClosetCard
                     userName={userInfo.first_name}
                     variant="primary"

@@ -64,7 +64,7 @@ export const Category = ({ onChange, variant, items, className, value }: Categor
     >
       <div
         className={clsx(
-          `grid gap-3 px-4 justify-start w-full`,
+          `grid gap-3 px-1 justify-start w-full`,
           items.length === 4 ? 'grid-cols-4' : 'grid-cols-3'
         )}
       >
@@ -78,7 +78,7 @@ export const Category = ({ onChange, variant, items, className, value }: Categor
               onClick={() => handleClick(item.key)}
               variant={isActive ? 'solid' : 'bordered'}
               radius="md"
-              className={`p-4 py-7 border-0 transition-all duration-200 w-full rounded-2xl text-lg ${variantClasses}`}
+              className={`p-4 py-7 border-0 transition-all duration-200 w-full rounded-2xl  ${variantClasses}`}
               data-title={item.title}
             />
           );

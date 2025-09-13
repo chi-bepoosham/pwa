@@ -23,21 +23,21 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
 
   const navItems = [
     {
-      actionIcon: <HomeIcon size={28} />,
-      icon: <OutlineHomeIcon size={28} />,
+      actionIcon: <HomeIcon size={22} />,
+      icon: <OutlineHomeIcon size={22} />,
       label: 'صفحه اصلی',
       href: '/home',
     },
     {
-      actionIcon: <ChestIcon size={28} />,
-      icon: <OutlineChestIcon size={28} />,
+      actionIcon: <ChestIcon size={22} />,
+      icon: <OutlineChestIcon size={22} />,
       label: 'فـروشگـاه',
       href: '/shop',
       disabled: true,
     },
     {
-      actionIcon: <MyDrawerIcon size={28} />,
-      icon: <OutlineMyDrawerIcon size={28} />,
+      actionIcon: <MyDrawerIcon size={22} />,
+      icon: <OutlineMyDrawerIcon size={22} />,
       label: 'کمد لباسم',
       href: '/my-closet',
     },
@@ -51,7 +51,7 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
   };
 
   return (
-    <div className="h-28 bg-white shadow-[0px_-10px_24px_0px_#f1f1f1] rounded-t-[40px] w-full max-w-screen-sm mx-auto flex flex-row justify-center items-center">
+    <div className="h-20 bg-white shadow-[0px_-10px_24px_0px_#f1f1f1] rounded-t-[40px] w-full max-w-screen-sm mx-auto flex flex-row justify-center items-center">
       {navItems.map((item, index) => {
         const isActive = pathname === item.href;
         return (
@@ -61,7 +61,7 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
             data-active={isActive}
             onClick={item.disabled ? disabledHandler : undefined}
             className={clsx(
-              'flex flex-col gap-2.5 justify-center items-center cursor-pointer w-28 relative max-h-fit group'
+              'flex flex-col gap-2 justify-center items-center cursor-pointer w-28 relative max-h-fit group text-sm'
             )}
           >
             <i className="group-data-[active=true]:text-primary text-secondary group-data-[active=true]:hidden group-hover:hidden">

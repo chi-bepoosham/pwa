@@ -28,7 +28,7 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
   const { isOpen, onClose } = props;
 
   const router = useRouter();
-  
+
   const {
     handleSubmit,
     setValue,
@@ -122,7 +122,12 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
         <DrawerBody className="flex flex-col justify-start h-full  w-full items-center gap-10 overflow-y-auto">
           <div className="w-full flex flex-col gap-5 justify-center items-center pt-5">
             <span className="text-secondary-300">تصویر لباس خودت رو اینجا اضافه کن!</span>
-            <Uploader size="large" title="تصویر لباس شما" onImageUpload={handleFileUpload} />
+            <Uploader
+              size="large"
+              title="تصویر لباس شما"
+              onImageUpload={handleFileUpload}
+              isDisabled={isSubmitting || isValidating || isLoading}
+            />
           </div>
           <div className="w-full flex flex-col gap-2">
             <span className="text-foreground">نام لباس خودتو اینجا بنویس.</span>
@@ -171,6 +176,7 @@ export const AddClothesDrawer: React.FC<AddClothesDrawerProps> = (props) => {
             className="max-w-80 w-full px-4 py-6"
             onClick={handleSubmit(onSubmit)}
             isLoading={isSubmitting || isValidating || isLoading}
+            isDisable={isSubmitting || isValidating || isLoading}
           />
         </DrawerFooter>
       </DrawerContent>

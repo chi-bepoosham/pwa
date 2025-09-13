@@ -61,7 +61,7 @@ export default function ClosetEmptyState({
                   <PlusIcon size={36} />
                 </span>
               }
-              className="h-14 rounded-3xl shrink-0 bg-success-50 border border-success text-black"
+              className="h-14 rounded-2xl shrink-0 bg-success-50 border border-success text-black"
               onPress={onAddClothes}
             >
               افزودن لباس

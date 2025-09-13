@@ -29,7 +29,7 @@ export const Title = (props: TitleRowProps) => {
           </i>
         )}
       </div>
-      {description && <span className="text-sm text-secondary font-semibold">{description}</span>}
+      {description && <span className="text-sm text-secondary font-semibold -mt-2">{description}</span>}
     </div>
   );
 };

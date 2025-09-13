@@ -30,7 +30,7 @@ const Header = (props: HeaderProps) => {
   return (
     <header
       className={clsx(
-        'p-7 sticky top-0 z-20 ',
+        'p-4 sticky top-0 z-20 ',
         color ? color : 'bg-white',
         textColor ? textColor : 'bg-black'
       )}

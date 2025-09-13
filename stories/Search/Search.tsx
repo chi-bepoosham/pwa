@@ -63,7 +63,7 @@ export const Search = ({
           ),
           innerWrapper: clsx('bg-white', withFilter && 'bg-white'),
           inputWrapper: clsx(
-            'h-16 border-2 bg-white dark:bg-default/60 dark:hover:bg-default/70',
+            'h-12 border-2 bg-white dark:bg-default/60 dark:hover:bg-default/70',
             'group-data-[hover=true]:bg-white',
             'group-data-[focus=true]:bg-white dark:group-data-[focus=true]:bg-default/60',
             '!cursor-text',

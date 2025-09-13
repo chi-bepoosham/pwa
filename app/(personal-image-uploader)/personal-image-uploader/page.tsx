@@ -101,6 +101,7 @@ const PersonalImage = () => {
         </div>
       </div>
       <ScrollShadow
+        visibility={'bottom'}
         hideScrollBar
         className="flex-1 overflow-y-auto w-full overflow-x-hidden pb-36 bg-white"
       >

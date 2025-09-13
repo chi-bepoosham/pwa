@@ -11,7 +11,7 @@ export const DashboardItems = () => {
 
   if (userInfoLoading && !userInfoError) {
     return (
-      <div className="xs:flex xs:flex-row-reverse xs:gap-6 xs:justify-center xs:overflow-visible overflow-x-auto">
+      <div className="xs:flex xs:flex-row-reverse xs:gap-6 xs:justify-center xs:overflow-visible overflow-x-auto px-4">
         <div className="grid grid-cols-3 gap-4 justify-between w-full max-w-screen-sm">
           <Skeleton className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 rounded-3xl" />
           <Skeleton className="col-span-1 w-full h-24 p-2 pt-4 aspect-square shrink-0 rounded-3xl" />
@@ -27,7 +27,7 @@ export const DashboardItems = () => {
         orientation="horizontal"
         hideScrollBar={true}
         size={0}
-        className="xs:flex xs:flex-row-reverse xs:gap-6 xs:justify-center xs:overflow-visible overflow-x-auto"
+        className="xs:flex xs:flex-row-reverse xs:gap-6 xs:justify-center xs:overflow-visible overflow-x-auto px-4"
       >
         <div className="grid grid-cols-3 gap-4 justify-between w-full max-w-screen-sm">
           <Button

@@ -75,7 +75,7 @@ export const ClosetCard = (props: ClosetCardProps) => {
         <Button
           variant="flat"
           size="sm"
-          className="bg-white/20 rounded-full absolute bottom-1 z-10 left-1"
+          className="bg-white/20 rounded-full absolute top-1 z-10 right-2"
           isIconOnly
           onPress={handleErrorModal}
         >
@@ -94,7 +94,7 @@ export const ClosetCard = (props: ClosetCardProps) => {
       >
         <div
           className={clsx(
-            'min:w-60 mx-auto rounded-3xl overflow-hidden cursor-pointer flex flex-col shrink-0 select-none relative',
+            'min:w-60 mx-auto rounded-2xl overflow-hidden cursor-pointer flex flex-col shrink-0 select-none relative',
             variant === 'primary' && 'bg-white border-2 border-secondary',
             variant === 'secondary' && 'bg-secondary-50 border border-secondary-50',
             variant === 'tertiary' && 'bg-primary',
@@ -102,7 +102,7 @@ export const ClosetCard = (props: ClosetCardProps) => {
             variant === 'error' && 'bg-red-200  shadow-md shadow-red-300/50'
           )}
         >
-          <div className={clsx('w-full', isSliderActive && 'h-96')}>
+          <div className={clsx('w-full', isSliderActive && 'h-80')}>
             <Image
               width={128}
               height={128}
@@ -116,7 +116,7 @@ export const ClosetCard = (props: ClosetCardProps) => {
           <div className="p-1.5">
             <div
               className={clsx(
-                'flex flex-row justify-between items-center w-full gap-1 rounded-2xl',
+                'flex flex-row justify-between flex-wrap items-center w-full gap-1 rounded-2xl',
                 variant === 'primary' && !isSliderActive && 'bg-secondary-50 p-2.5 ',
                 variant === 'secondary' && !isSliderActive && 'bg-white p-2.5 ',
                 variant === 'tertiary' && !isSliderActive && 'bg-white p-2.5 ',
@@ -130,15 +130,15 @@ export const ClosetCard = (props: ClosetCardProps) => {
               )}
             >
               {isPending ? (
-                <span className="text-sm font-light truncate"> {title} </span>
+                <span className="text-xs font-light truncate"> {title} </span>
               ) : variant === 'error' ? (
-                <div className="text-sm font-semibold flex flex-col gap-2 text-red-500">
+                <div className="text-xs font-semibold flex flex-col gap-2 text-red-500">
                   <p className="truncate py-1 px-4">خطا در پردازش تصویر!</p>
                 </div>
               ) : isSliderActive && variant === 'primary' ? (
-                <div className="text-sm font-semibold flex flex-col gap-2 text-white">
+                <div className="text-xs font-semibold flex flex-col gap-2 text-white">
                   <div className="flex gap-2 items-end">
-                    <div className="bg-white/20 text-xl w-fit rounded-l-md px-2 font-bold">
+                    <div className="bg-white/20 w-fit rounded-l-md px-2 font-bold text-sm">
                       {matchPercentage}
                     </div>
                     <span className="text-black text-sm">درصد</span>
@@ -148,11 +148,11 @@ export const ClosetCard = (props: ClosetCardProps) => {
               ) : (
                 <div
                   className={clsx(
-                    'text-sm font-semibold flex gap-2',
+                    'text-xs font-semibold flex gap-2 items-center',
                     isSliderActive ? 'text-white' : 'text-secondary'
                   )}
                 >
-                  <h3>{matchPercentage}%</h3>
+                  <h3 className="text-sm">{matchPercentage}%</h3>
                   <span className="text-sm font-light truncate"> مناسب با فرم بدن</span>
                 </div>
               )}

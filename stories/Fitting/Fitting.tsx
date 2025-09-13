@@ -9,7 +9,7 @@ export const Fitting = () => {
       <div className="grid grid-cols-3 justify-between items-center relative overflow-hidden h-full p-2">
         <div className="col-span-2 flex flex-row-reverse justify-center items-start gap-2 relative text-white">
           <span className="text-right font-light text-lg" dir="rtl">
-            تــو اتـــاق خــودت لباســارو پـــــورو کــــن!
+            هــرروز شیک‌تــر از دیــروز!
           </span>
           <MagicStarsIcon size={24} />
         </div>

@@ -70,7 +70,7 @@ export default function Page() {
                   <PlusIcon size={36} />
                 </span>
               }
-              className="h-14 rounded-3xl shrink-0 bg-success-50 border border-success text-black"
+              className="h-14 rounded-2xl shrink-0 bg-success-50 border border-success text-black"
               onPress={addClothesDrawer.onOpen}
             >
               افزودن لباس
@@ -78,41 +78,47 @@ export default function Page() {
           )
         }
       />
-
-      {/* Category*/}
-      {!clothesLoading && !clothesEmpty && !clothesError && (
-        <>
-          <div className="w-full mt-2 px-5">
-            <Search
-              withFilter={true}
-              title="جستجوی لباس"
-              onSearch={(val) => {
-                setPage(1);
-                setSearchText(val);
-              }}
-              searchText={searchText}
-              statusFilter={statusFilter}
-              onStatusChange={(status) => {
-                setPage(1);
-                setStatusFilter(status);
-              }}
+      <ScrollShadow
+        visibility={'bottom'}
+        hideScrollBar
+        className="overflow-y-auto px-4 pb-36 bg-white pt-1"
+      >
+        {/* Category*/}
+        {!clothesLoading && !clothesEmpty && !clothesError && (
+          <>
+            <div className="w-full">
+              <Search
+                withFilter={true}
+                title="جستجوی لباس"
+                onSearch={(val) => {
+                  setPage(1);
+                  setSearchText(val);
+                }}
+                searchText={searchText}
+                statusFilter={statusFilter}
+                onStatusChange={(status) => {
+                  setPage(1);
+                  setStatusFilter(status);
+                }}
+              />
+            </div>
+            <Category
+              variant="primary"
+              items={categoryItems}
+              value={selectedCategory}
+              onChange={setSelectedCategory}
+              className="flex justify-center items-center py-2 z-30 bg-white/40 px-0"
             />
-          </div>
-          <Category
-            variant="primary"
-            items={categoryItems}
-            value={selectedCategory}
-            onChange={setSelectedCategory}
-            className="flex justify-center items-center py-2 z-30 bg-white/40"
-          />
-          <div className={`text-2xl text-secondary-100 p-4 mx-4 ${SacramentoLocal.className}`}>
-            {categoryItems.find((v) => v.key === selectedCategory)?.enTitle}
-          </div>
-        </>
-      )}
+            <div
+              className={`text-2xl text-secondary-100 px-4 py-2 ${SacramentoLocal.className}`}
+            >
+              {categoryItems.find((v) => v.key === selectedCategory)?.enTitle}
+            </div>
+          </>
+        )}
 
-      {/* Clothes List*/}
-      <ScrollShadow hideScrollBar className="flex-1 overflow-y-auto px-5 pb-36 bg-white">
+        {/* Clothes List*/}
+
         {!clothesLoading && !clothesEmpty && !clothesError && (
           <ClosetList
             items={clothes.map((item: MyClothesType) => ({

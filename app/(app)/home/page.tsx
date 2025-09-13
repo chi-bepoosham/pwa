@@ -76,15 +76,16 @@ export default function Home() {
         }
       />
       <ScrollShadow
+        visibility={'bottom'}
         hideScrollBar
-        className="flex-1 overflow-y-auto max-w-screen-sm overflow-x-hidden px-5 pb-36 bg-white"
+        className="flex-1 overflow-y-auto max-w-screen-sm overflow-x-hidden px-4 pb-36 bg-white"
       >
         <div className="w-full flex flex-col gap-4 pb-16">
           <div className="w-full flex justify-center items-center">
             <BodyForm />
           </div>
 
-          <div className="w-full flex justify-center items-center px-8">
+          <div className="w-full flex justify-center items-center">
             <Celebrities
               isLoading={isLoading}
               error={error}

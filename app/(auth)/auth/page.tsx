@@ -60,7 +60,7 @@ export default function Page() {
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-center items-center w-full h-full max-h-screen overflow-hidden bg-primary">
+    <div className="flex-1 flex flex-col justify-center items-center w-full h-full max-h-screen overflow-hidden bg-primary pb-4">
       <div className="flex flex-col items-center justify-center h-full w-full gap-5 py-8">
         <Logo withLogoType={true} />
         <div className="flex flex-row justify-center items-center w-full gap-4">

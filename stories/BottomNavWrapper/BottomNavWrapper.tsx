@@ -17,7 +17,7 @@ export const BottomNavWrapper = () => {
   if (hideOnRoutes.includes(pathname)) return null;
 
   return (
-    <div className="absolute w-full bottom-0 z-40 h-fit">
+    <div className="fixed w-full bottom-0 z-40 h-fit">
       <BottomNavigation />
     </div>
   );
