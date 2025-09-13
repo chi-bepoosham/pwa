@@ -9,9 +9,10 @@ import { Uploader } from '@/stories/Uploader';
 import { UserType } from '@/types/UserType.type';
 import { addToast, Button } from '@heroui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import BodyTypeImageModal from '../BodyTypeImageModal/BodyTypeImageModal';
+
 interface ProfileFormProps {
   userInfo: UserType;
 }
@@ -24,33 +25,21 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
   const {
     register,
     handleSubmit,
-    reset,
     setValue,
     watch,
     formState: { errors, isSubmitting },
   } = useForm<UserFormData & { avatar?: File | string }>({
     resolver: zodResolver(userSchema),
-    defaultValues: {
-      first_name: '',
-      last_name: '',
-      email: '',
-      mobile: '',
-      gender: 0,
-    },
+    defaultValues: userInfo
+      ? {
+          first_name: userInfo.first_name || '',
+          last_name: userInfo.last_name || '',
+          email: userInfo.email || '',
+          mobile: userInfo.mobile || '',
+          gender: userInfo.gender || 0,
+        }
+      : {},
   });
-
-  useEffect(() => {
-    if (userInfo) {
-      reset({
-        first_name: userInfo.first_name || '',
-        last_name: userInfo.last_name || '',
-        email: userInfo.email || '',
-        mobile: userInfo.mobile || '',
-        gender: userInfo.gender || 0,
-      });
-      setValue('gender', userInfo.gender || 0);
-    }
-  }, [userInfo, reset, setValue]);
 
   const onSubmit = async (data: UserFormData & { avatar?: File | string }) => {
     setLoading(true);
@@ -110,68 +99,69 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-full flex flex-col gap-10 relative z-10 px-8"
-      >
-        <Uploader
-          size="medium"
-          title=""
-          onImageUpload={(file) => setValue('avatar', file)}
-          initialImage={
-            userInfo?.avatar ? 'https://core.chibepoosham.app/' + userInfo.avatar : null
-          }
-        />
-
-        <div className="w-full mx-auto flex flex-col gap-6">
-          <h3 className="font-semibold text-lg">مشخصات شما</h3>
-
-          <MinorInputWrapper
-            placeholder="نام"
-            error={errors.first_name?.message}
-            {...register('first_name')}
+      {!userInfo ? null : (
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full flex flex-col gap-10 relative z-10 px-8"
+        >
+          <Uploader
+            size="medium"
+            title=""
+            onImageUpload={(file) => setValue('avatar', file)}
+            initialImage={
+              userInfo?.avatar ? 'https://core.chibepoosham.app/' + userInfo.avatar : null
+            }
           />
-          <MinorInputWrapper
-            placeholder="نام خانوادگی"
-            error={errors.last_name?.message}
-            {...register('last_name')}
-          />
-          <MinorInputWrapper
-            placeholder="ایمیل خود را وارد کنید"
-            error={errors.email?.message}
-            {...register('email')}
-          />
-          <MinorInputWrapper
-            placeholder="شماره موبایل"
-            type="tel"
-            error={errors.mobile?.message}
-            {...register('mobile')}
-          />
-        </div>
 
-        <GenderSelection value={watch('gender')} />
-        <div className="cursor-pointer" onClick={() => setModalOpen(true)}>
-          <MyBodyTypeCard
-            value={userInfo?.body_type?.title ?? undefined}
-            image={userInfo?.body_image ?? undefined}
-          />
-        </div>
+          <div className="w-full mx-auto flex flex-col gap-6">
+            <h3 className="font-semibold text-lg">مشخصات شما</h3>
 
-        {error && <p className="text-red-500 mt-2">{error}</p>}
+            <MinorInputWrapper
+              placeholder="نام"
+              error={errors.first_name?.message}
+              {...register('first_name')}
+            />
+            <MinorInputWrapper
+              placeholder="نام خانوادگی"
+              error={errors.last_name?.message}
+              {...register('last_name')}
+            />
+            <MinorInputWrapper
+              placeholder="ایمیل خود را وارد کنید"
+              error={errors.email?.message}
+              {...register('email')}
+            />
+            <MinorInputWrapper
+              placeholder="شماره موبایل"
+              type="tel"
+              error={errors.mobile?.message}
+              {...register('mobile')}
+            />
+          </div>
 
-        <div className="w-full flex justify-center mb-16">
-          <Button
-            type="submit"
-            size="lg"
-            variant="shadow"
-            className="bg-primary rounded-3xl text-white h-16 px-8"
-            isLoading={loading || isSubmitting}
-          >
-            ذخیره تغییرات جدید
-          </Button>
-        </div>
-      </form>
+          <GenderSelection value={watch('gender')} />
+          <div className="cursor-pointer" onClick={() => setModalOpen(true)}>
+            <MyBodyTypeCard
+              value={userInfo?.body_type?.title ?? undefined}
+              image={userInfo?.body_image ?? undefined}
+            />
+          </div>
 
+          {error && <p className="text-red-500 mt-2">{error}</p>}
+
+          <div className="w-full flex justify-center mb-16">
+            <Button
+              type="submit"
+              size="lg"
+              variant="shadow"
+              className="bg-primary rounded-3xl text-white h-16 px-8"
+              isLoading={loading || isSubmitting}
+            >
+              ذخیره تغییرات جدید
+            </Button>
+          </div>
+        </form>
+      )}
       <BodyTypeImageModal
         userInfo={userInfo}
         isOpen={isModalOpen}
