@@ -4,7 +4,6 @@ import { UserType } from '@/types/UserType.type';
 import { Modal, ModalBody, ModalContent } from '@heroui/react';
 import Image from 'next/image';
 import { StarIcon } from '../Icons';
-import { RectangleOnBodyImageVector } from '../Vectors';
 
 interface BodyTypeImageModalProps {
   isOpen: boolean;
@@ -23,13 +22,14 @@ function BodyTypeImageModal({ userInfo, isOpen, onClose }: BodyTypeImageModalPro
       size='sm'
       isOpen={isOpen}
       onClose={onClose}
+      className='border-2 border-primary-600 p-0 rounded-3xl bg-[#ececfe]'
     >
       <ModalContent>
         {() => (
           <ModalBody>
             {userInfo && (
               <div className="text-lg font-semibold text-center flex justify-center flex-col items-center gap-2 py-12">
-                <div className="border-2 border-primary-100 p-4 rounded-3xl bg-primary-50">
+                <div>
                   <div className="p-4 relative">
                     <div
                       className="absolute top-0 w-full h-[1px] bg-gradient-to-r from-primary-50 via-primary to-primary-50 left-1/2 -translate-x-1/2 -translate-y-1/2 "
@@ -81,9 +81,9 @@ function BodyTypeImageModal({ userInfo, isOpen, onClose }: BodyTypeImageModalPro
                         alt="Body image"
                         className="w-full h-full object-cover z-10 "
                       />
-                      <div className="absolute z-20 top-0 left-1/2 -translate-x-1/2 w-full p-4">
+                      {/* <div className="absolute z-20 top-0 left-1/2 -translate-x-1/2 w-full p-4">
                         <RectangleOnBodyImageVector />
-                      </div>
+                      </div> */}
                       <div className="absolute bottom-0 right-0 w-full z-30 p-1.5">
                         <div className="flex flex-col gap-2 w-full bg-black/60 backdrop-blur-sm rounded-b-2xl rounded-t-3xl p-4 text-white text-xs">
                           <div className="flex items-center w-full justify-center gap-2">

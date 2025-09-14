@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import useSWR from 'swr';
 import Header from '../components/Header';
+// import { GlobalUserStatsBar } from '@/stories/GlobalUserStatusBar';
 
 export default function Home() {
   const { userInfo } = useGetUser(3000);
@@ -99,6 +100,7 @@ export default function Home() {
               }
             />
           </div>
+          {/* <GlobalUserStatsBar joined={120} total={140}/> */}
 
           {/* <div className="w-full flex justify-center items-center px-8 pb-10">
           <SuggestionSlider slides={suggestionSliderData} />

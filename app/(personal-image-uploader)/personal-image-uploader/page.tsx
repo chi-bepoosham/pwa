@@ -18,6 +18,7 @@ import ErrorBodyType from './error';
 import LoadingBodyType from './loading';
 import PendingBodyType from './pending';
 import { PersonalImageUploaderData } from './schema';
+import { AxiosError } from 'axios';
 
 const PersonalImage = () => {
   const { userInfo, userInfoError } = useGetUser(2000);
@@ -73,7 +74,11 @@ const PersonalImage = () => {
       });
       router.replace('/');
     } catch (error) {
-      console.error('Upload error:', error);
+      addToast({
+        title: 'خطای بارگذاری',
+        description: (error as AxiosError).message || 'خطایی در بارگذاری تصویر شما وجود دارد.',
+        color: 'danger',
+      });
     } finally {
       setIsLoading(false);
     }

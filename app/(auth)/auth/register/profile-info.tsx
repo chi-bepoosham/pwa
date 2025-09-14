@@ -115,11 +115,12 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
       <div className="flex flex-col justify-center items-center gap-5 w-full p-6 md:absolute fixed bottom-0  shadow-[0px_-1px_10px_0px_#f1f1f1]">
         <MinorButton
           className="text-large w-full"
-          variant="flat"
+          variant="solid"
           buttonTitle="مـــرحلۀ بــــعدی"
           radius="md"
           size="lg"
           isLoading={loading}
+          isDisable={loading}
           color="primary"
           onClick={handleSubmit(onSubmit)}
         />

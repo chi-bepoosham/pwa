@@ -1,5 +1,5 @@
 import { addToast } from '@heroui/react';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import { deleteCookie, getCookie } from './cookies';
 
 const config = {
@@ -42,7 +42,11 @@ const axiosCoreWithAuth = () => {
         config.headers.Authorization = `Bearer ${token}`;
       }
     } catch (error) {
-      console.error('Token cookie not found:', error);
+      addToast({
+        title: 'خطایی وجود دارد.',
+        description: (error as AxiosError).message || 'شناسه کاربری یافت نشد.',
+        color: 'danger',
+      });
     }
     return config;
   });

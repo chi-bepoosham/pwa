@@ -5,6 +5,7 @@ import { addToast } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import { axiosCoreWithAuth } from './axios';
 import { deleteCookie } from './cookies';
+import { AxiosError } from 'axios';
 
 export const useLogout = () => {
   const router = useRouter();
@@ -23,8 +24,7 @@ export const useLogout = () => {
       router.push('/auth');
 
       addToast({ title: 'خروج از حساب کاربری با موفقیت انجام شد.', color: 'success' });
-    } catch (error) {
-      console.error('Logout error:', error);
+    } catch {
       addToast({ title: 'خطایی وجود دارد.', color: 'danger' });
     }
   };
@@ -39,6 +39,10 @@ export const logoutUser = async (redirect?: () => void) => {
 
     if (redirect) redirect();
   } catch (err) {
-    console.error('Logout error:', err);
+    addToast({
+      title: 'خطایی وجود دارد.',
+      description: (err as AxiosError).message || '',
+      color: 'danger',
+    });
   }
 };

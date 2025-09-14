@@ -12,8 +12,8 @@ import { useRouter } from 'next/navigation';
 import { use } from 'react';
 import Header from '../../components/Header';
 import { AddClothesDrawer } from '../components/AddClothesDrawer';
-import Error from '../error';
-import Loading from '../loading';
+import Error from './error';
+import Loading from './loading';
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -77,7 +77,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
           ></Button>
         }
       />
-      {!clotheLoading && !clotheError && (
+      {!clotheLoading && !clotheError && userInfo && (
         <ScrollShadow
           visibility={'bottom'}
           hideScrollBar

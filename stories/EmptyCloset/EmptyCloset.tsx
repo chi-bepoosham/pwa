@@ -21,7 +21,7 @@ export default function ClosetEmptyState({
   onShowAll,
 }: ClosetEmptyStateProps) {
   return (
-    <div className="flex flex-col justify-center gap-10 h-full w-full px-5 relative">
+    <div className="flex flex-col gap-10 h-full w-full px-5 relative">
       <div className="flex justify-center items-center">
         <TryOnClothVector />
       </div>

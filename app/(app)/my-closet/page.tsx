@@ -15,6 +15,7 @@ import Header from '../components/Header';
 import { AddClothesDrawer } from './components/AddClothesDrawer';
 import Error from './error';
 import Loading from './loading';
+import { TryOnClothVector } from '@/stories/Vectors';
 
 export default function Page() {
   const { userInfo } = useGetUser();
@@ -52,6 +53,8 @@ export default function Page() {
     setPage(1);
   }, [selectedCategory]);
 
+  if (clothesLoading) return <Loading />;
+
   return (
     <div className="flex flex-col w-full h-full">
       <Header
@@ -81,7 +84,7 @@ export default function Page() {
       <ScrollShadow
         visibility={'bottom'}
         hideScrollBar
-        className="overflow-y-auto px-4 pb-36 bg-white pt-1"
+        className="overflow-y-auto px-4 pb-36 bg-white pt-1 h-full"
       >
         {/* Category*/}
         {!clothesLoading && !clothesEmpty && !clothesError && (
@@ -109,9 +112,7 @@ export default function Page() {
               onChange={setSelectedCategory}
               className="flex justify-center items-center py-2 z-30 bg-white/40 px-0"
             />
-            <div
-              className={`text-2xl text-secondary-100 px-4 py-2 ${SacramentoLocal.className}`}
-            >
+            <div className={`text-2xl text-secondary-100 px-4 py-2 ${SacramentoLocal.className}`}>
               {categoryItems.find((v) => v.key === selectedCategory)?.enTitle}
             </div>
           </>
@@ -136,15 +137,19 @@ export default function Page() {
         )}
 
         {/* Empty State */}
-        {!clothesLoading && !clothesEmpty && clothesTotal === 0 && !clothesError && (
-          <ClosetEmptyState
-            type="emptyCategory"
-            userName={userInfo?.first_name}
-            categoryTitle={categoryItems.find((v) => v.key === currentCategory)?.title}
-            onShowAll={() => setSelectedCategory('all')}
-            onAddClothes={addClothesDrawer.onOpen}
-          />
-        )}
+        {!clothesLoading &&
+          !clothesEmpty &&
+          clothesTotal === 0 &&
+          !clothesError &&
+          currentCategory !== 'all' && (
+            <ClosetEmptyState
+              type="emptyCategory"
+              userName={userInfo?.first_name}
+              categoryTitle={categoryItems.find((v) => v.key === currentCategory)?.title}
+              onShowAll={() => setSelectedCategory('all')}
+              onAddClothes={addClothesDrawer.onOpen}
+            />
+          )}
 
         {!clothesLoading && clothesEmpty && !clothesError && (
           <ClosetEmptyState
@@ -155,7 +160,30 @@ export default function Page() {
           />
         )}
 
-        {clothesLoading && <Loading />}
+        {!clothesLoading &&
+          !clothesEmpty &&
+          clothesTotal === 0 &&
+          !clothesError &&
+          currentCategory === 'all' && (
+            <div className="flex flex-col justify-center gap-10 h-full w-full px-5 relative">
+              <div className="flex justify-center items-center">
+                <TryOnClothVector />
+              </div>
+              <div className="flex flex-col justify-center items-center gap-3">
+                <span
+                  className={`${SacramentoLocal.className} text-3xl font-bold text-secondary-200`}
+                >
+                  Your closet is empty
+                </span>
+
+                <span className="text-lg text-secondary font-semibold">
+                  {userInfo?.first_name || 'کاربر'} عزیز!
+                </span>
+                <span className="text-lg text-secondary font-semibold">موردی یافت نشد!</span>
+              </div>
+            </div>
+          )}
+
         {!clothesLoading && !!clothesError && <Error message={clothesError?.message} />}
       </ScrollShadow>
 

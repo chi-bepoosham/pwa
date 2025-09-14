@@ -102,7 +102,7 @@ export const ClosetCard = (props: ClosetCardProps) => {
             variant === 'error' && 'bg-red-200  shadow-md shadow-red-300/50'
           )}
         >
-          <div className={clsx('w-full', isSliderActive && 'h-80')}>
+          <div className={clsx('w-full', isSliderActive && 'h-fit')}>
             <Image
               width={128}
               height={128}
@@ -139,9 +139,9 @@ export const ClosetCard = (props: ClosetCardProps) => {
                 <div className="text-xs font-semibold flex flex-col gap-2 text-white">
                   <div className="flex gap-2 items-end">
                     <div className="bg-white/20 w-fit rounded-l-md px-2 font-bold text-sm">
-                      {matchPercentage}
+                      {matchPercentage}%
                     </div>
-                    <span className="text-black text-sm">درصد</span>
+                    {/* <span className="text-black text-sm">درصد</span> */}
                   </div>
                   <p className="truncate py-1 px-4"> مناسب با فرم بدن!</p>
                 </div>

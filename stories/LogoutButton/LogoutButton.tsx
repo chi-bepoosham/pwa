@@ -3,6 +3,7 @@
 import { useLogout } from '@/lib/logout';
 import { LogoutIcon } from '@/stories/Icons';
 import { addToast, Button } from '@heroui/react';
+import { AxiosError } from 'axios';
 import React, { useState } from 'react';
 
 export const LogoutButton = () => {
@@ -13,9 +14,12 @@ export const LogoutButton = () => {
     setIsLoading(true);
     try {
       await logout();
-    } catch (error) {
-      console.error('Logout error:', error);
-      addToast({ title: 'خطایی وجود دارد.', color: 'danger' });
+    } catch (err) {
+      addToast({
+        title: 'خطایی وجود دارد.',
+        description: (err as AxiosError).message || '',
+        color: 'danger',
+      });
     } finally {
       setIsLoading(false);
     }

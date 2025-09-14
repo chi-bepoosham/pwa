@@ -119,7 +119,6 @@ export default function Page() {
         description: (err as AxiosError).message || 'خطایی در ارسال کد تایید رخ داد',
         color: 'danger',
       });
-      console.error(err);
     } finally {
       setIsSending(false);
     }

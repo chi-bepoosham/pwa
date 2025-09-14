@@ -55,12 +55,11 @@ export default function Page() {
         description: (err as AxiosError).message || 'خطایی در ارسال کد تایید رخ داد',
         color: 'danger',
       });
-      console.error(err);
     }
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-center items-center w-full h-full max-h-screen overflow-hidden bg-primary pb-4">
+    <div className="flex-1 flex flex-col justify-center items-center w-full h-full max-h-screen overflow-hidden bg-primary">
       <div className="flex flex-col items-center justify-center h-full w-full gap-5 py-8">
         <Logo withLogoType={true} />
         <div className="flex flex-row justify-center items-center w-full gap-4">
@@ -74,7 +73,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-around w-full h-full rounded-t-3xl p-8 bg-white">
+      <div className="flex-1 flex flex-col items-center justify-around w-full h-full rounded-t-3xl p-8 pb-12 bg-white">
         <div className="py-4 w-full">
           <LoginByPhoneOtpForm submit={handleSubmit} reset={handleReset} isLoading={isLoading} />
         </div>

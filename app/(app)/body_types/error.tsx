@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 export default function Error({ message }: { message: string }) {
   const router = useRouter();
+
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-6">
       <p className="text-lg text-red-500">خطا در دریافت اطلاعات کاربر!</p>
@@ -21,3 +22,4 @@ export default function Error({ message }: { message: string }) {
     </div>
   );
 }
+

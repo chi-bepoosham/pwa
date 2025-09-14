@@ -9,6 +9,7 @@ import { Uploader } from '@/stories/Uploader';
 import { UserType } from '@/types/UserType.type';
 import { addToast, Button } from '@heroui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { AxiosError } from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import BodyTypeImageModal from '../BodyTypeImageModal/BodyTypeImageModal';
@@ -20,7 +21,6 @@ interface ProfileFormProps {
 const ProfileForm = ({ userInfo }: ProfileFormProps) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   const {
     register,
@@ -43,11 +43,8 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
 
   const onSubmit = async (data: UserFormData & { avatar?: File | string }) => {
     setLoading(true);
-    setError(null);
 
     try {
-      let response;
-
       const axios = axiosCoreWithAuth();
       if (data.avatar) {
         const formData = new FormData();
@@ -64,29 +61,20 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
             formData.append(key, String(value));
           }
         });
-        response = await axios.post(
-          'https://core.chibepoosham.app/api/v1/user/update/profile',
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-        );
+        await axios.post('https://core.chibepoosham.app/api/v1/user/update/profile', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
       } else {
-        response = await axios.post(
-          'https://core.chibepoosham.app/api/v1/user/update/profile',
-          data
-        );
+        await axios.post('https://core.chibepoosham.app/api/v1/user/update/profile', data);
       }
       addToast({
         title: 'پروفایل با موفقیت به‌روزرسانی شد',
         color: 'success',
       });
-      console.log('Profile updated', response.data);
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'خطای ناشناخته‌ای رخ داد';
-      setError(message);
+    } catch (err) {
+      const message = err instanceof AxiosError ? err.message : 'خطای ناشناخته‌ای رخ داد';
       addToast({
         title: 'خطا در ذخیره تغییرات',
         description: message,
@@ -102,7 +90,7 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
       {!userInfo ? null : (
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full flex flex-col gap-10 relative z-10 px-8"
+          className="w-full flex flex-col gap-10 relative z-10 px-4"
         >
           <Uploader
             size="medium"
@@ -133,7 +121,7 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
             />
             <MinorInputWrapper
               placeholder="شماره موبایل"
-              type="tel"
+              type="phone"
               error={errors.mobile?.message}
               {...register('mobile')}
             />
@@ -147,14 +135,14 @@ const ProfileForm = ({ userInfo }: ProfileFormProps) => {
             />
           </div>
 
-          {error && <p className="text-red-500 mt-2">{error}</p>}
+          {/* {error && <p className="text-/red-500 mt-2 px-4">{error}</p>} */}
 
           <div className="w-full flex justify-center mb-16">
             <Button
               type="submit"
               size="lg"
               variant="shadow"
-              className="bg-primary rounded-3xl text-white h-16 px-8"
+              className="bg-primary rounded-2xl text-white h-16 px-12"
               isLoading={loading || isSubmitting}
             >
               ذخیره تغییرات جدید
@@ -179,6 +167,6 @@ const MinorInputWrapper = ({
 }: React.ComponentProps<typeof MinorInput> & { error?: string }) => (
   <div>
     <MinorInput {...props} size="lg" />
-    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+    {error && <p className="text-red-500 text-xs mt-1 px-5">{error}</p>}
   </div>
 );
